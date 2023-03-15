@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.PlayListDTO;
@@ -24,6 +23,8 @@ import com.java.food.service.JavafoodService;
 
 @Controller
 public class JavafoodController {
+	private static final Logger logger = LoggerFactory.getLogger(JavafoodController.class);
+
 	
 	@Autowired
 	JavafoodService javaService;
@@ -181,8 +182,25 @@ public class JavafoodController {
 			 ){
 		//로그인 정보 확인 or 세션ID에 로그인 id 값 저장
 		if(map.get("ID")!=null ) {
-			mo.addAttribute("log",javaService.login(map));
-			re.getSession().setAttribute("login", map.get("ID"));
+			
+			
+			System.out.println("map id : "+map.get("ID"));
+			logger.info("ddddddddddddddddddddddddddd");
+			System.out.println("m : 1");
+			
+			Map m = javaService.login(map);
+			
+			System.out.println("m : 2");
+			
+			System.out.println("log : 1");
+			System.out.println("log : "+m.get("log"));
+			System.out.println("log : 2");
+			
+			
+			mo.addAttribute("log",m.get("log"));
+			mo.addAttribute("map",m);
+			
+			re.getSession().setAttribute("login", m.get("ID"));
 		}
 		if(map.get("Id1")!=null) {
 			mo.addAttribute(javaService.addid(map));
