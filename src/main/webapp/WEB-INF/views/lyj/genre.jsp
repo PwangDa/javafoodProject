@@ -18,7 +18,7 @@
 	
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/style/genre.css">
+<link rel="stylesheet" href="/style/genre.css">
 
        
 </head>
@@ -264,7 +264,7 @@
 
 	</div>
 	
-	<script link src ="resources/script/genre.js"></script>
+	<script link src ="/script/genre.js"></script>
 </body>
 
 </html>
