@@ -72,7 +72,8 @@ public class JavafoodController {
 		String nextPage = "chart/chart";
 		
 		// songnumber 변수에 dto의 songnumber 가져옴
-		String songnum = dto.getSongnumber();
+//		String songnum = dto.getSongnumber();
+		String songnum = "3";
 		//  dto 데이터를 list로 가져와서 service에 getChart 메소드에 songnumber 전달
 		List<FamousChartDTO> list = javaService.getChart(songnum);
 			
