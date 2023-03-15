@@ -182,6 +182,7 @@ public class JavafoodController {
 			@RequestParam Map<String, Object> map
 			 ){
 		log.info("login 페이지 이동");
+		
 		//로그인 정보 확인 or 세션ID에 로그인 id 값 저장
 		if(map.get("ID")!=null ) {
 			log.info("로그인 시도");
@@ -190,9 +191,12 @@ public class JavafoodController {
 			mo.addAttribute("map",m);
 			re.getSession().setAttribute("login", m.get("ID"));
 		}
+		
+		//회원가입
 		if(map.get("Id1")!=null) {
 			mo.addAttribute(javaService.addid(map));
 		}
+		
 		//회원 가입 페이지 이동
 		if(map.get("membership")!=null) {
 			log.info("회원가입 페이지 이동");
