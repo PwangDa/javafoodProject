@@ -112,7 +112,7 @@ public class JavafoodController {
 	}
 	
 ////////////////////////////////////////////////////////////
-	//범주
+	//범주귀
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
