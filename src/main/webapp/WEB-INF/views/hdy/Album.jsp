@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Album TTTest</title>
-<script link src ="/music/resources/script/albumScript.js"></script>
+<script link src ="/script/albumScript.js"></script>
 <style>       
         <c:forEach var="album" items="${album_list}" varStatus="loop"> 
         	.cont2_${loop.count}:hover span{
@@ -22,7 +22,7 @@
         	}       
         </c:forEach>
 </style>
-<link rel="stylesheet" href="/music/resources/style/albumCSS.css?css=css">
+<link rel="stylesheet" href="/style/albumCSS.css?css=css">
 </head>
 <body>
    <%-- <jsp:include page="menu.jsp"></jsp:include> --%>
