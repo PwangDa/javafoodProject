@@ -11,9 +11,9 @@
 <head>
 	<meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-	<script link src ="/music/resources/style/loginScript.js"></script>
+	<script link src ="/style/loginScript.js"></script>
 	
-	<link rel="stylesheet" href="/music/resources/style/loginCSS.css?css=css">
+	<link rel="stylesheet" href="/style/loginCSS.css?css=css">
 	
 <c:if test="${good!=null }">
 	<c:if test="${good==1 }"><script>alert("회원가입 성공")</script></c:if>
@@ -159,7 +159,7 @@
 					</div>
 					<div class="table1">
 						<h1 class="h1_1"><c:out value="Log in to your account"/></h1>
-					    <form method="post" action="login">
+					    <form method="post" action="/login">
 					        <div class="head1">
 					            <div class = "inputbtn">
 					            	<input class = "tt" type="text" name="ID" placeholder="USER NAME">
@@ -170,7 +170,7 @@
 					            <button class="btnClear" type="button" ></button>
 					            <input class="sub sub1" type="submit" value="Log In"><br>
 					            <span class = "chec"><input type="checkbox" name="ID" value="ID">Remember me</span> <span class ="chec" style= "margin-left :77px;">계정 찾기</span>
-					            <p><a href="login?membership=0" class="at"><c:out value="아직 JavaMusic을 사용하고 있지 않으신가요? 가입하기"/></a></p>
+					            <p><a href="/login?membership=0" class="at"><c:out value="아직 JavaMusic을 사용하고 있지 않으신가요? 가입하기"/></a></p>
 					        </div>
 					    </form>
 			        </div>

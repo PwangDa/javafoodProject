@@ -18,7 +18,7 @@ function loging(){
 		time--;
 		$("#time").text(time);
 		if (time==0){
-			location.href='javafood?javafood=m';
+			location.href='/login';
 		}
 	},1000)
 }

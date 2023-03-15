@@ -18,7 +18,7 @@ function loging(){
 		time--;
 		$("#time").text(time);
 		if (time==0){
-			location.href='/login';
+			location.href='main';
 		}
 	},1000)
 }

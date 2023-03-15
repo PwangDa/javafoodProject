@@ -183,24 +183,9 @@ public class JavafoodController {
 			 ){
 		//로그인 정보 확인 or 세션ID에 로그인 id 값 저장
 		if(map.get("ID")!=null ) {
-			
-			
-			System.out.println("map id : "+map.get("ID"));
-			logger.info("ddddddddddddddddddddddddddd");
-			System.out.println("m : 1");
-			
 			Map m = javaService.login(map);
-			
-			System.out.println("m : 2");
-			
-			System.out.println("log : 1");
-			System.out.println("log : "+m.get("log"));
-			System.out.println("log : 2");
-			
-			
 			mo.addAttribute("log",m.get("log"));
 			mo.addAttribute("map",m);
-			
 			re.getSession().setAttribute("login", m.get("ID"));
 		}
 		if(map.get("Id1")!=null) {
@@ -211,12 +196,6 @@ public class JavafoodController {
 			mo.addAttribute("membership",map.get("membership"));
 		}
 		return "lky/login";
-	}
-	@ResponseBody
-	@RequestMapping("test")
-	public String gd(login_DTO login_DTO) {
-		
-		return "";
 	}
 ////////////////////////////////////////////////////////////
 	//용준
