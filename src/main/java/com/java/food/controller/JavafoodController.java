@@ -181,8 +181,10 @@ public class JavafoodController {
 			HttpServletRequest re,
 			@RequestParam Map<String, Object> map
 			 ){
+		logger.info("login 페이지 이동");
 		//로그인 정보 확인 or 세션ID에 로그인 id 값 저장
 		if(map.get("ID")!=null ) {
+			logger.info("로그인 시도");
 			Map m = javaService.login(map);
 			mo.addAttribute("log",m.get("log"));
 			mo.addAttribute("map",m);
@@ -193,6 +195,7 @@ public class JavafoodController {
 		}
 		//회원 가입 페이지 이동
 		if(map.get("membership")!=null) {
+			logger.info("회원가입 페이지 이동");
 			mo.addAttribute("membership",map.get("membership"));
 		}
 		return "lky/login";

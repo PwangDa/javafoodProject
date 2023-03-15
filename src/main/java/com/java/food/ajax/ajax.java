@@ -1,4 +1,4 @@
-package com.java.food.javafood_ajax;
+package com.java.food.ajax;
 
 import java.io.File;
 import java.io.IOException;
