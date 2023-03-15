@@ -180,7 +180,7 @@ public class JavafoodController {
 			@RequestParam Map<String, Object> map
 			 ){
 		//로그인 정보 확인 or 세션ID에 로그인 id 값 저장
-		if(map.get("ID")!=null) {
+		if(map.get("ID")!=null ) {
 			mo.addAttribute("log",javaService.login(map));
 			re.getSession().setAttribute("login", map.get("ID"));
 		}
