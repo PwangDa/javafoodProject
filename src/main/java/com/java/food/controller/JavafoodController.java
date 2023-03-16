@@ -343,23 +343,29 @@ public class JavafoodController {
         return "redirect:playListContent?pl_id="+pl_id;
     }
     
-//	//플레이 리스트 삭제하기
-//    @RequestMapping("deletePlayList")
-//    public String deletePlayList(HttpServletRequest request)
-//    {
-//    	System.out.println("JavafoodController의 deletePlayList 메서드 실행됨."); //확인용
-//    	
-//    	//주소에서 전달된 값 받기
-//    	String pl_id = request.getParameter("pl_id");
-//    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 pl_id : " + pl_id); //확인용
-//    	String id = request.getParameter("id");
-//    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 id : " + id); //확인용
-//    	
-//    	//service에서 deletePlayList 메서드 실행하기
-////    	javaService.deletePlayList(id, pl_id);
-//    	
-//    	//
-//    }
+	//플레이 리스트 삭제하기
+    @RequestMapping("deletePlayList")
+    public String deletePlayList(HttpServletRequest request)
+    {
+    	System.out.println("JavafoodController의 deletePlayList 메서드 실행됨."); //확인용
+    	
+    	//주소에서 전달된 값 받기
+    	String pl_id = request.getParameter("pl_id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 pl_id : " + pl_id); //확인용
+    	String id = request.getParameter("id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 id : " + id); //확인용
+    	
+    	//전달된 값을 HashMap에 담기
+    	Map<String, String> info = new HashMap<String, String>();
+    	info.put("id", id);
+    	info.put("pl_id", pl_id);
+    	
+    	//service에서 deletePlayList 메서드 실행하기
+    	javaService.deletePlayList(info);
+    	
+    	//삭제 후 playList 페이지로 가기
+    	return "redirect:playList";
+    }
     
     
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
