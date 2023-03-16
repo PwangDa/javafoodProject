@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.java.food.ajax.ajax;
+import com.java.food.ajax.ajax11Impl;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
@@ -105,7 +108,7 @@ public class JavafoodController {
 	}
 	
 ////////////////////////////////////////////////////////////
-	//범주귀
+	//범주
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
@@ -151,6 +154,7 @@ public class JavafoodController {
 		return result;
 	}
 	
+	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	@RequestMapping("main")
 	public String viewMain(Model model)
 	{
@@ -161,7 +165,7 @@ public class JavafoodController {
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
-//		List<>
+//		List<GenreDTO> list = javaService.
 		
 		return result;
 	}
@@ -170,6 +174,7 @@ public class JavafoodController {
 	@RequestMapping (value = "/login")
 	public String loginpage(Model mo,
 			HttpServletRequest re,
+			HttpServletResponse rp,
 			@RequestParam Map<String, Object> map
 			 ){
 		log.info("login 페이지 이동");
@@ -192,6 +197,12 @@ public class JavafoodController {
 		if(map.get("membership")!=null) {
 			log.info("회원가입 페이지 이동");
 			mo.addAttribute("membership",map.get("membership"));
+		}
+		//회원가입 중복체크 아자스로 이동
+		if(map.get("aj")!=null) {
+			log.info("aj등장 : "+map.get("aj"));
+			ajax11Impl aj = new ajax11Impl();
+			aj.login(rp, map);
 		}
 		return "lky/login";
 	}
@@ -219,8 +230,8 @@ public class JavafoodController {
 				System.out.println("countPerPage : " + countPerPage);
 				Map genre_list = javaService.getGenre(song, pageNum, countPerPage);
 				model.addAttribute("genre", genre_list.get("list"));
-				
-				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImglink());
+//				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImagelink());
+//				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 				model.addAttribute("totalCount", genre_list.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
@@ -228,6 +239,8 @@ public class JavafoodController {
 				System.out.println("song 후: " + song);
 				
 		return "lyj/genre";
+//		return "redirect:genre?genre="+song;
+//		return "redirect:genre";
 	}
 ////////////////////////////////////////////////////////////
 }
