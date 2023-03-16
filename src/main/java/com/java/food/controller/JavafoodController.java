@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -54,6 +57,7 @@ public class JavafoodController {
 		return "hdy/artist";
 	}
 	
+	//댓글 등록 할 때
 	@RequestMapping(value = "/insert.do", method = RequestMethod.POST)
 	public String insert(Model model,
 			@ModelAttribute CommentDTO dto,
@@ -91,12 +95,51 @@ public class JavafoodController {
 		return "redirect:/artistpage?artist="+encodeResult;
 	}
 	
+	//대댓글 등록할 때
+	@RequestMapping(value = "/reply.do", method = RequestMethod.POST)
+	public String reply(Model model,
+			@ModelAttribute CommentDTO dto,
+			@RequestParam("id_2") String id,
+			@RequestParam("cont_2") String cont,
+			@RequestParam("command_myimg") String ima,
+			@RequestParam("command_articleNO") int article,
+			@RequestParam("arti") String arti
+			/*@RequestParam("command_articleNO") int arino*/
+			) {
+		
+		System.out.println(">>>>>"+id);
+		System.out.println(">>>>>"+cont);
+		System.out.println(">>>>>"+ima);
+		System.out.println(">>>>>"+article);
+		System.out.println(">>>>>"+arti);
+		
+		dto.setComment_id(id);	
+		dto.setComment_cont(cont);
+		dto.setMyimg(ima);
+		dto.setArtistname(arti);
+		dto.setParentNO(article);
+		
+		String encodeResult = null;
+		try {
+			encodeResult = URLEncoder.encode(arti, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("댓글등록 메소드 접속"); 
+		System.out.println("아이디 >" +dto.getComment_id()); 
+		System.out.println("내용 >" +dto.getComment_cont()); 
+		int count = javaService.insertComment(dto);
+		System.out.println("count >>>"+count);
+		
+		return "redirect:/artistpage?artist="+encodeResult;
+	}
+	//댓글 삭제할 때
 	@RequestMapping(value = "/del.do", method = {RequestMethod.GET, RequestMethod.DELETE})
 	public String delet(Model model,
 			@ModelAttribute CommentDTO dto,
 			@RequestParam("command_articleNO") int no,
 			@RequestParam("arti") String arti
-			/*@RequestParam("command_articleNO") int arino*/
 			) {
 		
 		System.out.println("댓글삭제 메소드 접속"); 
@@ -116,9 +159,7 @@ public class JavafoodController {
 		return "redirect:/artistpage?artist="+encodeResult;
 	}
 	
-	
-	
-	
+	//앨범수록곡 페이지 들어갈 때
 	@RequestMapping(value = "/albumpage", method = RequestMethod.GET)
 	public String java1_1(Model model,
 			@RequestParam("album") String album
@@ -313,7 +354,15 @@ public class JavafoodController {
 	{
 		
 		System.out.println("JavafoodController의 viewMain 메서드 실행됨.");
+		List<String> genreList = Arrays.asList("발라드", "댄스", "POP", "R&B", "인디", "트로트", "록/메탈", "랩/힙합");
+		Random random = new Random();
+		int randomIndex = random.nextInt(genreList.size());
+		System.out.println(genreList.get(randomIndex));
+		String genre = genreList.get(randomIndex);
 		
+		
+		List random_list = javaService.randomGenre(genre);
+	
 		String result = "main/main";
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
@@ -322,6 +371,8 @@ public class JavafoodController {
 		
 		return result;
 	}
+
+
 ////////////////////////////////////////////////////////////
 	//경용
 	@RequestMapping (value = "/login")
@@ -415,7 +466,8 @@ public class JavafoodController {
 					System.out.println("pageNum : " + pageNum);
 					System.out.println("countPerPage : " + countPerPage);
 					Map Music_list = javaService.getMusic(pageNum, countPerPage);
-					model.addAttribute("music", Music_list.get("list"));
+					model.addAttribute("list", Music_list.get("list"));
+					System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)Music_list.get("list")).get(0).getSongname());
 					model.addAttribute("totalCount", Music_list.get("totalCount"));
 					model.addAttribute("pageNum", pageNum);
 					model.addAttribute("countPerPage", countPerPage);
