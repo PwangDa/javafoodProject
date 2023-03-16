@@ -21,17 +21,10 @@
 	<br>
 	<br>
 
-<<<<<<< HEAD
-<div class="topArea">
-        <a class="topButton" href="javafood?javafood=7"><span>최신 음악</span></a>
-        <a class="topButton" href="javafood?javafood=2"><span>차트</span></a>
-        <a class="topButton" href="javafood?javafood=6"><span>장르</span></a>
-=======
 	<div class="topArea">
         <a class="topButton" href="popular_Music"><span>최신 음악</span></a>
         <a class="topButton" href="chart"><span>차트</span></a>
         <a class="topButton" href="genre"><span>장르</span></a>
->>>>>>> 0b514ef86184f90dfc38a6a6d81168a5264a5e93
     </div>
     
     <br>
@@ -342,49 +335,10 @@
 		    </div>
 		</div>
     </c:if>
-    
-    <!-- 랜덤 장르별 곡 추천  -->
-    <c:if test="${ls==null }">
-	    <div class="hitList">
-	    	<div class="subtitle">
-	    		오늘은 이런 장르 어떠세요? ${gerne[0].bygenre }
-	    		<div class="hitListController">
-	    			<p class="point prev"><</p>
-	    			<p class="point next">></p>
-	    		</div>
-	    	</div>
-	    </div>
-	    
-	    <br>
-	    
-	    <div class="songContent songContentPage0">
-	    
-		    <div id="hitListLine">
-		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
-			            <div class="hitListViewerContent">
-			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
-			                </div>
-			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
-			    
-			                <div class="songContentInfo">
-			    
-			                    <div class="hitListViewerSongTitle">
-			                        <a href="${hitList.link }">${hitList.songname }</a>
-			                    </div>
-			                    <div class="hitListViewerSongInfo">
-			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
-			                    </div>
-			                </div>
-			            </div>
-		    	</c:forEach>
-		    </div>
-		   </div>
-		</c:if>
-		    
-		<!-- 자바스크립트 불러오기 -->
-	<script src="/script/main.js"></script>
+
+
+
+	<!-- js파일 불러오기 -->
+	<script src="/script/main.js" />
 </body>
 </html>
