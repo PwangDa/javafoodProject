@@ -255,7 +255,7 @@ public class JavafoodController {
 		//Service에서 플레이 리스트 내역을 불러오는 메서드 실행하기
 		//메서드 실행 결과(리스트)를 필드에 담기
 		List<PlayListDTO> playListContent = javaService.selectPlayListContent(pl_id);
-		System.out.println("javaService.selectPlayListContent가 가져온 최종 리스트 크기는 : " + playListContent); //확인용
+		System.out.println("JavafoodController의 playListContent 리스트 크기는 : " + playListContent.size() ); //확인용
 		
 		//리스트를 담은 필드를 모델을 통해서 보내기
 		model.addAttribute("playListContent", playListContent);
@@ -287,7 +287,25 @@ public class JavafoodController {
         return "redirect:playListContent?pl_id="+pl_id;
     }
     
-	
+	//플레이 리스트 삭제하기
+    @RequestMapping("deletePlayList")
+    public String deletePlayList(HttpServletRequest request)
+    {
+    	System.out.println("JavafoodController의 deletePlayList 메서드 실행됨."); //확인용
+    	
+    	//주소에서 전달된 값 받기
+    	String pl_id = request.getParameter("pl_id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 pl_id : " + pl_id); //확인용
+    	String id = request.getParameter("id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 id : " + id); //확인용
+    	
+    	//service에서 deletePlayList 메서드 실행하기
+//    	javaService.deletePlayList(id, pl_id);
+    	
+    	//
+    }
+    
+    
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
