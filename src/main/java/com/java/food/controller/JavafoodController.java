@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
+<<<<<<< HEAD
+=======
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+>>>>>>> 332a4377493e8f196b0846973f8c056b5a8f4a0b
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,15 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
 public class JavafoodController {
+	private static final Logger log = LoggerFactory.getLogger(JavafoodController.class);
+
 	
 	@Autowired
 	JavafoodService javaService;
@@ -71,7 +76,8 @@ public class JavafoodController {
 		String nextPage = "chart/chart";
 		
 		// songnumber 변수에 dto의 songnumber 가져옴
-		String songnum = dto.getSongnumber();
+//		String songnum = dto.getSongnumber();
+		String songnum = "3";
 		//  dto 데이터를 list로 가져와서 service에 getChart 메소드에 songnumber 전달
 		List<FamousChartDTO> list = javaService.getChart(songnum);
 			
@@ -112,7 +118,7 @@ public class JavafoodController {
 	}
 	
 ////////////////////////////////////////////////////////////
-	//범주
+	//범주귀
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
@@ -179,25 +185,28 @@ public class JavafoodController {
 			HttpServletRequest re,
 			@RequestParam Map<String, Object> map
 			 ){
+		log.info("login 페이지 이동");
+		
 		//로그인 정보 확인 or 세션ID에 로그인 id 값 저장
 		if(map.get("ID")!=null ) {
-			mo.addAttribute("log",javaService.login(map));
-			re.getSession().setAttribute("login", map.get("ID"));
+			log.info("로그인 시도");
+			Map m = javaService.login(map);
+			mo.addAttribute("log",m.get("log"));
+			mo.addAttribute("map",m);
+			re.getSession().setAttribute("login", m.get("ID"));
 		}
+		
+		//회원가입
 		if(map.get("Id1")!=null) {
 			mo.addAttribute(javaService.addid(map));
 		}
+		
 		//회원 가입 페이지 이동
 		if(map.get("membership")!=null) {
+			log.info("회원가입 페이지 이동");
 			mo.addAttribute("membership",map.get("membership"));
 		}
 		return "lky/login";
-	}
-	@ResponseBody
-	@RequestMapping("test")
-	public String gd(login_DTO login_DTO) {
-		
-		return "";
 	}
 ////////////////////////////////////////////////////////////
 	//용준
@@ -223,6 +232,8 @@ public class JavafoodController {
 				System.out.println("countPerPage : " + countPerPage);
 				Map genre_list = javaService.getGenre(song, pageNum, countPerPage);
 				model.addAttribute("genre", genre_list.get("list"));
+				
+				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImglink());
 				model.addAttribute("totalCount", genre_list.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
