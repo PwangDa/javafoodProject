@@ -32,18 +32,19 @@
 	</select>
 	
 	<!-- 인기차트 귀범-->
-	<select id="getChart" resultType="chartDTO" parameterType="String">
+	<select id="getChart" resultType="chartDTO" parameterType="java.util.List">
 		
 			SELECT * FROM ( 
 				SELECT rownum num, genre.* FROM 
 					( SELECT RANK() OVER (ORDER BY FAMOUS DESC) 
 						AS RANKING, a.* FROM ( SELECT (HITS *1) + (LIKES * 1.5) 
-							AS FAMOUS, s.*  FROM Genre s ) a ) genre WHERE country =?)
-			WHERE num <![CDATA[>=]]> #{start} AND rnum<![CDATA[<=]]> #{end} 
+							AS FAMOUS, s.*  FROM Genre s ) a ) genre  WHERE country = #{country }) 
+			WHERE num <![CDATA[>=]]> #{start} AND num <![CDATA[<=]]> #{end} 
 
 		<foreach item="not" collection="temp" open="(" separator="," close=")">
 			#{not}
 		</foreach>
+		
 	</select>
 	
 	<!-- 인기차트 페이징 -->

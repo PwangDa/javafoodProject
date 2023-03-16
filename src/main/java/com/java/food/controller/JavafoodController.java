@@ -64,24 +64,15 @@ public class JavafoodController {
 ////////////////////////////////////////////////////////////
 	//귀범
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
-	public String java2(Model model, HttpServletRequest request) {
-		System.out.println("controller");
-		//DTO 값 가져옴
-		FamousChartDTO dto = new FamousChartDTO();
-		// 결과 전달 변수에 jsp 경로 지정
-		String nextPage = "chart/chart";
+	public String java2(Model model, @RequestParam(value = "chart" , required = false) String chart) {
+		System.out.println("chart 페이지");
+		System.out.println("chart : " + chart);
+		List chartlist = javaService.getChart(chart);
 		
-		// songnumber 변수에 dto의 songnumber 가져옴
-		String songnum = dto.getSongnumber();
-//		String songnum = "3";
-		//  dto 데이터를 list로 가져와서 service에 getChart 메소드에 songnumber 전달
-		List<FamousChartDTO> list = javaService.getChart(songnum);
-			
-		// Model에 list값 담음
-		model.addAttribute("list", list);
+		model.addAttribute("chartlist",chartlist);
 		
 		// 결과 페이지로 리턴
-		return nextPage;
+		return "chart/chart";
 
 	}
 	
