@@ -13,12 +13,11 @@
 
 <meta charset="UTF-8">
 <title>JavaFood Music</title>
-
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <link rel="stylesheet" href="resources/style/chartCSS.css">
 
 </head>
-<!-- <jsp:include page="/views/menu.jsp"></jsp:include> -->
+<jsp:include page="/WEB-INF/views/menu.jsp"></jsp:include>
 <body>
 		<div>
 			<form method="post" action="/music/chart">
@@ -149,7 +148,6 @@ if (lastSec > lastPage) {
 		</div>
 	</div>
 <script link src="resources/script/chartScript.js"></script>
-
 
 </body>
 </html>

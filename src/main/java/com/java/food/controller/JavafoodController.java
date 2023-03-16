@@ -3,10 +3,12 @@ package com.java.food.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,13 +19,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
 import com.java.food.dto.CommentDTO;
+=======
+import com.java.food.ajax.ajax;
+import com.java.food.ajax.ajax11Impl;
+>>>>>>> fa33cd59cd090d99014760a462137f231cd687e5
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
-import com.java.food.dto.login_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -134,23 +139,15 @@ public class JavafoodController {
 ////////////////////////////////////////////////////////////
 	//귀범
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
-	public String java2(Model model, HttpServletRequest request) {
-		//DTO 값 가져옴
-		FamousChartDTO dto = new FamousChartDTO();
-		// 결과 전달 변수에 jsp 경로 지정
-		String nextPage = "chart/chart";
+	public String java2(Model model, @RequestParam(value = "chart" , required = false) String chart) {
+		System.out.println("chart 페이지");
+		System.out.println("chart : " + chart);
+		List chartlist = javaService.getChart(chart);
 		
-		// songnumber 변수에 dto의 songnumber 가져옴
-//		String songnum = dto.getSongnumber();
-		String songnum = "3";
-		//  dto 데이터를 list로 가져와서 service에 getChart 메소드에 songnumber 전달
-		List<FamousChartDTO> list = javaService.getChart(songnum);
-			
-		// Model에 list값 담음
-		model.addAttribute("list", list);
+		model.addAttribute("chartlist",chartlist);
 		
 		// 결과 페이지로 리턴
-		return nextPage;
+		return "chart/chart";
 
 	}
 	
@@ -183,7 +180,9 @@ public class JavafoodController {
 	}
 	
 ////////////////////////////////////////////////////////////
-	//범주귀
+	//범주
+	
+	//플레이 리스트 불러오기
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
@@ -207,6 +206,33 @@ public class JavafoodController {
 		return result;
 	}
 	
+	//플레이 리스트에서 리스트 추가하기
+	@RequestMapping("addPlayList")
+	public String addPlayList(HttpServletRequest request, Model model)
+	{
+		System.out.println("JavafoodController의 addPlayList 메서드 실행됨."); //확인용
+		
+		//주소에서 전달된 값들 받아오기
+		String id = request.getParameter("id");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 id 값 : " + id);
+		String title = request.getParameter("addList_title");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 title 값 :" + title); //확인용
+		String explain = request.getParameter("addList_explain");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 explain 값 : " + explain); //확인용
+		
+		//전달 받은 값을 List로 바꾸기
+		Map<String, String> info = new HashMap<String, String>();
+		info.put("id", id);
+		info.put("title", title);
+		info.put("explain", explain);
+		
+		//받아온 값들을 Service의 addPlayList 메서드에 전달하여 실행하기
+		javaService.addPlayList(info);
+		
+		return "redirect:playList";
+	}
+	
+	//플레이 리스트 내역(Content) 불러오기
 	@RequestMapping("playListContent")
 	public String selectPlayListContent(HttpServletRequest request, Model model)
 	{
@@ -229,6 +255,8 @@ public class JavafoodController {
 		return result;
 	}
 	
+	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
+	//메인 페이지 불러오기
 	@RequestMapping("main")
 	public String viewMain(Model model)
 	{
@@ -239,7 +267,7 @@ public class JavafoodController {
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
-//		List<>
+//		List<GenreDTO> list = javaService.
 		
 		return result;
 	}
@@ -248,6 +276,7 @@ public class JavafoodController {
 	@RequestMapping (value = "/login")
 	public String loginpage(Model mo,
 			HttpServletRequest re,
+			HttpServletResponse rp,
 			@RequestParam Map<String, Object> map
 			 ){
 		log.info("login 페이지 이동");
@@ -270,6 +299,12 @@ public class JavafoodController {
 		if(map.get("membership")!=null) {
 			log.info("회원가입 페이지 이동");
 			mo.addAttribute("membership",map.get("membership"));
+		}
+		//회원가입 중복체크 아자스로 이동
+		if(map.get("aj")!=null) {
+			log.info("aj등장 : "+map.get("aj"));
+			ajax11Impl aj = new ajax11Impl();
+			aj.login(rp, map);
 		}
 		return "lky/login";
 	}
@@ -297,8 +332,8 @@ public class JavafoodController {
 				System.out.println("countPerPage : " + countPerPage);
 				Map genre_list = javaService.getGenre(song, pageNum, countPerPage);
 				model.addAttribute("genre", genre_list.get("list"));
-				
-				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImglink());
+//				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImagelink());
+//				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 				model.addAttribute("totalCount", genre_list.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
@@ -306,6 +341,8 @@ public class JavafoodController {
 				System.out.println("song 후: " + song);
 				
 		return "lyj/genre";
+//		return "redirect:genre?genre="+song;
+//		return "redirect:genre";
 	}
 ////////////////////////////////////////////////////////////
 }

@@ -40,7 +40,7 @@
 				</div>
 			</form>
 			
-	        <form method="post" action="javafood?javafood=4">
+	        <form method="post" action="login">
 	            <div class="head">
 	             	<table class="tdtd">
 				        <tr class="tr">
@@ -144,8 +144,8 @@
 	</body>
 	</html>
  </c:if>
-<c:if test="${log==0 }"><script>alert('아이디가 틀렸습니다.');location.href='javafood?javafood=4';</script></c:if>
-<c:if test="${log==1 }"><script>alert('패스워드가 틀렸습니다.');location.href='javafood?javafood=4';</script></c:if>
+<c:if test="${log==0 }"><script>alert('아이디가 틀렸습니다.');location.href='login';</script></c:if>
+<c:if test="${log==1 }"><script>alert('패스워드가 틀렸습니다.');location.href='login';</script></c:if>
 
 <c:if test="${membership==null&&log==null }">
 	<title>Log In</title>

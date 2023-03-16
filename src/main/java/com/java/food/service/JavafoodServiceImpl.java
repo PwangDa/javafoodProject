@@ -89,6 +89,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 		chartlist = javaDAO.getChart(songnumber);
 		
+		System.out.println("Service : " +chartlist);
 		return chartlist;
 		
 		
@@ -118,6 +119,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 	}
 ////////////////////////////////////////////////////////////
 //범주
+	//범주 플레이 리스트 불러오기
 	@Override
 	public List<PlayListDTO> selectPlayList(String id)
 	{
@@ -132,6 +134,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return result;
 	}
 	
+	//범주 플레이 리스트 내역(Content) 불러오기
 	@Override
 	public List<PlayListDTO> selectPlayListContent(String pl_id)
 	{
@@ -144,6 +147,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 		System.out.println("javaDAO의 selectPlayList를 실행하여 얻은 리스트의 크기 : " + result.size() ); //확인용
 		
 		return result;
+	}
+	
+	@Override
+	public void addPlayList(Map<String, String> info)
+	{
+		System.out.println("JavafoodServiceImpl의 addPlayList 메서드 실행됨.");
+		
+		//받은 전달인자를 통해 dao의 addPlayList 메서드 실행하기.
+		javaDAO.addPlayList(info);
 	}
 ////////////////////////////////////////////////////////////
 //경용
@@ -202,6 +214,9 @@ public class JavafoodServiceImpl implements JavafoodService {
 		Map map = new HashMap();
 		map.put("list", list);
 		map.put("totalCount", totalCount);
+		
+		
+		
 		return map;
 
 	}

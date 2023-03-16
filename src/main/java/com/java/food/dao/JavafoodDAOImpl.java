@@ -105,12 +105,19 @@ public List<FamousChartDTO> getChart(String songnumber) {
 @Override
 public List paging(String fc, int start, int end) {
 	
-	Map map = new HashMap();
-	map.put("fc", fc);
-	map.put("start", start);
-	map.put("end", end);
+//	Map map = new HashMap();
+//	map.put("fc", fc);
+//	map.put("start", start);
+//	map.put("end", end);
+	List temp = new ArrayList();
+	temp.add(fc);
+	temp.add(start);
+	temp.add(end);
+	System.out.println("temp : " + temp);
 	
-	List list = sqlSession.selectList("mapper.javafood.paging", map);
+	List list = sqlSession.selectList("mapper.javafood.getChart", temp);
+	
+	System.out.println("DAOimpl : " +list);
 	return list;
 	
 }
@@ -119,6 +126,7 @@ public List paging(String fc, int start, int end) {
 public int totalpage() {
 	
 	int totalcount = sqlSession.selectOne("mapper.javafood.totalpage");
+	System.out.println("DAOimpl : " +totalcount);
 	
 	return totalcount;
 }
@@ -155,11 +163,23 @@ public List<PlayListDTO> selectPlayListContent(String pl_id)
 	List<PlayListDTO> result = null;
 	
 	//sql을 이용하여 DB에 접속 후 플레이 리스트 가져오기
-//	//가져온 리스트를 필드에 담기
+	//가져온 리스트를 필드에 담기
 	result = sqlSession.selectList("mapper.javafood.selectPlayListContent", pl_id);
 	System.out.println("sqlSession을 이용하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
 	
 	return result;
+}
+
+public void addPlayList(Map<String, String> info)
+{
+	System.out.println("JavafoodDAOImpl의 addPlayList 메서드 실행됨.");
+	
+	//sql을 이용하여 DB에 접속해 데이터를 추가(insert)하기
+	int result = sqlSession.insert("mapper.javafood.addPlayList", info);
+	if(result >= 1)
+	{
+		System.out.println("addPlayList 성공!!");
+	}
 }
 ////////////////////////////////////////////////////////////
 //경용
@@ -195,6 +215,7 @@ public int addId(login_DTO vo) {
 		map.put("end", end);
 		
 		List list = sqlSession.selectList("mapper.javafood.genre",map);
+		
 		return list;
 	}
 	

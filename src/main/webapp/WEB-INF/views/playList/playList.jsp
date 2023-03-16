@@ -6,7 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
-	String id = (String)request.getAttribute("id");
+// 	String id = (String)request.getAttribute("id");
+	String id = "id3";
 %>
 <!DOCTYPE html>
 <html>
@@ -29,9 +30,10 @@
     <hr>
     <img class="addList" src="https://c11.kr/1asbg"> <span class="addList">리스트 추가</span>
     
+    <!-- 플레이 리스트 추가하는 폼 -->
     <div class="search hidden">
         <form name = "PL_addList">
-        	<input type="hidden" name="javafood" value="3_2">
+<!--         	<input type="hidden" name="javafood" value="3_2"> -->
         	<input type="hidden" name="id" value="<%=id %>">
             <input type="text" name="addList_title" class="addList_textbar" placeholder="플레이리스트 제목을 입력해주세요."> <br>
             <input type="text" name="addList_explain" class="addList_ex_textbar" placeholder="플레이리스트 설명을 입력해주세요."> <br>
