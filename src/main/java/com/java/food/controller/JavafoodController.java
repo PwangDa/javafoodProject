@@ -135,6 +135,14 @@ public class JavafoodController {
 		
 		return "hdy/Album";
 	}
+	
+	
+	@RequestMapping(value = "/layout")
+	public String java1_1(Model model) {
+
+		
+		return "/layout";
+	}
 ////////////////////////////////////////////////////////////
 	//귀범
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
