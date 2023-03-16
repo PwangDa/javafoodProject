@@ -101,6 +101,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 	}
 ////////////////////////////////////////////////////////////
 //범주
+	//범주 플레이 리스트 불러오기
 	@Override
 	public List<PlayListDTO> selectPlayList(String id)
 	{
@@ -115,6 +116,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return result;
 	}
 	
+	//범주 플레이 리스트 내역(Content) 불러오기
 	@Override
 	public List<PlayListDTO> selectPlayListContent(String pl_id)
 	{

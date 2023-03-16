@@ -115,7 +115,7 @@ public class JavafoodController {
 	}
 	
 ////////////////////////////////////////////////////////////
-	//범주귀
+	//범주
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
@@ -161,6 +161,7 @@ public class JavafoodController {
 		return result;
 	}
 	
+	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	@RequestMapping("main")
 	public String viewMain(Model model)
 	{
@@ -171,7 +172,7 @@ public class JavafoodController {
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
-//		List<>
+//		List<GenreDTO> list = javaService.
 		
 		return result;
 	}
