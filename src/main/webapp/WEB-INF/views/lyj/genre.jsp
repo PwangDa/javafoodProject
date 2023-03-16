@@ -30,7 +30,7 @@
         <span style="font-size: 34px; font-weight: 600;">Music</span>
     </header> -->
     <div id="home">
-        
+        <h1><a href='http://localhost:8080/genre'>장르</a></h1>
        <c:choose>
 		<c:when test="${song eq '발라드'}"> 
 	
@@ -173,7 +173,7 @@
                 	<div class="div_size"><img class="left_img" src="${ genre_list.imagelink}" ></div>  <!-- 앨범 이미지 -->
                 	<div class="left_song_bot"><a href="${ genre_list.link}"target='_blank'>${ genre_list.songname}</a></div> <!-- 곡 제목 -->
                 	<c:if test="${ genre_list.artistname == '아이유' || genre_list.artistname == 'SG워너비'}">
-                		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/javafood_team/javafood?javafood=1&artid=${genre_list.artistname}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
+                		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/artistpage?artist=${genre_list.artistname}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
                 	</c:if>
                 	<c:if test="${ genre_list.artistname != '아이유' && genre_list.artistname != 'SG워너비'}">
                 		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/javafood_team/javafood?javafood=ArtistList&num=${genre_list.songnumber}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
