@@ -59,7 +59,7 @@ window.onload=function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //로고 이미지 클릭시 메인 화면으로 이동
     $('.logo-img').on('click',function(){
-		location.href='javafood?javafood=m'
+		location.href='main'
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //다시작성 클릭시 작성된 텍스트 초기화 및 회원가입 버튼 비활성화
@@ -69,7 +69,7 @@ window.onload=function() {
 	let c= false;
 	function aj(key, callback, chak){
 		let xml = new XMLHttpRequest();
-	    xml.open('get','http://localhost:8080/javafood_team/aj?'+key);
+	    xml.open('get','login?aj=0&'+key);
 	    xml.send();
 	    xml.onload=function(){
 	    	let z = 0;
