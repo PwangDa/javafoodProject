@@ -343,7 +343,7 @@ public class JavafoodController {
 		
 		
 		List random_list = javaService.randomGenre(genre);
-		
+	
 		String result = "main/main";
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
