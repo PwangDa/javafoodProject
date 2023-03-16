@@ -14,12 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
-import com.java.food.dto.login_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -67,14 +65,15 @@ public class JavafoodController {
 	//귀범
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
 	public String java2(Model model, HttpServletRequest request) {
+		System.out.println("controller");
 		//DTO 값 가져옴
 		FamousChartDTO dto = new FamousChartDTO();
 		// 결과 전달 변수에 jsp 경로 지정
 		String nextPage = "chart/chart";
 		
 		// songnumber 변수에 dto의 songnumber 가져옴
-//		String songnum = dto.getSongnumber();
-		String songnum = "3";
+		String songnum = dto.getSongnumber();
+//		String songnum = "3";
 		//  dto 데이터를 list로 가져와서 service에 getChart 메소드에 songnumber 전달
 		List<FamousChartDTO> list = javaService.getChart(songnum);
 			
