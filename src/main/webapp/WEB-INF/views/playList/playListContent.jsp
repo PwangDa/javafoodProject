@@ -92,9 +92,8 @@
 						<form class="deleteSong">
 							<img class="sDelete_icon" src="https://popcat.click/twitter-card.jpg" width="25">
 							<img class="sDelete_icon2 hidden" src="https://play-lh.googleusercontent.com/ID5wHCs0FsgS018pX0e0My5z3u4cBG7dAYAr2owB9gwylWaNZTJ0pWAKl9It7ys5iEM" width="25">
-							<input type="hidden" name="javafood" value="3_4">
 							<input type="hidden" name="listNumber" value="${ list.listNumber }">
-							<input type="hidden" name="PL_ID" value="${ list.pl_id }">
+							<input type="hidden" name="pl_id" value="${ list.pl_id }">
 						</form>
 					</span>
 				</div>

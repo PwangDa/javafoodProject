@@ -124,4 +124,14 @@
 			#{explain}
 		)
 	</insert>
+	
+	<!-- 범주 플레이 리스트 내역(Content) 삭제하기 -->
+	<update id="deletePlayListContent" parameterType="hashMap">
+		DELETE FROM
+			playList_Content
+		WHERE
+			listNumber = #{listNumber}
+			AND
+			pl_id = #{pl_id}
+	</update>
 </mapper>

@@ -27,9 +27,17 @@ public interface JavafoodDAO {
 	
 ////////////////////////////////////////////////////////////
 //범주
+	//플레이 리스트 불러오기
 	List<PlayListDTO> selectPlayList(String id);
+	
+	//플레이 리스트 내역(Content) 불러오기
 	List<PlayListDTO> selectPlayListContent(String pl_id);
+	
+	//플레이 리스트 추가하기
 	void addPlayList(Map<String, String> info);
+	
+	//플레이 리스트 내역(Content) 삭제하기
+	void deletePlayListContent(Map<String, String> info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인 정보 확인
