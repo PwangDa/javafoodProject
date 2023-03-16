@@ -375,13 +375,17 @@ public class JavafoodController {
 	{
 		
 		System.out.println("JavafoodController의 viewMain 메서드 실행됨.");
+		
+		//리스트에 장르넣고 랜덤으로 인덱스번호를 뽑음
 		List<String> genreList = Arrays.asList("발라드", "댄스", "POP", "R&B", "인디", "트로트", "록", "랩");
 		Random random = new Random();
 		int randomIndex = random.nextInt(genreList.size());
+		//리스트 인덱스번호를 랜덤으로 뽑아서 
+		//거기에 해당하는 인덱스 장르를 String에 저장
 		System.out.println(genreList.get(randomIndex));
 		String genre = genreList.get(randomIndex);
 		
-		
+		//뽑은 장르를 메소드로 전달요소로 씀
 		List random_list = javaService.randomGenre(genre);
 		model.addAttribute("gerne" ,random_list);
 		
