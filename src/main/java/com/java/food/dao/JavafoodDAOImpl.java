@@ -112,10 +112,10 @@ SqlSession sqlSession;
 //}
 
 @Override
-public List chart(String fc, int start, int end) {
+public List chart(String country, int start, int end) {
 	
 	Map map = new HashMap();
-	map.put("fc", fc);
+	map.put("country", country);
 	map.put("start", start);
 	map.put("end", end);
 //	List temp = new ArrayList();
@@ -126,7 +126,10 @@ public List chart(String fc, int start, int end) {
 	
 	List list = sqlSession.selectList("mapper.javafood.chart", map);
 	
-	System.out.println("DAOimpl : " +list);
+	System.out.println("list.size : " +list.size());
+	for(int i=0; i<list.size(); i++) {
+		System.out.println("list : "+ list.get(i));
+	}
 	return list;
 	
 }
@@ -138,6 +141,18 @@ public int totalpage() {
 	System.out.println("DAOimpl : " +totalcount);
 	
 	return totalcount;
+}
+
+@Override
+public void addhit(String id, String songnumber) {
+	
+	Map map = new HashMap();
+	map.put("id", id);
+	map.put("songnumber", songnumber);
+	
+	int a = sqlSession.update("mapper.javafood.addhit", map);
+	System.out.println("update 횟수 : " + a);
+	
 }
 ////////////////////////////////////////////////////////////
 //범주

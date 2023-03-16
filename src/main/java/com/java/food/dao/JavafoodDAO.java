@@ -30,10 +30,13 @@ public interface JavafoodDAO {
 //	List<FamousChartDTO> getChart(String songnumber);
 	
 	// 차트
-	List chart(String fc, int start, int end);
+	List chart(String country, int start, int end);
 	
 	// 페이징
 	int totalpage();
+	
+	// 조회수 증가
+	void addhit(String id, String songnumber);
 	
 ////////////////////////////////////////////////////////////
 //범주
@@ -68,6 +71,8 @@ public interface JavafoodDAO {
 	// 최신음악 페이징
 	int pagetotal_Music();
 ////////////////////////////////////////////////////////////
+
+	
 
 	//되나요?
 
