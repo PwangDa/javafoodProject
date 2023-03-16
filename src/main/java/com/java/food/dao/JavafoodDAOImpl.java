@@ -170,15 +170,41 @@ public List<PlayListDTO> selectPlayListContent(String pl_id)
 	return result;
 }
 
+@Override
+/**
+ * 플레이 리스트를 추가합니다.(리턴 : void)
+ * 전달인자 : id, title, explain이라는 key와 value가 담긴 Map<String, String>
+ */
 public void addPlayList(Map<String, String> info)
 {
-	System.out.println("JavafoodDAOImpl의 addPlayList 메서드 실행됨.");
+	System.out.println("JavafoodDAOImpl의 addPlayList 메서드 실행됨."); //확인용
 	
 	//sql을 이용하여 DB에 접속해 데이터를 추가(insert)하기
 	int result = sqlSession.insert("mapper.javafood.addPlayList", info);
-	if(result >= 1)
+	if(result >= 1) //확인용
 	{
 		System.out.println("addPlayList 성공!!");
+	}
+	else
+	{
+		System.out.println("addPlayList 실패...");
+	}
+}
+
+@Override
+public void deletePlayListContent(Map<String, String> info)
+{
+	System.out.println("JavafoodDAOImpl의 deletePlayListContent 메서드 실행됨."); //확인용
+	
+	//sql을 이용하여 DB에 접속해 데이터를 삭제(delete)하기
+	int result = sqlSession.delete("mapper.javafood.deletePlayListContent", info);
+	if(result >= 1) //확인용
+	{
+		System.out.println("deletePlayListContent 성공!!");
+	}
+	else
+	{
+		System.out.println("deletePlayListContent 실패...");
 	}
 }
 ////////////////////////////////////////////////////////////

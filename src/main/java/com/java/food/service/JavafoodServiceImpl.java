@@ -149,13 +149,24 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return result;
 	}
 	
+	//범주 플레이 리스트 추가하기
 	@Override
 	public void addPlayList(Map<String, String> info)
 	{
-		System.out.println("JavafoodServiceImpl의 addPlayList 메서드 실행됨.");
+		System.out.println("JavafoodServiceImpl의 addPlayList 메서드 실행됨."); //확인용
 		
 		//받은 전달인자를 통해 dao의 addPlayList 메서드 실행하기.
 		javaDAO.addPlayList(info);
+	}
+	
+	//범주 플레이 리스트 내역(Content) 삭제하기
+	@Override
+	public void deletePlayListContent(Map<String, String> info)
+	{
+		System.out.println("JavafoodServiceImpl의 deletePlayListContent 메서드 실행됨."); //확인용
+		
+		//받은 전달인자를 통해 dao의 deletePlayList 메서드 실행하기
+		javaDAO.deletePlayListContent(info);
 	}
 ////////////////////////////////////////////////////////////
 //경용

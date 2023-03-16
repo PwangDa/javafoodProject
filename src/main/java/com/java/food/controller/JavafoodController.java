@@ -215,7 +215,7 @@ public class JavafoodController {
 	
 	//플레이 리스트에서 리스트 추가하기
 	@RequestMapping("addPlayList")
-	public String addPlayList(HttpServletRequest request, Model model)
+	public String addPlayList(HttpServletRequest request)
 	{
 		System.out.println("JavafoodController의 addPlayList 메서드 실행됨."); //확인용
 		
@@ -227,7 +227,7 @@ public class JavafoodController {
 		String explain = request.getParameter("addList_explain");
 		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 explain 값 : " + explain); //확인용
 		
-		//전달 받은 값을 List로 바꾸기
+		//전달 받은 값을 HashMap으로 바꾸기
 		Map<String, String> info = new HashMap<String, String>();
 		info.put("id", id);
 		info.put("title", title);
@@ -236,6 +236,7 @@ public class JavafoodController {
 		//받아온 값들을 Service의 addPlayList 메서드에 전달하여 실행하기
 		javaService.addPlayList(info);
 		
+		//playList 페이지로 다시 이동하기
 		return "redirect:playList";
 	}
 	
@@ -260,6 +261,30 @@ public class JavafoodController {
 		model.addAttribute("playListContent", playListContent);
 		
 		return result;
+	}
+	
+	//플레이 리스트 내역(Content)에서 곡 삭제하기
+	@RequestMapping("deleteContent")
+	public String deletePlayListContent(HttpServletRequest request)
+	{
+		System.out.println("JavafoodController의 deletePlayListContent 메서드 실행됨.");
+		
+		//주소에서 전달된 값 받기
+		String listNumber = request.getParameter("listNumber");
+		System.out.println("JavafoodController의 deletePlayListContent 메서드를 실행하며 받은 listNumber : " + listNumber);
+		String pl_id = request.getParameter("pl_id");
+		System.out.println("JavafoodController의 deletePlayListContent 메서드를 실행하며 받은 pl_id : " + pl_id);
+		
+		//전달 받은 값을 HashMap에 넣기
+		Map<String, String> info = new HashMap<String, String>();
+		info.put("listNumber", listNumber);
+		info.put("pl_id", pl_id);
+		
+		//Service에 deletePlayListContent 메서드 실행하기.
+		javaService.deletePlayListContent(info);
+		
+		//playListContent 페이지로 다시 이동하기
+		return "redirect:playListContent?pl_id="+pl_id;
 	}
 	
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////

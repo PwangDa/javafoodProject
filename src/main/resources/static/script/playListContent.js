@@ -17,7 +17,7 @@
         {
 
         	deleteList.method='get';
-        	deleteList.action='javafood';
+        	deleteList.action='';
         	deleteList.submit();
         }
     });
@@ -42,7 +42,7 @@
             if(confirm("정말로 해당 곡을 리스트에서 삭제하겠습니까?") )
             {
                 event.currentTarget.method='get';
-                event.currentTarget.action='javafood';
+                event.currentTarget.action='deleteContent';
                 event.currentTarget.submit();
             }
         });
