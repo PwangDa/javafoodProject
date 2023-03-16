@@ -31,6 +31,7 @@
     </header> -->
     <div id="home">
         <h1><a href='http://localhost:8080/genre'>장르</a></h1>
+        
         <select name="page_rows" class="selectbox">
 		<option value="5">5개</option>
 		<option value="10">10개</option>

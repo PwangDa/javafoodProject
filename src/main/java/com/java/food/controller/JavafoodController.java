@@ -462,6 +462,7 @@ public class JavafoodController {
 					pageNum = Integer.parseInt(tmp_pageNum);
 				}
 				String tmp_countPerPage = request.getParameter("countPerPage");
+				System.out.println("controller : " + tmp_countPerPage);
 				if(tmp_countPerPage != null) {
 					countPerPage = Integer.parseInt(tmp_countPerPage);
 				}
@@ -475,6 +476,13 @@ public class JavafoodController {
 				model.addAttribute("totalCount", genre_list.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
+				// R&B페이징시 문제가 있어 인코딩을 해줌.
+				try {
+					song = URLEncoder.encode(song, "utf-8");
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				model.addAttribute("song", song);
 				System.out.println("song 후: " + song);
 				
