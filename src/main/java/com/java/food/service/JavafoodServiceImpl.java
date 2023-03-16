@@ -72,6 +72,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 		chartlist = javaDAO.getChart(songnumber);
 		
+		System.out.println("Service : " +chartlist);
 		return chartlist;
 		
 		
