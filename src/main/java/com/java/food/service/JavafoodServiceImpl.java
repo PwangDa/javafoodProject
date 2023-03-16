@@ -216,7 +216,6 @@ public class JavafoodServiceImpl implements JavafoodService {
 					System.out.println(map.get("PW"));
 					a++;
 					m.put("id", list.get(i).getID());
-					m.put("pwd", list.get(i).getPWD());
 					m.put("nic", list.get(i).getNIC());
 					m.put("email", list.get(i).getEMAIL());
 				}

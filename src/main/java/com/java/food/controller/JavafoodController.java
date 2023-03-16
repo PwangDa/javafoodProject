@@ -490,8 +490,12 @@ public class JavafoodController {
 				Map m = javaService.login(map);
 				mo.addAttribute("log", m.get("log"));
 				mo.addAttribute("map", m);
-				re.getSession().setAttribute("login", m.get("ID"));
+				
+				re.getSession().setAttribute("loginId", m.get("id"));
+				re.getSession().setAttribute("loginNic", m.get("nic"));
+				re.getSession().setAttribute("loginEmail", m.get("email"));
 			}
+			
 			// 회원가입
 			if (map.get("Id1") != null) {
 				mo.addAttribute("good",javaService.addid(map));
@@ -520,6 +524,13 @@ public class JavafoodController {
 			log.info("ajax 실패");
 			return 1;
 		}
+	}
+	
+	@RequestMapping("/my_page")
+	public String my_page(HttpServletRequest re) {
+		log.info("my_page 접속");
+		System.out.println(re.getSession().getAttribute("loginId"));
+		return "lky/My_page";
 	}
 
 ////////////////////////////////////////////////////////////
