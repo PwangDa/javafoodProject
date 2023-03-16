@@ -1,5 +1,6 @@
 package com.java.food.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.java.food.ajax.ajax;
-import com.java.food.ajax.ajax11Impl;
 import com.java.food.dto.FamousChartDTO;
-import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -185,7 +184,7 @@ public class JavafoodController {
 			HttpServletRequest re,
 			HttpServletResponse rp,
 			@RequestParam Map<String, Object> map
-			 ){
+			 ) throws IOException {
 		log.info("login 페이지 이동");
 		
 		//로그인 정보 확인 or 세션ID에 로그인 id 값 저장
@@ -210,10 +209,15 @@ public class JavafoodController {
 		//회원가입 중복체크 아자스로 이동
 		if(map.get("aj")!=null) {
 			log.info("aj등장 : "+map.get("aj"));
-			ajax11Impl aj = new ajax11Impl();
-			aj.login(rp, map);
+			System.out.println(javaService.what(map));
+			mo.addAttribute("what",javaService.what(map));
 		}
 		return "lky/login";
+	}
+	@RequestMapping("ajax")
+	@ResponseBody
+	public int ajax() {
+		return 1;
 	}
 ////////////////////////////////////////////////////////////
 	//용준

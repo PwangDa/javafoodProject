@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+</script>
 	<meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 	<script link src ="/script/loginScript.js"></script>

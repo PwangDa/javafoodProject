@@ -171,6 +171,40 @@ public class JavafoodServiceImpl implements JavafoodService {
 		dto.setPHONE( (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3") );
 		return javaDAO.addId(dto);
 	}
+	//아자스로 중복체크
+	@Override
+	public int what(Map map) {
+		List<login_DTO> list = javaDAO.listID();
+		int a=1;
+		if(map.get("Id1")!=null) {
+			for(login_DTO i : list) {
+				if(i.getID().equals(map.get("Id1"))) a--;
+			}
+		};
+		if(map.get("nic")!=null) {
+			for(login_DTO i : list) {
+				if(i.getNIC().equals(map.get("nic"))) a--;
+			}
+		};
+		if(map.get("mail")!=null) {
+			for(login_DTO i : list) {
+				if(i.getEMAIL().equals(map.get("mail"))) a--;
+			}
+		};
+		if(map.get("pn1")!=null) {
+			String pn = (String) map.get("pn1")+"-"+map.get("pn2");
+			for(login_DTO i : list) {
+				if(i.getID().equals(pn)) a--;
+			}
+		};
+		if(map.get("phone1")!=null) {
+			String phone = (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3");
+			for(login_DTO i : list) {
+				if(i.getID().equals(phone)) a--;
+			}
+		};
+		return a;
+	}
 ////////////////////////////////////////////////////////////
 	// 용준 장르별 페이징
 

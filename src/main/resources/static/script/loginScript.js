@@ -69,16 +69,15 @@ window.onload=function() {
 	let c= false;
 	function aj(key, callback, chak){
 		let xml = new XMLHttpRequest();
-	    xml.open('get','login?aj=0&'+key);
+	    xml.open('get','ajax'+key);
 	    xml.send();
 	    xml.onload=function(){
-	    	let z = 0;
-	        c=xml.responseText;
-	        if(c!=1){
-	        	z=1;
+	    	console.log(xml.responseText)
+	        if(z!=1){
 	            alert('사용가능.');
+	            console.log(z)
 	        }else{
-	        	z=0;
+	            console.log(z)
 	            alert('사용중입니다.');
 	        }
 	        callback(z,chak);

@@ -131,18 +131,18 @@ public class ajax extends HttpServlet {
 			}
 			response.getWriter().println(a);
 		}
-//		if(request.getParameter("id1")!=null) {
-//			String id = request.getParameter("id1");
-//			String num = request.getParameter("num");
-//			javaDAO.addhit(id, num);
-//			javaDAO.song1addhit(num);
-//			System.out.println("ajax 조회수증가 성공");
-//		}
-//		if(request.getParameter("good")!=null) {
-//			String i = request.getParameter("good");
-//			javaDAO.like_music(i);
-//			System.out.println(i+"번 노래 좋아요!");
-//		}
+		if(request.getParameter("id1")!=null) {
+			String id = request.getParameter("id1");
+			String num = request.getParameter("num");
+			javaDAO.addhit(id, num);
+			javaDAO.song1addhit(num);
+			System.out.println("ajax 조회수증가 성공");
+		}
+		if(request.getParameter("good")!=null) {
+			String i = request.getParameter("good");
+			javaDAO.like_music(i);
+			System.out.println(i+"번 노래 좋아요!");
+		}
 		
 	}
 	
