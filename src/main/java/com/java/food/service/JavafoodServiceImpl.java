@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.java.food.dao.JavafoodDAO;
+import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
@@ -55,6 +56,22 @@ public class JavafoodServiceImpl implements JavafoodService {
 		List Album_list = javaDAO.viewAlbum(album);
 		
 		return Album_list;
+		
+	}
+	@Override
+	public int insertComment(CommentDTO dto) {
+		System.out.println("EMP Service >> insertComment 실행");
+		
+		return javaDAO.insertComment(dto);	
+	}
+	
+	@Override
+	public int delComment(int articleNO) {
+		
+		System.out.println("EMP Service >> delComment 실행");
+		System.out.println("articleNO > "+articleNO); 
+		
+		return javaDAO.delComment(articleNO);	
 		
 	}
 ////////////////////////////////////////////////////////////
@@ -130,6 +147,26 @@ public class JavafoodServiceImpl implements JavafoodService {
 		System.out.println("javaDAO의 selectPlayList를 실행하여 얻은 리스트의 크기 : " + result.size() ); //확인용
 		
 		return result;
+	}
+	
+	//범주 플레이 리스트 추가하기
+	@Override
+	public void addPlayList(Map<String, String> info)
+	{
+		System.out.println("JavafoodServiceImpl의 addPlayList 메서드 실행됨."); //확인용
+		
+		//받은 전달인자를 통해 dao의 addPlayList 메서드 실행하기.
+		javaDAO.addPlayList(info);
+	}
+	
+	//범주 플레이 리스트 내역(Content) 삭제하기
+	@Override
+	public void deletePlayListContent(Map<String, String> info)
+	{
+		System.out.println("JavafoodServiceImpl의 deletePlayListContent 메서드 실행됨."); //확인용
+		
+		//받은 전달인자를 통해 dao의 deletePlayList 메서드 실행하기
+		javaDAO.deletePlayListContent(info);
 	}
 ////////////////////////////////////////////////////////////
 //경용

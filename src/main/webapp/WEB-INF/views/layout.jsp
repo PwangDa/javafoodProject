@@ -9,16 +9,16 @@
 <title>Insert title here</title>
 <style>
  
-      .con{
-        width: 100%;
-        margin: 0px auto;
-        border: 0px solid #bcbcbc;
-      }
       .hea {
         padding: 0px;
         margin: 0px;
         border: 0px solid #bcbcbc;
         background-color: lightgreen;
+      }
+      .con{
+        width: 100%;
+        margin: 0px auto;
+        border: 0px solid #bcbcbc;
       }
 </style>
 </head>
