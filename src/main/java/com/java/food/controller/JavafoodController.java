@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.java.food.ajax.ajax;
+import com.java.food.ajax.ajax11Impl;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
@@ -178,6 +181,7 @@ public class JavafoodController {
 	@RequestMapping (value = "/login")
 	public String loginpage(Model mo,
 			HttpServletRequest re,
+			HttpServletResponse rp,
 			@RequestParam Map<String, Object> map
 			 ){
 		log.info("login 페이지 이동");
@@ -200,6 +204,12 @@ public class JavafoodController {
 		if(map.get("membership")!=null) {
 			log.info("회원가입 페이지 이동");
 			mo.addAttribute("membership",map.get("membership"));
+		}
+		//회원가입 중복체크 아자스로 이동
+		if(map.get("aj")!=null) {
+			log.info("aj등장 : "+map.get("aj"));
+			ajax11Impl aj = new ajax11Impl();
+			aj.login(rp, map);
 		}
 		return "lky/login";
 	}
