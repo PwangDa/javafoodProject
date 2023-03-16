@@ -27,9 +27,9 @@
 		</div>
 		<div class="time">
 			<strong>국가 선택</strong>
-			<a href="/chart"><input class="tab1 tab1_1" type="button" name="country" value="한국"></a>
-			<a href="/chart&country=일본"><input class="tab1 tab1_2" type="button" name="country" value="일본"></a>
-			<a href="/chart&country=미국"><input class="tab1 tab1_3" type="button" name="country" value="미국"></a>
+			<a href="/chart?country=대한민국"><input class="tab1 tab1_1" type="button" name="country" value="한국"></a>
+			<a href="/chart?country=일본"><input class="tab1 tab1_2" type="button" name="country" value="일본"></a>
+			<a href="/chart?country=미국"><input class="tab1 tab1_3" type="button" name="country" value="미국"></a>
 			<input type="text" size="10" id="timebox"> 현재시각 기준
 		</div>
 	<div class="list">		
@@ -110,14 +110,16 @@ int lastSec = firstSec + section - 1;
 if (lastSec > lastPage) {
 	lastSec = lastPage;
 }
+String country = request.getParameter("country");
 %>
-
 		<c:set var="pageNum2" value="<%=pageNum%>" />
 		<div class="paging">
+<% if(country.equals("대한민국") || country == null)
+	{%>
 
 			<c:if test="<%=firstSec != 1%>">
 				<a
-					href="/chart?pageNum=<%= firstSec-1 %>"><img
+					href="/chart?pageNum=<%= firstSec-1 %>&country=<%= country %>"><img
 					class="mouse" src="https://c11.kr/1ascb"
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
@@ -126,25 +128,26 @@ if (lastSec > lastPage) {
 			<c:forEach var="i" begin="<%=firstSec%>" end="<%=lastSec%>">
 				<c:if test="${ i == pageNum2 }">
 					<a
-						href="/chart?pageNum=${i }"
+						href="/chart?pageNum=${i }&country=<%= country %>"
 						class="number"><strong>${i}</strong></a>
 				</c:if>
 				<c:if test="${ i != pageNum2 }">
 					<a
-						href="/chart?pageNum=${i }"
+						href="/chart?pageNum=${i }&country=<%= country %>"
 						class="number">${i}</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="<%=lastSec != lastPage%>">
 				<a
-					href="/chart?pageNum=<%= lastSec+1 %>"><img
+					href="/chart?pageNum=<%= lastSec+1 %>&country=<%= country %>"><img
 					class="img" src="https://c11.kr/1ascx"
 					onmouseover="this.src='https://c11.kr/1ascy'"
 					onmouseout="this.src='https://c11.kr/1ascx'"></a>
 			</c:if>
 
 		</div>
+	<%} %>
 	</div>
 <script link src="/script/chartScript.js"></script>
 </body>
