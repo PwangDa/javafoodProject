@@ -16,7 +16,7 @@
 
 
 <!-- css 파일 불러오기 -->
-<link rel="stylesheet" href="resources/style/playList.css">
+<link rel="stylesheet" href="/style/playList.css">
 
 
 </head>
@@ -63,7 +63,7 @@
    	
    	
    	<!-- js파일 불러오기 -->
-   	<script src="resources/script/playList.js"></script>
+   	<script src="/script/playList.js"></script>
    	
    	
    	

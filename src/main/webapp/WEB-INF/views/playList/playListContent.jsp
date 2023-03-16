@@ -15,7 +15,7 @@
 <title><%= id %>님의 ${ playListContent[0].pl_title }</title>
 
 <!-- css 파일 불러오기 -->
-<link rel="stylesheet" href="resources/style/playListContent.css">
+<link rel="stylesheet" href="/style/playListContent.css">
 
 
 </head>
@@ -109,7 +109,7 @@
 	   	
    	
    	<!-- js파일 불러오기 -->
-   	<script src="resources/script/playListContent.js"></script>
+   	<script src="/script/playListContent.js"></script>
    	
    	
 </body>
