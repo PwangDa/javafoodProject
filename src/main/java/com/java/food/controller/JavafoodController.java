@@ -335,7 +335,7 @@ public class JavafoodController {
 	{
 		
 		System.out.println("JavafoodController의 viewMain 메서드 실행됨.");
-		List<String> genreList = Arrays.asList("발라드", "댄스", "POP", "R&B", "인디", "트로트", "록/메탈", "랩/힙합");
+		List<String> genreList = Arrays.asList("발라드", "댄스", "POP", "R&B", "인디", "트로트", "록", "랩");
 		Random random = new Random();
 		int randomIndex = random.nextInt(genreList.size());
 		System.out.println(genreList.get(randomIndex));
@@ -343,7 +343,8 @@ public class JavafoodController {
 		
 		
 		List random_list = javaService.randomGenre(genre);
-	
+		model.addAttribute("gerne" ,random_list);
+		
 		String result = "main/main";
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
