@@ -18,9 +18,9 @@
         <a href="javafood?javafood=m" class="a1"><img src="https://c11.kr/1asbb" class="logo-img">Music</a>
         </span>
         <div class="menu-box">
-            <a href="javafood?javafood=m" class="a1"><span class="main main_1" >홈</span></a>
-            <a href="javafood?javafood=6" class="a1"><span class="main main_2" >장르별</span></a>
-            <a href="javafood?javafood=3" class="a1"><span class="main main_3" >보관함</span></a>
+            <a href="/main" class="a1"><span class="main main_1" >홈</span></a>
+            <a href="/genre" class="a1"><span class="main main_2" >장르별</span></a>
+            <a href="/playList" class="a1"><span class="main main_3" >보관함</span></a>
            	<select id="opt" style="height: 30px;">
                 <option value="song"><c:out value="노래검색"/></option>
 	            <option value="man"><c:out value="가수검색"/></option>
@@ -42,10 +42,10 @@
     </header>
     <div id="di">
 		<a class="at" href="javafood?javafood=5">마이페이지</a><br>
-		<a class="at" href="javafood?javafood=m">메인</a><br>
-		<a class="at" href="javafood?javafood=3">보관함</a><br>
+		<a class="at" href="/main">메인</a><br>
+		<a class="at" href="/playList">보관함</a><br>
 		<c:if test="${login==null }">
-			<a class="at" href="javafood?javafood=4">로그인</a><br>
+			<a class="at" href="/login">로그인</a><br>
 		</c:if>
 		<c:if test="${login!=null }">
 			<a class="at" href="#" onclick="outt(${id})">로그아웃</a><br>
