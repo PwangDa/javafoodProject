@@ -17,7 +17,7 @@
 	%> --%>
 	
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>GENRE</title>
 <link rel="stylesheet" href="/style/genre.css">
 
        
