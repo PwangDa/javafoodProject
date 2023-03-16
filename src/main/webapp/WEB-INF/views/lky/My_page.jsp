@@ -21,17 +21,18 @@
         <title>My Page</title>
 	    <link rel="stylesheet" href="style/mypageCSS.css?css=css">
     </head>
-    <%-- 
+     
     <body>
-		<input type="hidden" id='id' value='${session_user.id}'>
- 	
- 		<jsp:include page="/menu.jsp" />   
+ 	  
+		<input type="hidden" id='id' value='${loginId}'>
+<%--  		<jsp:include page="/menu.jsp" />    --%>
 	    <div class="div ddr">
-		    <div class="mume div"><h3><a class="at" href="javafood?javafood=5&remove=1"><c:out value="회원정보 수정"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" href="#" onclick="replay('${session_user.id}')"><c:out value="재생기록"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" href="#" onclick="outt('${session_user.id}')"><c:out value="로그아웃"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" href="#" onclick="out('${session_user.id}')"><c:out value="회원탈퇴"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" href="/my_page?page=1"><c:out value="회원정보 수정"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" href="/my_page?page=2" onclick="replay('${loginId}')"><c:out value="재생기록"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" href="/my_page?page=3" onclick="outt('${loginId}')"><c:out value="로그아웃"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" href="/my_page?page=4" onclick="out('${loginId}')"><c:out value="회원탈퇴"/></a></h3></div>
 	    </div>
+	  <%-- 
 		<c:if test="${usre!=null }">
 			<table class="table" border="1">
 			<tr class="tdr">
@@ -77,7 +78,7 @@
 			</div>
 		</c:if>    
 	    
-	    <c:if test="${remove==1}" >
+	    <c:if test="${remove==go}" >
 	        <h1 class="ddr"><c:out value="회원정보 수정"/></h1>
 	        <form
 	        	id="form"
@@ -168,6 +169,6 @@
 	                </table>
 	            </div>
 	        </form>
-	    </c:if>--%>
+	    </c:if>   --%>
 	</body>
 </html>

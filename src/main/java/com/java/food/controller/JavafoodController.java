@@ -506,10 +506,11 @@ public class JavafoodController {
 				log.info("회원가입 페이지 이동");
 				mo.addAttribute("membership", map.get("membership"));
 			}
+		return "lky/login";
 		} catch (Exception e) {
 			log.info("login페이지 오류");
+			return "/main";
 		}
-		return "lky/login";
 	}
 
 	// 회원가입 중복체크 아자스로 이동
@@ -527,10 +528,23 @@ public class JavafoodController {
 	}
 	
 	@RequestMapping("/my_page")
-	public String my_page(HttpServletRequest re) {
+	public String my_page(Model mo,
+			@RequestParam Map<String, Object> map,
+			HttpServletRequest re) {
+		
 		log.info("my_page 접속");
-		System.out.println(re.getSession().getAttribute("loginId"));
-		return "lky/My_page";
+		
+		try {
+			if(map.get("page") != null) {
+				log.info("page이동");
+				mo.addAttribute("page",map.get("page"));
+			}
+			
+			return "lky/My_page";
+		} catch (Exception e) {
+			log.info("my_page 오류");
+			return "main";
+		}
 	}
 
 ////////////////////////////////////////////////////////////
