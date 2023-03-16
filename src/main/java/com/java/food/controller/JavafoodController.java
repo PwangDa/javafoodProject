@@ -6,11 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-<<<<<<< HEAD
-=======
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
->>>>>>> 332a4377493e8f196b0846973f8c056b5a8f4a0b
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -232,8 +229,8 @@ public class JavafoodController {
 				System.out.println("countPerPage : " + countPerPage);
 				Map genre_list = javaService.getGenre(song, pageNum, countPerPage);
 				model.addAttribute("genre", genre_list.get("list"));
-				
-				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImglink());
+//				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImagelink());
+//				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 				model.addAttribute("totalCount", genre_list.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
@@ -241,6 +238,8 @@ public class JavafoodController {
 				System.out.println("song 후: " + song);
 				
 		return "lyj/genre";
+//		return "redirect:genre?genre="+song;
+//		return "redirect:genre";
 	}
 ////////////////////////////////////////////////////////////
 }
