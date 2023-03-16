@@ -69,14 +69,19 @@ window.onload=function() {
 	let c= false;
 	function aj(key, callback, chak){
 		let xml = new XMLHttpRequest();
-	    xml.open('get','ajax'+key);
+	    xml.open('get','/login/ajax?'+key);
 	    xml.send();
 	    xml.onload=function(){
-	    	console.log(xml.responseText)
-	        if(z!=1){
+	    	console.log('아자스 값 : ',xml.responseText)
+	        z=xml.responseText;
+	        if(z==1){
 	            alert('사용가능.');
 	            console.log(z)
-	        }else{
+	        }else if(z==2) {
+	            alert('값을 입력해주세요.');
+				console.log(z)
+				
+			}else{
 	            console.log(z)
 	            alert('사용중입니다.');
 	        }
@@ -95,7 +100,7 @@ window.onload=function() {
 	}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //아이디 중복값 확인
-	$('#idbutt').on('click',function(){aj("id="+$('#Id1').val(), fn, '#ch1');})
+	$('#idbutt').on('click',function(){aj("Id1="+$('#Id1').val(), fn, '#ch1');})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //비밀번호 일치 확인
 	$("#pwbutt").on("click",function(){

@@ -477,43 +477,49 @@ public class JavafoodController {
 
 ////////////////////////////////////////////////////////////
 	// 경용
+	
 	@RequestMapping(value = "/login")
-	public String loginpage(Model mo, HttpServletRequest re, HttpServletResponse rp,
-			@RequestParam Map<String, Object> map) throws IOException {
+	public String loginpage(Model mo, HttpServletRequest re,
+			@RequestParam Map<String, Object> map) {
 		log.info("login 페이지 이동");
-
-		// 로그인 정보 확인 or 세션ID에 로그인 id 값 저장
-		if (map.get("ID") != null) {
-			log.info("로그인 시도");
-			Map m = javaService.login(map);
-			mo.addAttribute("log", m.get("log"));
-			mo.addAttribute("map", m);
-			re.getSession().setAttribute("login", m.get("ID"));
-		}
-
-		// 회원가입
-		if (map.get("Id1") != null) {
-			mo.addAttribute(javaService.addid(map));
-		}
-
-		// 회원 가입 페이지 이동
-		if (map.get("membership") != null) {
-			log.info("회원가입 페이지 이동");
-			mo.addAttribute("membership", map.get("membership"));
-		}
-		// 회원가입 중복체크 아자스로 이동
-		if (map.get("aj") != null) {
-			log.info("aj등장 : " + map.get("aj"));
-			System.out.println(javaService.what(map));
-			mo.addAttribute("what", javaService.what(map));
+		try {
+				
+			// 로그인 정보 확인 or 세션ID에 로그인 id 값 저장
+			if (map.get("ID") != null) {
+				log.info("로그인 시도");
+				Map m = javaService.login(map);
+				mo.addAttribute("log", m.get("log"));
+				mo.addAttribute("map", m);
+				re.getSession().setAttribute("login", m.get("ID"));
+			}
+			// 회원가입
+			if (map.get("Id1") != null) {
+				mo.addAttribute("good",javaService.addid(map));
+			}
+	
+			// 회원 가입 페이지 이동
+			if (map.get("membership") != null) {
+				log.info("회원가입 페이지 이동");
+				mo.addAttribute("membership", map.get("membership"));
+			}
+		} catch (Exception e) {
+			log.info("login페이지 오류");
 		}
 		return "lky/login";
 	}
 
-	@RequestMapping("ajax")
-	@ResponseBody
-	public int ajax() {
-		return 1;
+	// 회원가입 중복체크 아자스로 이동
+	@RequestMapping("/login/ajax")
+	@ResponseBody public int ajax(@RequestParam Map<String, Object> map) {
+		
+		log.info("ajax 실행");
+		
+		try {
+			return javaService.what(map);
+		} catch (Exception e) {
+			log.info("ajax 실패");
+			return 1;
+		}
 	}
 
 ////////////////////////////////////////////////////////////

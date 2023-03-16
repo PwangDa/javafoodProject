@@ -131,9 +131,20 @@
 	<select id="login" resultType="loginDTO">
 		SELECT * FROM login
 	</select>
-	<!-- 	회원 로그인 정보 확인-->
+	
+	<!-- 	회원 가입-->
 	<update id="newures" parameterType="loginDTO">
-		insert into login values('#{id},#{pwd},#{nic},#{pn},#{phone},#{email},#{img}');
+		insert into 
+			login 
+		values(
+			#{ID},
+			#{PWD},
+			#{NIC},
+			#{PN},
+			#{PHONE},
+			#{EMAIL},
+			null
+			)
 	</update>
 	
 	

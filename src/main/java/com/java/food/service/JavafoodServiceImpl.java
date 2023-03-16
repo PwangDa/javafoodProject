@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.java.food.controller.JavafoodController;
 import com.java.food.dao.JavafoodDAO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
@@ -15,6 +18,7 @@ import com.java.food.dto.login_DTO;
 
 @Service
 public class JavafoodServiceImpl implements JavafoodService {
+	private static final Logger log = LoggerFactory.getLogger(JavafoodController.class);
 
 	@Autowired
 	JavafoodDAO javaDAO;
@@ -200,6 +204,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 	//로그인
 	@Override
 	public Map login(Map<String, Object> map) {
+		log.info("로그인 시도");
 		Map m = new HashMap();
 		int a=0;
 		List<login_DTO> list = javaDAO.listID();
@@ -217,54 +222,78 @@ public class JavafoodServiceImpl implements JavafoodService {
 				}
 			}
 		}
-		if(a==0) System.out.println("아이디 오류");
-		if(a==1) System.out.println("페스워드 오류");
-		if(a==2) System.out.println("로그인 성공");
+		if(a==0) log.info("아이디 오류");
+		if(a==1) log.info("페스워드 오류");
+		if(a==2) log.info("로그인 성공");
 		m.put("log", a);
 		return m;
 	}
+	
 	//회원가입
 	@Override
 	public int addid (Map<String, Object> map) {
+		log.info("회원가입 시도");
+		
 		login_DTO dto = new login_DTO();
+		
 		dto.setID( (String) map.get("Id1") );
 		dto.setPWD( (String) map.get("PW1") );
 		dto.setNIC( (String) map.get("nic") );
 		dto.setEMAIL( (String) map.get("mail") );
 		dto.setPN( (String) map.get("pn1")+"-"+map.get("pn2") );
 		dto.setPHONE( (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3") );
+		
+		log.info(dto.getID());
+		log.info(dto.getNIC());
+		log.info(dto.getPWD());
+		log.info(dto.getPN());
+		log.info(dto.getEMAIL());
+		log.info(dto.getPHONE());
+		
 		return javaDAO.addId(dto);
 	}
-	//아자스로 중복체크
+	
+	//아자스로 회원가입 시 중복체크
 	@Override
-	public int what(Map map) {
+	public int what(Map<String, Object> map) {
+		log.info("ajax 중복체크 실행");
+		
 		List<login_DTO> list = javaDAO.listID();
 		int a=1;
+		
 		if(map.get("Id1")!=null) {
+			log.info("id 중복 체크");
+			if("".equals(map.get("Id1"))) a++;
 			for(login_DTO i : list) {
 				if(i.getID().equals(map.get("Id1"))) a--;
 			}
 		};
 		if(map.get("nic")!=null) {
+			log.info("nic 중복 체크");
+			if("".equals(map.get("nic"))) a++;
 			for(login_DTO i : list) {
 				if(i.getNIC().equals(map.get("nic"))) a--;
 			}
 		};
-		if(map.get("mail")!=null) {
+		if(map.get("email")!=null) {
+			log.info("email 중복 체크");
+			if("".equals(map.get("email"))) a++;
 			for(login_DTO i : list) {
-				if(i.getEMAIL().equals(map.get("mail"))) a--;
+				if(i.getEMAIL().equals(map.get("email"))) a--;
 			}
 		};
-		if(map.get("pn1")!=null) {
-			String pn = (String) map.get("pn1")+"-"+map.get("pn2");
+		if(map.get("pn")!=null) {
+			log.info("pn 중복 체크");
+			if("-".equals(map.get("pn"))) a++;
 			for(login_DTO i : list) {
-				if(i.getID().equals(pn)) a--;
+				if(i.getID().equals(map.get("pn"))) a--;
 			}
 		};
-		if(map.get("phone1")!=null) {
-			String phone = (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3");
+		if(map.get("phone")!=null) {
+			log.info("phone 중복 체크");
+			if("--".equals(map.get("phone"))) a++;
 			for(login_DTO i : list) {
-				if(i.getID().equals(phone)) a--;
+				if(i.getID().equals(map.get("phone"))) a--;
 			}
 		};
 		return a;

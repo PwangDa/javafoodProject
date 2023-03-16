@@ -53,7 +53,7 @@ public interface JavafoodService {
 	//회원가입
 	int addid(Map<String, Object> map);
 	//아자스 중복체크
-	int what (Map map);
+	int what (Map<String, Object> map);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르
