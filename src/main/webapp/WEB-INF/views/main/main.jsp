@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Main</title>
 
 <!-- css파일 불러오기 -->
 <link rel="stylesheet" href="/style/main.css">
