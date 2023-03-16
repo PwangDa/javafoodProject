@@ -536,8 +536,22 @@ public class JavafoodController {
 		
 		try {
 			if(map.get("page") != null) {
-				log.info("page이동");
+				
+				log.info("page 이동");
 				mo.addAttribute("page",map.get("page"));
+				
+				//로그아웃
+				if(map.get("page")=="3") {
+					log.info("로그아웃");
+					re.getSession().invalidate();
+				}
+				
+				//회원탈퇴
+				if(map.get("page")=="3") {
+					log.info("로그아웃");
+					re.getSession().invalidate();
+				}
+				
 			}
 			
 			return "lky/My_page";

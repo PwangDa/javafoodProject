@@ -11,7 +11,7 @@
     <head>
     
     	<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-   		<script link src ="script/mypageScript.js"></script>
+   		
    		
    		<c:if test="${out!=null }"><script>urseout('${out}');</script></c:if>
         <c:if test="${loginId==null }"><script>notlogin();</script></c:if>
@@ -29,8 +29,8 @@
 	    <div class="div ddr">
 		    <div class="mume div"><h3><a class="at" href="/my_page?page=1"><c:out value="회원정보 수정"/></a></h3></div>
 		    <div class="mume div"><h3><a class="at" href="/my_page?page=2" onclick="replay('${loginId}')"><c:out value="재생기록"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" href="/my_page?page=3" onclick="outt('${loginId}')"><c:out value="로그아웃"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" href="/my_page?page=4" onclick="out('${loginId}')"><c:out value="회원탈퇴"/></a></h3></div>
+		    <div class="mume div" id="outsession" ><h3><a class="at"><c:out value="로그아웃"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" onclick="out('${loginId}')"><c:out value="회원탈퇴"/></a></h3></div>
 	    </div>
 	  <%-- 
 		<c:if test="${usre!=null }">
@@ -170,5 +170,6 @@
 	            </div>
 	        </form>
 	    </c:if>   --%>
+	    <script link src ="script/mypageScript.js"></script>
 	</body>
 </html>
