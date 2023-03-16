@@ -58,7 +58,7 @@
 				<img class="list_thumnail" src="https://image.bugsm.co.kr/album/images/original/203228/20322838.jpg?version=undefined">
 				<br>
 				<br>
-				<a href="${ list.link }"><h2 style="text-shadow:2px 2px 2px gray; color:whitesmoke;">${ playListContent[0].pl_title }</h2></a>
+				<h2 style="text-shadow:2px 2px 2px gray; color:whitesmoke;">${ playListContent[0].pl_title }</h2>
 				<br>
 				<div class="ablum_explain">
 					${ playListContent[0].pl_explain }
@@ -81,12 +81,12 @@
 				<div class="list_child">
 					<img class="album" src="${ list.imageLink }">
 					<div class="list_info">
-						<span class="song_title">${ list.songName }</span>
+						<a href="${ list.link }" target="_blank"><span class="song_title">${ list.songName }</span></a>
 						<br>
 						<br>
 						${ list.artistName }
 						<br>
-						${ list.album }
+						${ list.album_name }
 					</div>
 					<span class="deleteSong">
 						<form class="deleteSong">

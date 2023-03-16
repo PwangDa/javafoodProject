@@ -82,20 +82,25 @@
 	</update>
 	
 	
-	<!-- 플레이 리스트 불러오기 -->
+	<!-- 범주 플레이 리스트 불러오기 -->
 	<select id="selectPlayList" resultType="playListDTO" parameterType="String">
 		SELECT
-			pl_title, pl_id
+			pl_title, pl_id, pl_date
 		FROM
 			playList
 		WHERE
-			id2 = #{id}
+			id = #{id}
+		ORDER BY
+			pl_date DESC
 	</select>
 	
-	<!-- 플레이 리스트 내역(Content) 불러오기 -->
+	<!-- 범주 플레이 리스트 내역(Content) 불러오기 -->
 	<select id="selectPlayListContent" resultType="playListDTO" parameterType="String">
 	SELECT
-			plc.pl_id, plc.listNumber, plc.songName, plc.songNumber, g.Link, pl.pl_title, pl.pl_explain, g.imageLink, g.artistName, g.songName
+			plc.pl_id, plc.listNumber, plc.songName, plc.songNumber,
+			g.Link, g.imageLink, g.artistName, g.songName, g.album_name,
+			pl.pl_title, pl.pl_explain
+			
 		FROM
 			playList_Content plc, genre g, playList pl
 		WHERE
@@ -105,4 +110,17 @@
 			AND
 			plc.pl_id = #{pl_id}
 	</select>
+	
+	<!-- 범주 플레이 리스트 추가하기 -->
+	<insert id="addPlayList" parameterType="hashMap">
+		INSERT INTO
+			playList(pl_id, id, pl_title, pl_explain)
+		VALUES
+		(
+			seq_pl_id.nextval,
+			#{id},
+			#{title},
+			#{explain}
+		)
+	</insert>
 </mapper>

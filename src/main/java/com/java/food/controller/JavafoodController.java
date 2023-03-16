@@ -1,6 +1,7 @@
 package com.java.food.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -115,6 +116,8 @@ public class JavafoodController {
 	
 ////////////////////////////////////////////////////////////
 	//범주
+	
+	//플레이 리스트 불러오기
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
@@ -138,6 +141,33 @@ public class JavafoodController {
 		return result;
 	}
 	
+	//플레이 리스트에서 리스트 추가하기
+	@RequestMapping("addPlayList")
+	public String addPlayList(HttpServletRequest request, Model model)
+	{
+		System.out.println("JavafoodController의 addPlayList 메서드 실행됨."); //확인용
+		
+		//주소에서 전달된 값들 받아오기
+		String id = request.getParameter("id");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 id 값 : " + id);
+		String title = request.getParameter("addList_title");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 title 값 :" + title); //확인용
+		String explain = request.getParameter("addList_explain");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 explain 값 : " + explain); //확인용
+		
+		//전달 받은 값을 List로 바꾸기
+		Map<String, String> info = new HashMap<String, String>();
+		info.put("id", id);
+		info.put("title", title);
+		info.put("explain", explain);
+		
+		//받아온 값들을 Service의 addPlayList 메서드에 전달하여 실행하기
+		javaService.addPlayList(info);
+		
+		return "redirect:playList";
+	}
+	
+	//플레이 리스트 내역(Content) 불러오기
 	@RequestMapping("playListContent")
 	public String selectPlayListContent(HttpServletRequest request, Model model)
 	{
@@ -161,6 +191,7 @@ public class JavafoodController {
 	}
 	
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
+	//메인 페이지 불러오기
 	@RequestMapping("main")
 	public String viewMain(Model model)
 	{

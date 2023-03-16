@@ -24,6 +24,7 @@ public interface JavafoodService {
 //범주
 	List<PlayListDTO> selectPlayList(String id);
 	List<PlayListDTO> selectPlayListContent(String pl_id);
+	void addPlayList(Map<String, String> info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인

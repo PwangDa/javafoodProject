@@ -131,6 +131,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 		return result;
 	}
+	
+	@Override
+	public void addPlayList(Map<String, String> info)
+	{
+		System.out.println("JavafoodServiceImpl의 addPlayList 메서드 실행됨.");
+		
+		//받은 전달인자를 통해 dao의 addPlayList 메서드 실행하기.
+		javaDAO.addPlayList(info);
+	}
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
