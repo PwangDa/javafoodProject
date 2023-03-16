@@ -25,6 +25,20 @@
 		values(#{album_num}, #{album_cover}, #{album_name}, #{album_into}, #{artistname}, #{artist_img}, #{artist_info})
 	</insert>
 	
+	<insert id="plusComment" parameterType="commentDTO">
+		insert into comment_com
+		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg)
+		values(comment_com_seq.nextval, 0, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg})
+	</insert>
+	
+	<delete id="delComment" parameterType="int">
+		DELETE FROM comment_com
+		WHERE articleno IN(
+		SELECT articleno FROM comment_com 
+		START WITH articleno = #{articleNO}
+		CONNECT BY PRIOR articleno = parentno )
+	</delete>
+	
 	<select id="viewAlbum" resultType="albumDTO" parameterType="String">
 		SELECT * FROM ALBUM a
 		LEFT JOIN INTOALBUM i ON (a.ALBUM_NAME = i.ALBUM_NAME)
