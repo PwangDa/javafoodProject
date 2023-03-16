@@ -144,7 +144,7 @@
 	                            <div class="date1">${comment.comment_Date }</div>
 	                            <details id="detail">
 		                   		 	<summary style="color: rgb(150, 150, 150);">답글달기</summary>
-		                   		 	<form name="frmComment_2" method="post" action="/javafood_team/javafood?javafood=ArtistList&num=${album_list[0].songnumber }&command=addReply.do">
+		                   		 	<form name="frmComment_2" method="post" action="/reply.do">
 			                    		<div class="comment" >
 						                        <img class="image3" src="${login_dto[0].myimg }">
 						                        <input class="input2" type="text" name="id_2" placeholder=" ID" value="${login_dto[0].nic }" readonly>
@@ -152,6 +152,7 @@
 						                        <input class="btn1" type="submit" value="답글"> 
 						                    	<input type ="hidden" name="command_articleNO" value="${comment.articleNO }">
 						                    	<input type ="hidden" name="command_myimg" value="${login_dto[0].myimg }">
+												<input type ="hidden" name="arti" value="${album_list[0].artistname}">
 			                			</div>
 		                            </form>
                 				</details>

@@ -90,6 +90,15 @@ SqlSession sqlSession;
 			
 			return article;
 		}
+		
+		@Override
+		public List randomGenre(String genre) {
+			logger.info("JavafoodDAOImpl > randomGenre 실행");
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.randomGenre", genre);
+		
+			return list;
+		}
 
 ////////////////////////////////////////////////////////////
 //귀범

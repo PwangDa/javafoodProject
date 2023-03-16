@@ -19,6 +19,7 @@ public interface JavafoodService {
 	List getAlbum(String album);
 	int insertComment(CommentDTO dto);
 	int delComment(int articleNO);
+	List randomGenre(String genre);
 ////////////////////////////////////////////////////////////
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);

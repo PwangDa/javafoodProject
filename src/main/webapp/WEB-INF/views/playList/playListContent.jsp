@@ -42,7 +42,6 @@
 				<form name="deleteList">
 					<input type="hidden" name="pl_id" value="${ playListContent[0].pl_id }">
 					<input type="hidden" name="id" value="<%=id %>">
-					<input type="hidden" name="javafood" value="3_5">
 					<img class="delete_icon" src="https://popcat.click/twitter-card.jpg" width="50">
 					<img class="delete_icon2 hidden" src="https://play-lh.googleusercontent.com/ID5wHCs0FsgS018pX0e0My5z3u4cBG7dAYAr2owB9gwylWaNZTJ0pWAKl9It7ys5iEM" width="50">
 					<div style="font-size:12px; text-align:center;">삭제하기</div>

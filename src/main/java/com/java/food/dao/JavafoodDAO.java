@@ -22,6 +22,8 @@ public interface JavafoodDAO {
 	
 	int delComment(int articleNO);
 	
+	List randomGenre(String genre);
+	
 ////////////////////////////////////////////////////////////
 //귀범
 //	// 차트용
