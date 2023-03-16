@@ -76,28 +76,28 @@ SqlSession sqlSession;
 ////////////////////////////////////////////////////////////
 //귀범
 
-@Override
-public List<FamousChartDTO> getChart(String songnumber) {
-	List list = new ArrayList();
-	list = sqlSession.selectList("mapper.javafood.getChart", songnumber);
-	logger.info("list.size : "+ list.size());
-	return list;
-}
+//@Override
+//public List<FamousChartDTO> getChart(String songnumber) {
+//	List list = new ArrayList();
+//	list = sqlSession.selectList("mapper.javafood.getChart", songnumber);
+//	logger.info("list.size : "+ list.size());
+//	return list;
+//}
 
 @Override
-public List paging(String fc, int start, int end) {
+public List chart(String fc, int start, int end) {
 	
-//	Map map = new HashMap();
-//	map.put("fc", fc);
-//	map.put("start", start);
-//	map.put("end", end);
-	List temp = new ArrayList();
-	temp.add(fc);
-	temp.add(start);
-	temp.add(end);
-	System.out.println("temp : " + temp);
+	Map map = new HashMap();
+	map.put("fc", fc);
+	map.put("start", start);
+	map.put("end", end);
+//	List temp = new ArrayList();
+//	temp.add(fc);
+//	temp.add(start);
+//	temp.add(end);
+	System.out.println("temp : " + map);
 	
-	List list = sqlSession.selectList("mapper.javafood.getChart", temp);
+	List list = sqlSession.selectList("mapper.javafood.chart", map);
 	
 	System.out.println("DAOimpl : " +list);
 	return list;
@@ -195,6 +195,7 @@ public int addId(login_DTO vo) {
 		System.out.println(totalcnt);
 		return totalcnt;
 	}
+	
 
 	
 

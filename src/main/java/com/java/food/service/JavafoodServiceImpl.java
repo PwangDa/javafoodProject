@@ -59,44 +59,46 @@ public class JavafoodServiceImpl implements JavafoodService {
 	}
 ////////////////////////////////////////////////////////////
 //귀범
-	// 차트
-	/**
-	 * 인기차트 출력 메소드
-	 * 전달인자 : String 노래번호
-	 * @return : list
-	 */
-	@Override
-	public List<FamousChartDTO> getChart(String songnumber){
-		
-		List<FamousChartDTO> chartlist = null;
-		
-		chartlist = javaDAO.getChart(songnumber);
-		
-		System.out.println("Service : " +chartlist);
-		return chartlist;
-		
-		
-	}
+//	// 차트
+//	/**
+//	 * 인기차트 출력 메소드
+//	 * 전달인자 : String 노래번호
+//	 * @return : list
+//	 */
+//	@Override
+//	public List<FamousChartDTO> getChart(String songnumber){
+//		
+//		List<FamousChartDTO> chartlist = null;
+//		
+//		chartlist = javaDAO.getChart(songnumber);
+//		
+//		System.out.println("Service : " +chartlist);
+//		return chartlist;
+//		
+//		
+//	}
 	
-	// 페이징
+	// 차트 페이징
 	/**
 	 * 페이징 출력 메소드
 	 * 전달인자 : 노래번호, 페이지넘버, 출력개수
 	 * @return : map
 	 */
 	@Override
-	public Map paging(String songnum, int pageNum, int countPerPage) {
+	public Map chart(String songnum, int pageNum, int countPerPage) {
 
 		int start = 0;
 		int end = 0;
 		start = (countPerPage * (pageNum - 1)) + 1;
 		end = start + countPerPage - 1;
-		List list = javaDAO.paging(songnum, start, end);
+		List list = javaDAO.chart(songnum, start, end);
 		int totalCount = javaDAO.totalpage();
 		
 		Map map = new HashMap();
 		map.put("list", list);
 		map.put("totalCount", totalCount);
+		System.out.println(start);
+		System.out.println(end);
 		return map;
 		
 	}

@@ -66,30 +66,33 @@ public class JavafoodController {
 	}
 ////////////////////////////////////////////////////////////
 	//귀범
+//	@RequestMapping(value = "/chart", method = RequestMethod.GET)
+//	public String java2_1(Model model, @RequestParam(value = "chart" , required = false) String chart) {
+//		System.out.println("chart 페이지");
+//		System.out.println("chart : " + chart);
+//		List chartlist = javaService.getChart(chart);
+//		
+//		model.addAttribute("chartlist",chartlist);
+//		model.addAttribute("")
+//		// 결과 페이지로 리턴
+//		return "chart/chart";
+//
+//	}
+	
+	
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
-	public String java2(Model model, @RequestParam(value = "chart" , required = false) String chart) {
-		System.out.println("chart 페이지");
-		System.out.println("chart : " + chart);
-		List chartlist = javaService.getChart(chart);
-		
-		model.addAttribute("chartlist",chartlist);
-		
-		// 결과 페이지로 리턴
-		return "chart/chart";
-
-	}
-	
-	
-	@RequestMapping(value = "/paging", method = RequestMethod.GET)
-	public String java2_1(Model model, HttpServletRequest req) {
+	public String chart(Model model, HttpServletRequest req) {
 		List<FamousChartDTO> list = new ArrayList();
 		int pageNum = 1;
 		int countPerPage = 50;
 		
-		String songnum = " SELECT count(*) cnt FROM  Genre";
-		if(req.getParameter("paging")!=null) {
-			songnum = req.getParameter("paging");
-		}
+		/*
+		 * String songnum = " SELECT count(*) cnt FROM Genre";
+		 * if(req.getParameter("paging")!=null) { songnum = req.getParameter("paging");
+		 * }
+		 */
+		
+		String songnum = "";
 		
 		// 페이징 
 		String temp_pageNum = req.getParameter("pageNum");
@@ -98,13 +101,13 @@ public class JavafoodController {
 		}
 		System.out.println("pageNum : " + pageNum);
 		System.out.println("countPerPage : " + countPerPage);
-		Map chart_paging = javaService.paging(songnum, pageNum, countPerPage);
+		Map chart_paging = javaService.chart(songnum, pageNum, countPerPage);
 		model.addAttribute("paging", chart_paging.get("list"));
 		model.addAttribute("totalCount", chart_paging.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("countPerPage", countPerPage);
 		
-		return temp_pageNum;
+		return "chart/chart";
 	}
 	
 ////////////////////////////////////////////////////////////

@@ -19,10 +19,13 @@ public interface JavafoodDAO {
 	
 ////////////////////////////////////////////////////////////
 //귀범
-	// 차트용
-	List<FamousChartDTO> getChart(String songnumber);
+//	// 차트용
+//	List<FamousChartDTO> getChart(String songnumber);
+	
+	// 차트
+	List chart(String fc, int start, int end);
+	
 	// 페이징
-	List paging(String fc, int start, int end);
 	int totalpage();
 	
 ////////////////////////////////////////////////////////////
