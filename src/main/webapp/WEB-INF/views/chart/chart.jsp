@@ -1,7 +1,6 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import ="com.java.food.dao.JavafoodDAO"
-    import ="com.java.food.dto.FamousChartDTO"
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -19,7 +18,7 @@
 </head>
 <%-- <jsp:include page="/WEB-INF/views/menu.jsp"></jsp:include> --%>
 <body>
-		<div>
+ 		<div>
 			<form method="post" action="/chart">
 				<input type="hidden" name="songNumber" value="${dao.songnumber }">
 				<input type="hidden" name="addWhere" value="song">
@@ -57,7 +56,7 @@
 					<td>${dao.ranking }</td>
 					<td>${dao.famous }</td>
 					<td>${dao.songnumber }</td>
-					<td><img src=${ dao.imglink} " style="width: 80px;"></td>
+					<td><img src=${ dao.imagelink} " style="width: 80px;"></td>
 					<td><a
 						href="/chart=AlbumList&num=${dao.songnumber}">${ dao.album_name}</a></td>
 					<td>${dao.songname }</td>
@@ -118,7 +117,7 @@ if (lastSec > lastPage) {
 
 			<c:if test="<%=firstSec != 1%>">
 				<a
-					href="/chart&songnumber=${num }&pageNum=<%= firstSec-1 %>"><img
+					href="/chart?pageNum=<%= firstSec-1 %>"><img
 					class="mouse" src="https://c11.kr/1ascb"
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
@@ -127,19 +126,19 @@ if (lastSec > lastPage) {
 			<c:forEach var="i" begin="<%=firstSec%>" end="<%=lastSec%>">
 				<c:if test="${ i == pageNum2 }">
 					<a
-						href="/chart&songnumber=${num }&pageNum=${i }"
+						href="/chart?pageNum=${i }"
 						class="number"><strong>${i}</strong></a>
 				</c:if>
 				<c:if test="${ i != pageNum2 }">
 					<a
-						href="/chart&songnumber=${num }&pageNum=${i }"
+						href="/chart?pageNum=${i }"
 						class="number">${i}</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="<%=lastSec != lastPage%>">
 				<a
-					href="/chart&songnumber=${num }&pageNum=<%= lastSec+1 %>"><img
+					href="/chart?pageNum=<%= lastSec+1 %>"><img
 					class="img" src="https://c11.kr/1ascx"
 					onmouseover="this.src='https://c11.kr/1ascy'"
 					onmouseout="this.src='https://c11.kr/1ascx'"></a>
@@ -148,6 +147,5 @@ if (lastSec > lastPage) {
 		</div>
 	</div>
 <script link src="/script/chartScript.js"></script>
-
 </body>
 </html>

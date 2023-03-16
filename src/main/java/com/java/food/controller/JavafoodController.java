@@ -54,7 +54,7 @@ public class JavafoodController {
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
 		
-		return "hdy/artist";
+		return "/artistpage";
 	}
 	
 	//댓글 등록 할 때
@@ -210,7 +210,7 @@ public class JavafoodController {
 		 * }
 		 */
 		
-		String songnum = "";
+		String country = "대한민국";
 		
 		// 페이징 
 		String temp_pageNum = req.getParameter("pageNum");
@@ -219,14 +219,29 @@ public class JavafoodController {
 		}
 		System.out.println("pageNum : " + pageNum);
 		System.out.println("countPerPage : " + countPerPage);
-		Map chart_paging = javaService.chart(songnum, pageNum, countPerPage);
-		model.addAttribute("paging", chart_paging.get("list"));
-		model.addAttribute("totalCount", chart_paging.get("totalCount"));
+		Map chart = javaService.chart(country, pageNum, countPerPage);
+		model.addAttribute("list", chart.get("list"));
+		model.addAttribute("totalCount", chart.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("countPerPage", countPerPage);
 		
-		return "chart/chart";
+		return "/chart";
 	}
+	
+	// 조회수 증가 메소드
+	@RequestMapping(value = "/addhit", method = RequestMethod.GET)
+	public String addhit(HttpServletRequest request) {
+		
+		String id = "id2";
+		String songnumber = request.getParameter("songNumber");
+		String page = request.getParameter("pageNum");
+		javaService.addhit(id, songnumber);
+		
+		return "redirect:/chart?pageNum="+page;
+		
+	}
+	
+	
 	
 ////////////////////////////////////////////////////////////
 	//범주
@@ -235,7 +250,7 @@ public class JavafoodController {
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
-		String result = "playList/playList"; // /view/playList/playList.jsp로 이동.
+		String result = "/playList"; // /view/playList/playList.jsp로 이동.
 		
 		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
 		
@@ -287,7 +302,7 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "playList/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
@@ -296,7 +311,7 @@ public class JavafoodController {
 		//Service에서 플레이 리스트 내역을 불러오는 메서드 실행하기
 		//메서드 실행 결과(리스트)를 필드에 담기
 		List<PlayListDTO> playListContent = javaService.selectPlayListContent(pl_id);
-		System.out.println("javaService.selectPlayListContent가 가져온 최종 리스트 크기는 : " + playListContent); //확인용
+		System.out.println("JavafoodController의 playListContent 리스트 크기는 : " + playListContent.size() ); //확인용
 		
 		//리스트를 담은 필드를 모델을 통해서 보내기
 		model.addAttribute("playListContent", playListContent);
@@ -328,7 +343,31 @@ public class JavafoodController {
         return "redirect:playListContent?pl_id="+pl_id;
     }
     
-	
+	//플레이 리스트 삭제하기
+    @RequestMapping("deletePlayList")
+    public String deletePlayList(HttpServletRequest request)
+    {
+    	System.out.println("JavafoodController의 deletePlayList 메서드 실행됨."); //확인용
+    	
+    	//주소에서 전달된 값 받기
+    	String pl_id = request.getParameter("pl_id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 pl_id : " + pl_id); //확인용
+    	String id = request.getParameter("id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 id : " + id); //확인용
+    	
+    	//전달된 값을 HashMap에 담기
+    	Map<String, String> info = new HashMap<String, String>();
+    	info.put("id", id);
+    	info.put("pl_id", pl_id);
+    	
+    	//service에서 deletePlayList 메서드 실행하기
+    	javaService.deletePlayList(info);
+    	
+    	//삭제 후 playList 페이지로 가기
+    	return "redirect:playList";
+    }
+    
+    
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
@@ -336,16 +375,21 @@ public class JavafoodController {
 	{
 		
 		System.out.println("JavafoodController의 viewMain 메서드 실행됨.");
-		List<String> genreList = Arrays.asList("발라드", "댄스", "POP", "R&B", "인디", "트로트", "록/메탈", "랩/힙합");
+		
+		//리스트에 장르넣고 랜덤으로 인덱스번호를 뽑음
+		List<String> genreList = Arrays.asList("발라드", "댄스", "POP", "R&B", "인디", "트로트", "록", "랩");
 		Random random = new Random();
 		int randomIndex = random.nextInt(genreList.size());
+		//리스트 인덱스번호를 랜덤으로 뽑아서 
+		//거기에 해당하는 인덱스 장르를 String에 저장
 		System.out.println(genreList.get(randomIndex));
 		String genre = genreList.get(randomIndex);
 		
-		
+		//뽑은 장르를 메소드로 전달요소로 씀
 		List random_list = javaService.randomGenre(genre);
-	
-		String result = "main/main";
+		model.addAttribute("gerne" ,random_list);
+		
+		String result = "/main";
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
@@ -434,7 +478,7 @@ public class JavafoodController {
 				model.addAttribute("song", song);
 				System.out.println("song 후: " + song);
 				
-		return "lyj/genre";
+		return "/genre";
 	}
 	
 	//최신음악
@@ -458,7 +502,7 @@ public class JavafoodController {
 					model.addAttribute("pageNum", pageNum);
 					model.addAttribute("countPerPage", countPerPage);
 					
-			return "lyj/Popular_Music";
+			return "/popular_Music";
 		}
 	
 	

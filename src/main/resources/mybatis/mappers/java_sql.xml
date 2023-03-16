@@ -176,4 +176,14 @@
 			AND
 			pl_id = #{pl_id}
 	</update>
+	
+	<!-- 범주 플레이 리스트 삭제하기 -->
+	<update id="deletePlayList" parameterType="hashMap">
+		DELETE FROM
+			playList
+		WHERE
+			pl_id = #{pl_id}
+			AND
+			id = #{id}
+	</update>
 </mapper>

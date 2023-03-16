@@ -22,9 +22,9 @@
 	<br>
 
 	<div class="topArea">
-        <a class="topButton" href="javafood?javafood=7"><span>최신 음악</span></a>
-        <a class="topButton" href="javafood?javafood=2"><span>차트</span></a>
-        <a class="topButton" href="javafood?javafood=6"><span>장르</span></a>
+        <a class="topButton" href="popular_Music"><span>최신 음악</span></a>
+        <a class="topButton" href="chart"><span>차트</span></a>
+        <a class="topButton" href="genre"><span>장르</span></a>
     </div>
     
     <br>
@@ -335,8 +335,275 @@
 		    </div>
 		</div>
     </c:if>
-
-
+    
+    <%--으아아아아앙ㄱ --%>
+    
+	    <div class="hitList">
+	    	<div class="subtitle">
+	    		오늘은 이런 장르 어떠세요? ${gerne[0].bygenre}
+	    		<div class="hitListController">
+	    			<p class="point prev"><</p>
+	    			<p class="point next">></p>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	    <br>
+	    
+	    <div class="songContent songContentPage0">
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count<=4 }">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=5 && vs.count<=8}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=9 && vs.count<=12}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=13 && vs.count<=16}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=17 && vs.count<=20}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=21 && vs.count<=24}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=25 && vs.count<=28}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+		
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=29 && vs.count<=32}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=33 && vs.count<=36}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+	    
+		    <div id="hitListLine">
+		    	<c:forEach var="hitList" items="${gerne }" varStatus="vs">
+			    	<c:if test="${vs.count>=37 && vs.count<=40}">
+			            <div class="hitListViewerContent">
+			                <div class="hitListViewerThumnail">
+			                    <img class="thumnail" src="${hitList.imagelink }">
+			                </div>
+			    
+			                <div class="hitListRank">${hitList.songnumber }</div>
+			    
+			                <div class="songContentInfo">
+			    
+			                    <div class="hitListViewerSongTitle">
+			                        <a href="${hitList.link }">${hitList.songname }</a>
+			                    </div>
+			                    <div class="hitListViewerSongInfo">
+			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
+			                        <a href="javascript:void(0)">${hitList.artistname }</a>·<a href="javascript:void(0)">${hitList.album }</a>
+			                    </div>
+			                </div>
+			            </div>
+			    	</c:if>
+		    	</c:forEach>
+		    </div>
+		</div>
+   
 
 	<!-- js파일 불러오기 -->
 	<script src="/script/main.js" />

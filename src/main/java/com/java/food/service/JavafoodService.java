@@ -24,7 +24,11 @@ public interface JavafoodService {
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);
 	
-	Map chart(String songnum, int pageNum, int countPerPage);
+	// 차트 + 페이징
+	Map chart(String country, int pageNum, int countPerPage);
+	
+	// 조회수 증가
+	void addhit(String id, String songnumber);
 	
 ////////////////////////////////////////////////////////////
 //범주
@@ -39,6 +43,9 @@ public interface JavafoodService {
 	
 	//플레이 리스트 내역(Content) 삭제하기
 	void deletePlayListContent(Map<String, String> info);
+	
+	//플레이 리스트 제거하기
+	void deletePlayList(Map<String, String> info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인

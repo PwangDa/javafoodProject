@@ -109,13 +109,13 @@ public class JavafoodServiceImpl implements JavafoodService {
 	 * @return : map
 	 */
 	@Override
-	public Map chart(String songnum, int pageNum, int countPerPage) {
+	public Map chart(String country, int pageNum, int countPerPage) {
 
 		int start = 0;
 		int end = 0;
 		start = (countPerPage * (pageNum - 1)) + 1;
 		end = start + countPerPage - 1;
-		List list = javaDAO.chart(songnum, start, end);
+		List list = javaDAO.chart(country, start, end);
 		int totalCount = javaDAO.totalpage();
 		
 		Map map = new HashMap();
@@ -126,6 +126,14 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return map;
 		
 	}
+	
+	//조회수 증가
+	public void addhit(String id, String songnumber) {
+		
+		javaDAO.addhit(id, songnumber);
+		
+	}
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기
@@ -176,6 +184,16 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 		//받은 전달인자를 통해 dao의 deletePlayList 메서드 실행하기
 		javaDAO.deletePlayListContent(info);
+	}
+	
+	//범주 플레이 리스트 삭제하기
+	@Override
+	public void deletePlayList(Map<String, String> info)
+	{
+		System.out.println("JavafoodServiceImpl의 deletePlayList 메서드 실행됨."); //확인용
+		
+		//받은 전달인자를 통해 dao의 deletePlayList 메서드 실행하기
+		javaDAO.deletePlayList(info);
 	}
 ////////////////////////////////////////////////////////////
 //경용
