@@ -14,11 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
-import com.java.food.dto.login_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -229,6 +228,8 @@ public class JavafoodController {
 				System.out.println("countPerPage : " + countPerPage);
 				Map genre_list = javaService.getGenre(song, pageNum, countPerPage);
 				model.addAttribute("genre", genre_list.get("list"));
+				
+				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImglink());
 				model.addAttribute("totalCount", genre_list.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);

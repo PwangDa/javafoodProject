@@ -14,7 +14,8 @@
       <put-attribute name="body" value="/WEB-INF/views/hdy/artist.jsp" />
    </definition>
    
-
+   <!-- *에 들어온값이 {1}로 들어와서 *.jsp로 이동하게된다 -->
+   <!-- login.view이면 login.jsp로 이동한다 -->
    
 
    

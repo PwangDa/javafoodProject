@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "com.java.food.dao.JavafoodDAO"
-    import = "comment.CommentVO"
-    import = "comment.CommentServlet"
-    import = "album.info.AlbumDAO"
-    import = "album.info.AlbumVO"
     import = "java.sql.Date"
     import = "java.util.List"
     %>
@@ -15,113 +10,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Artist.jsp Test전용</title>
-
- <script>
- 		/*댓글 입력창 if문*/
-         function fn_sendComment(){
-        	
-        	var frmCommand = document.frmComment;
-        	var id = frmCommand.id.value;
-        	var cont = frmCommand.cont.value;
-        	
-        	if(id.length == 0 || id == ""){
-        		alert("아이디를 입력해주세요")
-        	}else if(cont.length == 0 || cont == ""){
-        		alert("내용을 입력해주세요")
-        	}else{
-            frmComment.method = "post";
-            frmComment.action = "/javafood_team/javafood?javafood=1&command=addcommnet.do";
-            frmComment.submit();
-        	}
-        } 
- 		
-        function fn_sendComment_2(){
-        	
-        	var frmCommand = document.frmComment_2;
-        	var id = frmCommand.id_2.value;
-        	var cont = frmCommand.cont_2.value;
-        	
-        	if(id.length == 0 || id == ""){
-        		alert("아이디를 입력해주세요")
-        	}else if(cont.length == 0 || cont == ""){
-        		alert("내용을 입력해주세요")
-        	}else{
-            frmComment.method = "post";
-            frmComment.action = "/javafood_team/javafood?javafood=1&command=addReply.do";
-            frmComment.submit();
-        	}
-        }
-        
-        var prevScrollpos = window.pageYOffset;
-        window.onscroll = headerbarToggle
-        window.onload = headerbarToggle
-        function headerbarToggle(){
-            console.log(1234);
-        /*메뉴상단 스크롤 함수*/
-            var headerbar = document.getElementById("menu");
-            var currentScrollPos = window.pageYOffset;
-            if(prevScrollpos < currentScrollPos){
-                headerbar.style.opacity = 1;
-            }else{
-                headerbar.style.opacity = 0.6;
-            }
-            
-            /*앨범 < > 함수*/
-            let prev = document.querySelector(".prev");
-            let next = document.querySelector(".next");
-            let slides = document.querySelector(".clides");
-            let slds = document.querySelector("#slds");
-            let slidelmg = document.querySelectorAll(".clides li");
-            let current = 0;
-            let slideCount = slidelmg.length;
-
-    	       next.addEventListener('click', function() {
-    	           console.log(slideCount); /*5*/
-    	           if(current !== slideCount){
-    	           		console.log('안녕 친구들');
-    	        	    current = slideCount;
-    	        	    console.log(current);
-    	           		slds.classList.add("marLeft");
-    	           }
-    	       });
-    	        
-    	       prev.addEventListener('click', function() {
-    	    	   if(current !== 0){
-    	           	console.log('hello');
-    	           	console.log(slideCount);
-    	           	slds.classList.remove("marLeft");
-    	           	current = 0;
-    	    	   }
-    	       });
-    	       
-        }
-
-  </script>
-  <style>
-  
-  		/*공통으로 적용 될거*/
-        body{
-            background-color: black;
-            margin: 0;
-        }
-
-        div{
-            /* border: 1px solid white; */
-            color : white;
-            /* vertical-align: middle; */
-        }
-        
-        img{
-        	border-radius: 12px;
-        }
-        
-        a{
-            text-decoration: none;
-            color: white;
-        }
-        
-        #cont{
+<title>Artist.jsp TTTTest전용</title>
+ <script link src ="/script/artistScript.js"></script>
+ <style>
+  	    #cont{
             background-image:
             linear-gradient(
                 to bottom,
@@ -131,322 +23,58 @@
                 rgba(0, 0, 0, 0.75) 75%,
                 rgb(0, 0, 0) 100%
             ),
-            url("${listAlbum[0].artist_img}") ;
+            url("${album_list[1].artist_img}") ; 
             background-repeat: no-repeat;
             background-size: cover;
-            background-position: center;
+            background-position: center 30%;
             height: 550px;     
             position: relative;
         }
-        
-        .text1{
-            color : white;
-            padding: 0px 10px;
-            position : absolute;
-            bottom : 0;
-        }
-        
-        /* 노래목록 style */
-        #cont1{
-            display : flex;
-            justify-content: center;
-            height: 80px;
-        }
-        .box1{
-            width: 170px;
-            height: 60px;
-            margin: 0 15px;
-            text-align: left;     
-
-        }
-        
-        hr{
-            width: 62%;
-            border: 0;
-            border-top: 1px solid rgb(98, 98, 98);
-        }
-        .img1{
-            width: 60px;
-        }
-		
-		/* 댓글 style*/
-        .comment{
-            display: flex;
-            justify-content: center;
-            
-        }
-
-        .text2{
-            padding-top: 20px;
-        }
-        
-		/*textarea input 스타일*/
-        textarea{
-            width: 500px;
-            height: 110px;
-            padding: 10px;
-            margin: 11px;
-            box-sizing: border-box;
-            border-radius: 15px;
-            color: white;
-            border: none;
-            resize: none;
-            background-color: rgb(70, 70, 70);
-        }
-
-        .input1{
-            background-color: rgb(70, 70, 70);
-            color: white;
-            border-radius: 15px;
-            border: none;
-            height: 19px;
-        }
-        
-        .image1{
-            width: 90px;
-            display: block;
-            border-radius: 70%;
-            margin : 5px 0px 5px 40px;
-            
-        }
-        .btn{
-            color:white;
-            background-color:rgb(70, 70, 70);
-            padding: 15px 30px;
-            height: 90px;
-            margin: 10px;
-            border-radius: 15px;
-            border: none;
-        }
-
-        .btn:active{
-            transform: scale(1.1);
-        }
-        .btn:hover{
-            background-color:rgba(173, 173, 173, 0.545);
-        }
-
-        /* 답글용  아이디text*/
-        .input2{
-            background-color: transparent;
-            color: white;
-            /* border-radius: 15px; */
-            border: none;
-            border-bottom: 2px solid rgb(70, 70, 70);
-            height: 19px;
-            width: 90px;
-            margin: 10px 3px;
-        }
-         /* 답글용  내용text*/
-        .input3{
-            background-color: transparent;
-            color: white;
-            /* border-radius: 15px; */
-            border: none;
-            border-bottom: 2px solid rgb(70, 70, 70);
-            height: 19px;
-            width: 250px;
-            margin: 10px 3px;
-        }
-        /* 답글용  이미지*/
-        .image3{
-            margin: 10px 3px;
-        	width: 35px;
-        	height: 35px;
-        	border-radius: 70%;
-        }
-
-        /* 답글용  버튼*/
-        .btn1{
-            color:white;
-            background-color:rgb(70, 70, 70);
-            /* padding: 15px 30px; */
-            width: 50px;
-            height: 30px;
-            margin: 10px;
-            border-radius: 15px;
-            border: none;
-        }
-
-        .btn1:active{
-            transform: scale(1.1);
-        }
-        .btn1:hover{
-            background-color:rgba(173, 173, 173, 0.545);
-        }
-
-        .comment_1{
-            height: 40px;
-            /* vertical-align: top; */
-        }
-
-        .comment_1_1{
-            display: inline-block;
-            margin-right: 4px;
-            height: 20px;
-            vertical-align: top;
-        }
-        .comment_1_2{
-            height: 24px;
-            vertical-align: top;
-            margin: 12px 10px 0px 10px;
-        }
-        
-        .comment_1_3{
-           text-align: left;
-            width: 520px;
-            margin: 3px;
-            padding: 2px;
-        }
-
-
-        .command{
-            text-align: center;
-        }
-        
-        .cont2{
-            /* border: 1px solid rgb(70, 70, 70); */
-            width: 500px;
-            margin: 11px;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 15px;
-            text-align: left;
-        }
-
-        .id2{
-            /* border: 1px solid rgb(70, 70, 70); */
-            color :rgb(113, 113, 113);
-            border-radius: 15px;
-            width: 130px;
-            font-size: 15px;
-        }
-
-        .image2{
-            width: 75px;
-            border-radius: 70%;          
-        }
-        
-        /*댓글 입력한 날짜출력 스타일*/
-        .date1{
-           
-            border-radius: 15px;
-            margin: 11px;
-            padding: 1px;
-            text-align: right;
-            color :rgb(113, 113, 113);
-            font-size: 13px;
-        }
-        
-        #detail{
-        	text-align: left;
-        	font-size: 14px;
-            cursor: pointer;
-        }
-
-        .reply{
-            /* border: 1px solid white; */
-            display: inline-block;
-            width: 530px;
-            text-align: left;
-        }
-        
-        /* 앨범  < > 용 스타일*/
-        #cont3{
-            margin-top : 20px;
-            text-align: center;
-        }
-        #cont3_1{
-            /*border: 1px solid white;*/
-            width: 900px;
-            height: 250px;
-            position: relative;
-            margin: 15px auto;
-            overflow: hidden;
-        }
-        
-        /*슬라이드 애니메이션*/
-        #slds{
-        	transition: margin 0.8s;
-        }
-        
-        li{
-            list-style-type: none;
-        }
-
-        .clides li:not(:last-child){
-            float: left;
-            margin-right: 25px;
-        }
-
-        .clides{
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2500px; /* 슬라이드할 사진과 마진 총 넓이 */
-         }
-
-         .clides li{
-            float: left;
-            margin-right: 25px;
-            }
-            
-        /* < > 화살표 */    
-        .point{
-            border: 1px solid rgb(98, 98, 98);
-            background-color: transparent;
-            border-radius: 70%;
-            width : 30px;
-            height: 31px;
-            margin : 10px;
-            padding: 0px 3px;
-            padding-bottom: 3px;
-            font-size: 20px;
-            display: inline-block;
-            font-weight: 200;
-        }
-
-        .point:hover{
-            background-color: rgba(128, 128, 128, 0.652);
-            cursor: pointer;
-        }
-
-        .image{
-            width: 190px;
-        }
-        
-        .marLeft{
-        	margin-left: -885px;
-        }
-    </style>
+   </style>
+<link rel="stylesheet" href="/style/artistCSS.css">
 </head>
-<body  onscroll="headerbarToggle()">
-	<%-- <jsp:include page="menu.jsp"></jsp:include> --%>
+<body>
+<%-- <jsp:include page="/menu.jsp"></jsp:include> --%>
     <div id = "home">
         <div id = "cont" class = "contain">     
             <div class = "text1"> 
             <%--forEach 안하고 하나의 값만 가져오고 싶을때 --%>
-                <h1>${listAlbum[0].artistname }</h1>
-                <p style="width: 690px;">${listAlbum[0].artist_info }</p>
+                <h1>${album_list[0].artistname }</h1>
+                <p class="text_box">${album_list[1].artist_info }</p>
                 <div> <a target="_blank" href="https://namu.wiki/w/%EC%95%84%EC%9D%B4%EC%9C%A0">출처:namuwiki</a></div>
             </div>
         </div>
         <div id ="cont1_1">
             <h2 style="text-align: center; margin: 13px;">음악</h2>
-            <%-- <jsp:useBean id="daoTest" class="album.info.AlbumDAO"></jsp:useBean> --%>
-          
-           <c:forEach var="album" items="${listAlbum}">
+           <%--  <jsp:useBean id="daoTest" class="album.info.AlbumDAO"></jsp:useBean> --%>
+			<%-- 음악 부분 forEach --%>
+           	
+           		<c:forEach var="album" items="${album_list}" end="5" varStatus="loop">
 	            <div id = "cont1">
-	                <div class = "box1">
-	                    <img class="img1" src="${album.album_cover }">
+	                <div class = "box1_1">
+	                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.album_cover }"></a>
 	                </div>
-	                <div class = "box1 text2"><a href="${album.music_link}"><strong>${album.music_name }</strong></a></div>
-	                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album.artistname }</div>
-	                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/javafood_team/javafood?javafood=1&alname=${album.album_name}">${album.album_name }</a></div>
+	                <div class = "box1 text2"><a href="${loop.count}"><strong>${album.music_name}</strong></a></div>
+	                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album_list[0].artistname }</div>
+	                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/albumpage?album=${album.album_name}">${album.album_name }</a></div>
 	            </div>
 	            <hr>
-            </c:forEach>
-            <%--} --%>
+            	</c:forEach>
+	        	<details class="detail">
+                    <summary style="color: rgb(150, 150, 150);">펼치기</summary>
+                    <c:forEach var="album" items="${album_list}" begin="6" varStatus="loop">
+	            		<div id = "cont1">
+			                <div class = "box1_1">
+			                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.album_cover }"></a>
+			                </div>
+			                <div class = "box1 text2"><a href="${loop.count}"><strong>${album.music_name}</strong></a></div>
+			                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album_list[0].artistname }</div>
+			                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/albumpage?album=${album.album_name}">${album.album_name }</a></div>
+	            		</div>
+	            		<hr>
+            		</c:forEach>
+                </details>
+           
         </div>
         <div id = "cont3">
                 <p class="point prev">&lang;</p>
@@ -454,21 +82,13 @@
                 <p class="point next">&rang;</p>
             <div id="cont3_1">
                 <ul id = "slds" class="clides">
-                <%-- for(int h=0; h<Albumlist.size(); h++){ 
-                	AlbumVO vo = Albumlist.get(h);
-                	
-                	String alNum = vo.getAlbum_num();
-        	    	String cover = vo.getAlbum_cover();
-        			String alname = vo.getAlbum_name();
-
-                --%>
-                <c:forEach var ="album" items="${listAlbum}">
+				<%-- 앨범 부분 forEach --%>
+                <c:forEach var ="album" items="${album_list}" varStatus="loop">
                     <li>
-                        <a href="/javafood_team/Album.jsp?a.ALBUM_NUM=${album.album_num}"><img  class="image" src="${album.album_cover }"></a>
+                        <a href="/albumpage?album=${album.album_name}"><img  class="image" src="${album.album_cover }"></a>
                         <br>
-                        <a style = "font-size:14px;" href="/javafood_team/Album.jsp?a.ALBUM_NUM=${album.album_name}"><span><strong>${album.album_name }</strong></span></a>
+                        <a style = "font-size:14px;" href="/albumpage?album=${album.album_name}"><span class="al_name"><strong>${album.album_name }</strong></span></a>
                     </li>
-                    <%--} --%>
                 </c:forEach>
                 </ul>
             </div>
@@ -476,7 +96,7 @@
         <div>
         	<br>
             <h2 style="text-align: center; margin: 0px;">댓글</h2>
-                        <form name="frmComment" method="post" action="/javafood_team/javafood?javafood=ArtistList&num=${album_list[0].songnumber }&command=addcommnet.do">
+            <form name="frmComment" method="post" action="/javafood_team/javafood?javafood=ArtistList&num=${album_list[0].songnumber }&command=addcommnet.do">
                 <div class="comment">
                 <c:if test="${empty login_dto[0].nic}">
                     <div class="text2">
@@ -559,7 +179,6 @@
 			            	</c:if>
 			            </form>
                     </c:forEach>  
-                <%-- } --%>
             </div>                 
         </div>
     </div>
