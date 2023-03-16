@@ -106,7 +106,7 @@ public class JavafoodController {
 		System.out.println("no>>>>>"+no);
 		System.out.println("arti>>>>>"+arti);
 
-		
+		int article = javaService.delComment(no);
 
 		String encodeResult = null;
 		try {
