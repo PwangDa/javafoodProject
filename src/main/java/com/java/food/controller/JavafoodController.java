@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
-import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -50,13 +49,11 @@ public class JavafoodController {
 
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
-<<<<<<< HEAD
 
-		return "hdy/artist";
-=======
+
 		
 		return "/artistpage";
->>>>>>> 525ccb3ba02cf084553c6b562093ed14b3950497
+
 	}
 
 	// 댓글 등록 할 때
@@ -237,10 +234,9 @@ public class JavafoodController {
 //		 
 
 		
-<<<<<<< HEAD
-=======
+
 		return "/chart";
->>>>>>> 525ccb3ba02cf084553c6b562093ed14b3950497
+
 	}
 
 	// 조회수 증가 메소드
@@ -261,14 +257,14 @@ public class JavafoodController {
 
 	// 플레이 리스트 불러오기
 	@RequestMapping("playList")
-<<<<<<< HEAD
+
 	public String selectPlayList(HttpServletRequest request, Model model) {
 		String result = "playList/playList"; // /view/playList/playList.jsp로 이동.
 
 		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); // 확인용
 
-		// 세션에 저장된 id값 받아오기
-=======
+		// 세션에 저장된 id값 받아오기*/
+
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
 		String result = "/playList"; // /view/playList/playList.jsp로 이동.
@@ -276,7 +272,7 @@ public class JavafoodController {
 		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
 		
 		//세션에 저장된 id값 받아오기
->>>>>>> 525ccb3ba02cf084553c6b562093ed14b3950497
+
 //		String id = (String)request.getSession().getAttribute("login");
 		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
@@ -319,7 +315,6 @@ public class JavafoodController {
 
 	// 플레이 리스트 내역(Content) 불러오기
 	@RequestMapping("playListContent")
-<<<<<<< HEAD
 	public String selectPlayListContent(HttpServletRequest request, Model model) {
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); // 확인용
 
@@ -334,7 +329,6 @@ public class JavafoodController {
 		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
->>>>>>> 525ccb3ba02cf084553c6b562093ed14b3950497
 		String pl_id = request.getParameter("pl_id");
 		System.out.println("selectPlayListContent 메서드를 실행하며 받은 pl_id의 값은 : " + pl_id); // 확인용
 
@@ -393,8 +387,8 @@ public class JavafoodController {
 
 	///////////////////// * 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정
 	///////////////////// *////////////////////////
-	// 메인 페이지 불러오기
-=======
+	// 메인 페이지 불러오기*/
+
 	
     //플레이 리스트 내역(Content)에서 곡 삭제하기
     @RequestMapping("deleteContent")
@@ -447,7 +441,6 @@ public class JavafoodController {
     
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
->>>>>>> 525ccb3ba02cf084553c6b562093ed14b3950497
 	@RequestMapping("main")
 	public String viewMain(Model model) {
 
@@ -461,7 +454,6 @@ public class JavafoodController {
 		//거기에 해당하는 인덱스 장르를 String에 저장
 		System.out.println(genreList.get(randomIndex));
 		String genre = genreList.get(randomIndex);
-<<<<<<< HEAD
 
 		List random_list = javaService.randomGenre(genre);
 
@@ -469,17 +461,15 @@ public class JavafoodController {
 
 		// Service에서 인기 차트를 불러오는 메서드 실행하기
 		// 메서드 실행결과(리스트)를 필드에 담기
-=======
 		
 		//뽑은 장르를 메소드로 전달요소로 씀
-		List random_list = javaService.randomGenre(genre);
+
 		model.addAttribute("gerne" ,random_list);
 		
-		String result = "/main";
+
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
->>>>>>> 525ccb3ba02cf084553c6b562093ed14b3950497
 //		List<GenreDTO> list = javaService.
 
 		return result;
@@ -526,7 +516,6 @@ public class JavafoodController {
 		return 1;
 	}
 
-<<<<<<< HEAD
 ////////////////////////////////////////////////////////////
 	// 용준
 	// 장르
@@ -572,7 +561,6 @@ public class JavafoodController {
 		String tmp_pageNum = request.getParameter("pageNum");
 		if (tmp_pageNum != null) {
 			pageNum = Integer.parseInt(tmp_pageNum);
-=======
 				// 장르별 리스트
 				String song="발라드";
 				if(request.getParameter("genre")!=null) {
@@ -633,7 +621,6 @@ public class JavafoodController {
 					model.addAttribute("countPerPage", countPerPage);
 					
 			return "/popular_Music";
->>>>>>> 525ccb3ba02cf084553c6b562093ed14b3950497
 		}
 		System.out.println("pageNum : " + pageNum);
 		System.out.println("countPerPage : " + countPerPage);
