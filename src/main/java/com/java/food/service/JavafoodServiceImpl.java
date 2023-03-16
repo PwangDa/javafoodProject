@@ -268,6 +268,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		Map map = new HashMap();
 		map.put("list", list);
 		map.put("totalCount", totalCount);
+		map.put("countPerPage", countPerPage);
 		
 		
 		
