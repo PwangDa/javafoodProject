@@ -74,6 +74,13 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return javaDAO.delComment(articleNO);	
 		
 	}
+	
+	@Override
+	public List randomGenre(String genre) {	
+		System.out.println("EMP Service >> randomGenre 실행");	
+		return javaDAO.randomGenre(genre);	
+		
+	}
 ////////////////////////////////////////////////////////////
 //귀범
 //	// 차트

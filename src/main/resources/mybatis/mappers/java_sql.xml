@@ -4,6 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.javafood">
 
+	<!-- 댓글리스트 출력 -->
 	<select id="viewComment" resultType="commentDTO" parameterType="String">
 		SELECT LEVEL, articleNO, parentNO, comment_num, comment_id, comment_cont, comment_date, myimg
 		from comment_com
@@ -13,6 +14,7 @@
 		ORDER SIBLINGS BY articleNO DESC
 	</select>
 	
+	<!-- 아티스트소개 페이지 -->
 	<select id="viewArtist" resultType="albumDTO" parameterType="String">
 		SELECT * FROM ALBUM a
 		LEFT JOIN INTOALBUM i ON (a.ALBUM_NAME = i.ALBUM_NAME)
@@ -25,12 +27,28 @@
 		values(#{album_num}, #{album_cover}, #{album_name}, #{album_into}, #{artistname}, #{artist_img}, #{artist_info})
 	</insert>
 	
+	<!-- 앨범수록곡 출력 -->
+	<select id="viewAlbum" resultType="albumDTO" parameterType="String">
+		SELECT * FROM ALBUM a
+		LEFT JOIN INTOALBUM i ON (a.ALBUM_NAME = i.ALBUM_NAME)
+		WHERE a.ALBUM_NAME = #{album_name}
+	</select>
+	
+	<!-- 댓글등록 할 때 -->
 	<insert id="plusComment" parameterType="commentDTO">
 		insert into comment_com
 		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg)
 		values(comment_com_seq.nextval, 0, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg})
 	</insert>
 	
+	<!-- 대댓글등록 할 때 -->
+	<insert id="replyComment" parameterType="commentDTO">
+		insert into comment_com
+		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg)
+		values(comment_com_seq.nextval, #{parentno}, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg})
+	</insert>
+	
+	<!-- 댓글삭제 할 때 -->
 	<delete id="delComment" parameterType="int">
 		DELETE FROM comment_com
 		WHERE articleno IN(
@@ -39,11 +57,13 @@
 		CONNECT BY PRIOR articleno = parentno )
 	</delete>
 	
-	<select id="viewAlbum" resultType="albumDTO" parameterType="String">
-		SELECT * FROM ALBUM a
-		LEFT JOIN INTOALBUM i ON (a.ALBUM_NAME = i.ALBUM_NAME)
-		WHERE a.ALBUM_NAME = #{album_name}
+	<!-- main페이지에서 장르별로 랜덤출력 할 때 -->
+	<select id="randomGenre" resultType="genreDTO" parameterType="String">
+			SELECT * FROM GENRE g 
+			WHERE BYGENRE = #{genre}
+			ORDER BY SONGNUMBER
 	</select>
+	
 	
 	<!-- 인기차트 귀범-->
 	<select id="chart" resultType="chartDTO" parameterType="java.util.HashMap">
