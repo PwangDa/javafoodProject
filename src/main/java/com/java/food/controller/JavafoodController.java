@@ -1,17 +1,13 @@
 package com.java.food.controller;
 
-<<<<<<< HEAD
 import java.io.IOException;
-=======
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
->>>>>>> 5ed787d3ba1244bda02a7fb7b2bdd1dd32866ab9
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,20 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
-=======
-
 import com.java.food.dto.CommentDTO;
-
-import com.java.food.ajax.ajax;
-import com.java.food.ajax.ajax11Impl;
->>>>>>> 5ed787d3ba1244bda02a7fb7b2bdd1dd32866ab9
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
-
-import SecondProject.JavaFood_DAO;
-import javafood_DTO.AlbumDTO;
 
 @Controller
 public class JavafoodController {
