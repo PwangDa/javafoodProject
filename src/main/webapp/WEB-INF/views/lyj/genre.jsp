@@ -17,7 +17,7 @@
 	%> --%>
 	
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>GENRE</title>
 <link rel="stylesheet" href="/style/genre.css">
 
        
@@ -31,6 +31,12 @@
     </header> -->
     <div id="home">
         <h1><a href='http://localhost:8080/genre'>장르</a></h1>
+        
+        <select name="page_rows" class="selectbox">
+		<option value="5">5개</option>
+		<option value="10">10개</option>
+		<option value="20">20개</option>
+		</select>
        <c:choose>
 		<c:when test="${song eq '발라드'}"> 
 	
@@ -247,10 +253,10 @@
 
 	<c:forEach var="i" begin="<%= firstSec %>" end="<%= lastSec %>" >
 		<c:if test="${ i == pageNum2 }">
-			<a href="/genre?genre=${ song}&pageNum=${i }" class="num_p"><strong>${i}</strong></a>
+			<a href="/genre?genre=${ song}&pageNum=${i }&countPerPage=${countPerPage}" class="num_p"><strong>${i}</strong></a>
 		</c:if>
 		<c:if test="${ i != pageNum2 }">
-			<a href="/genre?genre=${ song}&pageNum=${i }" class="num_p">${i}</a>
+			<a href="/genre?genre=${ song}&pageNum=${i }&countPerPage=${countPerPage}" class="num_p">${i}</a>
 		</c:if>
 	</c:forEach>
 

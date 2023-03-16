@@ -216,6 +216,10 @@ public void addPlayList(Map<String, String> info)
 }
 
 @Override
+/**
+ * 플레이 리스트 내역(곡)을 삭제합니다. (리턴 : void)
+ * 전달인자 : listNumber, pl_id라는 key와 value가 담긴 Map<String, String>
+ */
 public void deletePlayListContent(Map<String, String> info)
 {
 	System.out.println("JavafoodDAOImpl의 deletePlayListContent 메서드 실행됨."); //확인용
@@ -229,6 +233,27 @@ public void deletePlayListContent(Map<String, String> info)
 	else
 	{
 		System.out.println("deletePlayListContent 실패...");
+	}
+}
+
+@Override
+/**
+ * 플레이 리스트를 삭제합니다. (리턴 : void)
+ * 전달인자 : id, pl_id라는 key와 value가 담긴 Map<String, String>
+ */
+public void deletePlayList(Map<String, String> info)
+{
+	System.out.println("JavafoodDAOImpl의 deletePlayList 메서드 실행됨."); //확인용
+	
+	//sql을 이용하여 DB에 접속해 데이터를 삭제(delete)하기
+	int result = sqlSession.delete("mapper.javafood.deletePlayList", info);
+	if(result >= 1) //확인용
+	{
+		System.out.println("deletePlayList 성공!!");
+	}
+	else
+	{
+		System.out.println("deletePlayList 실패...");
 	}
 }
 ////////////////////////////////////////////////////////////

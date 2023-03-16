@@ -352,6 +352,11 @@
             justify-content: space-between;
             text-align: center;
         }
+        .selectbox{
+        	background-color : black;
+        	color : white;
+        	
+        }
         
         
         

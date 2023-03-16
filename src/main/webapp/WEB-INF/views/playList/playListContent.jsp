@@ -6,7 +6,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
-	String id = (String)request.getAttribute("id");
+// 	String id = (String)request.getAttribute("id");
+	String id = "id3";
+	String pl_id = request.getParameter("pl_id");
 %>
 <!DOCTYPE html>
 <html>
@@ -40,7 +42,7 @@
 				
 			<span class="delete">
 				<form name="deleteList">
-					<input type="hidden" name="pl_id" value="${ playListContent[0].pl_id }">
+					<input type="hidden" name="pl_id" value="<%= pl_id%>">
 					<input type="hidden" name="id" value="<%=id %>">
 					<img class="delete_icon" src="https://popcat.click/twitter-card.jpg" width="50">
 					<img class="delete_icon2 hidden" src="https://play-lh.googleusercontent.com/ID5wHCs0FsgS018pX0e0My5z3u4cBG7dAYAr2owB9gwylWaNZTJ0pWAKl9It7ys5iEM" width="50">

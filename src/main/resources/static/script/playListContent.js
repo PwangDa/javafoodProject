@@ -17,7 +17,7 @@
         {
 
         	deleteList.method='get';
-        	deleteList.action='';
+        	deleteList.action='deletePlayList';
         	deleteList.submit();
         }
     });

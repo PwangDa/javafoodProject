@@ -43,6 +43,9 @@ public interface JavafoodService {
 	
 	//플레이 리스트 내역(Content) 삭제하기
 	void deletePlayListContent(Map<String, String> info);
+	
+	//플레이 리스트 제거하기
+	void deletePlayList(Map<String, String> info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
