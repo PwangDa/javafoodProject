@@ -80,7 +80,7 @@
 	</select>
 	
 	<!-- 최신 TOP100-->
-	<select id="song" resultType="genreDTO">
+	<select id="song" resultType="genreDTO" parameterType="java.util.HashMap">
 		SELECT * FROM (
 			SELECT rownum AS rnum, song1.* FROM (
 				SELECT * FROM song1
@@ -92,7 +92,7 @@
 	
 	<!-- 최신음악 페이징 -->
 	<select id="pagetotal_song" resultType="int">
-		SELECT count(*) cnt FROM  song1
+		SELECT count(*) cnt FROM song1
 	</select>
 	
 	<!-- 	회원 전체 목록 리스트 -->

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -372,7 +373,8 @@ public class JavafoodController {
 					System.out.println("pageNum : " + pageNum);
 					System.out.println("countPerPage : " + countPerPage);
 					Map Music_list = javaService.getMusic(pageNum, countPerPage);
-					model.addAttribute("music", Music_list.get("list"));
+					model.addAttribute("list", Music_list.get("list"));
+					System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)Music_list.get("list")).get(0).getSongname());
 					model.addAttribute("totalCount", Music_list.get("totalCount"));
 					model.addAttribute("pageNum", pageNum);
 					model.addAttribute("countPerPage", countPerPage);
