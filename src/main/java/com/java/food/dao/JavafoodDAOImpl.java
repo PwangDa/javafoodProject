@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
@@ -72,32 +73,49 @@ SqlSession sqlSession;
 			
 			return list;
 		}
+		
+		@Override
+		public int insertComment(CommentDTO dto) {
+			logger.info("JavafoodDAOImpl > insertComment 실행");
+			int count = sqlSession.insert("mapper.javafood.plusComment", dto);
+			
+			return count;
+			
+		}
+		
+		@Override
+		public int delComment(int articleNO) {
+			logger.info("JavafoodDAOImpl > delComment 실행");
+			int article = sqlSession.insert("mapper.javafood.delComment", articleNO);
+			
+			return article;
+		}
 
 ////////////////////////////////////////////////////////////
 //귀범
 
-@Override
-public List<FamousChartDTO> getChart(String songnumber) {
-	List list = new ArrayList();
-	list = sqlSession.selectList("mapper.javafood.getChart", songnumber);
-	logger.info("list.size : "+ list.size());
-	return list;
-}
+//@Override
+//public List<FamousChartDTO> getChart(String songnumber) {
+//	List list = new ArrayList();
+//	list = sqlSession.selectList("mapper.javafood.getChart", songnumber);
+//	logger.info("list.size : "+ list.size());
+//	return list;
+//}
 
 @Override
-public List paging(String fc, int start, int end) {
+public List chart(String fc, int start, int end) {
 	
-//	Map map = new HashMap();
-//	map.put("fc", fc);
-//	map.put("start", start);
-//	map.put("end", end);
-	List temp = new ArrayList();
-	temp.add(fc);
-	temp.add(start);
-	temp.add(end);
-	System.out.println("temp : " + temp);
+	Map map = new HashMap();
+	map.put("fc", fc);
+	map.put("start", start);
+	map.put("end", end);
+//	List temp = new ArrayList();
+//	temp.add(fc);
+//	temp.add(start);
+//	temp.add(end);
+	System.out.println("temp : " + map);
 	
-	List list = sqlSession.selectList("mapper.javafood.getChart", temp);
+	List list = sqlSession.selectList("mapper.javafood.chart", map);
 	
 	System.out.println("DAOimpl : " +list);
 	return list;
@@ -145,11 +163,49 @@ public List<PlayListDTO> selectPlayListContent(String pl_id)
 	List<PlayListDTO> result = null;
 	
 	//sql을 이용하여 DB에 접속 후 플레이 리스트 가져오기
-//	//가져온 리스트를 필드에 담기
+	//가져온 리스트를 필드에 담기
 	result = sqlSession.selectList("mapper.javafood.selectPlayListContent", pl_id);
 	System.out.println("sqlSession을 이용하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
 	
 	return result;
+}
+
+@Override
+/**
+ * 플레이 리스트를 추가합니다.(리턴 : void)
+ * 전달인자 : id, title, explain이라는 key와 value가 담긴 Map<String, String>
+ */
+public void addPlayList(Map<String, String> info)
+{
+	System.out.println("JavafoodDAOImpl의 addPlayList 메서드 실행됨."); //확인용
+	
+	//sql을 이용하여 DB에 접속해 데이터를 추가(insert)하기
+	int result = sqlSession.insert("mapper.javafood.addPlayList", info);
+	if(result >= 1) //확인용
+	{
+		System.out.println("addPlayList 성공!!");
+	}
+	else
+	{
+		System.out.println("addPlayList 실패...");
+	}
+}
+
+@Override
+public void deletePlayListContent(Map<String, String> info)
+{
+	System.out.println("JavafoodDAOImpl의 deletePlayListContent 메서드 실행됨."); //확인용
+	
+	//sql을 이용하여 DB에 접속해 데이터를 삭제(delete)하기
+	int result = sqlSession.delete("mapper.javafood.deletePlayListContent", info);
+	if(result >= 1) //확인용
+	{
+		System.out.println("deletePlayListContent 성공!!");
+	}
+	else
+	{
+		System.out.println("deletePlayListContent 실패...");
+	}
 }
 ////////////////////////////////////////////////////////////
 //경용
@@ -196,6 +252,7 @@ public int addId(login_DTO vo) {
 		return totalcnt;
 	}
 	
+<<<<<<< HEAD
 	// 최신음악
 		public List getMusic(int start, int end) {
 			
@@ -215,6 +272,8 @@ public int addId(login_DTO vo) {
 			return totalcnt;
 		}
 
+=======
+>>>>>>> 02bc286582f0191349c4bd0a9958e6730afaba69
 
 	
 

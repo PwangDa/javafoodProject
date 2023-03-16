@@ -13,15 +13,14 @@
 
 <meta charset="UTF-8">
 <title>JavaFood Music</title>
-
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-<link rel="stylesheet" href="resources/style/chartCSS.css">
+<link rel="stylesheet" href="/style/chartCSS.css">
 
 </head>
-<!-- <jsp:include page="/views/menu.jsp"></jsp:include> -->
+<%-- <jsp:include page="/WEB-INF/views/menu.jsp"></jsp:include> --%>
 <body>
 		<div>
-			<form method="post" action="/music/chart">
+			<form method="post" action="/chart">
 				<input type="hidden" name="songNumber" value="${dao.songnumber }">
 				<input type="hidden" name="addWhere" value="song">
 				<img id="allsave" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'">
@@ -29,9 +28,9 @@
 		</div>
 		<div class="time">
 			<strong>국가 선택</strong>
-			<a href="/music/chart"><input class="tab1 tab1_1" type="button" name="country" value="한국"></a>
-			<a href="/music/chart&country=일본"><input class="tab1 tab1_2" type="button" name="country" value="일본"></a>
-			<a href="/music/chart&country=미국"><input class="tab1 tab1_3" type="button" name="country" value="미국"></a>
+			<a href="/chart"><input class="tab1 tab1_1" type="button" name="country" value="한국"></a>
+			<a href="/chart&country=일본"><input class="tab1 tab1_2" type="button" name="country" value="일본"></a>
+			<a href="/chart&country=미국"><input class="tab1 tab1_3" type="button" name="country" value="미국"></a>
 			<input type="text" size="10" id="timebox"> 현재시각 기준
 		</div>
 	<div class="list">		
@@ -60,20 +59,20 @@
 					<td>${dao.songnumber }</td>
 					<td><img src=${ dao.imglink} " style="width: 80px;"></td>
 					<td><a
-						href="/music/chart=AlbumList&num=${dao.songnumber}">${ dao.album_name}</a></td>
+						href="/chart=AlbumList&num=${dao.songnumber}">${ dao.album_name}</a></td>
 					<td>${dao.songname }</td>
 					<td><a
-						href="/music/chart=ArtistList&num=${dao.songnumber}">${ dao.artistname}</a></td>
+						href="/chart=ArtistList&num=${dao.songnumber}">${ dao.artistname}</a></td>
 
 					<td>${dao.bygenre }</td>
 
-					<form method="post" action="/music/chart">
+					<form method="post" action="/chart">
 						<td>${dao.hits }<input type="hidden" name="addhit"
 							value="${dao.songnumber}">
 						</td>
 					</form>
 
-					<form method="post" action="/music/chart">
+					<form method="post" action="/chart">
 						<td>${dao.likes }<input type="image"
 							src="https://c11.kr/1asbx" value=" " class="like"> <input
 							type="hidden" name="good_like" value="${dao.songnumber}">
@@ -87,7 +86,7 @@
 							class="play" src="https://c11.kr/1asd1"></a></td>
 
 					<td>
-						<form method="post" action="/music/chart">
+						<form method="post" action="/chart">
 							<input type="hidden" name="songNumber" value="${dao.songnumber }">
 							<input type="hidden" name="addWhere" value="song">
 							<img class="save" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'">
@@ -119,7 +118,7 @@ if (lastSec > lastPage) {
 
 			<c:if test="<%=firstSec != 1%>">
 				<a
-					href="/music/chart&songnumber=${num }&pageNum=<%= firstSec-1 %>"><img
+					href="/chart&songnumber=${num }&pageNum=<%= firstSec-1 %>"><img
 					class="mouse" src="https://c11.kr/1ascb"
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
@@ -128,19 +127,19 @@ if (lastSec > lastPage) {
 			<c:forEach var="i" begin="<%=firstSec%>" end="<%=lastSec%>">
 				<c:if test="${ i == pageNum2 }">
 					<a
-						href="/music/chart&songnumber=${num }&pageNum=${i }"
+						href="/chart&songnumber=${num }&pageNum=${i }"
 						class="number"><strong>${i}</strong></a>
 				</c:if>
 				<c:if test="${ i != pageNum2 }">
 					<a
-						href="/music/chart&songnumber=${num }&pageNum=${i }"
+						href="/chart&songnumber=${num }&pageNum=${i }"
 						class="number">${i}</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="<%=lastSec != lastPage%>">
 				<a
-					href="/music/chart&songnumber=${num }&pageNum=<%= lastSec+1 %>"><img
+					href="/chart&songnumber=${num }&pageNum=<%= lastSec+1 %>"><img
 					class="img" src="https://c11.kr/1ascx"
 					onmouseover="this.src='https://c11.kr/1ascy'"
 					onmouseout="this.src='https://c11.kr/1ascx'"></a>
@@ -148,8 +147,7 @@ if (lastSec > lastPage) {
 
 		</div>
 	</div>
-<script link src="resources/script/chartScript.js"></script>
-
+<script link src="/script/chartScript.js"></script>
 
 </body>
 </html>

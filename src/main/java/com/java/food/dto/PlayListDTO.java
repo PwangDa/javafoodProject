@@ -11,7 +11,7 @@ public class PlayListDTO
 	private int songNumber;
 	private String artistName;
 	private String imageLink;
-	private String album;
+	private String album_name;
 	private String link;
 	
 	
@@ -75,8 +75,8 @@ public class PlayListDTO
 	public void setimageLink(String imageLink) {
 		this.imageLink = imageLink;
 	}
-	public String getAlbum() {
-		return album;
+	public String getalbum_name() {
+		return album_name;
 	}
 	public String getLink() {
 		return link;

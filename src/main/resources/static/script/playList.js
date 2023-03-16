@@ -19,7 +19,7 @@
             else
             {
                 PL_addList.method='get';
-                PL_addList.action='javafood';
+                PL_addList.action='addPlayList';
                 PL_addList.submit();
             }
         }
