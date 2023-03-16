@@ -6,11 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-<<<<<<< HEAD
-=======
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
->>>>>>> 332a4377493e8f196b0846973f8c056b5a8f4a0b
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
