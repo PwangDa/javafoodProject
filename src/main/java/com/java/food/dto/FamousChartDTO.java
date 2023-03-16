@@ -14,12 +14,19 @@ public class FamousChartDTO {
 	private String playtime;
 	private String ranking;
 	private String album;
-	private String imglink;
+	private String imagelink;
 	private String country;
 	private String album_name;
 	private String album_add;
 	private String artist_add;
 	
+	
+	public String getImagelink() {
+		return imagelink;
+	}
+	public void setImagelink(String imagelink) {
+		this.imagelink = imagelink;
+	}
 	
 	public String getSongnumber() {
 		return songnumber;
@@ -93,12 +100,7 @@ public class FamousChartDTO {
 	public void setAlbum(String album) {
 		this.album = album;
 	}
-	public String getImglink() {
-		return imglink;
-	}
-	public void setImglink(String imglink) {
-		this.imglink = imglink;
-	}
+	
 	public String getCountry() {
 		return country;
 	}

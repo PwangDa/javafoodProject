@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -209,7 +210,7 @@ public class JavafoodController {
 		 * }
 		 */
 		
-		String songnum = "";
+		String country = "대한민국";
 		
 		// 페이징 
 		String temp_pageNum = req.getParameter("pageNum");
@@ -218,14 +219,29 @@ public class JavafoodController {
 		}
 		System.out.println("pageNum : " + pageNum);
 		System.out.println("countPerPage : " + countPerPage);
-		Map chart_paging = javaService.chart(songnum, pageNum, countPerPage);
-		model.addAttribute("paging", chart_paging.get("list"));
-		model.addAttribute("totalCount", chart_paging.get("totalCount"));
+		Map chart = javaService.chart(country, pageNum, countPerPage);
+		model.addAttribute("list", chart.get("list"));
+		model.addAttribute("totalCount", chart.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("countPerPage", countPerPage);
 		
 		return "chart/chart";
 	}
+	
+	// 조회수 증가 메소드
+	@RequestMapping(value = "/addhit", method = RequestMethod.GET)
+	public String addhit(HttpServletRequest request) {
+		
+		String id = "id2";
+		String songnumber = request.getParameter("songNumber");
+		String page = request.getParameter("pageNum");
+		javaService.addhit(id, songnumber);
+		
+		return "redirect:/chart?pageNum="+page;
+		
+	}
+	
+	
 	
 ////////////////////////////////////////////////////////////
 	//범주
@@ -295,7 +311,7 @@ public class JavafoodController {
 		//Service에서 플레이 리스트 내역을 불러오는 메서드 실행하기
 		//메서드 실행 결과(리스트)를 필드에 담기
 		List<PlayListDTO> playListContent = javaService.selectPlayListContent(pl_id);
-		System.out.println("javaService.selectPlayListContent가 가져온 최종 리스트 크기는 : " + playListContent); //확인용
+		System.out.println("JavafoodController의 playListContent 리스트 크기는 : " + playListContent.size() ); //확인용
 		
 		//리스트를 담은 필드를 모델을 통해서 보내기
 		model.addAttribute("playListContent", playListContent);
@@ -327,7 +343,31 @@ public class JavafoodController {
         return "redirect:playListContent?pl_id="+pl_id;
     }
     
-	
+	//플레이 리스트 삭제하기
+    @RequestMapping("deletePlayList")
+    public String deletePlayList(HttpServletRequest request)
+    {
+    	System.out.println("JavafoodController의 deletePlayList 메서드 실행됨."); //확인용
+    	
+    	//주소에서 전달된 값 받기
+    	String pl_id = request.getParameter("pl_id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 pl_id : " + pl_id); //확인용
+    	String id = request.getParameter("id");
+    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 id : " + id); //확인용
+    	
+    	//전달된 값을 HashMap에 담기
+    	Map<String, String> info = new HashMap<String, String>();
+    	info.put("id", id);
+    	info.put("pl_id", pl_id);
+    	
+    	//service에서 deletePlayList 메서드 실행하기
+    	javaService.deletePlayList(info);
+    	
+    	//삭제 후 playList 페이지로 가기
+    	return "redirect:playList";
+    }
+    
+    
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
@@ -448,7 +488,8 @@ public class JavafoodController {
 					System.out.println("pageNum : " + pageNum);
 					System.out.println("countPerPage : " + countPerPage);
 					Map Music_list = javaService.getMusic(pageNum, countPerPage);
-					model.addAttribute("music", Music_list.get("list"));
+					model.addAttribute("list", Music_list.get("list"));
+					System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)Music_list.get("list")).get(0).getSongname());
 					model.addAttribute("totalCount", Music_list.get("totalCount"));
 					model.addAttribute("pageNum", pageNum);
 					model.addAttribute("countPerPage", countPerPage);

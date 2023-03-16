@@ -11,262 +11,7 @@
 	
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <style>
-        body{
-        
-            background-color: black;
-            margin: 0;
-        }
 
-        div{
-            /* border: 1px solid white; */
-            color : white;
-            /* vertical-align: middle; */
-        }
-        header{
-            background-color: black;
-            color: white;
-            width: 100%;
-            position:fixed;
-            height: 53px;
-            border-bottom:1px solid rgb(70, 70, 70);
-            z-index: 1;
-            /* transition: opacity 0.4s; */
-        }
-
-        #home{
-            position: relative;
-            top : 53px;
-            width: 87%;
-            padding: 25px;
-            margin: 0 auto;
-        }
-
-        a{
-            text-decoration: none;
-            color: white;
-        }
-
-        input[type="checkbox"]{
-            -webkit-appearance: none;
-            position: relative;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            outline: none !important;
-            border: 1px solid #eeeeee;
-            border-radius: 2px;
-            background: #000000;
-        }
-
-        input[type="checkbox"]::before {
-            content: "\2713";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            overflow: hidden;
-            transform: scale(0) translate(-50%, -50%);
-            line-height: 1;
-        }
-        input[type="checkbox"]:checked {
-            background-color: #adadad;
-            border-color: rgb(255, 255, 255);
-            color: white;
-        }
-/* 
-        input#cd1 + label:before{
-            width: 30px;
-            height: 30px;
-            background-color: black;
-            border: 2px solid white;
-            border-radius: 3px;
-        } */
-        /* input[id="cd1"] + label:after{
-            width: 20px;
-            background-color: rgb(103, 103, 103);
-            border: 2px solid white;
-            border-radius: 3px;
-        } */
-        
-        /*.no_chart{
-            margin-top: 40px;
-            display: flex;
-            height: 30px;
-            padding-left: 20px;
-        }*/
-        .no_chart{
-            display: flex;
-            height: 40px;
-            border-bottom: 1px solid rgb(98, 98, 98);
-            margin : 20px 20px 0px 20px;
-            justify-content: space-between;
-        }
-
-        .left_num{
-            width: 100px;
-            height: 40px;
-            text-align: center;
-        }
-        .left_song{
-            margin-left: 70px;
-            width: 300px;
-            text-align: left; 
-        }
-        .left_artist{
-            width: 150px;
-            height: 40px;
-            text-align: left;
-            text-overflow : ellipsis;
-            white-space : nowrap;
-            overflow : hidden;
-           
-        }
-        .left_album{
-            width: 100px;
-            height: 40px;
-            text-align: left;
-            text-overflow : ellipsis;
-            white-space : nowrap;
-            overflow : hidden;
-            padding-left: 40px;
-           
-        }
-        .heart{
-            width: 35px;
-            padding-right: 35px;
-            padding-left: 40px;
-        }
-
-        /* 곡리스트 */
-        .musiclist{
-           /*  margin-top: 20px; */
-/*             display : inline-block; */
-        }
-        .cont2{
-            display: flex;
-            height: 85px;
-            border-bottom: 1px solid rgb(98, 98, 98);
-            margin : 0px 20px 0px 20px;
-            justify-content: space-between;
-            align-items : center;
-        }
-        .cont2:hover{
-            cursor: pointer;
-        }
-        
-        .left_item{
-            width: 100px;
-            height: 40px;
-            text-align: center;
-        }
-        
-        .left_img{
-            width: 60px;
-            height: 60px;
-            text-align: center;
-            line-height: 40px;
-        }
-        
-        .left_name{
-         	width: 300px;
-            text-align: left;
-        }
-        .right_item{
-            width: 100px;
-            height: 40px;
-            text-align: center;
-         	/* margin-left: 140px */;
-             /*margin-left: 95px;*/
-        }
-        /*.right_top_item{
-            width: 100px;
-            height: 40px;
-            text-align: center;
-            margin-left: auto;
-        }*/
-        .btline {
-			text-decoration: underline;
-			text-decoration-color: white;
-		}
-	
-		/* .right_top_item_1{
-            width: 45px;
-            height: 40px;
-            text-align: center;
-            margin-left: 0;
-            margin-bottom:20px;
-            text-overflow : ellipsis;
-        } */
-        #like{
-        	margin-left: 10px;
-        }
-        .btn{
-        	width: 40px;
-        	border:none;
-        	padding: 0px;
-        	margin-left: 5px;
-        	border-radius: 30%;
-        }
-        
-        .img{
-        	width: 30px;
-        	margin-left: 0px;
-        	border-radius: 30%;
-        	
-        }
-        .sub{
-        	background-image: url('https://han.gl/CJMPm');
-   			background-position:  0px 0px;
-    		background-repeat: no-repeat;
- 			cursor:pointer;
- 			outline: 0;
- 			width: 20px;
- 			height: 20px;
- 			background-size: contain;
-        }
-        .left_song_bot{
-            margin-left: 10px;
-            width: 300px;
-            text-align: left; 
-            line-height: 40px;
-            text-overflow : ellipsis;
-            white-space : nowrap;
-            overflow : hidden;
-        }
-         .right_item_bot{
-            width: 100px;
-            height: 40px;
-            text-align: center;
-            line-height: 40px;
-        }
-        .left_item_bot{
-            width: 100px;
-            height: 40px;
-            text-align: center;
-            line-height: 40px;
-        }
-        .left_artist_bot{
-            width: 150px;
-            height: 40px;
-            text-align: left;
-            text-overflow : ellipsis;
-            white-space : nowrap;
-            overflow : hidden;
-            line-height: 40px;
-           
-        }
-        .left_album_bot{
-            width: 100px;
-            height: 40px;
-            text-align: left;
-            text-overflow : ellipsis;
-            white-space : nowrap;
-            overflow : hidden;
-            padding-left: 40px;
-            line-height: 40px;
-           
-        }
-</style> -->
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/style/genre.css">
@@ -303,8 +48,8 @@
             </form>
         </div>
 		<c:choose>
-		<c:when test="${!empty popular_music}">
-			<c:forEach var="popular_music" items="${music}" varStatus="status">
+		<c:when test="${!empty list}">
+			<c:forEach var="popular_music" items="${list}" varStatus="status">
         	<div class= "musiclist">
             	 <div class="cont2">
              		<input type="checkbox" id="cb1" name="chk" onclick="checkSelectAll(); getCheckedValue()" value="${ popular_music.songnumber}">
@@ -335,7 +80,7 @@
              	</div>
 			</c:forEach>
 		</c:when>
-		<c:when test="${empty popular_music}">
+		<c:when test="${empty list}">
 			<div class="not">노래가 없습니다.</div>
 		</c:when>
 		</c:choose>
@@ -354,8 +99,8 @@
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + totalCount);
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + pageNum);
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + countPerPage);
-	int lastPage = (int)Math.ceil( ((double)totalCount / countPerPage) / countPerPage);
-	int section = 2; // 페이징 보여줄 갯수
+	int lastPage = (int)Math.ceil ((double)totalCount / countPerPage);
+	int section = 5; // 페이징 보여줄 갯수
 	
 	int sec_position = ( ((int) Math.ceil( (double)pageNum / section )) -1 );
 	int firstSec = ( sec_position * section ) + 1;
@@ -380,20 +125,20 @@
 		<img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 	<c:if test="<%= firstSec != 1 %>"> 
-		<a href="/popular_music?pageNum=<%= firstSec-1 %>"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
+		<a href="/popular_Music?pageNum=<%= firstSec-1 %>"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 
 	<c:forEach var="i" begin="<%= firstSec %>" end="<%= lastSec %>" >
 		<c:if test="${ i == pageNum2 }">
-			<a href="/popular_music?pageNum=${i }" class="num_p"><strong>${i}</strong></a>
+			<a href="/popular_Music?pageNum=${i }" class="num_p"><strong>${i}</strong></a>
 		</c:if>
 		<c:if test="${ i != pageNum2 }">
-			<a href="/popular_music?pageNum=${i }" class="num_p">${i}</a>
+			<a href="/popular_Music?pageNum=${i }" class="num_p">${i}</a>
 		</c:if>
 	</c:forEach>
 
 	<c:if test="<%= lastSec != lastPage %>">
-		<a href="/popular_music?pageNum=<%= lastSec+1 %>"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
+		<a href="/popular_Music?pageNum=<%= lastSec+1 %>"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
 	</c:if>
 	<c:if test="<%= lastSec == lastPage %>">
 		<img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
