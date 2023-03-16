@@ -197,6 +197,7 @@ public int addId(login_DTO vo) {
 		map.put("end", end);
 		
 		List list = sqlSession.selectList("mapper.javafood.genre",map);
+		
 		return list;
 	}
 	
