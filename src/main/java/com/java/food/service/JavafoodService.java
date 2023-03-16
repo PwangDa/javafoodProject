@@ -23,7 +23,11 @@ public interface JavafoodService {
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);
 	
-	Map chart(String songnum, int pageNum, int countPerPage);
+	// 차트 + 페이징
+	Map chart(String country, int pageNum, int countPerPage);
+	
+	// 조회수 증가
+	void addhit(String id, String songnumber);
 	
 ////////////////////////////////////////////////////////////
 //범주

@@ -169,7 +169,7 @@ public class JavafoodController {
 		 * }
 		 */
 		
-		String songnum = "";
+		String country = "대한민국";
 		
 		// 페이징 
 		String temp_pageNum = req.getParameter("pageNum");
@@ -178,14 +178,29 @@ public class JavafoodController {
 		}
 		System.out.println("pageNum : " + pageNum);
 		System.out.println("countPerPage : " + countPerPage);
-		Map chart_paging = javaService.chart(songnum, pageNum, countPerPage);
-		model.addAttribute("paging", chart_paging.get("list"));
-		model.addAttribute("totalCount", chart_paging.get("totalCount"));
+		Map chart = javaService.chart(country, pageNum, countPerPage);
+		model.addAttribute("list", chart.get("list"));
+		model.addAttribute("totalCount", chart.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("countPerPage", countPerPage);
 		
 		return "chart/chart";
 	}
+	
+	// 조회수 증가 메소드
+	@RequestMapping(value = "/addhit", method = RequestMethod.GET)
+	public String addhit(HttpServletRequest request) {
+		
+		String id = "id2";
+		String songnumber = request.getParameter("songNumber");
+		String page = request.getParameter("pageNum");
+		javaService.addhit(id, songnumber);
+		
+		return "redirect:/chart?pageNum="+page;
+		
+	}
+	
+	
 	
 ////////////////////////////////////////////////////////////
 	//범주

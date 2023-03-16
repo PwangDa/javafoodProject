@@ -102,13 +102,13 @@ public class JavafoodServiceImpl implements JavafoodService {
 	 * @return : map
 	 */
 	@Override
-	public Map chart(String songnum, int pageNum, int countPerPage) {
+	public Map chart(String country, int pageNum, int countPerPage) {
 
 		int start = 0;
 		int end = 0;
 		start = (countPerPage * (pageNum - 1)) + 1;
 		end = start + countPerPage - 1;
-		List list = javaDAO.chart(songnum, start, end);
+		List list = javaDAO.chart(country, start, end);
 		int totalCount = javaDAO.totalpage();
 		
 		Map map = new HashMap();
@@ -119,6 +119,14 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return map;
 		
 	}
+	
+	//조회수 증가
+	public void addhit(String id, String songnumber) {
+		
+		javaDAO.addhit(id, songnumber);
+		
+	}
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기
