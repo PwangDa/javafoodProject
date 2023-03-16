@@ -217,8 +217,9 @@ public class JavafoodController {
 	}
 ////////////////////////////////////////////////////////////
 	//용준
+	//장르
 	@RequestMapping (value = "/genre", method = RequestMethod.GET)
-	public String java5(Model model,
+	public String genre(Model model,
 			HttpServletRequest request) {
 		// 페이징
 				int pageNum = 1;		// 현재 페이지
@@ -248,8 +249,31 @@ public class JavafoodController {
 				System.out.println("song 후: " + song);
 				
 		return "lyj/genre";
-//		return "redirect:genre?genre="+song;
-//		return "redirect:genre";
 	}
+	
+	//최신음악
+		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
+		public String Popular_Music(Model model,
+				HttpServletRequest request) {
+			// 페이징
+					int pageNum = 1;		// 현재 페이지
+					int countPerPage = 10;	// 한 페이지당 표시 수 
+					// 페이징 
+					String tmp_pageNum = request.getParameter("pageNum");
+					if(tmp_pageNum != null) {
+						pageNum = Integer.parseInt(tmp_pageNum);
+					}
+					System.out.println("pageNum : " + pageNum);
+					System.out.println("countPerPage : " + countPerPage);
+					Map Music_list = javaService.getMusic(pageNum, countPerPage);
+					model.addAttribute("music", Music_list.get("list"));
+					model.addAttribute("totalCount", Music_list.get("totalCount"));
+					model.addAttribute("pageNum", pageNum);
+					model.addAttribute("countPerPage", countPerPage);
+					
+			return "lyj/Popular_Music";
+		}
+	
+	
 ////////////////////////////////////////////////////////////
 }

@@ -189,12 +189,32 @@ public int addId(login_DTO vo) {
 		return list;
 	}
 	
-	// 페이징
+	// 장르 페이징
 	public int pagetotal() {
 		int totalcnt = sqlSession.selectOne("mapper.javafood.pagetotal");
 		System.out.println(totalcnt);
 		return totalcnt;
 	}
+	
+	// 최신음악
+		public List getMusic(int start, int end) {
+			
+			Map map = new HashMap();
+			map.put("start", start);
+			map.put("end", end);
+			
+			List list = sqlSession.selectList("mapper.javafood.song",map);
+			
+			return list;
+		}
+		
+		// 최신음악 페이징
+		public int pagetotal_Music() {
+			int totalcnt = sqlSession.selectOne("mapper.javafood.pagetotal_song");
+			System.out.println(totalcnt);
+			return totalcnt;
+		}
+
 
 	
 

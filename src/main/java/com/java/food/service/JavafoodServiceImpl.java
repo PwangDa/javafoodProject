@@ -194,6 +194,30 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return map;
 
 	}
+	
+	// 용준 최신음악 페이징
+
+		@Override
+		public Map getMusic(int pageNum, int countPerPage) {
+			
+
+			int start = 0;
+			int end = 0;
+			start = (countPerPage * (pageNum - 1)) + 1;
+			end = start + countPerPage - 1;
+			List list = javaDAO.getMusic(start, end);
+			int totalCount = javaDAO.pagetotal();
+			System.out.println(list.size());
+			System.out.println(start);
+			System.out.println(end);
+
+			Map map = new HashMap();
+			map.put("list", list);
+			map.put("totalCount", totalCount);
+			
+			return map;
+
+		}
 
 ////////////////////////////////////////////////////////////
 

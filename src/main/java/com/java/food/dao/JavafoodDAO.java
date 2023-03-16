@@ -42,6 +42,12 @@ public interface JavafoodDAO {
 	
 	// 페이징
 	int pagetotal();
+	
+	// 최신음악
+	List getMusic(int start, int end);
+	
+	// 최신음악 페이징
+	int pagetotal_Music();
 ////////////////////////////////////////////////////////////
 
 	//되나요?

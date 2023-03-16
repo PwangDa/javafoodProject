@@ -36,6 +36,9 @@ public interface JavafoodService {
 	// 장르
 	Map getGenre(String song, int pageNum, int countPerPage);
 	
+	// 최신음악
+	Map getMusic(int pageNum, int countPerPage);
+	
 ////////////////////////////////////////////////////////////
 	
 }
