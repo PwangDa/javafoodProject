@@ -252,7 +252,6 @@ public int addId(login_DTO vo) {
 		return totalcnt;
 	}
 	
-<<<<<<< HEAD
 	// 최신음악
 		public List getMusic(int start, int end) {
 			
@@ -272,8 +271,6 @@ public int addId(login_DTO vo) {
 			return totalcnt;
 		}
 
-=======
->>>>>>> 02bc286582f0191349c4bd0a9958e6730afaba69
 
 	
 
