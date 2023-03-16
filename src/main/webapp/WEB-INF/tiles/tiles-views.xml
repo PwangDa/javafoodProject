@@ -11,17 +11,37 @@
    
    <definition name="/main" extends="baseLayout">
       <put-attribute name="title" value="MAIN" />
-      <put-attribute name="body" value="/WEB-INF/views/lyj/main.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
    </definition>
    
    <definition name="/genre" extends="baseLayout">
       <put-attribute name="title" value="genre" />
-      <put-attribute name="body" value="/WEB-INF/views/hdy/genre.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/lyj/genre.jsp" />
+   </definition>
+   
+   <definition name="/popular_Music" extends="baseLayout">
+      <put-attribute name="title" value="genre" />
+      <put-attribute name="body" value="/WEB-INF/views/lyj/Popular_Music.jsp" />
    </definition>
    
    <definition name="/artistpage" extends="baseLayout">
       <put-attribute name="title" value="artist T" />
       <put-attribute name="body" value="/WEB-INF/views/hdy/artist.jsp" />
+   </definition>
+   
+   <definition name="/chart" extends="baseLayout">
+      <put-attribute name="title" value="chart" />
+      <put-attribute name="body" value="/WEB-INF/views/chart/chart.jsp" />
+   </definition>
+   
+   <definition name="/playList" extends="baseLayout">
+      <put-attribute name="title" value="playList" />
+      <put-attribute name="body" value="/WEB-INF/views/playList/playList.jsp" />
+   </definition>
+   
+   <definition name="/playListContent" extends="baseLayout">
+      <put-attribute name="title" value="playListContent" />
+      <put-attribute name="body" value="/WEB-INF/views/playList/playListContent.jsp" />
    </definition>
    
 

@@ -54,7 +54,7 @@ public class JavafoodController {
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
 		
-		return "hdy/artist";
+		return "/artistpage";
 	}
 	
 	//댓글 등록 할 때
@@ -225,7 +225,7 @@ public class JavafoodController {
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("countPerPage", countPerPage);
 		
-		return "chart/chart";
+		return "/chart";
 	}
 	
 	// 조회수 증가 메소드
@@ -250,7 +250,7 @@ public class JavafoodController {
 	@RequestMapping("playList")
 	public String selectPlayList(HttpServletRequest request, Model model)
 	{
-		String result = "playList/playList"; // /view/playList/playList.jsp로 이동.
+		String result = "/playList"; // /view/playList/playList.jsp로 이동.
 		
 		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
 		
@@ -302,7 +302,7 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "playList/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
@@ -389,7 +389,7 @@ public class JavafoodController {
 		List random_list = javaService.randomGenre(genre);
 		model.addAttribute("gerne" ,random_list);
 		
-		String result = "main/main";
+		String result = "/main";
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
@@ -474,7 +474,7 @@ public class JavafoodController {
 				model.addAttribute("song", song);
 				System.out.println("song 후: " + song);
 				
-		return "lyj/genre";
+		return "/genre";
 	}
 	
 	//최신음악
@@ -498,7 +498,7 @@ public class JavafoodController {
 					model.addAttribute("pageNum", pageNum);
 					model.addAttribute("countPerPage", countPerPage);
 					
-			return "lyj/Popular_Music";
+			return "/popular_Music";
 		}
 	
 	
