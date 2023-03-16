@@ -30,116 +30,115 @@
         <span style="font-size: 34px; font-weight: 600;">Music</span>
     </header> -->
     <div id="home">
-        <h1><a href='http://localhost:8080/music/genre'>장르</a></h1>
         
        <c:choose>
 		<c:when test="${song eq '발라드'}"> 
 	
         <div class="tab">
-            <div class="tab1 tab1_1 btline"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1 btline"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
         <c:when test="${song eq '댄스'}">
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2 btline"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2 btline"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
         <c:when test="${song eq 'POP'}">
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3 btline"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3 btline"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
         <c:when test="${song eq 'R&B'}">
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4 btline"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4 btline"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
         <c:when test="${song eq '인디'}">
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5 btline"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5 btline"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
         <c:when test="${song eq '트로트'}">
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6 btline"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6 btline"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
          <c:when test="${song eq '록'}">
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7 btline"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7 btline"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
          <c:when test="${song eq '랩'}">
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8 btline"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8 btline"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
 		<c:otherwise>
 		<div class="tab">
-            <div class="tab1 tab1_1"><a href='http://localhost:8080/music/genre&genre=발라드'>발라드</a></div>
-            <div class="tab1 tab1_2"><a href='http://localhost:8080/music/genre&genre=댄스'>댄스</a></div>
-            <div class="tab1 tab1_3"><a href='http://localhost:8080/music/genre&genre=POP'>POP</a></div>
-            <div class="tab1 tab1_4"><a href='http://localhost:8080/music/genre&genre=R%26B'>R&B</a></div>
-            <div class="tab1 tab1_5"><a href='http://localhost:8080/music/genre&genre=인디'>인디</a></div>
-            <div class="tab1 tab1_6"><a href='http://localhost:8080/music/genre&genre=트로트'>트로트</a></div>
-            <div class="tab1 tab1_7"><a href='http://localhost:8080/music/genre&genre=록'>록/메탈</a></div>
-            <div class="tab1 tab1_8"><a href='http://localhost:8080/music/genre&genre=랩'>랩/힙합</a></div>
+            <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
+            <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
+            <div class="tab1 tab1_3"><a href='http://localhost:8080/genre?genre=POP'>POP</a></div>
+            <div class="tab1 tab1_4"><a href='http://localhost:8080/genre?genre=R%26B'>R&B</a></div>
+            <div class="tab1 tab1_5"><a href='http://localhost:8080/genre?genre=인디'>인디</a></div>
+            <div class="tab1 tab1_6"><a href='http://localhost:8080/genre?genre=트로트'>트로트</a></div>
+            <div class="tab1 tab1_7"><a href='http://localhost:8080/genre?genre=록'>록/메탈</a></div>
+            <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:otherwise>
         </c:choose>
@@ -171,7 +170,7 @@
             	 <div class="cont2">
              		<input type="checkbox" id="cb1" name="chk" onclick="checkSelectAll(); getCheckedValue()" value="${ genre_list.songnumber}">
                 	<div class="left_item_bot">${ status.count} </div>  <!-- 곡 순서 -->
-                	<div class="div_size"><img class="left_img" src="${ genre_list.imglink}" ></div>  <!-- 앨범 이미지 -->
+                	<div class="div_size"><img class="left_img" src="${ genre_list.imagelink}" ></div>  <!-- 앨범 이미지 -->
                 	<div class="left_song_bot"><a href="${ genre_list.link}"target='_blank'>${ genre_list.songname}</a></div> <!-- 곡 제목 -->
                 	<c:if test="${ genre_list.artistname == '아이유' || genre_list.artistname == 'SG워너비'}">
                 		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/javafood_team/javafood?javafood=1&artid=${genre_list.artistname}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
@@ -179,7 +178,7 @@
                 	<c:if test="${ genre_list.artistname != '아이유' && genre_list.artistname != 'SG워너비'}">
                 		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/javafood_team/javafood?javafood=ArtistList&num=${genre_list.songnumber}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
                 	</c:if>
-                	<div class="left_album_bot" title="${ genre_list.album}"><a href = "/javafood_team/javafood?javafood=AlbumList&num=${genre_list.songnumber}">${ genre_list.album}</a></div> <!-- 앨범 --> 
+                	<div class="left_album_bot" title="${ genre_list.album_name}"><a href = "/javafood_team/javafood?javafood=AlbumList&num=${genre_list.songnumber}">${ genre_list.album_name}</a></div> <!-- 앨범 --> 
                 	<div class="right_item_bot">${ genre_list.playtime}</div> <!-- 재생시간 -->
                 	<form method="post" action="/javafood_team/javafood?javafood=6">
 	                	<div class="right_item_bot" id="like"><%-- ${ genre_list.likes} --%><input type="image"  src="https://c11.kr/1asbx" onmouseover="this.src='https://c11.kr/1asby'" onmouseout="this.src='https://c11.kr/1asbx'" value="" class="sub"><input type="hidden" name="good" value="${genre_list.songnumber}"><!-- 좋아요 --> 
@@ -243,20 +242,20 @@
 		<img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 	<c:if test="<%= firstSec != 1 %>"> 
-		<a href="/music/genre&genre=${ song}&pageNum=<%= firstSec-1 %>"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
+		<a href="/genre?genre=${ song}&pageNum=<%= firstSec-1 %>"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 
 	<c:forEach var="i" begin="<%= firstSec %>" end="<%= lastSec %>" >
 		<c:if test="${ i == pageNum2 }">
-			<a href="/music/genre&genre=${ song}&pageNum=${i }" class="num_p"><strong>${i}</strong></a>
+			<a href="/genre?genre=${ song}&pageNum=${i }" class="num_p"><strong>${i}</strong></a>
 		</c:if>
 		<c:if test="${ i != pageNum2 }">
-			<a href="/music/genre&genre=${ song}&pageNum=${i }" class="num_p">${i}</a>
+			<a href="/genre?genre=${ song}&pageNum=${i }" class="num_p">${i}</a>
 		</c:if>
 	</c:forEach>
 
 	<c:if test="<%= lastSec != lastPage %>">
-		<a href="/music/genre&genre=${ song}&pageNum=<%= lastSec+1 %>"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
+		<a href="/genre?genre=${ song}&pageNum=<%= lastSec+1 %>"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
 	</c:if>
 	<c:if test="<%= lastSec == lastPage %>">
 		<img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>

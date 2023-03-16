@@ -87,12 +87,19 @@ public List<FamousChartDTO> getChart(String songnumber) {
 @Override
 public List paging(String fc, int start, int end) {
 	
-	Map map = new HashMap();
-	map.put("fc", fc);
-	map.put("start", start);
-	map.put("end", end);
+//	Map map = new HashMap();
+//	map.put("fc", fc);
+//	map.put("start", start);
+//	map.put("end", end);
+	List temp = new ArrayList();
+	temp.add(fc);
+	temp.add(start);
+	temp.add(end);
+	System.out.println("temp : " + temp);
 	
-	List list = sqlSession.selectList("mapper.javafood.paging", map);
+	List list = sqlSession.selectList("mapper.javafood.getChart", temp);
+	
+	System.out.println("DAOimpl : " +list);
 	return list;
 	
 }
@@ -101,6 +108,7 @@ public List paging(String fc, int start, int end) {
 public int totalpage() {
 	
 	int totalcount = sqlSession.selectOne("mapper.javafood.totalpage");
+	System.out.println("DAOimpl : " +totalcount);
 	
 	return totalcount;
 }
@@ -177,6 +185,7 @@ public int addId(login_DTO vo) {
 		map.put("end", end);
 		
 		List list = sqlSession.selectList("mapper.javafood.genre",map);
+		
 		return list;
 	}
 	

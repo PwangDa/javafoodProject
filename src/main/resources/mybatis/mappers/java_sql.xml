@@ -31,7 +31,7 @@
 		WHERE a.ALBUM_NAME = #{album_name}
 	</select>
 	
-	<!-- 인기차트 -->
+	<!-- 인기차트 귀범-->
 	<select id="getChart" resultType="chartDTO" parameterType="String">
 		
 			SELECT * FROM ( 
@@ -41,7 +41,7 @@
 							AS FAMOUS, s.*  FROM Genre s ) a ) genre WHERE country =?)
 			WHERE num <![CDATA[>=]]> #{start} AND rnum<![CDATA[<=]]> #{end} 
 
-		<foreach item="not" collection="list" open="(" separator="," close=")">
+		<foreach item="not" collection="temp" open="(" separator="," close=")">
 			#{not}
 		</foreach>
 	</select>
