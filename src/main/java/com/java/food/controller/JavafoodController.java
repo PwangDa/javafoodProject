@@ -182,7 +182,7 @@ public class JavafoodController {
 //
 //	}
 
-	//페이징 주소 예시 http://localhost:8080/chart?country=대한민국&pageNum=3
+	// 차트 + 페이징
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
 	public String chart(Model model, HttpServletRequest req) {
 		List<FamousChartDTO> list = new ArrayList();
@@ -235,7 +235,7 @@ public class JavafoodController {
 
 		
 //
-//오류		return "/chart";
+		// return "/chart";
 
 	}
 
