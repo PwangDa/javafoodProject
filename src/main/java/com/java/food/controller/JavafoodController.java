@@ -20,12 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-<<<<<<< HEAD
+
 import com.java.food.dto.CommentDTO;
-=======
+
 import com.java.food.ajax.ajax;
 import com.java.food.ajax.ajax11Impl;
->>>>>>> fa33cd59cd090d99014760a462137f231cd687e5
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
