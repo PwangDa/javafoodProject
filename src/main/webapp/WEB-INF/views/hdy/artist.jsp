@@ -96,18 +96,18 @@
         <div>
         	<br>
             <h2 style="text-align: center; margin: 0px;">댓글</h2>
-            <form name="frmComment" method="post" action="/javafood_team/javafood?javafood=ArtistList&num=${album_list[0].songnumber }&command=addcommnet.do">
+            <form name="frmComment" method="post" action="/insert.do">
                 <div class="comment">
                 <c:if test="${empty login_dto[0].nic}">
                     <div class="text2">
-                        <img class="image1" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
-                        <input class="input1" type="text" name="id" placeholder="로그인을 해주세요"  disabled>
+                        <img class="image1" name="ima" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
+                        <input class="input1" type="text" name="id" placeholder="로그인을 해주세요"  >
                     </div>
                     <div class="text2">
-                        <textarea class="text_area" name="cont" placeholder="*로그인을 해주세요" disabled></textarea>
+                        <textarea class="text_area" name="cont" placeholder="*로그인을 해주세요" ></textarea>
                     </div>
                     <div class="text2">
-                        <input class="btn" type="button" disabled value="등록">
+                        <input class="btn" type="submit" value="등록">
                     </div>
                 </c:if>
                 <c:if test="${not empty login_dto[0].nic}">
@@ -123,7 +123,9 @@
                     </div>
                 </c:if>
                     <input type ="hidden" name="songnum" value="${album_list[0].songnumber }">
-                    <input type ="hidden" name="myimg" value="${login_dto[0].myimg }">
+                    <input type ="hidden" name="myimg" value="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
+                    <input type ="hidden" name="arti" value="${album_list[0].artistname}">
+                    <%-- <input type ="hidden" name="myimg" value="${login_dto[0].myimg }"> --%>
                 </div>
             </form>
             </div>
@@ -155,7 +157,11 @@
                 				</details>
 	                        </div>
 	                        <div class="text2">
-	                            <a href="/javafood_team/javafood?javafood=ArtistList&num=${album_list[0].songnumber }&command=delcommnet.do&articleNO=${comment.articleNO }"><button class='btn btn_del' type='button'> 삭제 </button></a>
+	                        	<form action="/del.do">
+	                            	<input class='btn btn_del' type="submit" value="삭제">
+	                            	<input type ="hidden" name="command_articleNO" value="${comment.articleNO }">
+									<input type ="hidden" name="arti" value="${album_list[0].artistname}">
+								</form>	                            
 	                        </div>
 	                	</div>
                         

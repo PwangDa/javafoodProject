@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
@@ -71,6 +72,23 @@ SqlSession sqlSession;
 			logger.info("Comment list.size >>>"+list.size()); 
 			
 			return list;
+		}
+		
+		@Override
+		public int insertComment(CommentDTO dto) {
+			logger.info("JavafoodDAOImpl > insertComment 실행");
+			int count = sqlSession.insert("mapper.javafood.plusComment", dto);
+			
+			return count;
+			
+		}
+		
+		@Override
+		public int delComment(int articleNO) {
+			logger.info("JavafoodDAOImpl > delComment 실행");
+			int article = sqlSession.insert("mapper.javafood.delComment", articleNO);
+			
+			return article;
 		}
 
 ////////////////////////////////////////////////////////////

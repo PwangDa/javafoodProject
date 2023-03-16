@@ -3,6 +3,7 @@ package com.java.food.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
@@ -16,6 +17,10 @@ public interface JavafoodDAO {
 	List viewComment(String artist);
 	
 	List viewAlbum(String album);
+	
+	int insertComment(CommentDTO dto);
+	
+	int delComment(int articleNO);
 	
 ////////////////////////////////////////////////////////////
 //귀범

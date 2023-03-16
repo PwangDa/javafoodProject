@@ -1,5 +1,7 @@
 package com.java.food.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,9 +15,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+
+import com.java.food.dto.CommentDTO;
 
 import com.java.food.ajax.ajax;
 import com.java.food.ajax.ajax11Impl;
@@ -50,6 +56,70 @@ public class JavafoodController {
 		
 		return "hdy/artist";
 	}
+	
+	@RequestMapping(value = "/insert.do", method = RequestMethod.POST)
+	public String insert(Model model,
+			@ModelAttribute CommentDTO dto,
+			@RequestParam("id") String id,
+			@RequestParam("cont") String cont,
+			@RequestParam("myimg") String ima,
+			@RequestParam("songnum") String songnum,
+			@RequestParam("arti") String arti
+			/*@RequestParam("command_articleNO") int arino*/
+			) {
+		
+		System.out.println(">>>>>"+id);
+		System.out.println(">>>>>"+cont);
+		System.out.println(">>>>>"+ima);
+		System.out.println(">>>>>"+songnum);
+		System.out.println(">>>>>"+arti);
+		
+		dto.setComment_id(id);	
+		dto.setComment_cont(cont);
+		dto.setMyimg(ima);
+		dto.setArtistname(arti);
+		String encodeResult = null;
+		try {
+			encodeResult = URLEncoder.encode(arti, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("댓글등록 메소드 접속"); 
+		System.out.println("아이디 >" +dto.getComment_id()); 
+		System.out.println("내용 >" +dto.getComment_cont()); 
+		int count = javaService.insertComment(dto);
+		System.out.println("count >>>"+count);
+
+		return "redirect:/artistpage?artist="+encodeResult;
+	}
+	
+	@RequestMapping(value = "/del.do", method = {RequestMethod.GET, RequestMethod.DELETE})
+	public String delet(Model model,
+			@ModelAttribute CommentDTO dto,
+			@RequestParam("command_articleNO") int no,
+			@RequestParam("arti") String arti
+			/*@RequestParam("command_articleNO") int arino*/
+			) {
+		
+		System.out.println("댓글삭제 메소드 접속"); 
+		System.out.println("no>>>>>"+no);
+		System.out.println("arti>>>>>"+arti);
+
+		int article = javaService.delComment(no);
+
+		String encodeResult = null;
+		try {
+			encodeResult = URLEncoder.encode(arti, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/artistpage?artist="+encodeResult;
+	}
+	
+	
 	
 	@RequestMapping(value = "/albumpage", method = RequestMethod.GET)
 	public String java1_1(Model model,
