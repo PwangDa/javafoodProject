@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 
 <!-- css파일 불러오기 -->
-<link rel="stylesheet" href="resources/style/main.css">
+<link rel="stylesheet" href="/style/main.css">
 
 </head>
 <body>
@@ -339,6 +339,6 @@
 
 
 	<!-- js파일 불러오기 -->
-	<script src="resources/script/main.js" />
+	<script src="/script/main.js" />
 </body>
 </html>
