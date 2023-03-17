@@ -13,7 +13,7 @@ public class TilesConfig {
     @Bean
     public TilesConfigurer tilesConfigurer() {
         final TilesConfigurer configurer = new TilesConfigurer();
-System.out.println("c>>>>>>>>>>>>");
+
         // tiles.xml 경로 명시
         configurer.setDefinitions(new String[] {
             "/WEB-INF/tiles/tiles-views.xml"
