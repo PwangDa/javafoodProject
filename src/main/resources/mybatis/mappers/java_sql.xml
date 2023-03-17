@@ -97,10 +97,10 @@
 	</select>
 	
 	<!-- 댄스 장르 출력 -->
-	<select id="selectDance" resultType="chartDTO" parameterType="java.util.List">
+	<select id="selectDance" resultType="chartDTO" parameterType="list">
 		SELECT * FROM genre
-		WHERE bygenre = #{bygenre}
-		ORDER BY songnumber
+		WHERE BYGENRE = #{BYGENRE}
+		ORDER BY SONGNUMBER
 	
 	</select>
 	

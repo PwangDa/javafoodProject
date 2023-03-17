@@ -150,11 +150,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 	// 전달인자 x
 	// select 하는 메소드 생성
 	
-	public List<FamousChartDTO> selectDance(){
+	public List<FamousChartDTO> selectDance(String genre){
 		
 		List<FamousChartDTO> page = null;
 		
-		 page = javaDAO.selectDance();
+		 page = javaDAO.selectDance(genre);
 		
 		return page;
 	}
