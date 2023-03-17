@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,16 +38,23 @@ public class JavafoodController {
 ////////////////////////////////////////////////////////////
 	// 다영
 	@RequestMapping(value = "/artistpage", method = RequestMethod.GET)
-	public String java1(Model model, @RequestParam("artist") String artist) {
+	public String java1(Model model, 
+			HttpServletRequest re,
+			@RequestParam("artist") String artist) {
 		System.out.println("아티스트페이지 접속");
 		System.out.println("artist >" + artist);
 		// 아티스트 소개 페이지 출력 메소드(전달요소 > 아티스트명)
 		List artist_list = javaService.getArtist(artist);
 		// 댓글 출력 메소드(전달요소 > 아티스트명)
 		List comment_list = javaService.getComment(artist);
-
+		Object id = re.getSession().getAttribute("loginId");
+		Object nic = re.getSession().getAttribute("loginNic");
+		System.out.println("id >>>>>>"+id);
+		System.out.println("nic >>>>>>"+nic);
+		
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
+		model.addAttribute("nic", nic);
 		
 		return "/artistpage";
 
