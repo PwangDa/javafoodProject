@@ -297,6 +297,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 		};
 		return a;
 	}
+	@Override
+	public int out(String id) {
+		
+		return 0;
+	}
+	
 ////////////////////////////////////////////////////////////
 	// 용준 장르별 페이징
 

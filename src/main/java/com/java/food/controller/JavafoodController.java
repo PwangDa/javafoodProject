@@ -464,7 +464,7 @@ public class JavafoodController {
 			return 1;
 		}
 	}
-	
+	//마이 페이지 이동
 	@RequestMapping("/my_page")
 	public String my_page(Model mo,
 			@RequestParam Map<String, Object> map,
@@ -474,6 +474,8 @@ public class JavafoodController {
 		System.out.println(map.get("page"));
 		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
+			
+			//페이지 이동
 			if(map.get("page") != null) {
 				
 				log.info("page 이동");
@@ -484,21 +486,35 @@ public class JavafoodController {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-				
-				//회원탈퇴
-				if("d".equals(map.get("page"))) {
-					String id = (String) re.getSession().getAttribute("loginId");
-					log.info("회원탈퇴");
-					log.info("sessiong id : "+id);
-//					javaService.
-				}
-				
+//				//회원탈퇴
+//				if("d".equals(map.get("page"))) {
+//					String id = (String) re.getSession().getAttribute("loginId");
+//					
+//					log.info("회원탈퇴");
+//					log.info("sessiong id : "+id);
+//					
+//					mo.addAttribute("out",javaService.out(id));
+//				}
 			}
 			
 			return "lky/My_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
 			return "main";
+		}
+	}
+	//아자스 를 이용한 회원탈퇴
+	@RequestMapping("/my_page/out")
+	@ResponseBody
+	public int out(
+			HttpServletRequest re
+			) {
+		log.info("회원탈퇴 시도");
+		try {
+			return javaService.out( (String) re.getSession().getAttribute("loginId"));
+		} catch (Exception e) {
+			log.info("회원탈퇴 오류");
+			return 0;
 		}
 	}
 
