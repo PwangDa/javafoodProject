@@ -13,12 +13,14 @@
 		CONNECT BY PRIOR articleNO=parentNO
 		ORDER SIBLINGS BY articleNO DESC
 	</select>
-	
+		
 	<!-- 아티스트소개 페이지 -->
 	<select id="viewArtist" resultType="albumDTO" parameterType="String">
-		SELECT * FROM ALBUM a
-		LEFT JOIN INTOALBUM i ON (a.ALBUM_NAME = i.ALBUM_NAME)
-		WHERE i.MUSIC_NUM = 1 AND ARTISTNAME = #{artistname}
+		SELECT * 
+		FROM artist arti
+		LEFT JOIN ALBUM_1 al ON (al.ARTISTNAME  = arti.ARTISTNAME)
+		LEFT JOIN intoAlbum_1 i ON (al.ALBUM_NAME = i.ALBUM_NAME)
+		WHERE i.MUSIC_NUM = 1 AND al.ARTISTNAME = #{artistname}
 	</select>
 	
 	<insert id="plusArtist" parameterType="String">
@@ -127,13 +129,18 @@
 		SELECT count(*) cnt FROM song1
 	</select>
 	
-	<!-- 	회원 전체 목록 리스트 -->
+	<!-- 	회원 전체 목록 리스트	-->
 	<select id="login" resultType="loginDTO">
 		SELECT * FROM login
 	</select>
+
+	<!-- 	회원 탈퇴	-->
+	<delete id="outId" parameterType="String">
+		DELETE FROM LOGIN WHERE ID= #{id}
+	</delete>
 	
-	<!-- 	회원 가입-->
-	<update id="newures" parameterType="loginDTO">
+	<!-- 	회원 가입	-->
+	<insert id="newures" parameterType="loginDTO">
 		insert into 
 			login 
 		values(
@@ -145,7 +152,7 @@
 			#{EMAIL},
 			null
 			)
-	</update>
+	</insert>
 	
 	
 	<!-- 범주 플레이 리스트 불러오기 -->

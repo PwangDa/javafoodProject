@@ -318,6 +318,17 @@ public class JavafoodServiceImpl implements JavafoodService {
 		};
 		return a;
 	}
+	//회원 탈퇴
+	@Override
+	public int outId(String id) {
+		int a=0;
+		try {
+			a = javaDAO.outId(id);
+		} catch (Exception e) {
+		}
+		return a;
+	}
+	
 ////////////////////////////////////////////////////////////
 	// 용준 장르별 페이징
 
