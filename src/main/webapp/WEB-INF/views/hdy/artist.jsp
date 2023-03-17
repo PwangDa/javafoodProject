@@ -52,9 +52,9 @@
            		<c:forEach var="album" items="${album_list}" end="5" varStatus="loop">
 	            <div id = "cont1">
 	                <div class = "box1_1">
-	                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.album_cover }"></a>
+	                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.imagelink }"></a>
 	                </div>
-	                <div class = "box1 text2"><a href="${loop.count}"><strong>${album.music_name}</strong></a></div>
+	                <div class = "box1 text2"><a href="${album.link}"><strong>${album.songname}</strong></a></div>
 	                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album_list[0].artistname }</div>
 	                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/albumpage?album=${album.album_name}">${album.album_name }</a></div>
 	                <div><img class="img img2" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'"></div>
@@ -66,9 +66,9 @@
                     <c:forEach var="album" items="${album_list}" begin="6" varStatus="loop">
 	            		<div id = "cont1">
 			                <div class = "box1_1">
-			                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.album_cover }"></a>
+			                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.imagelink }"></a>
 			                </div>
-			                <div class = "box1 text2"><a href="${loop.count}"><strong>${album.music_name}</strong></a></div>
+			                <div class = "box1 text2"><a href="${loop.count}"><strong>${album.songname}</strong></a></div>
 			                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album_list[0].artistname }</div>
 			                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/albumpage?album=${album.album_name}">${album.album_name }</a></div>
 	            		</div>
@@ -86,7 +86,7 @@
 				<%-- 앨범 부분 forEach --%>
                 <c:forEach var ="album" items="${album_list}" varStatus="loop">
                     <li>
-                        <a href="/albumpage?album=${album.album_name}"><img  class="image" src="${album.album_cover }"></a>
+                        <a href="/albumpage?album=${album.album_name}"><img  class="image" src="${album.imagelink }"></a>
                         <br>
                         <a style = "font-size:14px;" href="/albumpage?album=${album.album_name}"><span class="al_name"><strong>${album.album_name }</strong></span></a>
                     </li>

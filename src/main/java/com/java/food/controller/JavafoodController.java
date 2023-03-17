@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
@@ -75,7 +76,8 @@ public class JavafoodController {
 			@RequestParam("arti") String arti
 	/* @RequestParam("command_articleNO") int arino */
 	) {
-
+		
+		//로그인 한 id 와 닉네임 / 이미지의 세션값을 가져왔다.
 		Object login_id = re.getSession().getAttribute("loginId");
 		Object nic = re.getSession().getAttribute("loginNic");
 		Object img = re.getSession().getAttribute("loginImg");
@@ -187,11 +189,33 @@ public class JavafoodController {
 
 		return "/Album";
 	}
+	
+	
+	// 앨범정보를 추가하는 메소드
+	@RequestMapping(value = "/albumplus", method = RequestMethod.GET)
+	public String albumplus(Model model, 
+			@ModelAttribute AlbumDTO dto,
+			@RequestParam("album_num") String al_num,
+			@RequestParam("album_cover") String cover, 
+			@RequestParam("album_name") String al_name, 
+			@RequestParam("album_into") String al_into,
+			@RequestParam("artistname") String artist_name ) {
+		System.out.println("새 앨범을 추가합니다");
+			dto.setAlbum_num(al_num);
+			dto.setAlbum_cover(cover);
+			dto.setAlbum_name(al_name);
+			dto.setAlbum_into(al_into);
+			dto.setArtistname(artist_name);
+			
+			int count = javaService.albumplus(dto);
+		
+		return "/hdy/songplus";
+	}
 
-	@RequestMapping(value = "/layout")
+	@RequestMapping(value = "/plus")
 	public String java1_1(Model model) {
 
-		return "/layout";
+		return "/hdy/songplus";
 	}
 ////////////////////////////////////////////////////////////
 	// 귀범
@@ -545,16 +569,22 @@ public class JavafoodController {
 					re.getSession().invalidate();
 				}
 				//회원 재생목록 가져오기
-				if("a".equals(map.get("page"))) {
+				if("b".equals(map.get("page"))) {
+					System.out.println("page가져오기");
+					
+					System.out.println("loginId : "+(String) re.getSession().getAttribute("loginId"));
+					
 					mo.addAttribute("playlist",javaService.loginplay(
 							(String) re.getSession().getAttribute("loginId")) );
+					System.out.println("page가져");
+					
 				}
 			}
 			
 			return "/my_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
-			return "main";
+			return "/main";
 		}
 	}
 	
