@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -254,39 +253,30 @@ public class JavafoodController {
 
 ////////////////////////////////////////////////////////////
 //	// 범주
-//오류
-//	// 플레이 리스트 불러오기
-//	@RequestMapping("playList")
-//
-//	public String selectPlayList(HttpServletRequest request, Model model) {
-//		String result = "playList/playList"; // /view/playList/playList.jsp로 이동.
-//
-//		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); // 확인용
-//
-//		// 세션에 저장된 id값 받아오기*/
-//
-//	public String selectPlayList(HttpServletRequest request, Model model)
-//	{
-//		String result = "/playList"; // /view/playList/playList.jsp로 이동.
-//		
-//		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
-//		
-//		//세션에 저장된 id값 받아오기
-//
-////		String id = (String)request.getSession().getAttribute("login");
-//		String id = "id3"; // 테스트 용 아이디.
-//		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
-//
-//		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
-//		// 메서드 실행 결과(리스트)를 필드에 담기
-//		List<PlayListDTO> playList = javaService.selectPlayList(id);
-//		System.out.println("javaService.selectPlayList가 가져온 최종 리스트 크기는 : " + playList.size());
-//
-//		// 리스트를 담은 필드를 모델을 통해서 보내기
-//		model.addAttribute("playList", playList);
-//
-//		return result;
-//	}
+	// 플레이 리스트 불러오기
+	@RequestMapping("playList")
+	public String selectPlayList(HttpServletRequest request, Model model)
+	{
+		String result = "/playList"; // /view/playList/playList.jsp로 이동.
+		
+		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
+		
+		//세션에 저장된 id값 받아오기
+
+//		String id = (String)request.getSession().getAttribute("login");
+		String id = "id3"; // 테스트 용 아이디.
+		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
+
+		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
+		// 메서드 실행 결과(리스트)를 필드에 담기
+		List<PlayListDTO> playList = javaService.selectPlayList(id);
+		System.out.println("javaService.selectPlayList가 가져온 최종 리스트 크기는 : " + playList.size());
+
+		// 리스트를 담은 필드를 모델을 통해서 보내기
+		model.addAttribute("playList", playList);
+
+		return result;
+	}
 
 	// 플레이 리스트에서 리스트 추가하기
 	@RequestMapping("addPlayList")
@@ -313,82 +303,28 @@ public class JavafoodController {
 		return "redirect:playList";
 	}
 
-//	// 플레이 리스트 내역(Content) 불러오기
-//	@RequestMapping("playListContent")
-//	public String selectPlayListContent(HttpServletRequest request, Model model) {
-//		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); // 확인용
-//
-//		String result = "playList/playListContent"; // /view/playList/playListContent.jsp로 이동.
-//
-//		// 주소에서 받은 값 가져오기
-//=======
-//	public String selectPlayListContent(HttpServletRequest request, Model model)
-//	{
-//		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
-//		
-//		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
-//		
-//		//주소에서 받은 값 가져오기
-//		String pl_id = request.getParameter("pl_id");
-//		System.out.println("selectPlayListContent 메서드를 실행하며 받은 pl_id의 값은 : " + pl_id); // 확인용
-//
-//		// Service에서 플레이 리스트 내역을 불러오는 메서드 실행하기
-//		// 메서드 실행 결과(리스트)를 필드에 담기
-//		List<PlayListDTO> playListContent = javaService.selectPlayListContent(pl_id);
-//		System.out.println("JavafoodController의 playListContent 리스트 크기는 : " + playListContent.size()); // 확인용
-//
-//		// 리스트를 담은 필드를 모델을 통해서 보내기
-//		model.addAttribute("playListContent", playListContent);
-//
-//		return result;
-//	}
-//<<<<<<< HEAD
+	// 플레이 리스트 내역(Content) 불러오기
+	@RequestMapping("playListContent")
+	public String selectPlayListContent(HttpServletRequest request, Model model)
+	{
+		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
+		
+		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		
+		//주소에서 받은 값 가져오기
+		String pl_id = request.getParameter("pl_id");
+		System.out.println("selectPlayListContent 메서드를 실행하며 받은 pl_id의 값은 : " + pl_id); // 확인용
 
-	// 플레이 리스트 내역(Content)에서 곡 삭제하기
-//	@RequestMapping("deleteContent")
-//	public String deletePlayListContent(HttpServletRequest request) {
-//		System.out.println("JavafoodController의 deletePlayListContent 메서드 실행됨.");
-//오류
-//		// 주소에서 전달된 값 받기
-//		String listNumber = request.getParameter("listNumber");
-//		System.out.println("JavafoodController의 deletePlayListContent 메서드를 실행하며 받은 listNumber : " + listNumber);
-//		String pl_id = request.getParameter("pl_id");
-//		System.out.println("JavafoodController의 deletePlayListContent 메서드를 실행하며 받은 pl_id : " + pl_id);
-//
-//		// 전달 받은 값을 HashMap에 넣기
-//		Map<String, String> info = new HashMap<String, String>();
-//		info.put("listNumber", listNumber);
-//		info.put("pl_id", pl_id);
-//
-//		// Service에 deletePlayListContent 메서드 실행하기.
-//		javaService.deletePlayListContent(info);
-//
-//		// playListContent 페이지로 다시 이동하기
-//		return "redirect:playListContent?pl_id=" + pl_id;
-//	}
+		// Service에서 플레이 리스트 내역을 불러오는 메서드 실행하기
+		// 메서드 실행 결과(리스트)를 필드에 담기
+		List<PlayListDTO> playListContent = javaService.selectPlayListContent(pl_id);
+		System.out.println("JavafoodController의 playListContent 리스트 크기는 : " + playListContent.size()); // 확인용
 
-//	//플레이 리스트 삭제하기
-//    @RequestMapping("deletePlayList")
-//    public String deletePlayList(HttpServletRequest request)
-//    {
-//    	System.out.println("JavafoodController의 deletePlayList 메서드 실행됨."); //확인용
-//    	
-//    	//주소에서 전달된 값 받기
-//    	String pl_id = request.getParameter("pl_id");
-//    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 pl_id : " + pl_id); //확인용
-//    	String id = request.getParameter("id");
-//    	System.out.println("JavafoodController의 deletePlayList 메서드에서 받은 id : " + id); //확인용
-//    	
-//    	//service에서 deletePlayList 메서드 실행하기
-////    	javaService.deletePlayList(id, pl_id);
-//    	
-//    	//
-//    }
+		// 리스트를 담은 필드를 모델을 통해서 보내기
+		model.addAttribute("playListContent", playListContent);
 
-	///////////////////// * 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정
-	///////////////////// *////////////////////////
-	// 메인 페이지 불러오기*/
-
+		return result;
+	}
 	
     //플레이 리스트 내역(Content)에서 곡 삭제하기
     @RequestMapping("deleteContent")
