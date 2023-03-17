@@ -264,6 +264,17 @@ public class JavafoodController {
 
 	}
 
+	@RequestMapping(value = "/beom", method = RequestMethod.GET)
+	public void selectDance() {
+		
+//		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
+		
+		// List 선언 해서 DTO 값 가져오기
+		// Service에서 selectDance 메소드 실행 ( select , 전달인자 x )
+		// Model 써야하는지 : 리스트를 담을 변수 선언 후 그 변수에 addAttribute 하여 값을 보내야하는지
+		
+	}
+	
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
@@ -388,8 +399,6 @@ public class JavafoodController {
     	return "redirect:playList";
     }
     
-    
-	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
 	public String viewMain(Model model,
@@ -411,10 +420,7 @@ public class JavafoodController {
 		List random_list = javaService.randomGenre(genre);
 		
 		//뽑은 장르를 메소드로 전달요소로 씀
-
 		model.addAttribute("gerne" ,random_list);
-		
-
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
