@@ -564,6 +564,11 @@ public class JavafoodController {
 		if (tmp_pageNum != null) {
 			pageNum = Integer.parseInt(tmp_pageNum);
 		}
+		String tmp_countPerPage = request.getParameter("countPerPage");
+		if (tmp_countPerPage != null) {
+			countPerPage = Integer.parseInt(tmp_countPerPage);
+		}
+		System.out.println("controller : " + tmp_countPerPage);
 		System.out.println("song  전: " + song);
 		System.out.println("pageNum : " + pageNum);
 		System.out.println("countPerPage : " + countPerPage);
@@ -573,6 +578,7 @@ public class JavafoodController {
 //				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 		model.addAttribute("totalCount", genre_list.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
+		
 		model.addAttribute("countPerPage", countPerPage);
 		// R&B페이징시 문제가 있어 인코딩을 해줌.
 		try {
