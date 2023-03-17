@@ -11,15 +11,15 @@
     <head>
     
     	<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+        <script link src ="script/mypageScript.js"></script>
+	    <link rel="stylesheet" href="style/mypageCSS.css?css=css">
    		
    		
-   		<c:if test="${out!=null }"><script>urseout('${out}');</script></c:if>
-        <c:if test="${loginId==null }"><script>notlogin();</script></c:if>
-        <c:if test="${out!=null }"><script>urseout();</script></c:if>
+        <c:if test="${loginId==null}"><script>notlogin();</script></c:if>
         <c:if test="${link!=null }"><script> location.href ='${link }'</script></c:if>
+        
         <meta charset="UTF-8">
         <title>My Page</title>
-	    <link rel="stylesheet" href="style/mypageCSS.css?css=css">
     </head>
      
     <body>
@@ -27,10 +27,10 @@
 		<input type="hidden" id='id' value='${loginId}'>
 <%--  		<jsp:include page="/menu.jsp" />    --%>
 	    <div class="div ddr">
-		    <div class="mume div"><h3><a class="at" href="/my_page?page=1"><c:out value="회원정보 수정"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" href="/my_page?page=2" onclick="replay('${loginId}')"><c:out value="재생기록"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" href="/my_page?page=a"><c:out value="회원정보 수정"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" href="/my_page?page=b" onclick="replay('${loginId}')"><c:out value="재생기록"/></a></h3></div>
 		    <div class="mume div" id="outsession" ><h3><a class="at"><c:out value="로그아웃"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" onclick="out('${loginId}')"><c:out value="회원탈퇴"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" id="outid"><c:out value="회원탈퇴"/></a></h3></div>
 	    </div>
 	  <%-- 
 		<c:if test="${usre!=null }">
@@ -170,6 +170,5 @@
 	            </div>
 	        </form>
 	    </c:if>   --%>
-	    <script link src ="script/mypageScript.js"></script>
-	</body>
+   	</body>
 </html>

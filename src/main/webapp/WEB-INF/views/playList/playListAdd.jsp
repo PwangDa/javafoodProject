@@ -6,9 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%
-// 	String songNumber = ""
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,11 +18,11 @@
 	<hr>
 	<c:forEach var="playList" items="${ playList }">
 		<!-- 누르면 추가함  -->
-<%-- 		<a href="javafood?javafood=3_7&pl_id=${playList.pl_id }&addWhere=<%=addWhere%>&songNumber=<%=songNumber%>&songNumbers=<%=songNumbers%>"> --%>
+		<a href="javaScript.void(0)">
 			<div class="playList">
 				<!-- 앨범 표지가 추가되면 해당 부분의 src를 수정할 것. -->
 				<img class="album" src="https://image.bugsm.co.kr/album/images/original/203228/20322838.jpg?version=undefined">
-				<div class="plText">${ playList.listTitle }</div>
+				<div class="plText">${ playList.pl_title }</div>
 			</div>
 		</a>
 	</c:forEach>

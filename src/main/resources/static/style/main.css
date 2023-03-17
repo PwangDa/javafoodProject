@@ -185,6 +185,64 @@
 
         overflow:hidden;
     }
+    
+        div.ranSongContentPage0
+    {
+        display:flex;
+        
+        margin : 0 9%;
+
+        overflow:hidden;
+    }
+        div.ranSongContentPage1
+    {
+    	margin : 0 9% 0 -820px;
+    	
+    	display:flex;
+
+        overflow:hidden;
+    }
+    div.ranSongContentPage2
+    {
+    	margin : 0 9% 0 -1640px;
+    	
+    	display:flex;
+
+        overflow:hidden;
+    }
+    div.ranSongContentPage3
+    {
+    	margin : 0 9% 0 -2460px;
+    	
+    	display:flex;
+
+        overflow:hidden;
+    }
+    div.ranSongContentPage4
+    {
+    	margin : 0 9% 0 -3280px;
+    	
+    	display:flex;
+
+        overflow:hidden;
+    }
+    
+    
+    /* 제목, 가수, 앨범명이 길 때 줄이기 */
+    div.hitListViewerSongTitle, a.hitListViewerArtistName, a.hitListViewerAlbumName
+    {
+    	border:1px solid red;
+    	overflow:hidden;
+    	white-space:nowarp;
+    	text-overflow:ellipsis;
+    }
+    
+    a.hitListViewerArtistName, a.hitListViewerAlbumName
+    {
+    	height:10px;
+    }
+    
+    
 /*     검색	테이블 		 */
     .at{
 		color: rgb(159, 159, 159); 

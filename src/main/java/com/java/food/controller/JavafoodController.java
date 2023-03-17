@@ -1,6 +1,5 @@
 package com.java.food.controller;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -38,18 +39,23 @@ public class JavafoodController {
 ////////////////////////////////////////////////////////////
 	// 다영
 	@RequestMapping(value = "/artistpage", method = RequestMethod.GET)
-	public String java1(Model model, @RequestParam("artist") String artist) {
+	public String java1(Model model, 
+			HttpServletRequest re,
+			@RequestParam("artist") String artist) {
 		System.out.println("아티스트페이지 접속");
 		System.out.println("artist >" + artist);
 		// 아티스트 소개 페이지 출력 메소드(전달요소 > 아티스트명)
 		List artist_list = javaService.getArtist(artist);
 		// 댓글 출력 메소드(전달요소 > 아티스트명)
 		List comment_list = javaService.getComment(artist);
-
+		Object id = re.getSession().getAttribute("loginId");
+		Object nic = re.getSession().getAttribute("loginNic");
+		System.out.println("id >>>>>>"+id);
+		System.out.println("nic >>>>>>"+nic);
+		
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
-
-
+		model.addAttribute("nic", nic);
 		
 		return "/artistpage";
 
@@ -91,16 +97,18 @@ public class JavafoodController {
 
 	// 대댓글 등록할 때
 	@RequestMapping(value = "/reply.do", method = RequestMethod.POST)
-	public String reply(Model model, @ModelAttribute CommentDTO dto, @RequestParam("id_2") String id,
-			@RequestParam("cont_2") String cont, @RequestParam("command_myimg") String ima,
-			@RequestParam("command_articleNO") int article, @RequestParam("arti") String arti
-	/* @RequestParam("command_articleNO") int arino */
-	) {
+	public String reply(Model model, @ModelAttribute CommentDTO dto, 
+			@RequestParam("id_2") String id,
+			@RequestParam("cont_2") String cont, 
+			@RequestParam("command_myimg") String ima,
+			@RequestParam("command_articleNO") int article, 
+			@RequestParam("arti") String arti
+			) {
 
 		System.out.println(">>>>>" + id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
-		System.out.println(">>>>>" + article);
+		System.out.println("article >>>>>" + article);
 		System.out.println(">>>>>" + arti);
 
 		dto.setComment_id(id);
@@ -119,7 +127,8 @@ public class JavafoodController {
 		System.out.println("댓글등록 메소드 접속");
 		System.out.println("아이디 >" + dto.getComment_id());
 		System.out.println("내용 >" + dto.getComment_cont());
-		int count = javaService.insertComment(dto);
+		System.out.println("ParentNO >" + dto.getParentNO());
+		int count = javaService.replyComment(dto);
 		System.out.println("count >>>" + count);
 
 		return "redirect:/artistpage?artist=" + encodeResult;
@@ -127,7 +136,9 @@ public class JavafoodController {
 
 	// 댓글 삭제할 때
 	@RequestMapping(value = "/del.do", method = { RequestMethod.GET, RequestMethod.DELETE })
-	public String delet(Model model, @ModelAttribute CommentDTO dto, @RequestParam("command_articleNO") int no,
+	public String delet(Model model, 
+			@ModelAttribute CommentDTO dto, 
+			@RequestParam("command_articleNO") int no,
 			@RequestParam("arti") String arti) {
 
 		System.out.println("댓글삭제 메소드 접속");
@@ -158,7 +169,7 @@ public class JavafoodController {
 
 		model.addAttribute("album_list", album_list);
 
-		return "hdy/Album";
+		return "/Album";
 	}
 
 	@RequestMapping(value = "/layout")
@@ -212,6 +223,8 @@ public class JavafoodController {
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
 
+
+//				return "chart/chart";
 				return "/chart";
 
 //		if(country == null ) {
@@ -234,7 +247,7 @@ public class JavafoodController {
 
 		
 //
-		// return "/chart";
+
 
 	}
 
@@ -251,6 +264,17 @@ public class JavafoodController {
 
 	}
 
+	@RequestMapping(value = "/beom", method = RequestMethod.GET)
+	public void selectDance() {
+		
+//		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
+		
+		// List 선언 해서 DTO 값 가져오기
+		// Service에서 selectDance 메소드 실행 ( select , 전달인자 x )
+		// Model 써야하는지 : 리스트를 담을 변수 선언 후 그 변수에 addAttribute 하여 값을 보내야하는지
+		
+	}
+	
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
@@ -263,8 +287,8 @@ public class JavafoodController {
 		
 		//세션에 저장된 id값 받아오기
 
-//		String id = (String)request.getSession().getAttribute("login");
-		String id = "id3"; // 테스트 용 아이디.
+		String id = (String)request.getSession().getAttribute("loginId");
+//		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
 
 		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
@@ -309,7 +333,8 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "playList"
+				+ "/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
@@ -374,11 +399,12 @@ public class JavafoodController {
     	return "redirect:playList";
     }
     
-    
-	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
-	public String viewMain(Model model) {
+	public String viewMain(Model model,
+			HttpServletRequest re,
+			@RequestParam Map<String, Object> map
+			) {
 
 		System.out.println("JavafoodController의 viewMain 메서드 실행됨.");
 		
@@ -392,28 +418,32 @@ public class JavafoodController {
 		String genre = genreList.get(randomIndex);
 
 		List random_list = javaService.randomGenre(genre);
-
-		String result = "/main";
-
-		// Service에서 인기 차트를 불러오는 메서드 실행하기
-		// 메서드 실행결과(리스트)를 필드에 담기
 		
 		//뽑은 장르를 메소드로 전달요소로 씀
-
 		model.addAttribute("gerne" ,random_list);
-		
-
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
-//		List<GenreDTO> list = javaService.
+		List<GenreDTO> list = javaService.selectHitList();
+		
+		//리스트를 모델을 이용해 담기
+		model.addAttribute("hitList", list);
 
-		return result;
+		
+		//매뉴 상단바 로그아웃
+		if(map.get("out")!=null) {
+			re.getSession().invalidate();
+		}
+		
+		
+		// main.jsp로 보내기
+		return "/main";
 	}
 
 ////////////////////////////////////////////////////////////
 	// 경용
 	
+	//로그인 페이지 이동
 	@RequestMapping(value = "/login")
 	public String loginpage(Model mo, HttpServletRequest re,
 			@RequestParam Map<String, Object> map) {
@@ -430,6 +460,7 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginId", m.get("id"));
 				re.getSession().setAttribute("loginNic", m.get("nic"));
 				re.getSession().setAttribute("loginEmail", m.get("email"));
+				re.getSession().setAttribute("loginImg", m.get("img"));
 			}
 			
 			// 회원가입
@@ -463,38 +494,53 @@ public class JavafoodController {
 		}
 	}
 	
+	//마이 페이지 이동
 	@RequestMapping("/my_page")
 	public String my_page(Model mo,
 			@RequestParam Map<String, Object> map,
 			HttpServletRequest re) {
 		
 		log.info("my_page 접속");
-		
+		System.out.println(map.get("page"));
+		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
+			
+			//페이지 이동
 			if(map.get("page") != null) {
 				
 				log.info("page 이동");
 				mo.addAttribute("page",map.get("page"));
 				
 				//로그아웃
-				if(map.get("page")=="3") {
+				if("c".equals(map.get("page"))) {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-				
-				//회원탈퇴
-				if(map.get("page")=="3") {
-					log.info("로그아웃");
-					re.getSession().invalidate();
-				}
-				
+//				}
 			}
 			
-			return "lky/My_page";
+			return "/my_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
 			return "main";
 		}
+	}
+	
+	//아자스 를 이용한 회원탈퇴
+	@RequestMapping("/my_page/out")
+	@ResponseBody
+	public int outId(
+			HttpServletRequest re
+			) {
+		log.info("회원탈퇴 시도");
+		int i = 0;
+		try {
+			i = javaService.outId( (String) re.getSession().getAttribute("loginId"));
+			re.getSession().invalidate();
+		} catch (Exception e) {
+			log.info("회원탈퇴 오류");
+		}
+		return i;
 	}
 
 ////////////////////////////////////////////////////////////

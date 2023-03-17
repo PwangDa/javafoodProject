@@ -6,19 +6,20 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.java.food.dto.CommentDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
 
 @Repository
 public class JavafoodDAOImpl implements JavafoodDAO {
-	
-//private static final Logger logger = (Logger) LoggerFactory.getLogger(JavafoodDAOImpl.class);
+
+	private static final Logger logger = LoggerFactory.getLogger(JavafoodDAOImpl.class);
 
 @Autowired
 SqlSession sqlSession;
@@ -33,10 +34,10 @@ SqlSession sqlSession;
 		 */
 		@Override
 		public List viewArtist(String artist) {
-			//logger.info("JavafoodDAOImpl > viewArtist 실행");
+			logger.info("JavafoodDAOImpl > viewArtist 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.viewArtist", artist);
-			//logger.info("Artist list.size >>>"+list.size()); 
+			logger.info("Artist list.size >>>"+list.size()); 
 			
 			return list;
 		}
@@ -48,10 +49,10 @@ SqlSession sqlSession;
 		 */
 		@Override
 		public List viewAlbum(String album) {
-			//logger.info("JavafoodDAOImpl > viewAlbum 실행");
+			logger.info("JavafoodDAOImpl > viewAlbum 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.viewAlbum", album);
-			//logger.info("Album list.size >>>"+list.size()); 
+			logger.info("Album list.size >>>"+list.size()); 
 			
 			return list;
 		}
@@ -64,21 +65,29 @@ SqlSession sqlSession;
 		 */
 		@Override
 		public List viewComment(String artist) {
-			//logger.info("JavafoodDAOImpl > viewComment 실행");
+			logger.info("JavafoodDAOImpl > viewComment 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.viewComment", artist);
-			//logger.info("Comment list.size >>>"+list.size()); 
+			logger.info("Comment list.size >>>"+list.size()); 
 			
 			return list;
 		}
 		
 		@Override
 		public int insertComment(CommentDTO dto) {
-			//logger.info("JavafoodDAOImpl > insertComment 실행");
+			logger.info("JavafoodDAOImpl > insertComment 실행");
 			int count = sqlSession.insert("mapper.javafood.plusComment", dto);
 			
 			return count;
 			
+		}
+		
+		@Override
+		public int replyComment(CommentDTO dto) {
+			logger.info("JavafoodDAOImpl > replyComment 실행");
+			int count = sqlSession.insert("mapper.javafood.replyComment", dto);
+			
+			return count;
 		}
 		
 		@Override
@@ -254,28 +263,70 @@ public void deletePlayList(Map<String, String> info)
 		System.out.println("deletePlayList 실패...");
 	}
 }
+
+@Override
+/**
+ * genre 테이블에서 인기곡 리스트 40곡을 불러옵니다.
+ * 전달인자 : 없음
+ */
+public List<GenreDTO> selectHitList()
+{
+	System.out.println("JavafoodDAOImpl의 selectHitList 메서드 실행됨."); //확인용
+	
+	//sql을 이용하여 DB에 접속해 genre 테이블의 곡 40곡 리스트를 가져오기
+	//가져온 곡 리스트를 리스트에 담기
+	List<GenreDTO> result = sqlSession.selectList("mapper.javafood.selectHitList");
+	System.out.println("selectHitList 메서드를 실행하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
+	for(int i=0; i<result.size(); i++) //확인용
+	{
+		System.out.println("result 데이터 확인중 : " + result.get(i).getSongname() );
+	}
+	
+	//담은 리스트를 리턴하기.
+	return result;
+}
 ////////////////////////////////////////////////////////////
 //경용
 /**
  * 아이디 리스트
  * @return list : 회원정보를 리턴해줍니다.
  */
+@Override
 public List<login_DTO> listID() {
 	return sqlSession.selectList("mapper.javafood.login");
 }
+
 /**
  * 회원가입
  * @param vo : 가입할 회원정보 DTO를 넣어줍니다.
+ * @return : 가입 성공 여부
  */
+@Override
 public int addId(login_DTO vo) {
 	int i =0;
 	try {
-		sqlSession.selectList("mapper.javafood.newures",vo);
+		sqlSession.insert("mapper.javafood.newures",vo);
 		i=1;
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
 	return i;
+}
+
+/**
+ * 회원탈퇴
+ * @param id : 탈퇴할 세션 아이디값.
+ * @return : 탈퇴 성공 여부
+ */
+@Override
+public int outId(String id) {
+	int a = 0;
+	try {
+		a = sqlSession.delete("mapper.javafood.outId",id);
+		sqlSession.close();
+	} catch (Exception e) {
+	}
+	return a;
 }
 ////////////////////////////////////////////////////////////
 //용준

@@ -34,7 +34,7 @@
             <div class="cont1_1">
                 <h1>${album_list[0].album_name }</h1>
                 <p>${album_list[0].artistname }</p>
-                <p>아직내용 못가져옴</p>
+                <p>${album_list[0].album_into }</p>
                 <details>
                     <summary style="color: rgb(150, 150, 150);">출처</summary>
                     <p>Wikipedia(https://ko.wikipedia.org/wiki)</p>
@@ -48,10 +48,10 @@
         	<div class= "musiclist ">
             	<div class="cont2 cont2_${loop.count}">
                 	<div class="left_item" style="color: rgb(187, 187, 187);">${loop.count}</div>
-                	<div class="left_item left_name"><a href="naver.com"><strong>${album.music_name}</strong></a></div>
+                	<div class="left_item left_name"><a href="${album.music_link}"><strong>${album.music_name}</strong></a></div>
                 	<div class="right_item">
                 	<input type="checkbox" class="but btn${loop.count}">
-                	<span class="chek1" style="color: rgb(187, 187, 187);">3:15</span>
+                	<span class="chek1" style="color: rgb(187, 187, 187);">${album.music_time}</span>
                 	</div>
             	</div>		
         	</div>

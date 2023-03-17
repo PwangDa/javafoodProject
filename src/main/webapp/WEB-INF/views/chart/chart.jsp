@@ -114,7 +114,7 @@ String country = request.getParameter("country");
 %>
 		<c:set var="pageNum2" value="<%=pageNum%>" />
 		<div class="paging">
-<% if(country.equals("대한민국") || country == null)
+<% if(country != null && country.equals("대한민국") )
 	{%>
 
 			<c:if test="<%=firstSec != 1%>">

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.java.food.controller.JavafoodController;
 import com.java.food.dao.JavafoodDAO;
 import com.java.food.dto.CommentDTO;
-import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
 
@@ -67,6 +67,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 		System.out.println("EMP Service >> insertComment 실행");
 		
 		return javaDAO.insertComment(dto);	
+	}
+	
+	@Override
+	public int replyComment(CommentDTO dto) {
+		System.out.println("EMP Service >> replyComment 실행");
+		return javaDAO.replyComment(dto);	
 	}
 	
 	@Override
@@ -138,6 +144,10 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 	}
 	
+	// genre Dance 출력 메소드
+	// 전달인자 x
+	// select 하는 메소드 생성
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기
@@ -199,6 +209,21 @@ public class JavafoodServiceImpl implements JavafoodService {
 		//받은 전달인자를 통해 dao의 deletePlayList 메서드 실행하기
 		javaDAO.deletePlayList(info);
 	}
+	
+	//범주 메인페이지 인기곡 불러오기
+	@Override
+	public List<GenreDTO> selectHitList()
+	{
+		System.out.println("JavafoodServiceImpl의 selectHitList 메서드 실행됨."); //확인용
+		
+		List<GenreDTO> result = null;
+		
+		//dao의 selectHitList 메서드 실행하기
+		//selectHitList의 결과를 리스트에 담기
+		result = javaDAO.selectHitList();
+		
+		return result;
+	}
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
@@ -218,6 +243,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 					m.put("id", list.get(i).getID());
 					m.put("nic", list.get(i).getNIC());
 					m.put("email", list.get(i).getEMAIL());
+					m.put("img", list.get(i).getIMG());
 				}
 			}
 		}
@@ -297,6 +323,18 @@ public class JavafoodServiceImpl implements JavafoodService {
 		};
 		return a;
 	}
+	
+	//회원 탈퇴
+	@Override
+	public int outId(String id) {
+		int a=0;
+		try {
+			a = javaDAO.outId(id);
+		} catch (Exception e) {
+		}
+		return a;
+	}
+	
 ////////////////////////////////////////////////////////////
 	// 용준 장르별 페이징
 
