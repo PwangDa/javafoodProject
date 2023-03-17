@@ -9,6 +9,7 @@ import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.SongHit_DTO;
 import com.java.food.dto.login_DTO;
 
 @Service
@@ -31,6 +32,9 @@ public interface JavafoodService {
 	
 	// 조회수 증가
 	void addhit(String id, String songnumber);
+	
+	// 댄스 장르 출력 메소드
+	List<FamousChartDTO> selectDance();
 	
 ////////////////////////////////////////////////////////////
 //범주
@@ -61,6 +65,8 @@ public interface JavafoodService {
 	int what (Map<String, Object> map);
 	//회원탈퇴
 	int outId(String id);
+	//로그인 재생목록
+	List<SongHit_DTO> loginplay(String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

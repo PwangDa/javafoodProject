@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
-	String id = (String)request.getSession().getAttribute("id");
+	String id = (String)request.getSession().getAttribute("loginId");
 	String pl_id = request.getParameter("pl_id");
 %>
 <!DOCTYPE html>

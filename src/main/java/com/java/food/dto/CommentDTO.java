@@ -69,8 +69,8 @@ public class CommentDTO {
 	public String getComment_id() {
 		return comment_id;
 	}
-	public void setComment_id(String comment_id) {
-		this.comment_id = comment_id;
+	public void setComment_id(String nic) {
+		this.comment_id = nic;
 	}
 	public String getComment_cont() {
 		return comment_cont;

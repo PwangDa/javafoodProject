@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><tiles:insertAttribute name="title" /></title>
 <style>
  
       .hea {

@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 import com.java.food.controller.JavafoodController;
 import com.java.food.dao.JavafoodDAO;
 import com.java.food.dto.CommentDTO;
+import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.SongHit_DTO;
 import com.java.food.dto.login_DTO;
 
 @Service
@@ -148,6 +150,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 	// 전달인자 x
 	// select 하는 메소드 생성
 	
+	public List<FamousChartDTO> selectDance(){
+		
+		List<FamousChartDTO> page = null;
+		
+		 page = javaDAO.selectDance();
+		
+		return page;
+	}
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기
@@ -257,28 +268,34 @@ public class JavafoodServiceImpl implements JavafoodService {
 	//회원가입
 	@Override
 	public int addid (Map<String, Object> map) {
-		log.info("회원가입 시도");
-		
-		login_DTO dto = new login_DTO();
-		
-		dto.setID( (String) map.get("Id1") );
-		dto.setPWD( (String) map.get("PW1") );
-		dto.setNIC( (String) map.get("nic") );
-		dto.setEMAIL( (String) map.get("mail") );
-		dto.setPN( (String) map.get("pn1")+"-"+map.get("pn2") );
-		dto.setPHONE( (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3") );
-		
-		log.info(dto.getID());
-		log.info(dto.getNIC());
-		log.info(dto.getPWD());
-		log.info(dto.getPN());
-		log.info(dto.getEMAIL());
-		log.info(dto.getPHONE());
+		log.info("회원가입");
+		login_DTO dto = null;
+		try {
+			log.info("회원시도");
+			dto = new login_DTO();
+			dto.setID( (String) map.get("Id1") );
+			dto.setPWD( (String) map.get("PW1") );
+			dto.setNIC( (String) map.get("nic") );
+			dto.setEMAIL( (String) map.get("mail") );
+			dto.setPN( (String) map.get("pn1")+"-"+map.get("pn2") );
+			dto.setPHONE( (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3") );
+			
+			log.info(dto.getID());
+			log.info(dto.getNIC());
+			log.info(dto.getPWD());
+			log.info(dto.getPN());
+			log.info(dto.getEMAIL());
+			log.info(dto.getPHONE());
+			
+			log.info("회원가입 성공");
+		} catch (Exception e) {
+			log.info("회원실패");
+		}
 		
 		return javaDAO.addId(dto);
 	}
 	
-	//아자스로 회원가입 시 중복체크
+	//아자스로 회원값 중복체크
 	@Override
 	public int what(Map<String, Object> map) {
 		log.info("ajax 중복체크 실행");
@@ -327,12 +344,22 @@ public class JavafoodServiceImpl implements JavafoodService {
 	//회원 탈퇴
 	@Override
 	public int outId(String id) {
+		log.info("회원시작");
 		int a=0;
 		try {
 			a = javaDAO.outId(id);
+			log.info("회원탈퇴");
 		} catch (Exception e) {
+			log.info("회원실패");
 		}
 		return a;
+	}
+	
+	// 로그인 회원 재생목록
+	@Override
+	public List<SongHit_DTO> loginplay(String id){
+		List<SongHit_DTO> list = javaDAO.loginplay(id);
+		return list;
 	}
 	
 ////////////////////////////////////////////////////////////

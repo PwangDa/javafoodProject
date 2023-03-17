@@ -24,6 +24,7 @@
 		
 		<!-- 경용 -->
 		<typeAlias type="com.java.food.dto.login_DTO" alias="loginDTO" />
+		<typeAlias type="com.java.food.dto.SongHit_DTO" alias="SongHit_DTO" />
 	</typeAliases>
 </configuration>
 

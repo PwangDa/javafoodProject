@@ -50,12 +50,14 @@ public class JavafoodController {
 		List comment_list = javaService.getComment(artist);
 		Object id = re.getSession().getAttribute("loginId");
 		Object nic = re.getSession().getAttribute("loginNic");
+		Object img = re.getSession().getAttribute("loginImg");
 		System.out.println("id >>>>>>"+id);
 		System.out.println("nic >>>>>>"+nic);
 		
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
 		model.addAttribute("nic", nic);
+		model.addAttribute("img", img);
 		
 		return "/artistpage";
 
@@ -63,22 +65,32 @@ public class JavafoodController {
 
 	// 댓글 등록 할 때
 	@RequestMapping(value = "/insert.do", method = RequestMethod.POST)
-	public String insert(Model model, @ModelAttribute CommentDTO dto, @RequestParam("id") String id,
-			@RequestParam("cont") String cont, @RequestParam("myimg") String ima,
-			@RequestParam("songnum") String songnum, @RequestParam("arti") String arti
+	public String insert(Model model, 
+			HttpServletRequest re,
+			@ModelAttribute CommentDTO dto, 
+			@RequestParam("id") String id,
+			@RequestParam("cont") String cont, 
+			@RequestParam("myimg") String ima,
+			@RequestParam("songnum") String songnum, 
+			@RequestParam("arti") String arti
 	/* @RequestParam("command_articleNO") int arino */
 	) {
 
-		System.out.println(">>>>>" + id);
+		Object login_id = re.getSession().getAttribute("loginId");
+		Object nic = re.getSession().getAttribute("loginNic");
+		Object img = re.getSession().getAttribute("loginImg");
+		
+		System.out.println(">>>>>" + login_id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
-		System.out.println(">>>>>" + songnum);
+		System.out.println(">>>>>" + nic);
 		System.out.println(">>>>>" + arti);
 
-		dto.setComment_id(id);
+		dto.setComment_id((String)nic);
 		dto.setComment_cont(cont);
-		dto.setMyimg(ima);
+		dto.setMyimg((String) img);
 		dto.setArtistname(arti);
+		dto.setId((String)login_id);
 		String encodeResult = null;
 		try {
 			encodeResult = URLEncoder.encode(arti, "UTF-8");
@@ -265,14 +277,20 @@ public class JavafoodController {
 	}
 
 	@RequestMapping(value = "/beom", method = RequestMethod.GET)
-	public void selectDance() {
+	public String selectDance(Model model) {
 		
-//		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
+		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
 		
 		// List 선언 해서 DTO 값 가져오기
 		// Service에서 selectDance 메소드 실행 ( select , 전달인자 x )
-		// Model 써야하는지 : 리스트를 담을 변수 선언 후 그 변수에 addAttribute 하여 값을 보내야하는지
+		  List<FamousChartDTO> list = javaService.selectDance();
 		
+		// Model 써서 addAttribute 해서 값 전달
+		 model.addAttribute("list", list); 
+		 
+		
+		// db에서 모든 db를 list로 가지고온다 -> jsp에 출력
+		return page;
 	}
 	
 ////////////////////////////////////////////////////////////
@@ -286,10 +304,14 @@ public class JavafoodController {
 		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
 		
 		//세션에 저장된 id값 받아오기
-
 		String id = (String)request.getSession().getAttribute("loginId");
 //		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
+		
+		if(id == null)
+		{
+			return "lky/login";
+		}
 
 		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
 		// 메서드 실행 결과(리스트)를 필드에 담기
@@ -432,6 +454,7 @@ public class JavafoodController {
 		
 		//매뉴 상단바 로그아웃
 		if(map.get("out")!=null) {
+			log.info("로그아웃 시작");
 			re.getSession().invalidate();
 		}
 		
@@ -465,6 +488,7 @@ public class JavafoodController {
 			
 			// 회원가입
 			if (map.get("Id1") != null) {
+				log.info("회원가입 시작");
 				mo.addAttribute("good",javaService.addid(map));
 			}
 	
@@ -487,6 +511,7 @@ public class JavafoodController {
 		log.info("ajax 실행");
 		
 		try {
+			log.info("ajax 중복값 확인");
 			return javaService.what(map);
 		} catch (Exception e) {
 			log.info("ajax 실패");
@@ -501,8 +526,6 @@ public class JavafoodController {
 			HttpServletRequest re) {
 		
 		log.info("my_page 접속");
-		System.out.println(map.get("page"));
-		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
 			
 			//페이지 이동
@@ -516,7 +539,11 @@ public class JavafoodController {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-//				}
+				//회원 재생목록 가져오기
+				if("a".equals(map.get("page"))) {
+					mo.addAttribute("playlist",javaService.loginplay(
+							(String) re.getSession().getAttribute("loginId")) );
+				}
 			}
 			
 			return "/my_page";
@@ -525,6 +552,8 @@ public class JavafoodController {
 			return "main";
 		}
 	}
+	
+	
 	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")
@@ -537,6 +566,7 @@ public class JavafoodController {
 		try {
 			i = javaService.outId( (String) re.getSession().getAttribute("loginId"));
 			re.getSession().invalidate();
+			log.info("회원탈퇴 성공");
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
 		}
