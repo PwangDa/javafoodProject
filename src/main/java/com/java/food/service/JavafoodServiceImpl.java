@@ -239,6 +239,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 					m.put("id", list.get(i).getID());
 					m.put("nic", list.get(i).getNIC());
 					m.put("email", list.get(i).getEMAIL());
+					m.put("img", list.get(i).getIMG());
 				}
 			}
 		}
@@ -318,6 +319,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		};
 		return a;
 	}
+	
 	//회원 탈퇴
 	@Override
 	public int outId(String id) {
