@@ -112,6 +112,11 @@
         .img1{
             width: 60px;
         }
+        
+        .img2{
+            width: 30px;
+            cursor: pointer;
+        }
 
         .detail{
             text-align: center;

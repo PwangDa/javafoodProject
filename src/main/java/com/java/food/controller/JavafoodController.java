@@ -149,13 +149,17 @@ public class JavafoodController {
 	// 댓글 삭제할 때
 	@RequestMapping(value = "/del.do", method = { RequestMethod.GET, RequestMethod.DELETE })
 	public String delet(Model model, 
+			HttpServletRequest re,
 			@ModelAttribute CommentDTO dto, 
 			@RequestParam("command_articleNO") int no,
 			@RequestParam("arti") String arti) {
 
+		Object nic_o = re.getSession().getAttribute("loginNic");
 		System.out.println("댓글삭제 메소드 접속");
 		System.out.println("no>>>>>" + no);
 		System.out.println("arti>>>>>" + arti);
+		System.out.println("nic_o>>>>>" + nic_o);
+		
 
 		int article = javaService.delComment(no);
 
@@ -607,13 +611,13 @@ public class JavafoodController {
 //				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 		model.addAttribute("totalCount", genre_list.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
-		
 		model.addAttribute("countPerPage", countPerPage);
+		model.addAttribute("song2", song);
+		
 		// R&B페이징시 문제가 있어 인코딩을 해줌.
 		try {
 			song = URLEncoder.encode(song, "utf-8");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("song", song);

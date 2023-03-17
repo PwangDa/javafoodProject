@@ -79,7 +79,7 @@ public interface JavafoodDAO {
 	List getGenre(String genre, int start, int end);
 	
 	// 페이징
-	int pagetotal();
+	int pagetotal(String song);
 	
 	// 최신음악
 	List getMusic(int start, int end);

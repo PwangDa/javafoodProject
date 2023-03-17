@@ -91,12 +91,12 @@
    
        /*체크박스가 체크되면 유지되게. */  
        /* > 는 자식요소 / ~는 모두다 /+형제에서 다음형제?*/
-        .but:checked + span{
-        	display : none;
+          .but:checked + span{
+        	display : block;
         }
         .but:checked {
         	display : block;
-        }
+        }  
         
         
         
@@ -117,15 +117,15 @@
             	display : none;
             }
             
-            input[type="checkbox"]::before {
+             input[type="checkbox"]::before {
                 content: "\2713";
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                overflow: hidden;
+               /*  overflow: hidden; */
                 transform: scale(0) translate(-50%, -50%);
                 line-height: 1;
-            }
+            } 
 
             input[type="checkbox"]:checked {
                 background-color: #adadad;

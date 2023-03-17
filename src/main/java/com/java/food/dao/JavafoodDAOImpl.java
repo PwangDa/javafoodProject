@@ -376,8 +376,8 @@ public List<SongHit_DTO> loginplay(String id) {
 	}
 	
 	// 장르 페이징
-	public int pagetotal() {
-		int totalcnt = sqlSession.selectOne("mapper.javafood.pagetotal");
+	public int pagetotal(String song) {
+		int totalcnt = sqlSession.selectOne("mapper.javafood.pagetotal",song);
 		System.out.println(totalcnt);
 		return totalcnt;
 	}
