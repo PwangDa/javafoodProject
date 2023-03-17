@@ -310,7 +310,7 @@ public class JavafoodController {
 		
 		if(id == null)
 		{
-			return "login";
+			return "lky/login";
 		}
 
 		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
