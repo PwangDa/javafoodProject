@@ -20,7 +20,9 @@
 <title>GENRE</title>
 <link rel="stylesheet" href="/style/genre.css">
 
-       
+<script>
+	let addres = '/genre?genre=${song}&pageNum=${pageNum}&countPerPage='
+</script>       
 </head>
 <body>
 
@@ -32,10 +34,10 @@
     <div id="home">
         <h1><a href='http://localhost:8080/genre'>장르</a></h1>
         
-        <select name="page_rows" class="selectbox">
-		<option value="5">5개</option>
-		<option value="10">10개</option>
-		<option value="20">20개</option>
+        <select id="select" name="count_list" class="selectbox" onchange="changeSelection()">
+		<option value="5" <c:if test="${countPerPage eq 5}">selected</c:if>>5개</option>
+		<option value="10"<c:if test="${empty countPerPage || countPerPage eq 10}">selected</c:if>>10개</option>
+		<option value="20"<c:if test="${countPerPage eq 20}">selected</c:if>>20개</option>
 		</select>
        <c:choose>
 		<c:when test="${song eq '발라드'}"> 
@@ -222,7 +224,7 @@
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + totalCount);
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + pageNum);
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + countPerPage);
-	int lastPage = (int)Math.ceil( ((double)totalCount / countPerPage) / countPerPage);
+	int lastPage = (int)Math.ceil( ((double)totalCount / countPerPage) / 10);
 	int section = 2; // 페이징 보여줄 갯수
 	
 	int sec_position = ( ((int) Math.ceil( (double)pageNum / section )) -1 );
@@ -248,7 +250,7 @@
 		<img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 	<c:if test="<%= firstSec != 1 %>"> 
-		<a href="/genre?genre=${ song}&pageNum=<%= firstSec-1 %>"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
+		<a href="/genre?genre=${ song}&pageNum=<%= firstSec-1 %>&countPerPage=${countPerPage}"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 
 	<c:forEach var="i" begin="<%= firstSec %>" end="<%= lastSec %>" >
@@ -261,7 +263,7 @@
 	</c:forEach>
 
 	<c:if test="<%= lastSec != lastPage %>">
-		<a href="/genre?genre=${ song}&pageNum=<%= lastSec+1 %>"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
+		<a href="/genre?genre=${ song}&pageNum=<%= lastSec+1 %>&countPerPage=${countPerPage}"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
 	</c:if>
 	<c:if test="<%= lastSec == lastPage %>">
 		<img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>

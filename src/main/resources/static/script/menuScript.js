@@ -23,8 +23,10 @@ $('#di').on('mouseleave',function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //로그인 했을때 로그아웃
 $('#outId').on('click',function (){
-	if (confirm('정말 로그아웃을 하겠습니까?')) 
-		location.href = '/my_page?page=c'
+	if (confirm('정말 로그아웃을 하겠습니까?')){
+		location.href = '/main?out=out'
+		alert('로그아웃이 성공했습니다.')
+	} 
     else 
     	alert('취소하였습니다.');
     })

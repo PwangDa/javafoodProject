@@ -101,10 +101,10 @@
                 <c:if test="${empty nic}">
                     <div class="text2">
                         <img class="image1" name="ima" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
-                        <input class="input1" type="text" name="id" placeholder="로그인을 해주세요"  >
+                        <input class="input1" type="text" name="id" placeholder="로그인을 해주세요"  disabled>
                     </div>
                     <div class="text2">
-                        <textarea class="text_area" name="cont" placeholder="*로그인을 해주세요" ></textarea>
+                        <textarea class="text_area" name="cont" placeholder="*로그인을 해주세요"  disabled></textarea>
                     </div>
                     <div class="text2">
                         <input class="btn" type="submit" value="등록">
@@ -112,7 +112,7 @@
                 </c:if>
                 <c:if test="${not empty nic}">
                     <div class="text2">
-                        <img class="image1" src="${nic[0].myimg }">
+                        <img class="image1" src="${img }">
                         <input class="input1" type="text" name="id" placeholder="${nic }" value="${nic }" readonly>
                     </div>
                     <div class="text2">
@@ -123,7 +123,7 @@
                     </div>
                 </c:if>
                     <input type ="hidden" name="songnum" value="${album_list[0].songnumber }">
-                    <input type ="hidden" name="myimg" value="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
+                    <input type ="hidden" name="myimg" value="${img }">
                     <input type ="hidden" name="arti" value="${album_list[0].artistname}">
                     <%-- <input type ="hidden" name="myimg" value="${login_dto[0].myimg }"> --%>
                 </div>
@@ -146,12 +146,12 @@
 		                   		 	<summary style="color: rgb(150, 150, 150);">답글달기</summary>
 		                   		 	<form name="frmComment_2" method="post" action="/reply.do">
 			                    		<div class="comment" >
-						                        <img class="image3" src="${login_dto[0].myimg }">
-						                        <input class="input2" type="text" name="id_2" placeholder=" ID" >
-						                        <input class="input3" type="text" name="cont_2" placeholder="답글 추가...">
+						                        <img class="image3" src="${img }">
+						                        <input class="input2" type="text" name="id_2" placeholder="ID" value="${nic}"  readonly>
+						                        <input class="input3" type="text" name="cont_2" placeholder="답글 추가..." >
 						                        <input class="btn1" type="submit" value="답글"> 
 						                    	<input type ="hidden" name="command_articleNO" value="${comment.articleNO }">
-						                    	<input type ="hidden" name="command_myimg" value="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
+						                    	<input type ="hidden" name="command_myimg" value="${img }">
 <%-- 						                    	<input type ="hidden" name="command_myimg" value="${login_dto[0].myimg }"> --%>
 												<input type ="hidden" name="arti" value="${album_list[0].artistname}">
 			                			</div>

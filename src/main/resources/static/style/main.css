@@ -228,6 +228,21 @@
     }
     
     
+    /* 제목, 가수, 앨범명이 길 때 줄이기 */
+    div.hitListViewerSongTitle, a.hitListViewerArtistName, a.hitListViewerAlbumName
+    {
+    	border:1px solid red;
+    	overflow:hidden;
+    	white-space:nowarp;
+    	text-overflow:ellipsis;
+    }
+    
+    a.hitListViewerArtistName, a.hitListViewerAlbumName
+    {
+    	height:10px;
+    }
+    
+    
 /*     검색	테이블 		 */
     .at{
 		color: rgb(159, 159, 159); 

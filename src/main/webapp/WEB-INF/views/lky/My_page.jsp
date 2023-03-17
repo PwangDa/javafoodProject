@@ -25,7 +25,6 @@
     <body>
  	  
 		<input type="hidden" id='id' value='${loginId}'>
-<%--  		<jsp:include page="/menu.jsp" />    --%>
 	    <div class="div ddr">
 		    <div class="mume div"><h3><a class="at" href="/my_page?page=a"><c:out value="회원정보 수정"/></a></h3></div>
 		    <div class="mume div"><h3><a class="at" href="/my_page?page=b" onclick="replay('${loginId}')"><c:out value="재생기록"/></a></h3></div>
