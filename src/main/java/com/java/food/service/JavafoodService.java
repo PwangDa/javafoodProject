@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
 
@@ -47,6 +48,9 @@ public interface JavafoodService {
 	
 	//플레이 리스트 제거하기
 	void deletePlayList(Map<String, String> info);
+	
+	//메인페이지 인기곡 불러오기
+	List<GenreDTO> selectHitList();
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.java.food.dto.CommentDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
 
@@ -261,6 +262,24 @@ public void deletePlayList(Map<String, String> info)
 	{
 		System.out.println("deletePlayList 실패...");
 	}
+}
+
+@Override
+/**
+ * genre 테이블에서 인기곡 리스트 40곡을 불러옵니다.
+ * 전달인자 : 없음
+ */
+public List<GenreDTO> selectHitList()
+{
+	System.out.println("JavafoodDAOImpl의 selectHitList 메서드 실행됨."); //확인용
+	
+	//sql을 이용하여 DB에 접속해 genre 테이블의 곡 40곡 리스트를 가져오기
+	//가져온 곡 리스트를 리스트에 담기
+	List<GenreDTO> result = sqlSession.selectList("mapper.javafood.selectHitList");
+	System.out.println("selectHitList 메서드를 실행하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
+	
+	//담은 리스트를 리턴하기.
+	return result;
 }
 ////////////////////////////////////////////////////////////
 //경용
