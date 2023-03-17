@@ -21,6 +21,15 @@
 		WHERE i.MUSIC_NUM = 1 AND ARTISTNAME = #{artistname}
 	</select>
 	
+	<!-- 아티스트소개 페이지 -->
+	<select id="viewArtist1" resultType="albumDTO" parameterType="String">
+		SELECT * 
+		FROM #{artistname} arti
+		LEFT JOIN ALBUM_1 al ON (al.ARTISTNAME  = arti.ARTISTNAME)
+		LEFT JOIN intoAlbum_1 i ON (al.ALBUM_NAME = i.ALBUM_NAME)
+		WHERE i.MUSIC_NUM = 1 AND al.ARTISTNAME = #{artistname}
+	</select>
+	
 	<insert id="plusArtist" parameterType="String">
 		insert into album
 		(album_num, album_cover, album_name, album_into, artistname, artist_img, artist_info)";

@@ -497,7 +497,7 @@ public class JavafoodController {
 				
 			}
 			
-			return "lky/My_page";
+			return "/my_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
 			return "main";
