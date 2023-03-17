@@ -82,6 +82,14 @@ SqlSession sqlSession;
 		}
 		
 		@Override
+		public int replyComment(CommentDTO dto) {
+			logger.info("JavafoodDAOImpl > replyComment 실행");
+			int count = sqlSession.insert("mapper.javafood.replyComment", dto);
+			
+			return count;
+		}
+		
+		@Override
 		public int delComment(int articleNO) {
 			//logger.info("JavafoodDAOImpl > delComment 실행");
 			int article = sqlSession.insert("mapper.javafood.delComment", articleNO);

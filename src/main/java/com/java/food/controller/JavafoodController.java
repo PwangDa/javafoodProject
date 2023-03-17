@@ -94,13 +94,12 @@ public class JavafoodController {
 			@RequestParam("command_myimg") String ima,
 			@RequestParam("command_articleNO") int article, 
 			@RequestParam("arti") String arti
-	/* @RequestParam("command_articleNO") int arino */
-	) {
+			) {
 
 		System.out.println(">>>>>" + id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
-		System.out.println(">>>>>" + article);
+		System.out.println("article >>>>>" + article);
 		System.out.println(">>>>>" + arti);
 
 		dto.setComment_id(id);
@@ -119,7 +118,8 @@ public class JavafoodController {
 		System.out.println("댓글등록 메소드 접속");
 		System.out.println("아이디 >" + dto.getComment_id());
 		System.out.println("내용 >" + dto.getComment_cont());
-		int count = javaService.insertComment(dto);
+		System.out.println("ParentNO >" + dto.getParentNO());
+		int count = javaService.replyComment(dto);
 		System.out.println("count >>>" + count);
 
 		return "redirect:/artistpage?artist=" + encodeResult;
@@ -127,7 +127,9 @@ public class JavafoodController {
 
 	// 댓글 삭제할 때
 	@RequestMapping(value = "/del.do", method = { RequestMethod.GET, RequestMethod.DELETE })
-	public String delet(Model model, @ModelAttribute CommentDTO dto, @RequestParam("command_articleNO") int no,
+	public String delet(Model model, 
+			@ModelAttribute CommentDTO dto, 
+			@RequestParam("command_articleNO") int no,
 			@RequestParam("arti") String arti) {
 
 		System.out.println("댓글삭제 메소드 접속");

@@ -169,7 +169,7 @@
                         
 	             	</c:if>
                     	<%--대댓글 등록했을 때 form --%>
-	             		<form name="frmComment_2" method="post" action="/javafood_team/javafood?javafood=1&command=delcommnet.do">
+	             		<form name="frmComment_2" action="/del.do">
 			            	<c:if test="${comment.level >= 2}">
 			            		<div class="reply">
 				        			<div class="comment_1">
@@ -177,7 +177,9 @@
 						                    <img class="image3" src="${comment.myimg }">
 						                    <p class="comment_1_1">${comment.comment_id }</p>
 						                    <p class="comment_1_1" style="color: rgb(113, 113, 113);">${comment.comment_Date }</p>
-						                    <a href="/javafood_team/javafood?javafood=ArtistList&num=${album_list[0].songnumber }&command=delcommnet.do&articleNO=${comment.articleNO }"><button class="btn1 comment_1_2 btn_del"  type="button"> 삭제</button></a>
+						                    <input class="btn1 comment_1_2 btn_del"  type="submit" value="삭제">
+						                    <input type ="hidden" name="command_articleNO" value="${comment.articleNO }">
+											<input type ="hidden" name="arti" value="${album_list[0].artistname}"> 
 				        			</div>
 				        			<div class="comment_1_3">
 				                        <span class="comment_1_4" style="margin-right :70px;"></span>
