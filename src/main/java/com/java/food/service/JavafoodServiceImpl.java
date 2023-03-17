@@ -138,6 +138,10 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 	}
 	
+	// genre Dance 출력 메소드
+	// 전달인자 x
+	// select 하는 메소드 생성
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기

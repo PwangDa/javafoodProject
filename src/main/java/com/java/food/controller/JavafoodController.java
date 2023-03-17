@@ -253,6 +253,17 @@ public class JavafoodController {
 
 	}
 
+	@RequestMapping(value = "/beom", method = RequestMethod.GET)
+	public void selectDance() {
+		
+//		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
+		
+		// List 선언 해서 DTO 값 가져오기
+		// Service에서 selectDance 메소드 실행 ( select , 전달인자 x )
+		// Model 써야하는지 : 리스트를 담을 변수 선언 후 그 변수에 addAttribute 하여 값을 보내야하는지
+		
+	}
+	
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
