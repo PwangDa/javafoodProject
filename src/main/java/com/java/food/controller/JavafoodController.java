@@ -432,6 +432,7 @@ public class JavafoodController {
 		
 		//매뉴 상단바 로그아웃
 		if(map.get("out")!=null) {
+			log.info("로그아웃 시작");
 			re.getSession().invalidate();
 		}
 		
@@ -465,6 +466,7 @@ public class JavafoodController {
 			
 			// 회원가입
 			if (map.get("Id1") != null) {
+				log.info("회원가입 시작");
 				mo.addAttribute("good",javaService.addid(map));
 			}
 	
@@ -487,6 +489,7 @@ public class JavafoodController {
 		log.info("ajax 실행");
 		
 		try {
+			log.info("ajax 중복값 확인");
 			return javaService.what(map);
 		} catch (Exception e) {
 			log.info("ajax 실패");
@@ -501,8 +504,6 @@ public class JavafoodController {
 			HttpServletRequest re) {
 		
 		log.info("my_page 접속");
-		System.out.println(map.get("page"));
-		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
 			
 			//페이지 이동
@@ -537,6 +538,7 @@ public class JavafoodController {
 		try {
 			i = javaService.outId( (String) re.getSession().getAttribute("loginId"));
 			re.getSession().invalidate();
+			log.info("회원탈퇴 성공");
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
 		}
