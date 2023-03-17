@@ -412,6 +412,7 @@ public class JavafoodController {
 		//리스트를 모델을 이용해 담기
 		model.addAttribute("hitList", list);
 
+		
 		// main.jsp로 보내기
 		return "/main";
 	}
@@ -435,6 +436,7 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginId", m.get("id"));
 				re.getSession().setAttribute("loginNic", m.get("nic"));
 				re.getSession().setAttribute("loginEmail", m.get("email"));
+				re.getSession().setAttribute("loginImg", m.get("img"));
 			}
 			
 			// 회원가입
@@ -497,6 +499,10 @@ public class JavafoodController {
 			log.info("my_page 오류");
 			return "main";
 		}
+	}
+	@RequestMapping("loginOut")
+	public String loginOut() {
+		return "/main";
 	}
 	
 	//아자스 를 이용한 회원탈퇴

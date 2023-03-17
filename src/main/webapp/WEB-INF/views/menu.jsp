@@ -15,7 +15,7 @@
 	
     <header id ="menu" style="display: inline-block;" >
         <span style="font-size: 34px; font-weight: 600; cursor: pointer;">
-        <a href="javafood?javafood=m" class="a1"><img src="https://c11.kr/1asbb" class="logo-img">Music</a>
+        <a href="/main" class="a1"><img src="https://c11.kr/1asbb" class="logo-img">Music</a>
         </span>
         <div class="menu-box">
             <a href="/main" class="a1"><span class="main main_1" >홈</span></a>
@@ -31,24 +31,24 @@
             </div>
         </div>
         <span id="spa" class="abc">
-	        <c:if test="${lo[0].myimg!=null}">
-		        <a href="javafood?javafood=5"><img class="menu-img" src=" ${lo[0].myimg }"></a>
+	        <c:if test="${loginImg!=null}">
+		        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
 	        </c:if>
-	        <c:if test="${lo[0].myimg==null}">
-				<a href="javafood?javafood=5"><img class="menu-img" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png"></a>
+	        <c:if test="${loginImg==null}">
+				<a href="/my_page"><img class="menu-img" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png"></a>
 	        </c:if>
     	</span>
         
     </header>
     <div id="di">
-		<a class="at" href="javafood?javafood=5">마이페이지</a><br>
+		<a class="at" href="/my_page">마이페이지</a><br>
 		<a class="at" href="/main">메인</a><br>
 		<a class="at" href="/playList">보관함</a><br>
-		<c:if test="${login==null }">
+		<c:if test="${loginId==null }">
 			<a class="at" href="/login">로그인</a><br>
 		</c:if>
-		<c:if test="${login!=null }">
-			<a class="at" href="#" onclick="outt(${id})">로그아웃</a><br>
+		<c:if test="${loginId!=null }">
+			<a class="at" id="outId">로그아웃</a><br>
 		</c:if>
 	</div>
 	
