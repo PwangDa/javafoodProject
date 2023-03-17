@@ -149,13 +149,17 @@ public class JavafoodController {
 	// 댓글 삭제할 때
 	@RequestMapping(value = "/del.do", method = { RequestMethod.GET, RequestMethod.DELETE })
 	public String delet(Model model, 
+			HttpServletRequest re,
 			@ModelAttribute CommentDTO dto, 
 			@RequestParam("command_articleNO") int no,
 			@RequestParam("arti") String arti) {
 
+		Object nic_o = re.getSession().getAttribute("loginNic");
 		System.out.println("댓글삭제 메소드 접속");
 		System.out.println("no>>>>>" + no);
 		System.out.println("arti>>>>>" + arti);
+		System.out.println("nic_o>>>>>" + nic_o);
+		
 
 		int article = javaService.delComment(no);
 

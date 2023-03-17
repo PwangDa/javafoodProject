@@ -12,15 +12,15 @@
 <title>Album TTTest</title>
 <script link src ="/script/albumScript.js"></script>
 <style>       
-        <c:forEach var="album" items="${album_list}" varStatus="loop"> 
+         <c:forEach var="album" items="${album_list}" varStatus="loop"> 
         	.cont2_${loop.count}:hover span{
-        		display : none;
+        		display : block;
         	}
   
         	.cont2_${loop.count}:hover .but{
         		display : block;
         	}       
-        </c:forEach>
+        </c:forEach> 
 </style>
 <link rel="stylesheet" href="/style/albumCSS.css?css=css">
 </head>
@@ -47,10 +47,10 @@
         <c:forEach var="album" items="${album_list}" varStatus="loop">
         	<div class= "musiclist ">
             	<div class="cont2 cont2_${loop.count}">
+                	<input type="checkbox" class="but btn${loop.count}">
                 	<div class="left_item" style="color: rgb(187, 187, 187);">${loop.count}</div>
                 	<div class="left_item left_name"><a href="${album.music_link}"><strong>${album.music_name}</strong></a></div>
                 	<div class="right_item">
-                	<input type="checkbox" class="but btn${loop.count}">
                 	<span class="chek1" style="color: rgb(187, 187, 187);">${album.music_time}</span>
                 	</div>
             	</div>		
