@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,8 +17,8 @@ import com.java.food.dto.login_DTO;
 
 @Repository
 public class JavafoodDAOImpl implements JavafoodDAO {
-	
-//private static final Logger logger = (Logger) LoggerFactory.getLogger(JavafoodDAOImpl.class);
+
+	private static final Logger logger = LoggerFactory.getLogger(JavafoodDAOImpl.class);
 
 @Autowired
 SqlSession sqlSession;
@@ -33,10 +33,10 @@ SqlSession sqlSession;
 		 */
 		@Override
 		public List viewArtist(String artist) {
-			//logger.info("JavafoodDAOImpl > viewArtist 실행");
+			logger.info("JavafoodDAOImpl > viewArtist 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.viewArtist", artist);
-			//logger.info("Artist list.size >>>"+list.size()); 
+			logger.info("Artist list.size >>>"+list.size()); 
 			
 			return list;
 		}
@@ -48,10 +48,10 @@ SqlSession sqlSession;
 		 */
 		@Override
 		public List viewAlbum(String album) {
-			//logger.info("JavafoodDAOImpl > viewAlbum 실행");
+			logger.info("JavafoodDAOImpl > viewAlbum 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.viewAlbum", album);
-			//logger.info("Album list.size >>>"+list.size()); 
+			logger.info("Album list.size >>>"+list.size()); 
 			
 			return list;
 		}
@@ -64,17 +64,17 @@ SqlSession sqlSession;
 		 */
 		@Override
 		public List viewComment(String artist) {
-			//logger.info("JavafoodDAOImpl > viewComment 실행");
+			logger.info("JavafoodDAOImpl > viewComment 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.viewComment", artist);
-			//logger.info("Comment list.size >>>"+list.size()); 
+			logger.info("Comment list.size >>>"+list.size()); 
 			
 			return list;
 		}
 		
 		@Override
 		public int insertComment(CommentDTO dto) {
-			//logger.info("JavafoodDAOImpl > insertComment 실행");
+			logger.info("JavafoodDAOImpl > insertComment 실행");
 			int count = sqlSession.insert("mapper.javafood.plusComment", dto);
 			
 			return count;
