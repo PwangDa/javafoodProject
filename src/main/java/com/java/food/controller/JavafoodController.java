@@ -213,7 +213,7 @@ public class JavafoodController {
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
 
-				return "chart/chart";
+//				return "chart/chart";
 
 //		if(country == null ) {
 //			country = "대한민국";
@@ -235,7 +235,7 @@ public class JavafoodController {
 
 		
 //
-		// return "/chart";
+		return "/chart";
 
 	}
 
