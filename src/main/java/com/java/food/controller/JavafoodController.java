@@ -399,8 +399,6 @@ public class JavafoodController {
     	return "redirect:playList";
     }
     
-    
-	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
 	public String viewMain(Model model) {
@@ -419,10 +417,7 @@ public class JavafoodController {
 		List random_list = javaService.randomGenre(genre);
 		
 		//뽑은 장르를 메소드로 전달요소로 씀
-
 		model.addAttribute("gerne" ,random_list);
-		
-
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
