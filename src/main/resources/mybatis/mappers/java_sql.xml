@@ -107,8 +107,9 @@
 	</select>
 	
 	<!-- 장르 페이징 -->
-	<select id="pagetotal" resultType="int">
+	<select id="pagetotal" resultType="int" parameterType="String">
 		SELECT count(*) cnt FROM  Genre
+		<!-- WHERE BYGENRE = #{genre} -->
 	</select>
 	
 	<!-- 최신 TOP100-->
