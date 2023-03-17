@@ -544,16 +544,22 @@ public class JavafoodController {
 					re.getSession().invalidate();
 				}
 				//회원 재생목록 가져오기
-				if("a".equals(map.get("page"))) {
+				if("b".equals(map.get("page"))) {
+					System.out.println("page가져오기");
+					
+					System.out.println("loginId : "+(String) re.getSession().getAttribute("loginId"));
+					
 					mo.addAttribute("playlist",javaService.loginplay(
 							(String) re.getSession().getAttribute("loginId")) );
+					System.out.println("page가져");
+					
 				}
 			}
 			
 			return "/my_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
-			return "main";
+			return "/main";
 		}
 	}
 	

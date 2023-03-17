@@ -32,7 +32,7 @@
 		    <div class="mume div"><h3><a class="at" id="outid"><c:out value="회원탈퇴"/></a></h3></div>
 	    </div>
 <!-- 	    로그인 아이디 재생기록 -->
-		<c:if test="${page==b }">
+		<c:if test="${page=='b'}">
 			<table class="table" border="1">
 			<tr class="tdr">
 				<th>이미지</th>
@@ -43,39 +43,43 @@
 				<th>하트</th>
 				<th>보관</th>
 			</tr>
-			<c:forEach items="${playlist }" var="i" begin="${(page-1)*5 }" end="${((page-1)*5)+4 }" >
+<%-- 			<c:forEach items="${playlist }" var="i" begin="${(p-1)*5 }" end="${((p-1)*5)+4 }" > --%>
+			<c:forEach items="${playlist }" var="i" >
 				<tr class="tdr ddr ">
-					<td class="td"><a class="at" href="${i.link }" onclick="hit(${i.songnumber })" target="blank"><img src="${i.imglink }"></a></td>
-					<td class="td"><a class="at" href="${i.link }" onclick="hit(${i.songnumber })" target="blank"><c:out value="${i.songname }"/></a></td>
-					<td class="td"><a class="at" href="javafood?javafood=ArtistList&num=${i.songnumber }"><c:out value="${i.artistname }"/><img src=""></a></td>
-					<td class="td"><a class="at" href="javafood?javafood=AlbumList&num=${i.songnumber }"><c:out value="${i.album_name}"/></a></td>
-					<td class="td"><c:out value="${i.playtime }"/></td>
+					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER })" target="blank"><img src="${i.IMAGELINK }"></a></td>
+					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER})" target="blank"><c:out value="${i.SONGNAME }"/></a></td>
+					<td class="td"><a class="at" href="javafood?javafood=ArtistList&num=${i.SONGNUMBER }"><c:out value="${i.ARTISTNAME }"/><img src=""></a></td>
+					<td class="td"><a class="at" href="javafood?javafood=AlbumList&num=${i.SONGNUMBER }"><c:out value="${i.ALBUM_NAME}"/></a></td>
+					<td class="td"><c:out value="${i.PLAYTIME }"/></td>
 					<td class="td">
 						<img class="img" src="https://c11.kr/1asbx" 
 							onmouseover="this.src='https://c11.kr/1asby'" 
 							onmouseout="this.src='https://c11.kr/1asbx'"
-							class="sub" onclick="good(${i.songnumber})">
+							class="sub" onclick="good(${i.SONGNUMBER})">
 					</td>
 					<td class="td">
 						<form name="addPlayList" method="post" action="/javafood_team/javafood?javafood=3_6" onclick="this.submit();">
 							<img class="img" src="https://c11.kr/1asd6" 
 								onmouseover="this.src='https://c11.kr/1asd9'" 
 								onmouseout="this.src='https://c11.kr/1asd6'">
-	               			<input type="hidden" name="songNumber" value="${i.songnumber }">
+	               			<input type="hidden" name="songNumber" value="${i.SONGNUMBER }">
 	               			<input type="hidden" name="addWhere" value="My_page">
 	         	  		</form>
 					</td>
 				</tr>
 			</c:forEach>
 			</table>
-			<div class="page1">
-				<div>
-					<c:forEach var="i" begin="1" end="5">
-						<a class="at" href="javafood?javafood=5&usre=${session_user.id }&page=${i}" value="abc" style="font-size: 30px">${i }</a> &emsp;
-					</c:forEach>
-				</div>
-			</div>
-		</c:if>    
+			
+		</c:if>
+		
+<!-- 			<div class="page1"> -->
+<!-- 				<div> -->
+<%-- 					<c:forEach var="i" begin="1" end="5"> --%>
+<%-- 						<a class="at" href="javafood?javafood=5&usre=${loginId }&page=${i}" value="abc" style="font-size: 30px">${i }</a> &emsp; --%>
+<%-- 					</c:forEach> --%>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<%-- 		</c:if>     --%>
 	    
 <!-- 	    로그인 회원 정보 수정 -->
 <%-- 
