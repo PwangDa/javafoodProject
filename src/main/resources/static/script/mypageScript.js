@@ -21,7 +21,8 @@ function notlogin(){
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //회원 탈퇴 성공 여부
-function urseout(out){
+function urseout(){
+	
 	if (out == 1)  alert('회원이 정상적으로 탈퇴되었습니다.')
 	else alert('회원탈퇴가 실패하였습니다.')
 	}
@@ -105,8 +106,20 @@ window.onload = function(){
 	    if (li5 === true) 
 	        li6 = confirm('진짜?')
 	    if (li6 === true) {
+	        
 	        alert('회원탈퇴를 합니다.ㅜㅜ')
-	        location.href = 'my_page?page=d';
+	        let xml = new XMLHttpRequest();
+	        xml.open('get','my_page/out');
+	        xml.send();
+	        xml.onload=function(){
+				let a = xml.responseText;
+				console.log('a : ',a)
+				if(a==1){
+					alert('회원이 정상적으로탈퇴 되었습니다.')
+				}else {
+					alert('회원탈퇴가 실패하였습니다.^^.')
+					}
+			}
 	    }
 	})
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
