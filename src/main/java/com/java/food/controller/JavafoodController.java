@@ -392,7 +392,10 @@ public class JavafoodController {
 	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
-	public String viewMain(Model model) {
+	public String viewMain(Model model,
+			HttpServletRequest re,
+			@RequestParam Map<String, Object> map
+			) {
 
 		System.out.println("JavafoodController의 viewMain 메서드 실행됨.");
 		
@@ -421,6 +424,12 @@ public class JavafoodController {
 		model.addAttribute("hitList", list);
 
 		
+		//매뉴 상단바 로그아웃
+		if(map.get("out")!=null) {
+			re.getSession().invalidate();
+		}
+		
+		
 		// main.jsp로 보내기
 		return "/main";
 	}
@@ -428,6 +437,7 @@ public class JavafoodController {
 ////////////////////////////////////////////////////////////
 	// 경용
 	
+	//로그인 페이지 이동
 	@RequestMapping(value = "/login")
 	public String loginpage(Model mo, HttpServletRequest re,
 			@RequestParam Map<String, Object> map) {
@@ -477,6 +487,7 @@ public class JavafoodController {
 			return 1;
 		}
 	}
+	
 	//마이 페이지 이동
 	@RequestMapping("/my_page")
 	public String my_page(Model mo,
@@ -507,10 +518,6 @@ public class JavafoodController {
 			log.info("my_page 오류");
 			return "main";
 		}
-	}
-	@RequestMapping("loginOut")
-	public String loginOut() {
-		return "/main";
 	}
 	
 	//아자스 를 이용한 회원탈퇴
