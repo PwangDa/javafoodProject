@@ -590,94 +590,42 @@ public class JavafoodController {
 		model.addAttribute("totalCount", genre_list.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("countPerPage", countPerPage);
+		// R&B페이징시 문제가 있어 인코딩을 해줌.
+		try {
+			song = URLEncoder.encode(song, "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("song", song);
 		System.out.println("song 후: " + song);
 
 		return "lyj/genre";
 	}
 
-	// 최신음악
-//	@RequestMapping(value = "/popular_Music", method = RequestMethod.GET)
-//	public String Popular_Music(Model model, HttpServletRequest request) {
-//		// 페이징
-//		int pageNum = 1; // 현재 페이지
-//		int countPerPage = 10; // 한 페이지당 표시 수
-//		// 페이징
-//		String tmp_pageNum = request.getParameter("pageNum");
-//		if (tmp_pageNum != null) {
-//			pageNum = Integer.parseInt(tmp_pageNum);
-//				// 장르별 리스트
-//				String song="발라드";
-//				if(request.getParameter("genre")!=null) {
-//					song = request.getParameter("genre");
-//				}
-//				// 페이징 
-//				String tmp_pageNum = request.getParameter("pageNum");
-//오류				if(tmp_pageNum != null) {
-//					pageNum = Integer.parseInt(tmp_pageNum);
-//				}
-//				String tmp_countPerPage = request.getParameter("countPerPage");
-//				System.out.println("controller : " + tmp_countPerPage);
-//				if(tmp_countPerPage != null) {
-//					countPerPage = Integer.parseInt(tmp_countPerPage);
-//				}
-//				System.out.println("song  전: " + song);
-//				System.out.println("pageNum : " + pageNum);
-//				System.out.println("countPerPage : " + countPerPage);
-//				Map genre_list = javaService.getGenre(song, pageNum, countPerPage);
-//				model.addAttribute("genre", genre_list.get("list"));
-////				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getImagelink());
-////				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
-//				model.addAttribute("totalCount", genre_list.get("totalCount"));
-//				model.addAttribute("pageNum", pageNum);
-//				model.addAttribute("countPerPage", countPerPage);
-//				// R&B페이징시 문제가 있어 인코딩을 해줌.
-//				try {
-//					song = URLEncoder.encode(song, "utf-8");
-//				} catch (UnsupportedEncodingException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				model.addAttribute("song", song);
-//				System.out.println("song 후: " + song);
-//				
-//		return "/genre";
-//	}
-	
 	//최신음악
-//		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
-//		public String Popular_Music(Model model,
-//				HttpServletRequest request) {
-//			// 페이징
-//					int pageNum = 1;		// 현재 페이지
-//					int countPerPage = 10;	// 한 페이지당 표시 수 
-//					// 페이징 
-//					String tmp_pageNum = request.getParameter("pageNum");
-//					if(tmp_pageNum != null) {
-//						pageNum = Integer.parseInt(tmp_pageNum);
-//					}
-//					System.out.println("pageNum : " + pageNum);
-//					System.out.println("countPerPage : " + countPerPage);
-//	오류				Map Music_list = javaService.getMusic(pageNum, countPerPage);
-//					model.addAttribute("list", Music_list.get("list"));
+		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
+		public String Popular_Music(Model model,
+				HttpServletRequest request) {
+			// 페이징
+					int pageNum = 1;		// 현재 페이지
+					int countPerPage = 10;	// 한 페이지당 표시 수 
+					// 페이징 
+					String tmp_pageNum = request.getParameter("pageNum");
+					if(tmp_pageNum != null) {
+						pageNum = Integer.parseInt(tmp_pageNum);
+					}
+					System.out.println("pageNum : " + pageNum);
+					System.out.println("countPerPage : " + countPerPage);
+					Map Music_list = javaService.getMusic(pageNum, countPerPage);
+					model.addAttribute("list", Music_list.get("list"));
 //					System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)Music_list.get("list")).get(0).getSongname());
-//					model.addAttribute("totalCount", Music_list.get("totalCount"));
-//					model.addAttribute("pageNum", pageNum);
-//					model.addAttribute("countPerPage", countPerPage);
-//					
-//			return "/popular_Music";
-//		}
-//		System.out.println("pageNum : " + pageNum);
-//		System.out.println("countPerPage : " + countPerPage);
-//		Map Music_list = javaService.getMusic(pageNum, countPerPage);
-//		model.addAttribute("list", Music_list.get("list"));
-//		System.out.println("test: >>> >> >> " + ((List<GenreDTO>) Music_list.get("list")).get(0).getSongname());
-//		model.addAttribute("totalCount", Music_list.get("totalCount"));
-//		model.addAttribute("pageNum", pageNum);
-//		model.addAttribute("countPerPage", countPerPage);
-//
-//		return "lyj/Popular_Music";
-//	}
+					model.addAttribute("totalCount", Music_list.get("totalCount"));
+					model.addAttribute("pageNum", pageNum);
+					model.addAttribute("countPerPage", countPerPage);
+					
+			return "/popular_Music";
+		}
 
 ////////////////////////////////////////////////////////////
 }
