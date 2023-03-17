@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
@@ -102,11 +103,19 @@ SqlSession sqlSession;
 		
 		@Override
 		public List randomGenre(String genre) {
-			//logger.info("JavafoodDAOImpl > randomGenre 실행");
+			logger.info("JavafoodDAOImpl > randomGenre 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.randomGenre", genre);
 		
 			return list;
+		}
+		
+		@Override
+		public int albumplus(AlbumDTO dto){
+			logger.info("앨범을 추가합니다 실행");
+			int album = sqlSession.insert("mapper.javafood.plusAlbum", dto);
+		
+			return album;
 		}
 
 ////////////////////////////////////////////////////////////

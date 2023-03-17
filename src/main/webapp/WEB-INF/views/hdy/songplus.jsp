@@ -27,28 +27,29 @@
 </style>
 </head>
 <body>
-	<form name="frmComment">
+	<form action="/albumplus">
 		<div>
 			<h2>앨범정보등록</h2>
 			<input type="text" name="al_num" placeholder="앨범순번">
 			<textarea name="cover" placeholder="앨범표지링크"></textarea>
-			<input type="text" name="name" placeholder="앨범이름">
-			<textarea name="into" placeholder="앨범소개글"></textarea>
-			<textarea name="info" placeholder="아티스트소개"></textarea>
-			<input type ="button" value="등록" onclick="fn_sendComment()">
-			<input type ="hidden" name="command" value="addAlbum">
+			<input type="text" name="al_name" placeholder="앨범이름">
+			<textarea name="al_into" placeholder="앨범소개글"></textarea>
+			<textarea name="artist_name" placeholder="아티스트이름"></textarea>
+			<input class="btn" type="submit" value="등록">
+			
 		</div>
 	</form>
 		<br>
-	<form name="frmCommend">
+	<form action="/songplus">
 		<div>
 			<h2>그 앨범의 수록곡 등록</h2>
-			<input type="text" name="music_num" placeholder="음악순번">
+			<input type="text" name="album_num" placeholder="앨범num">
+			<input type="text" name="music_num" placeholder="music_num">
 			<input type="text" name="music_name" placeholder="음악이름">
 			<textarea name="link" placeholder="음악링크"></textarea>
 			<input type="text" name="time" placeholder="음악런타임">
-			<input type ="button" value="등록" onclick="fn_sendCommend()">
-			<input type ="hidden" name="commanding" value="addMusic">
+			<input type="text" name="album_name" placeholder="album_name">
+			<input class="btn1" type="submit" value="등록">
 		</div>
 	</form>
 </html>

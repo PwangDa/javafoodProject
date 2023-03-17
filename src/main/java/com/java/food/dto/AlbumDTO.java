@@ -20,6 +20,10 @@ public class AlbumDTO {
 	private String album_add;	 	
 	private String artist_add;	 
 	private String songnumber;	 
+	private String songname;	
+	private String link;
+	private String playtime;
+	private String imagelink;
 	
 	
 	
@@ -29,6 +33,30 @@ public class AlbumDTO {
 	
 	
 	
+	public String getImagelink() {
+		return imagelink;
+	}
+	public void setImagelink(String imagelink) {
+		this.imagelink = imagelink;
+	}
+	public String getPlaytime() {
+		return playtime;
+	}
+	public void setPlaytime(String playtime) {
+		this.playtime = playtime;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public String getSongname() {
+		return songname;
+	}
+	public void setSongname(String songname) {
+		this.songname = songname;
+	}
 	public String getSongnumber() {
 		return songnumber;
 	}

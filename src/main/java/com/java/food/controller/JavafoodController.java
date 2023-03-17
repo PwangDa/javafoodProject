@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
@@ -187,11 +188,33 @@ public class JavafoodController {
 
 		return "/Album";
 	}
+	
+	
+	// 앨범정보를 추가하는 메소드
+	@RequestMapping(value = "/albumplus", method = RequestMethod.GET)
+	public String albumplus(Model model, 
+			@ModelAttribute AlbumDTO dto,
+			@RequestParam("al_num") String al_num,
+			@RequestParam("cover") String cover, 
+			@RequestParam("al_name") String al_name, 
+			@RequestParam("al_into") String al_into,
+			@RequestParam("artist_name") String artist_name ) {
+		System.out.println("새 앨범을 추가합니다");
+			dto.setAlbum_num(al_num);
+			dto.setAlbum_cover(cover);
+			dto.setAlbum_name(al_name);
+			dto.setAlbum_into(al_into);
+			dto.setArtistname(artist_name);
+			
+			int count = javaService.albumplus(dto);
+		
+		return "/hdy/songplus";
+	}
 
-	@RequestMapping(value = "/layout")
+	@RequestMapping(value = "/plus")
 	public String java1_1(Model model) {
 
-		return "/layout";
+		return "/hdy/songplus";
 	}
 ////////////////////////////////////////////////////////////
 	// 귀범

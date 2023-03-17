@@ -3,6 +3,7 @@ package com.java.food.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
@@ -26,6 +27,8 @@ public interface JavafoodDAO {
 	int delComment(int articleNO);
 	
 	List randomGenre(String genre);
+	
+	int albumplus(AlbumDTO dto);
 	
 ////////////////////////////////////////////////////////////
 //귀범

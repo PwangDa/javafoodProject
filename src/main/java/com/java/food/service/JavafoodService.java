@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
@@ -23,6 +24,7 @@ public interface JavafoodService {
 	int replyComment(CommentDTO dto);
 	int delComment(int articleNO);
 	List randomGenre(String genre);
+	int albumplus(AlbumDTO dto);
 ////////////////////////////////////////////////////////////
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);

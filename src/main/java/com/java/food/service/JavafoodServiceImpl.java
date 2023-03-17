@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.java.food.controller.JavafoodController;
 import com.java.food.dao.JavafoodDAO;
+import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
@@ -91,7 +92,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 	public List randomGenre(String genre) {	
 		System.out.println("EMP Service >> randomGenre 실행");	
 		return javaDAO.randomGenre(genre);	
-		
+	}
+	
+	@Override
+	public int albumplus(AlbumDTO dto) {
+		return javaDAO.albumplus(dto);
 	}
 ////////////////////////////////////////////////////////////
 //귀범
