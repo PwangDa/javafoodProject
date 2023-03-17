@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -37,16 +39,23 @@ public class JavafoodController {
 ////////////////////////////////////////////////////////////
 	// 다영
 	@RequestMapping(value = "/artistpage", method = RequestMethod.GET)
-	public String java1(Model model, @RequestParam("artist") String artist) {
+	public String java1(Model model, 
+			HttpServletRequest re,
+			@RequestParam("artist") String artist) {
 		System.out.println("아티스트페이지 접속");
 		System.out.println("artist >" + artist);
 		// 아티스트 소개 페이지 출력 메소드(전달요소 > 아티스트명)
 		List artist_list = javaService.getArtist(artist);
 		// 댓글 출력 메소드(전달요소 > 아티스트명)
 		List comment_list = javaService.getComment(artist);
-
+		Object id = re.getSession().getAttribute("loginId");
+		Object nic = re.getSession().getAttribute("loginNic");
+		System.out.println("id >>>>>>"+id);
+		System.out.println("nic >>>>>>"+nic);
+		
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
+		model.addAttribute("nic", nic);
 		
 		return "/artistpage";
 
@@ -94,13 +103,12 @@ public class JavafoodController {
 			@RequestParam("command_myimg") String ima,
 			@RequestParam("command_articleNO") int article, 
 			@RequestParam("arti") String arti
-	/* @RequestParam("command_articleNO") int arino */
-	) {
+			) {
 
 		System.out.println(">>>>>" + id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
-		System.out.println(">>>>>" + article);
+		System.out.println("article >>>>>" + article);
 		System.out.println(">>>>>" + arti);
 
 		dto.setComment_id(id);
@@ -119,7 +127,8 @@ public class JavafoodController {
 		System.out.println("댓글등록 메소드 접속");
 		System.out.println("아이디 >" + dto.getComment_id());
 		System.out.println("내용 >" + dto.getComment_cont());
-		int count = javaService.insertComment(dto);
+		System.out.println("ParentNO >" + dto.getParentNO());
+		int count = javaService.replyComment(dto);
 		System.out.println("count >>>" + count);
 
 		return "redirect:/artistpage?artist=" + encodeResult;
@@ -127,7 +136,9 @@ public class JavafoodController {
 
 	// 댓글 삭제할 때
 	@RequestMapping(value = "/del.do", method = { RequestMethod.GET, RequestMethod.DELETE })
-	public String delet(Model model, @ModelAttribute CommentDTO dto, @RequestParam("command_articleNO") int no,
+	public String delet(Model model, 
+			@ModelAttribute CommentDTO dto, 
+			@RequestParam("command_articleNO") int no,
 			@RequestParam("arti") String arti) {
 
 		System.out.println("댓글삭제 메소드 접속");
@@ -276,7 +287,7 @@ public class JavafoodController {
 		
 		//세션에 저장된 id값 받아오기
 
-		String id = (String)request.getAttribute("loginId");
+		String id = (String)request.getSession().getAttribute("loginId");
 //		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
 
@@ -322,7 +333,8 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "playList"
+				+ "/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
@@ -405,11 +417,6 @@ public class JavafoodController {
 		String genre = genreList.get(randomIndex);
 
 		List random_list = javaService.randomGenre(genre);
-
-		String result = "/main";
-
-		// Service에서 인기 차트를 불러오는 메서드 실행하기
-		// 메서드 실행결과(리스트)를 필드에 담기
 		
 		//뽑은 장르를 메소드로 전달요소로 씀
 
@@ -419,9 +426,14 @@ public class JavafoodController {
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
-//		List<GenreDTO> list = javaService.
+		List<GenreDTO> list = javaService.selectHitList();
+		
+		//리스트를 모델을 이용해 담기
+		model.addAttribute("hitList", list);
 
-		return result;
+		
+		// main.jsp로 보내기
+		return "/main";
 	}
 
 ////////////////////////////////////////////////////////////
@@ -443,6 +455,7 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginId", m.get("id"));
 				re.getSession().setAttribute("loginNic", m.get("nic"));
 				re.getSession().setAttribute("loginEmail", m.get("email"));
+				re.getSession().setAttribute("loginImg", m.get("img"));
 			}
 			
 			// 회원가입
@@ -475,7 +488,7 @@ public class JavafoodController {
 			return 1;
 		}
 	}
-	
+	//마이 페이지 이동
 	@RequestMapping("/my_page")
 	public String my_page(Model mo,
 			@RequestParam Map<String, Object> map,
@@ -485,6 +498,8 @@ public class JavafoodController {
 		System.out.println(map.get("page"));
 		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
+			
+			//페이지 이동
 			if(map.get("page") != null) {
 				
 				log.info("page 이동");
@@ -495,22 +510,35 @@ public class JavafoodController {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-				
-				//회원탈퇴
-				if("d".equals(map.get("page"))) {
-					String id = (String) re.getSession().getAttribute("loginId");
-					log.info("회원탈퇴");
-					log.info("sessiong id : "+id);
-//					javaService.
-				}
-				
+//				}
 			}
 			
-			return "lky/My_page";
+			return "/my_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
 			return "main";
 		}
+	}
+	@RequestMapping("loginOut")
+	public String loginOut() {
+		return "/main";
+	}
+	
+	//아자스 를 이용한 회원탈퇴
+	@RequestMapping("/my_page/out")
+	@ResponseBody
+	public int outId(
+			HttpServletRequest re
+			) {
+		log.info("회원탈퇴 시도");
+		int i = 0;
+		try {
+			i = javaService.outId( (String) re.getSession().getAttribute("loginId"));
+			re.getSession().invalidate();
+		} catch (Exception e) {
+			log.info("회원탈퇴 오류");
+		}
+		return i;
 	}
 
 ////////////////////////////////////////////////////////////

@@ -11,17 +11,15 @@
     <head>
     
     	<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-   		
-   		
-   		<c:if test="${out!=null }"><script>urseout('${out}');</script></c:if>
         <script link src ="script/mypageScript.js"></script>
+	    <link rel="stylesheet" href="style/mypageCSS.css?css=css">
+   		
+   		
         <c:if test="${loginId==null}"><script>notlogin();</script></c:if>
-        
-        <c:if test="${out!=null }"><script>urseout();</script></c:if>
         <c:if test="${link!=null }"><script> location.href ='${link }'</script></c:if>
+        
         <meta charset="UTF-8">
         <title>My Page</title>
-	    <link rel="stylesheet" href="style/mypageCSS.css?css=css">
     </head>
      
     <body>

@@ -140,7 +140,7 @@
 	</head>
 	<body>
 		<h1><c:out value="javafood 로그인성공"/></h1>
-		<h1>${login.nic } <c:out value="님 환영합니다."/></h1>
+		<h1>${loginId } <c:out value="님 환영합니다."/></h1>
 		<strong id="time"></strong><c:out value="초후에 매인 화면으로 이동됩니다. 마음의 준비를 해주세요."/>
 		<script>loging();</script>
 	</body>

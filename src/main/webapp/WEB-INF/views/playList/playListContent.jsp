@@ -6,8 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
-// 	String id = (String)request.getAttribute("id");
-	String id = "id3";
+	String id = (String)request.getSession().getAttribute("id");
 	String pl_id = request.getParameter("pl_id");
 %>
 <!DOCTYPE html>
@@ -23,7 +22,7 @@
 </head>
 <body>
 	<!-- 상단바 jsp 삽입하기 -->
-<%-- 	<jsp:include page="javascrpit:void(0)" /> --%>
+	<jsp:include page="/WEB-INF/views/menu.jsp" />
 	
 		<c:choose>
 		<%-- 해당 플레이 리스트의 내용이 하나도 없다면 --%>

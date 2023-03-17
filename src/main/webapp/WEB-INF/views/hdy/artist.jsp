@@ -98,7 +98,7 @@
             <h2 style="text-align: center; margin: 0px;">댓글</h2>
             <form name="frmComment" method="post" action="/insert.do">
                 <div class="comment">
-                <c:if test="${empty login_dto[0].nic}">
+                <c:if test="${empty nic}">
                     <div class="text2">
                         <img class="image1" name="ima" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
                         <input class="input1" type="text" name="id" placeholder="로그인을 해주세요"  >
@@ -110,10 +110,10 @@
                         <input class="btn" type="submit" value="등록">
                     </div>
                 </c:if>
-                <c:if test="${not empty login_dto[0].nic}">
+                <c:if test="${not empty nic}">
                     <div class="text2">
-                        <img class="image1" src="${login_dto[0].myimg }">
-                        <input class="input1" type="text" name="id" placeholder="${login_dto[0].nic }" value="${login_dto[0].nic }" readonly>
+                        <img class="image1" src="${nic[0].myimg }">
+                        <input class="input1" type="text" name="id" placeholder="${nic }" value="${nic }" readonly>
                     </div>
                     <div class="text2">
                         <textarea class="text_area" name="cont" placeholder="*게시물의 저작권 등 분쟁, 개인정보 노출로 인한 책임은 작성자 또는 게시자에게 있음을 유의해 주세요."></textarea>
@@ -169,7 +169,7 @@
                         
 	             	</c:if>
                     	<%--대댓글 등록했을 때 form --%>
-	             		<form name="frmComment_2" method="post" action="/javafood_team/javafood?javafood=1&command=delcommnet.do">
+	             		<form name="frmComment_2" action="/del.do">
 			            	<c:if test="${comment.level >= 2}">
 			            		<div class="reply">
 				        			<div class="comment_1">
@@ -177,7 +177,9 @@
 						                    <img class="image3" src="${comment.myimg }">
 						                    <p class="comment_1_1">${comment.comment_id }</p>
 						                    <p class="comment_1_1" style="color: rgb(113, 113, 113);">${comment.comment_Date }</p>
-						                    <a href="/javafood_team/javafood?javafood=ArtistList&num=${album_list[0].songnumber }&command=delcommnet.do&articleNO=${comment.articleNO }"><button class="btn1 comment_1_2 btn_del"  type="button"> 삭제</button></a>
+						                    <input class="btn1 comment_1_2 btn_del"  type="submit" value="삭제">
+						                    <input type ="hidden" name="command_articleNO" value="${comment.articleNO }">
+											<input type ="hidden" name="arti" value="${album_list[0].artistname}"> 
 				        			</div>
 				        			<div class="comment_1_3">
 				                        <span class="comment_1_4" style="margin-right :70px;"></span>
