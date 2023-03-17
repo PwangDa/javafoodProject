@@ -281,14 +281,20 @@ public class JavafoodController {
 	}
 
 	@RequestMapping(value = "/beom", method = RequestMethod.GET)
-	public void selectDance() {
+	public String selectDance(Model model) {
 		
-//		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
+		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
 		
 		// List 선언 해서 DTO 값 가져오기
 		// Service에서 selectDance 메소드 실행 ( select , 전달인자 x )
-		// Model 써야하는지 : 리스트를 담을 변수 선언 후 그 변수에 addAttribute 하여 값을 보내야하는지
+		  List<FamousChartDTO> list = javaService.selectDance();
 		
+		// Model 써서 addAttribute 해서 값 전달
+		 model.addAttribute("list", list); 
+		 
+		
+		// db에서 모든 db를 list로 가지고온다 -> jsp에 출력
+		return page;
 	}
 	
 ////////////////////////////////////////////////////////////
@@ -302,10 +308,14 @@ public class JavafoodController {
 		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
 		
 		//세션에 저장된 id값 받아오기
-
 		String id = (String)request.getSession().getAttribute("loginId");
 //		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
+		
+		if(id == null)
+		{
+			return "lky/login";
+		}
 
 		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
 		// 메서드 실행 결과(리스트)를 필드에 담기
@@ -533,7 +543,11 @@ public class JavafoodController {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-//				}
+				//회원 재생목록 가져오기
+				if("a".equals(map.get("page"))) {
+					mo.addAttribute("playlist",javaService.loginplay(
+							(String) re.getSession().getAttribute("loginId")) );
+				}
 			}
 			
 			return "/my_page";
@@ -542,6 +556,8 @@ public class JavafoodController {
 			return "main";
 		}
 	}
+	
+	
 	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")
@@ -594,13 +610,13 @@ public class JavafoodController {
 //				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 		model.addAttribute("totalCount", genre_list.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
-		
 		model.addAttribute("countPerPage", countPerPage);
+		model.addAttribute("song2", song);
+		
 		// R&B페이징시 문제가 있어 인코딩을 해줌.
 		try {
 			song = URLEncoder.encode(song, "utf-8");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("song", song);

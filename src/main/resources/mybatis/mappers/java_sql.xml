@@ -96,6 +96,14 @@
 		SELECT count(*) cnt FROM  Genre
 	</select>
 	
+	<!-- 댄스 장르 출력 -->
+	<select id="selectDance" resultType="chartDTO" parameterType="java.util.List">
+		SELECT * FROM genre
+		WHERE bygenre = #{bygenre}
+		ORDER BY songnumber
+	
+	</select>
+	
 	<!-- 장르별-->
 	<select id="genre" resultType="genreDTO" parameterType="java.util.HashMap">
 		SELECT * FROM (
@@ -111,7 +119,7 @@
 	<!-- 장르 페이징 -->
 	<select id="pagetotal" resultType="int" parameterType="String">
 		SELECT count(*) cnt FROM  Genre
-		<!-- WHERE BYGENRE = #{genre} -->
+		WHERE BYGENRE = #{genre}
 	</select>
 	
 	<!-- 최신 TOP100-->
@@ -132,13 +140,24 @@
 	
 	<!-- 	회원 전체 목록 리스트	-->
 	<select id="login" resultType="loginDTO">
-		SELECT * FROM login
+		SELECT * FROM 
+			login
 	</select>
 
 	<!-- 	회원 탈퇴	-->
 	<delete id="outId" parameterType="String">
-		DELETE FROM LOGIN WHERE ID= #{id}
+		DELETE FROM 
+			LOGIN 
+		WHERE 
+			ID= #{id}
 	</delete>
+	
+	<select id="SongHit" resultType="list" parameterType="String">
+		SELECT * FROM 
+			SONGHIT 
+		WHERE 
+			id= #{id}
+	</select>
 	
 	<!-- 	회원 가입	-->
 	<insert id="newures" parameterType="loginDTO">

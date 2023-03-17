@@ -31,8 +31,8 @@
 		    <div class="mume div" id="outsession" ><h3><a class="at"><c:out value="로그아웃"/></a></h3></div>
 		    <div class="mume div"><h3><a class="at" id="outid"><c:out value="회원탈퇴"/></a></h3></div>
 	    </div>
-	  <%-- 
-		<c:if test="${usre!=null }">
+<!-- 	    로그인 아이디 재생기록 -->
+		<c:if test="${page==b }">
 			<table class="table" border="1">
 			<tr class="tdr">
 				<th>이미지</th>
@@ -43,7 +43,7 @@
 				<th>하트</th>
 				<th>보관</th>
 			</tr>
-			<c:forEach items="${usre }" var="i" begin="${(page-1)*5 }" end="${((page-1)*5)+4 }" >
+			<c:forEach items="${playlist }" var="i" begin="${(page-1)*5 }" end="${((page-1)*5)+4 }" >
 				<tr class="tdr ddr ">
 					<td class="td"><a class="at" href="${i.link }" onclick="hit(${i.songnumber })" target="blank"><img src="${i.imglink }"></a></td>
 					<td class="td"><a class="at" href="${i.link }" onclick="hit(${i.songnumber })" target="blank"><c:out value="${i.songname }"/></a></td>
@@ -77,7 +77,9 @@
 			</div>
 		</c:if>    
 	    
-	    <c:if test="${remove==go}" >
+<!-- 	    로그인 회원 정보 수정 -->
+<%-- 
+	    <c:if test="${page==a}" >
 	        <h1 class="ddr"><c:out value="회원정보 수정"/></h1>
 	        <form
 	        	id="form"
@@ -168,6 +170,6 @@
 	                </table>
 	            </div>
 	        </form>
-	    </c:if>   --%>
+	    </c:if> --%>   
    	</body>
 </html>
