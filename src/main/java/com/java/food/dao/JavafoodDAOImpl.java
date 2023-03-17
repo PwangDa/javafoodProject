@@ -15,6 +15,7 @@ import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.SongHit_DTO;
 import com.java.food.dto.login_DTO;
 
 @Repository
@@ -349,14 +350,14 @@ public int outId(String id) {
  * @return : 탈퇴 성공 여부
  */
 @Override
-public Map<String, Object> loginplay(String id) {
-	int a = 0;
+public List<SongHit_DTO> loginplay(String id) {
+	List<SongHit_DTO> list = new ArrayList<SongHit_DTO>(); 
 	try {
-		a = sqlSession.delete("mapper.javafood.outId",id);
+		list = sqlSession.selectList("mapper.javafood.SongHit",id);
 		sqlSession.close();
 	} catch (Exception e) {
 	}
-	return null;
+	return list;
 }
 
 ////////////////////////////////////////////////////////////

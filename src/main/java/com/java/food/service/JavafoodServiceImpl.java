@@ -15,6 +15,7 @@ import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.SongHit_DTO;
 import com.java.food.dto.login_DTO;
 
 @Service
@@ -356,8 +357,9 @@ public class JavafoodServiceImpl implements JavafoodService {
 	
 	// 로그인 회원 재생목록
 	@Override
-	public Map<String, Object> loginplay(String id){
-		return null;
+	public List<SongHit_DTO> loginplay(String id){
+		List<SongHit_DTO> list = javaDAO.loginplay(id);
+		return list;
 	}
 	
 ////////////////////////////////////////////////////////////
