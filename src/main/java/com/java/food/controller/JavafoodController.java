@@ -488,14 +488,6 @@ public class JavafoodController {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-//				//회원탈퇴
-//				if("d".equals(map.get("page"))) {
-//					String id = (String) re.getSession().getAttribute("loginId");
-//					
-//					log.info("회원탈퇴");
-//					log.info("sessiong id : "+id);
-//					
-//					mo.addAttribute("out",javaService.out(id));
 //				}
 			}
 			
@@ -505,6 +497,7 @@ public class JavafoodController {
 			return "main";
 		}
 	}
+	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")
 	@ResponseBody
@@ -515,6 +508,7 @@ public class JavafoodController {
 		int i = 0;
 		try {
 			i = javaService.outId( (String) re.getSession().getAttribute("loginId"));
+			re.getSession().invalidate();
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
 		}

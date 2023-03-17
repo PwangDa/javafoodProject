@@ -303,6 +303,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		};
 		return a;
 	}
+	
 	//회원 탈퇴
 	@Override
 	public int outId(String id) {

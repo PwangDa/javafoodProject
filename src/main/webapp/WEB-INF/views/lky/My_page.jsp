@@ -15,7 +15,6 @@
 	    <link rel="stylesheet" href="style/mypageCSS.css?css=css">
    		
    		
-        <c:if test="${out!=null }"><script>urseout();</script></c:if>
         <c:if test="${loginId==null}"><script>notlogin();</script></c:if>
         <c:if test="${link!=null }"><script> location.href ='${link }'</script></c:if>
         
