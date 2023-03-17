@@ -96,6 +96,14 @@
 		SELECT count(*) cnt FROM  Genre
 	</select>
 	
+	<!-- 댄스 장르 출력 -->
+	<select id="selectDance" resultType="FamousChartDTO" parameterType="java.util.List">
+		SELECT * FROM genre
+		WHERE bygenre = #{bygenre}
+		ORDER BY songnumber
+	
+	</select>
+	
 	<!-- 장르별-->
 	<select id="genre" resultType="genreDTO" parameterType="java.util.HashMap">
 		SELECT * FROM (
@@ -109,8 +117,9 @@
 	</select>
 	
 	<!-- 장르 페이징 -->
-	<select id="pagetotal" resultType="int">
+	<select id="pagetotal" resultType="int" parameterType="String">
 		SELECT count(*) cnt FROM  Genre
+		<!-- WHERE BYGENRE = #{genre} -->
 	</select>
 	
 	<!-- 최신 TOP100-->

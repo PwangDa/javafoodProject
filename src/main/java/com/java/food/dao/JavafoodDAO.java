@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.java.food.dto.CommentDTO;
+import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
@@ -40,7 +41,7 @@ public interface JavafoodDAO {
 	void addhit(String id, String songnumber);
 	
 	// 댄스 장르 출력
-	
+	List<FamousChartDTO> selectDance();
 	
 ////////////////////////////////////////////////////////////
 //범주
