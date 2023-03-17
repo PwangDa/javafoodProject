@@ -47,8 +47,6 @@ public class JavafoodController {
 
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
-
-
 		
 		return "/artistpage";
 
@@ -90,9 +88,12 @@ public class JavafoodController {
 
 	// 대댓글 등록할 때
 	@RequestMapping(value = "/reply.do", method = RequestMethod.POST)
-	public String reply(Model model, @ModelAttribute CommentDTO dto, @RequestParam("id_2") String id,
-			@RequestParam("cont_2") String cont, @RequestParam("command_myimg") String ima,
-			@RequestParam("command_articleNO") int article, @RequestParam("arti") String arti
+	public String reply(Model model, @ModelAttribute CommentDTO dto, 
+			@RequestParam("id_2") String id,
+			@RequestParam("cont_2") String cont, 
+			@RequestParam("command_myimg") String ima,
+			@RequestParam("command_articleNO") int article, 
+			@RequestParam("arti") String arti
 	/* @RequestParam("command_articleNO") int arino */
 	) {
 
@@ -157,7 +158,7 @@ public class JavafoodController {
 
 		model.addAttribute("album_list", album_list);
 
-		return "hdy/Album";
+		return "/Album";
 	}
 
 	@RequestMapping(value = "/layout")
@@ -264,8 +265,8 @@ public class JavafoodController {
 		
 		//세션에 저장된 id값 받아오기
 
-//		String id = (String)request.getSession().getAttribute("login");
-		String id = "id3"; // 테스트 용 아이디.
+		String id = (String)request.getAttribute("loginId");
+//		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
 
 		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
