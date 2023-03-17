@@ -70,6 +70,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 	}
 	
 	@Override
+	public int replyComment(CommentDTO dto) {
+		System.out.println("EMP Service >> replyComment 실행");
+		return javaDAO.replyComment(dto);	
+	}
+	
+	@Override
 	public int delComment(int articleNO) {
 		
 		System.out.println("EMP Service >> delComment 실행");

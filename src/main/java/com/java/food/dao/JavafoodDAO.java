@@ -19,6 +19,7 @@ public interface JavafoodDAO {
 	List viewAlbum(String album);
 	
 	int insertComment(CommentDTO dto);
+	int replyComment(CommentDTO dto);
 	
 	int delComment(int articleNO);
 	
