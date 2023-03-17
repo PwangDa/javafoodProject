@@ -50,12 +50,14 @@ public class JavafoodController {
 		List comment_list = javaService.getComment(artist);
 		Object id = re.getSession().getAttribute("loginId");
 		Object nic = re.getSession().getAttribute("loginNic");
+		Object img = re.getSession().getAttribute("loginImg");
 		System.out.println("id >>>>>>"+id);
 		System.out.println("nic >>>>>>"+nic);
 		
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
 		model.addAttribute("nic", nic);
+		model.addAttribute("img", img);
 		
 		return "/artistpage";
 
@@ -63,22 +65,32 @@ public class JavafoodController {
 
 	// 댓글 등록 할 때
 	@RequestMapping(value = "/insert.do", method = RequestMethod.POST)
-	public String insert(Model model, @ModelAttribute CommentDTO dto, @RequestParam("id") String id,
-			@RequestParam("cont") String cont, @RequestParam("myimg") String ima,
-			@RequestParam("songnum") String songnum, @RequestParam("arti") String arti
+	public String insert(Model model, 
+			HttpServletRequest re,
+			@ModelAttribute CommentDTO dto, 
+			@RequestParam("id") String id,
+			@RequestParam("cont") String cont, 
+			@RequestParam("myimg") String ima,
+			@RequestParam("songnum") String songnum, 
+			@RequestParam("arti") String arti
 	/* @RequestParam("command_articleNO") int arino */
 	) {
 
-		System.out.println(">>>>>" + id);
+		Object login_id = re.getSession().getAttribute("loginId");
+		Object nic = re.getSession().getAttribute("loginNic");
+		Object img = re.getSession().getAttribute("loginImg");
+		
+		System.out.println(">>>>>" + login_id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
-		System.out.println(">>>>>" + songnum);
+		System.out.println(">>>>>" + nic);
 		System.out.println(">>>>>" + arti);
 
-		dto.setComment_id(id);
+		dto.setComment_id((String)nic);
 		dto.setComment_cont(cont);
-		dto.setMyimg(ima);
+		dto.setMyimg((String) img);
 		dto.setArtistname(arti);
+		dto.setId((String)login_id);
 		String encodeResult = null;
 		try {
 			encodeResult = URLEncoder.encode(arti, "UTF-8");
