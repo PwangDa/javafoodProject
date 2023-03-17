@@ -45,7 +45,7 @@
 	<insert id="replyComment" parameterType="commentDTO">
 		insert into comment_com
 		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg)
-		values(comment_com_seq.nextval, #{parentno}, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg})
+		values(comment_com_seq.nextval, #{parentNO}, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg})
 	</insert>
 	
 	<!-- 댓글삭제 할 때 -->

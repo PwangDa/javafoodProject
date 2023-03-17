@@ -47,8 +47,6 @@ public class JavafoodController {
 
 		model.addAttribute("album_list", artist_list);
 		model.addAttribute("commentList", comment_list);
-
-
 		
 		return "/artistpage";
 
@@ -90,16 +88,18 @@ public class JavafoodController {
 
 	// 대댓글 등록할 때
 	@RequestMapping(value = "/reply.do", method = RequestMethod.POST)
-	public String reply(Model model, @ModelAttribute CommentDTO dto, @RequestParam("id_2") String id,
-			@RequestParam("cont_2") String cont, @RequestParam("command_myimg") String ima,
-			@RequestParam("command_articleNO") int article, @RequestParam("arti") String arti
-	/* @RequestParam("command_articleNO") int arino */
-	) {
+	public String reply(Model model, @ModelAttribute CommentDTO dto, 
+			@RequestParam("id_2") String id,
+			@RequestParam("cont_2") String cont, 
+			@RequestParam("command_myimg") String ima,
+			@RequestParam("command_articleNO") int article, 
+			@RequestParam("arti") String arti
+			) {
 
 		System.out.println(">>>>>" + id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
-		System.out.println(">>>>>" + article);
+		System.out.println("article >>>>>" + article);
 		System.out.println(">>>>>" + arti);
 
 		dto.setComment_id(id);
@@ -118,7 +118,8 @@ public class JavafoodController {
 		System.out.println("댓글등록 메소드 접속");
 		System.out.println("아이디 >" + dto.getComment_id());
 		System.out.println("내용 >" + dto.getComment_cont());
-		int count = javaService.insertComment(dto);
+		System.out.println("ParentNO >" + dto.getParentNO());
+		int count = javaService.replyComment(dto);
 		System.out.println("count >>>" + count);
 
 		return "redirect:/artistpage?artist=" + encodeResult;
@@ -126,7 +127,9 @@ public class JavafoodController {
 
 	// 댓글 삭제할 때
 	@RequestMapping(value = "/del.do", method = { RequestMethod.GET, RequestMethod.DELETE })
-	public String delet(Model model, @ModelAttribute CommentDTO dto, @RequestParam("command_articleNO") int no,
+	public String delet(Model model, 
+			@ModelAttribute CommentDTO dto, 
+			@RequestParam("command_articleNO") int no,
 			@RequestParam("arti") String arti) {
 
 		System.out.println("댓글삭제 메소드 접속");
@@ -157,7 +160,7 @@ public class JavafoodController {
 
 		model.addAttribute("album_list", album_list);
 
-		return "hdy/Album";
+		return "/Album";
 	}
 
 	@RequestMapping(value = "/layout")
@@ -470,7 +473,8 @@ public class JavafoodController {
 			HttpServletRequest re) {
 		
 		log.info("my_page 접속");
-		
+		System.out.println(map.get("page"));
+		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
 			if(map.get("page") != null) {
 				
@@ -478,15 +482,17 @@ public class JavafoodController {
 				mo.addAttribute("page",map.get("page"));
 				
 				//로그아웃
-				if(map.get("page")=="3") {
+				if("c".equals(map.get("page"))) {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
 				
 				//회원탈퇴
-				if(map.get("page")=="3") {
-					log.info("로그아웃");
-					re.getSession().invalidate();
+				if("d".equals(map.get("page"))) {
+					String id = (String) re.getSession().getAttribute("loginId");
+					log.info("회원탈퇴");
+					log.info("sessiong id : "+id);
+//					javaService.
 				}
 				
 			}

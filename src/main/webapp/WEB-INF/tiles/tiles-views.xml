@@ -29,6 +29,11 @@
       <put-attribute name="body" value="/WEB-INF/views/hdy/artist.jsp" />
    </definition>
    
+   <definition name="/Album" extends="baseLayout">
+      <put-attribute name="title" value="Album" />
+      <put-attribute name="body" value="/WEB-INF/views/hdy/Album.jsp" />
+   </definition>
+   
    <definition name="/chart" extends="baseLayout">
       <put-attribute name="title" value="chart" />
       <put-attribute name="body" value="/WEB-INF/views/chart/chart.jsp" />
