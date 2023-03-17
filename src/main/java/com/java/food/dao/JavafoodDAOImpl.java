@@ -277,10 +277,10 @@ public List<GenreDTO> selectHitList()
 	//가져온 곡 리스트를 리스트에 담기
 	List<GenreDTO> result = sqlSession.selectList("mapper.javafood.selectHitList");
 	System.out.println("selectHitList 메서드를 실행하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
-	for(int i=0; i<result.size(); i++) //확인용
-	{
-		System.out.println("result 데이터 확인중 : " + result.get(i).getSongname() );
-	}
+//	for(int i=0; i<result.size(); i++) //확인용
+//	{
+//		System.out.println("result 데이터 확인중 : " + result.get(i).getSongname() );
+//	}
 	
 	//담은 리스트를 리턴하기.
 	return result;
