@@ -177,10 +177,10 @@ public void addhit(String id, String songnumber) {
 // 전달인자 x
 // List를 jsp로 호출
 @Override
-public List<FamousChartDTO> selectDance(){
+public List<FamousChartDTO> selectDance(String genre){
 	
 	List<FamousChartDTO> page = null;
-	page = sqlSession.selectList("mapper.javafood.selectdance");
+	page = sqlSession.selectList("mapper.javafood.selectDance", genre);
 	
 	return page;
 }
@@ -362,9 +362,17 @@ public int outId(String id) {
 public List<SongHit_DTO> loginplay(String id) {
 	List<SongHit_DTO> list = new ArrayList<SongHit_DTO>(); 
 	try {
+		logger.info("sql 가져오기");
+		
+		System.out.println("dao id : "+id);
+		
 		list = sqlSession.selectList("mapper.javafood.SongHit",id);
+		
+		System.out.println(list.get(0).getALBUM_NAME());
+		logger.info("sql 가져오기2");
 		sqlSession.close();
 	} catch (Exception e) {
+		e.printStackTrace();
 	}
 	return list;
 }

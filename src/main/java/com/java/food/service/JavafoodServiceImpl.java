@@ -155,11 +155,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 	// 전달인자 x
 	// select 하는 메소드 생성
 	
-	public List<FamousChartDTO> selectDance(){
+	public List<FamousChartDTO> selectDance(String genre){
 		
 		List<FamousChartDTO> page = null;
 		
-		 page = javaDAO.selectDance();
+		 page = javaDAO.selectDance(genre);
 		
 		return page;
 	}
@@ -363,7 +363,18 @@ public class JavafoodServiceImpl implements JavafoodService {
 	// 로그인 회원 재생목록
 	@Override
 	public List<SongHit_DTO> loginplay(String id){
+		log.info("dao가져오기");
 		List<SongHit_DTO> list = javaDAO.loginplay(id);
+		log.info("dao가져오기1");
+		
+		System.out.println("id : "+id);
+		
+		System.out.println(list.get(0).getSONGNAME());
+		System.out.println(list.get(1).getSONGNAME());
+		System.out.println(list.get(2).getSONGNAME());
+		System.out.println(list.get(3).getSONGNAME());
+		System.out.println(list.get(4).getSONGNAME());
+		System.out.println(list.get(5).getSONGNAME());
 		return list;
 	}
 	
