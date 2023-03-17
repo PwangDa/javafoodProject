@@ -539,7 +539,11 @@ public class JavafoodController {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-//				}
+				//회원 재생목록 가져오기
+				if("a".equals(map.get("page"))) {
+					mo.addAttribute("maplist",javaService.loginplay(
+							(String) re.getSession().getAttribute("loginId")) );
+				}
 			}
 			
 			return "/my_page";
@@ -548,6 +552,8 @@ public class JavafoodController {
 			return "main";
 		}
 	}
+	
+	
 	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")

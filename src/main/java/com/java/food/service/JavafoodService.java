@@ -64,6 +64,8 @@ public interface JavafoodService {
 	int what (Map<String, Object> map);
 	//회원탈퇴
 	int outId(String id);
+	//로그인 재생목록
+	Map<String, Object> loginplay(String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르
