@@ -212,7 +212,7 @@ public class JavafoodController {
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
 
-				return "chart/chart";
+				return "/chart";
 
 //		if(country == null ) {
 //			country = "대한민국";
@@ -393,7 +393,7 @@ public class JavafoodController {
 
 		List random_list = javaService.randomGenre(genre);
 
-		String result = "main/main";
+		String result = "/main";
 
 		// Service에서 인기 차트를 불러오는 메서드 실행하기
 		// 메서드 실행결과(리스트)를 필드에 담기
