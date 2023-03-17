@@ -536,7 +536,7 @@ public class JavafoodController {
 		model.addAttribute("song", song);
 		System.out.println("song 후: " + song);
 
-		return "lyj/genre";
+		return "/genre";
 	}
 
 	//최신음악
