@@ -264,7 +264,7 @@ public class JavafoodController {
 		
 		//세션에 저장된 id값 받아오기
 
-		String id = (String)request.getAttribute("loginId");
+		String id = (String)request.getSession().getAttribute("loginId");
 //		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
 
@@ -310,7 +310,7 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "playList/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
