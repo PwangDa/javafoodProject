@@ -303,10 +303,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 		};
 		return a;
 	}
+	//회원 탈퇴
 	@Override
-	public int out(String id) {
-		
-		return 0;
+	public int outId(String id) {
+		int a=0;
+		try {
+			a = javaDAO.outId(id);
+		} catch (Exception e) {
+		}
+		return a;
 	}
 	
 ////////////////////////////////////////////////////////////

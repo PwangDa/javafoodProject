@@ -508,16 +508,17 @@ public class JavafoodController {
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")
 	@ResponseBody
-	public int out(
+	public int outId(
 			HttpServletRequest re
 			) {
 		log.info("회원탈퇴 시도");
+		int i = 0;
 		try {
-			return javaService.out( (String) re.getSession().getAttribute("loginId"));
+			i = javaService.outId( (String) re.getSession().getAttribute("loginId"));
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
-			return 0;
 		}
+		return i;
 	}
 
 ////////////////////////////////////////////////////////////

@@ -268,22 +268,42 @@ public void deletePlayList(Map<String, String> info)
  * 아이디 리스트
  * @return list : 회원정보를 리턴해줍니다.
  */
+@Override
 public List<login_DTO> listID() {
 	return sqlSession.selectList("mapper.javafood.login");
 }
+
 /**
  * 회원가입
  * @param vo : 가입할 회원정보 DTO를 넣어줍니다.
+ * @return : 가입 성공 여부
  */
+@Override
 public int addId(login_DTO vo) {
 	int i =0;
 	try {
-		sqlSession.selectList("mapper.javafood.newures",vo);
+		sqlSession.insert("mapper.javafood.newures",vo);
 		i=1;
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
 	return i;
+}
+
+/**
+ * 회원탈퇴
+ * @param id : 탈퇴할 세션 아이디값.
+ * @return : 탈퇴 성공 여부
+ */
+@Override
+public int outId(String id) {
+	int a = 0;
+	try {
+		a = sqlSession.delete("mapper.javafood.outId",id);
+		sqlSession.close();
+	} catch (Exception e) {
+	}
+	return a;
 }
 ////////////////////////////////////////////////////////////
 //용준

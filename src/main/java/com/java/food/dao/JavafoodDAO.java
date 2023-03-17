@@ -61,6 +61,8 @@ public interface JavafoodDAO {
 	List<login_DTO> listID(); 
 	//회원가입
 	int addId(login_DTO dto);
+	//회원탈퇴
+	int outId(String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

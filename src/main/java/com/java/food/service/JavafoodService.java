@@ -56,7 +56,7 @@ public interface JavafoodService {
 	//아자스 중복체크
 	int what (Map<String, Object> map);
 	//회원탈퇴
-	int out(String id);
+	int outId(String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

@@ -109,13 +109,14 @@ window.onload = function(){
 	        
 	        alert('회원탈퇴를 합니다.ㅜㅜ')
 	        let xml = new XMLHttpRequest();
-	        xml.open('get','my_page/out');
+	        xml.open('get','/my_page/out');
 	        xml.send();
 	        xml.onload=function(){
 				let a = xml.responseText;
 				console.log('a : ',a)
 				if(a==1){
 					alert('회원이 정상적으로탈퇴 되었습니다.')
+					location.href = '/main'
 				}else {
 					alert('회원탈퇴가 실패하였습니다.^^.')
 					}
