@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.java.food.controller.JavafoodController;
 import com.java.food.dao.JavafoodDAO;
 import com.java.food.dto.CommentDTO;
+import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
@@ -147,6 +148,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 	// genre Dance 출력 메소드
 	// 전달인자 x
 	// select 하는 메소드 생성
+	
+	public List<FamousChartDTO> selectDance(){
+		
+		List<FamousChartDTO> page = null;
+		
+		 page = javaDAO.selectDance();
+		
+		return page;
+	}
 	
 ////////////////////////////////////////////////////////////
 //범주

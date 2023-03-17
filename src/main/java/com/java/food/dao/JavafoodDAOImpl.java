@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.java.food.dto.CommentDTO;
+import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
@@ -161,6 +162,19 @@ public void addhit(String id, String songnumber) {
 	System.out.println("update 횟수 : " + a);
 	
 }
+
+// service에서 쓸 메소드 생성
+// 전달인자 x
+// List를 jsp로 호출
+@Override
+public List<FamousChartDTO> selectDance(){
+	
+	List<FamousChartDTO> page = null;
+	page = sqlSession.selectList("mapper.javafood.selectdance");
+	
+	return page;
+}
+
 ////////////////////////////////////////////////////////////
 //범주
 @Override
@@ -277,10 +291,10 @@ public List<GenreDTO> selectHitList()
 	//가져온 곡 리스트를 리스트에 담기
 	List<GenreDTO> result = sqlSession.selectList("mapper.javafood.selectHitList");
 	System.out.println("selectHitList 메서드를 실행하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
-	for(int i=0; i<result.size(); i++) //확인용
-	{
-		System.out.println("result 데이터 확인중 : " + result.get(i).getSongname() );
-	}
+//	for(int i=0; i<result.size(); i++) //확인용
+//	{
+//		System.out.println("result 데이터 확인중 : " + result.get(i).getSongname() );
+//	}
 	
 	//담은 리스트를 리턴하기.
 	return result;
@@ -385,6 +399,7 @@ public int outId(String id) {
 			System.out.println(totalcnt);
 			return totalcnt;
 		}
+		
 
 
 	

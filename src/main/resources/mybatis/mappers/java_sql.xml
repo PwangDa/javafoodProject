@@ -96,6 +96,14 @@
 		SELECT count(*) cnt FROM  Genre
 	</select>
 	
+	<!-- 댄스 장르 출력 -->
+	<select id="selectDance" resultType="FamousChartDTO" parameterType="java.util.List">
+		SELECT * FROM genre
+		WHERE bygenre = #{bygenre}
+		ORDER BY songnumber
+	
+	</select>
+	
 	<!-- 장르별-->
 	<select id="genre" resultType="genreDTO" parameterType="java.util.HashMap">
 		SELECT * FROM (

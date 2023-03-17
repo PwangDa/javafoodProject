@@ -32,6 +32,9 @@ public interface JavafoodService {
 	// 조회수 증가
 	void addhit(String id, String songnumber);
 	
+	// 댄스 장르 출력 메소드
+	List<FamousChartDTO> selectDance();
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//플레이 리스트 불러오기

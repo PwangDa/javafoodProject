@@ -229,17 +229,18 @@
     
     
     /* 제목, 가수, 앨범명이 길 때 줄이기 */
-    div.hitListViewerSongTitle, a.hitListViewerArtistName, a.hitListViewerAlbumName
+    div.hitListViewerSongTitle, .hitListViewerSongInfo
     {
-    	border:1px solid red;
+/*     	border:1px solid red; */
     	overflow:hidden;
     	white-space:nowarp;
     	text-overflow:ellipsis;
     }
-    
-    a.hitListViewerArtistName, a.hitListViewerAlbumName
+    div.hitListViewerSongTitle:hover, .hitListViewerSongInfo:hover
     {
-    	height:10px;
+/*     	border:1px solid red; */
+    	overflow:visible;
+    	white-space:nowarp;
     }
     
     
