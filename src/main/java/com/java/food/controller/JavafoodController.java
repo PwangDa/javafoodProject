@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.service.JavafoodService;
 
@@ -313,7 +314,8 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "playList/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "playList"
+				+ "/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
@@ -396,11 +398,6 @@ public class JavafoodController {
 		String genre = genreList.get(randomIndex);
 
 		List random_list = javaService.randomGenre(genre);
-
-		String result = "/main";
-
-		// Service에서 인기 차트를 불러오는 메서드 실행하기
-		// 메서드 실행결과(리스트)를 필드에 담기
 		
 		//뽑은 장르를 메소드로 전달요소로 씀
 
@@ -410,9 +407,13 @@ public class JavafoodController {
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
-//		List<GenreDTO> list = javaService.
+		List<GenreDTO> list = javaService.selectHitList();
+		
+		//리스트를 모델을 이용해 담기
+		model.addAttribute("hitList", list);
 
-		return result;
+		// main.jsp로 보내기
+		return "/main";
 	}
 
 ////////////////////////////////////////////////////////////

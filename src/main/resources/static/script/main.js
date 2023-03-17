@@ -6,9 +6,13 @@
 
 	 let hitListPage = 0;
 	 
-	 let hitListNextButton = document.querySelector(".next");
-	 let hitListPrevButton = document.querySelector(".prev");
-	 let hitListContent = document.querySelector(".songContent");
+	 let hitListNextButton = document.querySelector(".hitNext");
+	 let hitListPrevButton = document.querySelector(".hitPrev");
+	 let hitListContent = document.querySelector(".hitSongContent");
+	 
+	 let randomNextButton = document.querySelector(".ranNext");
+	 let randomPrevButton = document.querySelector(".ranPrev");
+	 let randomListContent = document.querySelector(".ranSongContent")
 	 
 	 hitListNextButton.addEventListener("click", ()=>
 	 {
@@ -56,6 +60,55 @@
 			}
 		}
 	});
+	
+	 randomNextButton.addEventListener("click", ()=>
+	 {
+		hitListPage++;
+		if(hitListPage > 4)
+		{
+			hitListPage = 4;
+		}
+			
+		randomListContent.classList.add("ranSongContentPage" + hitListPage);
+			
+		for(let i = 0; i <= 4; i++)
+		{
+			if(i == hitListPage)
+			{
+				continue;
+			}
+			else if(randomListContent.classList.contains("ranSongContentPage" + i) )
+			{
+				randomListContent.classList.remove("ranSongContentPage" + i);
+			}
+		}
+	});
+	
+	randomPrevButton.addEventListener("click", ()=>
+	 {
+
+		hitListPage--;
+		if(hitListPage < 0)
+		{
+			hitListPage = 0;
+		}
+			
+		randomListContent.classList.add("ranSongContentPage" + hitListPage);
+			
+		for(let i = 0; i <= 4; i++)
+		{
+			if(i == hitListPage)
+			{
+				continue;
+			}
+			else if(randomListContent.classList.contains("ranSongContentPage" + i) )
+			{
+				randomListContent.classList.remove("ranSongContentPage" + i);
+			}
+		}
+	});
+	
+	
 	function hit(num){
 		var id = $('#id').val()
 		console.log(num)
