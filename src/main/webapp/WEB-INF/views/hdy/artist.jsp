@@ -23,7 +23,7 @@
                 rgba(0, 0, 0, 0.75) 75%,
                 rgb(0, 0, 0) 100%
             ),
-            url("${album_list[1].artist_img}") ; 
+            url("${album_list[0].artist_img}") ; 
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center 30%;
@@ -40,7 +40,7 @@
             <div class = "text1"> 
             <%--forEach 안하고 하나의 값만 가져오고 싶을때 --%>
                 <h1>${album_list[0].artistname }</h1>
-                <p class="text_box">${album_list[1].artist_info }</p>
+                <p class="text_box">${album_list[0].artist_info }</p>
                 <div> <a target="_blank" href="https://namu.wiki/w/%EC%95%84%EC%9D%B4%EC%9C%A0">출처:namuwiki</a></div>
             </div>
         </div>

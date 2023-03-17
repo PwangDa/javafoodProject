@@ -184,7 +184,7 @@
                 		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/artistpage?artist=${genre_list.artistname}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
                 	</c:if>
                 	<c:if test="${ genre_list.artistname != '아이유' && genre_list.artistname != 'SG워너비'}">
-                		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/javafood_team/javafood?javafood=ArtistList&num=${genre_list.songnumber}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
+                		<div class="left_artist_bot" title="${ genre_list.artistname}"><a href="/artistpage?artist=${genre_list.artistname}">${ genre_list.artistname}</a></div> <!-- 가수명 -->
                 	</c:if>
                 	<div class="left_album_bot" title="${ genre_list.album_name}"><a href = "/javafood_team/javafood?javafood=AlbumList&num=${genre_list.songnumber}">${ genre_list.album_name}</a></div> <!-- 앨범 --> 
                 	<div class="right_item_bot">${ genre_list.playtime}</div> <!-- 재생시간 -->
