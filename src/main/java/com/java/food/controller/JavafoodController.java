@@ -304,10 +304,14 @@ public class JavafoodController {
 		System.out.println("JavafoodController의 selectPlayList 메서드 실행됨."); //확인용
 		
 		//세션에 저장된 id값 받아오기
-
 		String id = (String)request.getSession().getAttribute("loginId");
 //		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
+		
+		if(id == null)
+		{
+			return "login";
+		}
 
 		// Service에서 플레이 리스트를 불러오는 메서드 실행하기
 		// 메서드 실행 결과(리스트)를 필드에 담기
