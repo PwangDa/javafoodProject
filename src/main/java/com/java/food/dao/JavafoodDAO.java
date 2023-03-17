@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.java.food.dto.CommentDTO;
-import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
 
@@ -55,12 +55,17 @@ public interface JavafoodDAO {
 	
 	//플레이 리스트 삭제하기
 	void deletePlayList(Map<String, String> info);
+	
+	//메인페이지 인기곡 리스트 불러오기
+	List<GenreDTO> selectHitList();
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인 정보 확인
 	List<login_DTO> listID(); 
 	//회원가입
 	int addId(login_DTO dto);
+	//회원탈퇴
+	int outId(String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

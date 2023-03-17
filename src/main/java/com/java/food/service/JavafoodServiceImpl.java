@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.java.food.controller.JavafoodController;
 import com.java.food.dao.JavafoodDAO;
 import com.java.food.dto.CommentDTO;
-import com.java.food.dto.FamousChartDTO;
+import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
 import com.java.food.dto.login_DTO;
 
@@ -205,6 +205,21 @@ public class JavafoodServiceImpl implements JavafoodService {
 		//받은 전달인자를 통해 dao의 deletePlayList 메서드 실행하기
 		javaDAO.deletePlayList(info);
 	}
+	
+	//범주 메인페이지 인기곡 불러오기
+	@Override
+	public List<GenreDTO> selectHitList()
+	{
+		System.out.println("JavafoodServiceImpl의 selectHitList 메서드 실행됨."); //확인용
+		
+		List<GenreDTO> result = null;
+		
+		//dao의 selectHitList 메서드 실행하기
+		//selectHitList의 결과를 리스트에 담기
+		result = javaDAO.selectHitList();
+		
+		return result;
+	}
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
@@ -303,10 +318,16 @@ public class JavafoodServiceImpl implements JavafoodService {
 		};
 		return a;
 	}
+	
+	//회원 탈퇴
 	@Override
-	public int out(String id) {
-		
-		return 0;
+	public int outId(String id) {
+		int a=0;
+		try {
+			a = javaDAO.outId(id);
+		} catch (Exception e) {
+		}
+		return a;
 	}
 	
 ////////////////////////////////////////////////////////////
