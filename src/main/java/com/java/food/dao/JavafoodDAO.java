@@ -42,7 +42,7 @@ public interface JavafoodDAO {
 	void addhit(String id, String songnumber);
 	
 	// 댄스 장르 출력
-	List<FamousChartDTO> selectDance();
+	List<FamousChartDTO> selectDance(String genre);
 	
 ////////////////////////////////////////////////////////////
 //범주

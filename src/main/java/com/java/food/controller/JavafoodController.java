@@ -277,13 +277,14 @@ public class JavafoodController {
 	}
 
 	@RequestMapping(value = "/beom", method = RequestMethod.GET)
-	public String selectDance(Model model) {
+	public String selectDance(Model model, HttpServletRequest request) {
 		
 		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
 		
+		String genre =(String) request.getAttribute("selectDance");
 		// List 선언 해서 DTO 값 가져오기
 		// Service에서 selectDance 메소드 실행 ( select , 전달인자 x )
-		  List<FamousChartDTO> list = javaService.selectDance();
+		  List<FamousChartDTO> list = javaService.selectDance(genre);
 		
 		// Model 써서 addAttribute 해서 값 전달
 		 model.addAttribute("list", list); 

@@ -168,10 +168,10 @@ public void addhit(String id, String songnumber) {
 // 전달인자 x
 // List를 jsp로 호출
 @Override
-public List<FamousChartDTO> selectDance(){
+public List<FamousChartDTO> selectDance(String genre){
 	
 	List<FamousChartDTO> page = null;
-	page = sqlSession.selectList("mapper.javafood.selectdance");
+	page = sqlSession.selectList("mapper.javafood.selectDance", genre);
 	
 	return page;
 }
