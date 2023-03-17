@@ -348,16 +348,16 @@ public int outId(String id) {
  * @paramString : 가져올 아이디 값.
  * @return : 탈퇴 성공 여부
  */
-//@Override
-//public int ㅑㄹㅇ(String id) {
-//	int a = 0;
-//	try {
-//		a = sqlSession.delete("mapper.javafood.outId",id);
-//		sqlSession.close();
-//	} catch (Exception e) {
-//	}
-//	return a;
-//}
+@Override
+public Map<String, Object> loginplay(String id) {
+	int a = 0;
+	try {
+		a = sqlSession.delete("mapper.javafood.outId",id);
+		sqlSession.close();
+	} catch (Exception e) {
+	}
+	return null;
+}
 
 ////////////////////////////////////////////////////////////
 //용준
