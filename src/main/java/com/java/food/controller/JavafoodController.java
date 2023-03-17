@@ -276,6 +276,17 @@ public class JavafoodController {
 
 	}
 
+	@RequestMapping(value = "/beom", method = RequestMethod.GET)
+	public void selectDance() {
+		
+//		String page = "/selectdance"; // /beom 접근 시 selectdance.jsp로 들어오도록 지정
+		
+		// List 선언 해서 DTO 값 가져오기
+		// Service에서 selectDance 메소드 실행 ( select , 전달인자 x )
+		// Model 써야하는지 : 리스트를 담을 변수 선언 후 그 변수에 addAttribute 하여 값을 보내야하는지
+		
+	}
+	
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
@@ -400,11 +411,12 @@ public class JavafoodController {
     	return "redirect:playList";
     }
     
-    
-	/////////////////////* 아직 인기차트가 완성되지 않아, 나중에 다시 작업할 예정 *////////////////////////
 	//메인 페이지 불러오기
 	@RequestMapping("main")
-	public String viewMain(Model model) {
+	public String viewMain(Model model,
+			HttpServletRequest re,
+			@RequestParam Map<String, Object> map
+			) {
 
 		System.out.println("JavafoodController의 viewMain 메서드 실행됨.");
 		
@@ -420,10 +432,7 @@ public class JavafoodController {
 		List random_list = javaService.randomGenre(genre);
 		
 		//뽑은 장르를 메소드로 전달요소로 씀
-
 		model.addAttribute("gerne" ,random_list);
-		
-
 		
 		//Service에서 인기 차트를 불러오는 메서드 실행하기
 		//메서드 실행결과(리스트)를 필드에 담기
@@ -433,6 +442,13 @@ public class JavafoodController {
 		model.addAttribute("hitList", list);
 
 		
+		//매뉴 상단바 로그아웃
+		if(map.get("out")!=null) {
+			log.info("로그아웃 시작");
+			re.getSession().invalidate();
+		}
+		
+		
 		// main.jsp로 보내기
 		return "/main";
 	}
@@ -440,6 +456,7 @@ public class JavafoodController {
 ////////////////////////////////////////////////////////////
 	// 경용
 	
+	//로그인 페이지 이동
 	@RequestMapping(value = "/login")
 	public String loginpage(Model mo, HttpServletRequest re,
 			@RequestParam Map<String, Object> map) {
@@ -461,6 +478,7 @@ public class JavafoodController {
 			
 			// 회원가입
 			if (map.get("Id1") != null) {
+				log.info("회원가입 시작");
 				mo.addAttribute("good",javaService.addid(map));
 			}
 	
@@ -483,12 +501,14 @@ public class JavafoodController {
 		log.info("ajax 실행");
 		
 		try {
+			log.info("ajax 중복값 확인");
 			return javaService.what(map);
 		} catch (Exception e) {
 			log.info("ajax 실패");
 			return 1;
 		}
 	}
+	
 	//마이 페이지 이동
 	@RequestMapping("/my_page")
 	public String my_page(Model mo,
@@ -496,8 +516,6 @@ public class JavafoodController {
 			HttpServletRequest re) {
 		
 		log.info("my_page 접속");
-		System.out.println(map.get("page"));
-		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
 			
 			//페이지 이동
@@ -520,10 +538,6 @@ public class JavafoodController {
 			return "main";
 		}
 	}
-	@RequestMapping("loginOut")
-	public String loginOut() {
-		return "/main";
-	}
 	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")
@@ -536,6 +550,7 @@ public class JavafoodController {
 		try {
 			i = javaService.outId( (String) re.getSession().getAttribute("loginId"));
 			re.getSession().invalidate();
+			log.info("회원탈퇴 성공");
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
 		}
@@ -561,6 +576,11 @@ public class JavafoodController {
 		if (tmp_pageNum != null) {
 			pageNum = Integer.parseInt(tmp_pageNum);
 		}
+		String tmp_countPerPage = request.getParameter("countPerPage");
+		if (tmp_countPerPage != null) {
+			countPerPage = Integer.parseInt(tmp_countPerPage);
+		}
+		System.out.println("controller : " + tmp_countPerPage);
 		System.out.println("song  전: " + song);
 		System.out.println("pageNum : " + pageNum);
 		System.out.println("countPerPage : " + countPerPage);
@@ -570,6 +590,7 @@ public class JavafoodController {
 //				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 		model.addAttribute("totalCount", genre_list.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
+		
 		model.addAttribute("countPerPage", countPerPage);
 		// R&B페이징시 문제가 있어 인코딩을 해줌.
 		try {

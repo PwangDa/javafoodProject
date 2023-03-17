@@ -66,3 +66,11 @@ addLists.addEventListener("click", ()=>{
 	addLists.parentNode.parentNode.submit();
 });
 
+// selectbox에서 값을 받아 표시할 개수 선택
+function changeSelection(){
+	var selectedElement = document.getElementById("select");
+	
+	var optionVal = selectedElement.options[selectedElement.selectedIndex].value;
+	console.log(optionVal);
+	location.href= addres+optionVal;
+}
