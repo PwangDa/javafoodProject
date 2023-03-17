@@ -147,7 +147,7 @@
 	                        <td><input type="text" placeholder="메일 인증번호"></td>
 	                        <td><input type="button" id="mailchbutt" value="인증확인"></td>
 	                        <td><input type="checkbox" id="ch5" class="ch"></td>
-	                    </tr>
+	                    </tr>a
 	                    <tr>
 	                        <th id="pn" class="tr"><c:out value="주민등록 번호 : "/></th>
 	                        <td>
