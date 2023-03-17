@@ -347,7 +347,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		start = (countPerPage * (pageNum - 1)) + 1;
 		end = start + countPerPage - 1;
 		List list = javaDAO.getGenre(song, start, end);
-		int totalCount = javaDAO.pagetotal();
+		int totalCount = javaDAO.pagetotal(song);
 
 		Map map = new HashMap();
 		map.put("list", list);
@@ -382,6 +382,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 			return map;
 
 		}
+	
 
 ////////////////////////////////////////////////////////////
 

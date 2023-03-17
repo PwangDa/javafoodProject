@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="/style/genre.css">
 
 <script>
-	let addres = '/genre?genre=${song}&pageNum=${pageNum}&countPerPage='
+	let addres = '/genre?genre=${song}&pageNum=1&countPerPage='
 </script>       
 </head>
 <body>
@@ -32,7 +32,7 @@
         <span style="font-size: 34px; font-weight: 600;">Music</span>
     </header> -->
     <div id="home">
-        <h1><a href='http://localhost:8080/genre'>장르</a></h1>
+        <a class="hhh" href='http://localhost:8080/genre'><span class="h_1">장르</span></a>
         
         <select id="select" name="count_list" class="selectbox" onchange="changeSelection()">
 		<option value="5" <c:if test="${countPerPage eq 5}">selected</c:if>>5개</option>
@@ -40,7 +40,7 @@
 		<option value="20"<c:if test="${countPerPage eq 20}">selected</c:if>>20개</option>
 		</select>
        <c:choose>
-		<c:when test="${song eq '발라드'}"> 
+		<c:when test="${song2 eq '발라드'}"> 
 	
         <div class="tab">
             <div class="tab1 tab1_1 btline"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
@@ -53,7 +53,7 @@
             <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
-        <c:when test="${song eq '댄스'}">
+        <c:when test="${song2 eq '댄스'}">
 		<div class="tab">
             <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
             <div class="tab1 tab1_2 btline"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
@@ -65,7 +65,7 @@
             <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
-        <c:when test="${song eq 'POP'}">
+        <c:when test="${song2 eq 'POP'}">
 		<div class="tab">
             <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
             <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
@@ -77,7 +77,7 @@
             <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
-        <c:when test="${song eq 'R&B'}">
+        <c:when test="${song2 eq 'R&B'}">
 		<div class="tab">
             <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
             <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
@@ -89,7 +89,7 @@
             <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
-        <c:when test="${song eq '인디'}">
+        <c:when test="${song2 eq '인디'}">
 		<div class="tab">
             <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
             <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
@@ -101,7 +101,7 @@
             <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
-        <c:when test="${song eq '트로트'}">
+        <c:when test="${song2 eq '트로트'}">
 		<div class="tab">
             <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
             <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
@@ -113,7 +113,7 @@
             <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
-         <c:when test="${song eq '록'}">
+         <c:when test="${song2 eq '록'}">
 		<div class="tab">
             <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
             <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
@@ -125,7 +125,7 @@
             <div class="tab1 tab1_8"><a href='http://localhost:8080/genre?genre=랩'>랩/힙합</a></div>
         </div>
         </c:when>
-         <c:when test="${song eq '랩'}">
+         <c:when test="${song2 eq '랩'}">
 		<div class="tab">
             <div class="tab1 tab1_1"><a href='http://localhost:8080/genre?genre=발라드'>발라드</a></div>
             <div class="tab1 tab1_2"><a href='http://localhost:8080/genre?genre=댄스'>댄스</a></div>
@@ -224,7 +224,7 @@
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + totalCount);
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + pageNum);
 	System.out.println("jsp에서 getAttribute를 받아 int로 형변환한 결과 : " + countPerPage);
-	int lastPage = (int)Math.ceil( ((double)totalCount / countPerPage) / 10);
+	int lastPage = (int)Math.ceil( ((double)totalCount / countPerPage));
 	int section = 2; // 페이징 보여줄 갯수
 	
 	int sec_position = ( ((int) Math.ceil( (double)pageNum / section )) -1 );

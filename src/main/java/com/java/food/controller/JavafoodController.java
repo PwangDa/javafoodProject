@@ -576,13 +576,13 @@ public class JavafoodController {
 //				System.out.println("test: >>> >> >> "+ ((List<GenreDTO>)genre_list.get("list")).get(0).getAlbum_name());
 		model.addAttribute("totalCount", genre_list.get("totalCount"));
 		model.addAttribute("pageNum", pageNum);
-		
 		model.addAttribute("countPerPage", countPerPage);
+		model.addAttribute("song2", song);
+		
 		// R&B페이징시 문제가 있어 인코딩을 해줌.
 		try {
 			song = URLEncoder.encode(song, "utf-8");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("song", song);
