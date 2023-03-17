@@ -286,6 +286,7 @@ public List<GenreDTO> selectHitList()
 	return result;
 }
 ////////////////////////////////////////////////////////////
+
 //경용
 /**
  * 아이디 리스트
@@ -298,7 +299,7 @@ public List<login_DTO> listID() {
 
 /**
  * 회원가입
- * @param vo : 가입할 회원정보 DTO를 넣어줍니다.
+ * @paramlogin_DTO : 가입할 회원정보 DTO를 넣어줍니다.
  * @return : 가입 성공 여부
  */
 @Override
@@ -315,7 +316,7 @@ public int addId(login_DTO vo) {
 
 /**
  * 회원탈퇴
- * @param id : 탈퇴할 세션 아이디값.
+ * @paramString : 탈퇴할 세션 아이디값.
  * @return : 탈퇴 성공 여부
  */
 @Override
@@ -328,6 +329,22 @@ public int outId(String id) {
 	}
 	return a;
 }
+/**
+ * 회원 재생목록 가져오기
+ * @paramString : 가져올 아이디 값.
+ * @return : 탈퇴 성공 여부
+ */
+//@Override
+//public int ㅑㄹㅇ(String id) {
+//	int a = 0;
+//	try {
+//		a = sqlSession.delete("mapper.javafood.outId",id);
+//		sqlSession.close();
+//	} catch (Exception e) {
+//	}
+//	return a;
+//}
+
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르별

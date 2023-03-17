@@ -344,6 +344,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return a;
 	}
 	
+	// 로그인 회원 재생목록
+	@Override
+	public Map<String, Object> loginplay(String id){
+		return null;
+	}
+	
 ////////////////////////////////////////////////////////////
 	// 용준 장르별 페이징
 
