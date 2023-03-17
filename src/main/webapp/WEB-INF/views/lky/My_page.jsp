@@ -43,7 +43,7 @@
 				<th>하트</th>
 				<th>보관</th>
 			</tr>
-			<c:forEach items="${usre }" var="i" begin="${(page-1)*5 }" end="${((page-1)*5)+4 }" >
+			<c:forEach items="${playlist }" var="i" begin="${(page-1)*5 }" end="${((page-1)*5)+4 }" >
 				<tr class="tdr ddr ">
 					<td class="td"><a class="at" href="${i.link }" onclick="hit(${i.songnumber })" target="blank"><img src="${i.imglink }"></a></td>
 					<td class="td"><a class="at" href="${i.link }" onclick="hit(${i.songnumber })" target="blank"><c:out value="${i.songname }"/></a></td>

@@ -7,6 +7,7 @@ import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.SongHit_DTO;
 import com.java.food.dto.login_DTO;
 
 public interface JavafoodDAO {
@@ -71,7 +72,7 @@ public interface JavafoodDAO {
 	//회원탈퇴
 	int outId(String id);
 	//회원 재생목록
-	Map<String, Object> loginplay(String id); 
+	List<SongHit_DTO> loginplay(String id); 
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

@@ -541,7 +541,7 @@ public class JavafoodController {
 				}
 				//회원 재생목록 가져오기
 				if("a".equals(map.get("page"))) {
-					mo.addAttribute("maplist",javaService.loginplay(
+					mo.addAttribute("playlist",javaService.loginplay(
 							(String) re.getSession().getAttribute("loginId")) );
 				}
 			}
