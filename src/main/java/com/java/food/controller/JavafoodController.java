@@ -76,7 +76,8 @@ public class JavafoodController {
 			@RequestParam("arti") String arti
 	/* @RequestParam("command_articleNO") int arino */
 	) {
-
+		
+		//로그인 한 id 와 닉네임 / 이미지의 세션값을 가져왔다.
 		Object login_id = re.getSession().getAttribute("loginId");
 		Object nic = re.getSession().getAttribute("loginNic");
 		Object img = re.getSession().getAttribute("loginImg");
@@ -194,11 +195,11 @@ public class JavafoodController {
 	@RequestMapping(value = "/albumplus", method = RequestMethod.GET)
 	public String albumplus(Model model, 
 			@ModelAttribute AlbumDTO dto,
-			@RequestParam("al_num") String al_num,
-			@RequestParam("cover") String cover, 
-			@RequestParam("al_name") String al_name, 
-			@RequestParam("al_into") String al_into,
-			@RequestParam("artist_name") String artist_name ) {
+			@RequestParam("album_num") String al_num,
+			@RequestParam("album_cover") String cover, 
+			@RequestParam("album_name") String al_name, 
+			@RequestParam("album_into") String al_into,
+			@RequestParam("artistname") String artist_name ) {
 		System.out.println("새 앨범을 추가합니다");
 			dto.setAlbum_num(al_num);
 			dto.setAlbum_cover(cover);
