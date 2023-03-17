@@ -44,7 +44,7 @@
 		function addhit(id,song) {
 			console.log("id = "+id)
 			console.log("song = "+song)
-			location.href = 'javafood?javafood=2&play='+song+'&id='+id;
+			location.href = 'chart&play='+song+'&id='+id;
 			
 		}
 		
@@ -74,7 +74,7 @@
 	//여러 개가 체크 된 곡들을 플레이 리스트에 추가하기
 	let allsave = document.querySelector("img#allsave");
 	allsave.addEventListener("click", function(){
-		allsave.parentNode.action = "javafood?javafood=3_6&songNumbers="+getCheckedValue()+"&addWhere=song";
+		allsave.parentNode.action = "chart&songNumbers="+getCheckedValue()+"&addWhere=song";
 		allsave.parentNode.submit();
 	});
 //////////////////////////////////////////////////////////////////////////////////////////

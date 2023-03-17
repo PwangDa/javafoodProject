@@ -473,7 +473,8 @@ public class JavafoodController {
 			HttpServletRequest re) {
 		
 		log.info("my_page 접속");
-		
+		System.out.println(map.get("page"));
+		System.out.println(re.getSession().getAttribute("loginId"));
 		try {
 			if(map.get("page") != null) {
 				
@@ -481,15 +482,17 @@ public class JavafoodController {
 				mo.addAttribute("page",map.get("page"));
 				
 				//로그아웃
-				if(map.get("page")=="3") {
+				if("c".equals(map.get("page"))) {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
 				
 				//회원탈퇴
-				if(map.get("page")=="3") {
-					log.info("로그아웃");
-					re.getSession().invalidate();
+				if("d".equals(map.get("page"))) {
+					String id = (String) re.getSession().getAttribute("loginId");
+					log.info("회원탈퇴");
+					log.info("sessiong id : "+id);
+//					javaService.
 				}
 				
 			}
