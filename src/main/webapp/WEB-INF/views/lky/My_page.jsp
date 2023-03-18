@@ -70,16 +70,14 @@
 			</c:forEach>
 			</table>
 			
-		</c:if>
-		
-<!-- 			<div class="page1"> -->
-<!-- 				<div> -->
-<%-- 					<c:forEach var="i" begin="1" end="5"> --%>
-<%-- 						<a class="at" href="javafood?javafood=5&usre=${loginId }&page=${i}" value="abc" style="font-size: 30px">${i }</a> &emsp; --%>
-<%-- 					</c:forEach> --%>
-<!-- 				</div> -->
-<!-- 			</div> -->
-<%-- 		</c:if>     --%>
+			<div class="page1">
+				<div>
+					<c:forEach var="i" begin="1" end="${allpage}">
+						<a class="at" href="/my_page?page=b&p=${i}" value="abc" style="font-size: 30px">${i }</a> &emsp;
+					</c:forEach>
+				</div>
+			</div>
+		</c:if>    
 	    
 <!-- 	    로그인 회원 정보 수정 -->
 <%-- 

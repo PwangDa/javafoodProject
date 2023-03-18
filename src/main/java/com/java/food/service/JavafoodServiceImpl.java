@@ -292,18 +292,19 @@ public class JavafoodServiceImpl implements JavafoodService {
 			dto.setPN( (String) map.get("pn1")+"-"+map.get("pn2") );
 			dto.setPHONE( (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3") );
 			
-			log.info(dto.getID());
-			log.info(dto.getNIC());
-			log.info(dto.getPWD());
-			log.info(dto.getPN());
-			log.info(dto.getEMAIL());
-			log.info(dto.getPHONE());
+			log.info("아이디 : ",dto.getID());
+			log.info("닉네임 : ",dto.getNIC());
+			log.info("페스워드 : ",dto.getPWD());
+			log.info("주민등록번호 : ",dto.getPN());
+			log.info("이메일 : ",dto.getEMAIL());
+			log.info("핸드폰 : ",dto.getPHONE());
 			
 			log.info("회원가입 성공");
 		} catch (Exception e) {
+			log.info("오류");
+			e.printStackTrace();
 			log.info("회원실패");
 		}
-		
 		return javaDAO.addId(dto);
 	}
 	
@@ -369,20 +370,39 @@ public class JavafoodServiceImpl implements JavafoodService {
 	
 	// 로그인 회원 재생목록
 	@Override
-	public List<SongHit_DTO> loginplay(String id){
-		log.info("dao가져오기");
+	public Map<String, Object> loginplay(String id, int i){
+		Map<String, Object> map = new HashMap<String, Object>();
 		List<SongHit_DTO> list = javaDAO.loginplay(id);
-		log.info("dao가져오기1");
 		
-		System.out.println("id : "+id);
+		System.out.println("list size : "+list.size());
+		System.out.println("list 0번 : "+list.get(0).getSONGNAME());
 		
-		System.out.println(list.get(0).getSONGNAME());
-		System.out.println(list.get(1).getSONGNAME());
-		System.out.println(list.get(2).getSONGNAME());
-		System.out.println(list.get(3).getSONGNAME());
-		System.out.println(list.get(4).getSONGNAME());
-		System.out.println(list.get(5).getSONGNAME());
-		return list;
+		//전체 페이지
+		int k=1;
+		int l = list.size();
+		int a = list.size();
+		for(int j=1; a>=5; k++) { a=a-5; }
+		
+		System.out.println("전체 페이지 : "+k);
+		System.out.println("현제 페이지 : "+i);
+		System.out.println("l : "+l);
+		
+		list = new ArrayList<SongHit_DTO>();
+		
+		if((i * 5 - 1) > l) l = l-1;
+		else l = i * 5 - 1;
+		
+		System.out.println("l : "+l);
+		
+		for(int q = i * 5 - 5; q <= l; q++) {
+			if(javaDAO.loginplay(id).get(q)!=null)
+				list.add(javaDAO.loginplay(id).get(q));
+		}
+		
+		map.put("list", list);
+		map.put("allpage", k);
+		
+		return map;
 	}
 	
 ////////////////////////////////////////////////////////////

@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +27,7 @@ import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.SongHit_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -573,20 +573,31 @@ public class JavafoodController {
 				}
 				//회원 재생목록 가져오기
 				if("b".equals(map.get("page"))) {
-					System.out.println("page가져오기");
 					
+					System.out.println("page가져오기");
 					System.out.println("loginId : "+(String) re.getSession().getAttribute("loginId"));
 					
-					mo.addAttribute("playlist",javaService.loginplay(
-							(String) re.getSession().getAttribute("loginId")) );
-					System.out.println("page가져");
+					//페이지 주소값
+					String i; 
+					if(map.get("p")!=null) i = (String) map.get("p");
+					else i = "1";
 					
+					String id = (String) re.getSession().getAttribute("loginId");
+					
+					map = javaService.loginplay(id,Integer.parseInt(i));
+					
+					mo.addAttribute("playlist",map.get("list"));
+					mo.addAttribute("allpage",map.get("allpage"));
+					mo.addAttribute("p",map.get("i"));
+					
+					System.out.println("page가져");
 				}
 			}
 			
 			return "/my_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
+			e.printStackTrace();
 			return "/main";
 		}
 	}
