@@ -251,9 +251,9 @@ public class JavafoodServiceImpl implements JavafoodService {
 //경용
 	//로그인
 	@Override
-	public Map login(Map<String, Object> map) {
+	public Map<String, Object> login(Map<String, Object> map) {
 		log.info("로그인 시도");
-		Map m = new HashMap();
+		Map<String, Object> m = new HashMap<String, Object>();
 		int a=0;
 		List<login_DTO> list = javaDAO.listID();
 		for(int i=0; i<list.size(); i++) {
@@ -267,6 +267,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 					m.put("nic", list.get(i).getNIC());
 					m.put("email", list.get(i).getEMAIL());
 					m.put("img", list.get(i).getIMG());
+					m.put("pn", list.get(i).getPN());
 				}
 			}
 		}
@@ -403,6 +404,29 @@ public class JavafoodServiceImpl implements JavafoodService {
 		map.put("allpage", k);
 		
 		return map;
+	}
+	//회원정보 수정
+	public int idUpdate(Map<String, Object> map, String id) {
+		log.info("회원정보 수정");
+		login_DTO dto = null;
+		
+		log.info("회원시도");
+		
+		dto = new login_DTO();
+		dto.setPWD( (String) map.get("PW1") );
+		dto.setNIC( (String) map.get("nic") );
+		dto.setEMAIL( (String) map.get("mail") );
+		dto.setPHONE( (String) map.get("phone1")+"-"+map.get("phone2")+"-"+map.get("phone3") );
+		
+		log.info("아이디 : ",dto.getID());
+		log.info("닉네임 : ",dto.getNIC());
+		log.info("페스워드 : ",dto.getPWD());
+		log.info("주민등록번호 : ",dto.getPN());
+		log.info("이메일 : ",dto.getEMAIL());
+		log.info("핸드폰 : ",dto.getPHONE());
+			
+		return 1;
+			
 	}
 	
 ////////////////////////////////////////////////////////////

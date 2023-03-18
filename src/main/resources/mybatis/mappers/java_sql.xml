@@ -201,6 +201,20 @@
 			)
 	</insert>
 	
+<!-- 	회원 정보 수정 -->
+	<update id="idUpdate" parameterType="loginDTO">
+		UPDATE 
+			LOGIN 
+		SET 
+			NIC=#{NIC}, 
+			PWD=#{PWD}, 
+			PHONE=#{PHONE}, 
+			EMAIL=#{EMAIL}, 
+			IMG=#{IMG}  
+		WHERE 
+			ID =#{ID}
+	</update>
+	
 	
 	<!-- 범주 플레이 리스트 불러오기 -->
 	<select id="selectPlayList" resultType="playListDTO" parameterType="String">

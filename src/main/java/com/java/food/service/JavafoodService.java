@@ -61,7 +61,7 @@ public interface JavafoodService {
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
-	Map login(Map<String, Object> map);
+	Map<String, Object> login(Map<String, Object> map);
 	//회원가입
 	int addid(Map<String, Object> map);
 	//아자스 중복체크
@@ -70,6 +70,8 @@ public interface JavafoodService {
 	int outId(String id);
 	//로그인 재생목록
 	Map<String, Object> loginplay(String id,int i);
+	//회원 정보 수정
+	int idUpdate(Map<String, Object> map, String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

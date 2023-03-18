@@ -83,7 +83,7 @@ window.onload=function() {
 				
 			}else{
 	            console.log(z)
-	            alert('사용중입니다.');
+	            alert('사용불가.');
 	        }
 	        callback(z,chak);
 	    }

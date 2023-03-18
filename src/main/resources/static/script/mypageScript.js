@@ -122,25 +122,28 @@ window.onload = function(){
 		$('#end').attr('disabled', true);
     })
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//아자스로 보내서 중복되는값 확인
-    let c = false;
-    function aj(key, callback, chak) {
-        let xml = new XMLHttpRequest();
-        xml.open('get', 'http://localhost:8080/javafood_team/aj?' + key);
-        xml.send();
-        xml.onload = function () {
-            let z = 0;
-            c = xml.responseText;
-            if (c != 1) {
-                z = 1;
-                alert('사용가능.');
-            } else {
-                z = 0;
-                alert('사용중입니다.');
-            }
-            callback(z, chak);
-        }
-    }
+let c= false;
+	function aj(key, callback, chak){
+		let xml = new XMLHttpRequest();
+	    xml.open('get','/login/ajax?'+key);
+	    xml.send();
+	    xml.onload=function(){
+	    	console.log('아자스 값 : ',xml.responseText)
+	        z=xml.responseText;
+	        if(z==1){
+	            alert('사용가능.');
+	            console.log(z)
+	        }else if(z==2) {
+	            alert('값을 입력해주세요.');
+				console.log(z)
+				
+			}else{
+	            console.log(z)
+	            alert('사용불가.');
+	        }
+	        callback(z,chak);
+	    }
+	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //중복확인 클릭시 수정가능
     function fn(call, chak) {

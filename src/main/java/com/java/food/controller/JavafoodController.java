@@ -508,13 +508,14 @@ public class JavafoodController {
 			// 로그인 정보 확인 or 세션ID에 로그인 id 값 저장
 			if (map.get("ID") != null) {
 				log.info("로그인 시도");
-				Map m = javaService.login(map);
+				Map<String, Object> m = javaService.login(map);
 				mo.addAttribute("log", m.get("log"));
 				mo.addAttribute("map", m);
 				
 				re.getSession().setAttribute("loginId", m.get("id"));
 				re.getSession().setAttribute("loginNic", m.get("nic"));
 				re.getSession().setAttribute("loginEmail", m.get("email"));
+				re.getSession().setAttribute("loginPn", m.get("pn"));
 				re.getSession().setAttribute("loginImg", m.get("img"));
 			}
 			
@@ -558,6 +559,9 @@ public class JavafoodController {
 			HttpServletRequest re) {
 		
 		log.info("my_page 접속");
+		String id = (String)re.getSession().getAttribute("loginId");
+		System.out.println("loginId : "+id);
+		
 		try {
 			
 			//페이지 이동
@@ -566,23 +570,20 @@ public class JavafoodController {
 				log.info("page 이동");
 				mo.addAttribute("page",map.get("page"));
 				
-				//로그아웃
-				if("c".equals(map.get("page"))) {
-					log.info("로그아웃");
-					re.getSession().invalidate();
+				//회원정보 수정
+				if("a".equals(map.get("a"))) {
+					log.info("회원정보 수정");
+					mo.addAttribute("remove",javaService.idUpdate(map, id));
 				}
+				
 				//회원 재생목록 가져오기
 				if("b".equals(map.get("page"))) {
-					
-					System.out.println("page가져오기");
-					System.out.println("loginId : "+(String) re.getSession().getAttribute("loginId"));
+					log.info("page가져오기");
 					
 					//페이지 주소값
 					String i; 
 					if(map.get("p")!=null) i = (String) map.get("p");
 					else i = "1";
-					
-					String id = (String) re.getSession().getAttribute("loginId");
 					
 					map = javaService.loginplay(id,Integer.parseInt(i));
 					
@@ -592,6 +593,13 @@ public class JavafoodController {
 					
 					System.out.println("page가져");
 				}
+				
+				//로그아웃
+				if("c".equals(map.get("page"))) {
+					log.info("로그아웃");
+					re.getSession().invalidate();
+				}
+				
 			}
 			
 			return "/my_page";
