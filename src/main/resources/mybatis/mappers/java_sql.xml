@@ -77,6 +77,17 @@
 			ORDER BY SONGNUMBER
 	</select>
 	
+	<!-- main페이지에서 아티스트 별로 랜덤출력 할 때 -->
+	<select id="randomArtist" resultType="albumDTO" parameterType="String">
+			SELECT * from
+				(SELECT DISTINCT * FROM artist
+				ORDER BY dbms_random.value)
+				WHERE rownum <![CDATA[<=]]> 10
+	</select>
+	<!--<select id="randomArtist" resultType="albumDTO" parameterType="String">
+		SELECT * FROM artist
+	</select>-->
+	
 	
 	<!-- 인기차트 귀범-->
 	<select id="chart" resultType="chartDTO" parameterType="java.util.HashMap">

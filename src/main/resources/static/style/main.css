@@ -274,3 +274,70 @@
 		margin-left: 0px;
 		border-radius: 30%;
 	}
+	
+	/*     랜덤아티스트	테이블 		 */
+	
+	 	#cont3{
+            margin-top : 20px;
+            text-align: center;
+        }
+        #cont3_1{
+            
+            width: 1480px;
+            height: 250px;
+            position: relative;
+            margin: 15px 110px;
+            overflow: hidden;
+        }
+        
+        /*슬라이드 애니메이션*/
+       
+        li{
+            list-style-type: none;
+        }
+
+        .clides li:not(:last-child){
+            float: left;
+            margin-right: 30px;
+        }
+
+        .clides{
+            
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5000px; /* 슬라이드할 사진과 마진 총 넓이 */
+            transition: left 0.6s;
+         }
+
+         .clides li{
+            float: left;
+            margin-right: 25px;
+
+            }
+            
+            .image{
+            width: 190px;
+            border-radius: 70%;
+        }
+        
+        .marLeft{
+        	margin-left: -885px;
+        }
+
+        .al_name{
+            /* border: 1px solid white; */
+            display: inline-block;
+            width: 180px;
+            font-size: 16px;
+            
+        }
+        
+        #warp{
+        	border-radius:5px;
+        	display: inline-block;
+        	width: 180px;
+        	background-color: rgba(128, 128, 128, 0.652);
+        	text-align: center;
+        }
+	

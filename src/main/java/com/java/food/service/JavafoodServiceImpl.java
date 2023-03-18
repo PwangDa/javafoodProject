@@ -1,5 +1,6 @@
 package com.java.food.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,6 +93,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 	public List randomGenre(String genre) {	
 		System.out.println("EMP Service >> randomGenre 실행");	
 		return javaDAO.randomGenre(genre);	
+	}
+	
+	@Override
+	public List randomArtist() {
+		System.out.println("EMP Service >> randomArtist 실행");	
+		return javaDAO.randomArtist();
 	}
 	
 	@Override

@@ -479,7 +479,10 @@ public class JavafoodController {
 		
 		//리스트를 모델을 이용해 담기
 		model.addAttribute("hitList", list);
-
+		
+		//sql에서 랜덤으로 8명의 아티스트 조회한 값 가져오기
+		List random_artist = javaService.randomArtist();
+		model.addAttribute("random_artist", random_artist);
 		
 		//매뉴 상단바 로그아웃
 		if(map.get("out")!=null) {

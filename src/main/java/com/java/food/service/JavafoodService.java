@@ -24,6 +24,7 @@ public interface JavafoodService {
 	int replyComment(CommentDTO dto);
 	int delComment(int articleNO);
 	List randomGenre(String genre);
+	List randomArtist();
 	int albumplus(AlbumDTO dto);
 ////////////////////////////////////////////////////////////
 //귀범

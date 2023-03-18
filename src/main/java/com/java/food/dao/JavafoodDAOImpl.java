@@ -116,6 +116,16 @@ SqlSession sqlSession;
 			int album = sqlSession.insert("mapper.javafood.plusAlbum", dto);
 		
 			return album;
+		} 
+		
+		@Override
+		public List randomArtist() {
+			logger.info("아티스트 8명을 추가합니다 실행");
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.randomArtist");
+			System.out.println(list.size());
+
+			return list;
 		}
 
 ////////////////////////////////////////////////////////////

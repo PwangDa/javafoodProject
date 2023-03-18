@@ -310,7 +310,7 @@
     	<%-- 랜덤곡 리스트 컨트롤러 --%>
 	    <div class="hitList">
 	    	<div class="subtitle">
-	    		오늘은 이런 장르 어떠세요? ${gerne[0].bygenre}
+	    		오늘은 이런 장르 어떠세요? <div id="warp">${gerne[0].bygenre}</div>
 	    		<div class="hitListController">
 	    			<p class="point ranPrev"><</p>
 	    			<p class="point ranNext">></p>
@@ -572,6 +572,35 @@
 		    	</c:forEach>
 		    </div>
 		</div>
+		
+		<br>
+	    <br>
+	    <br>
+		
+		<!-- 랜덤 아티스트 추천 -->
+		<div class="hitList">
+	    	<div class="subtitle">
+	    		오늘의 추천 아티스트
+	    		<div class="hitListController">
+	    			<p class="point ranPrev"><</p>
+	    			<p class="point ranNext">></p>
+	    		</div>
+	    	</div>
+	    </div>		
+		<div id = "cont3">
+            <div id="cont3_1">
+                <ul id = "slds" class="clides">
+				<%-- 앨범 부분 forEach --%>
+                <c:forEach var ="artist" items="${random_artist}" varStatus="loop">
+                    <li>
+                        <a href="/artistpage?artist=${artist.artistname}"><img  class="image" src="${artist.artist_img}"></a>
+                        <br>
+                        <a style = "font-size:14px;" href="/albumpage?artist=${artist.artistname}"><span class="al_name"><strong>${artist.artistname }</strong></span></a>
+                    </li>
+                </c:forEach>
+                </ul>
+            </div>
+        </div>
    
 
 	<!-- js파일 불러오기 -->
