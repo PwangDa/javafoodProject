@@ -247,6 +247,16 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 		return result;
 	}
+	
+	//범주 플레이 리스트에 곡 추가하기
+	@Override
+	public void addContent(Map info)
+	{
+		System.out.println("JavafoodServiceImpl의 addContent 메서드 실행됨."); //확인용
+		
+		//dao의 addContent 메서드 실행하기.
+		javaDAO.addContent(info);
+	}
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
@@ -427,6 +437,18 @@ public class JavafoodServiceImpl implements JavafoodService {
 			
 		return 1;
 			
+	}
+	
+	public int good(int songnumb, String id) {
+		log.info("good service 실행");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("song", songnumb);
+		
+		javaDAO.good(map);
+		
+		return 1;
 	}
 	
 ////////////////////////////////////////////////////////////

@@ -303,7 +303,8 @@ public void deletePlayList(Map<String, String> info)
 	
 	//sql을 이용하여 DB에 접속해 데이터를 삭제(delete)하기
 	int result = sqlSession.delete("mapper.javafood.deletePlayList", info);
-	if(result >= 1) //확인용
+	//확인용
+	if(result >= 1)
 	{
 		System.out.println("deletePlayList 성공!!");
 	}
@@ -333,6 +334,39 @@ public List<GenreDTO> selectHitList()
 	
 	//담은 리스트를 리턴하기.
 	return result;
+}
+
+@Override
+public void addContent(Map info)
+{
+	System.out.println("JavafoodDAOImpl의 addContent 메서드 실행됨."); //확인용
+	
+	int insert = 0;
+	
+	//for문을 이용하여 insert를 songNumber 갯수 만큼 시도하기
+	for(int i=0; i<( (String[])info.get("songNumber") ).length; i++)
+	{
+		//HashMap에 담긴 songNumber 리스트 요소를 불러오기
+		//불러온 요소를 필드에 담기
+		String tempSongNumber = ( (String[])info.get("songNumber") )[i];
+		System.out.println("addContent의 tempSongNumber는 : " + tempSongNumber); //확인용
+		System.out.println("addContent의 pl_id는 : " + (String)info.get("pl_id") ); //확인용
+		
+		//HashMap에 tempSongNumber와 pl_id를 담기
+		Map tempInfo = new HashMap();
+		tempInfo.put("songNumber", tempSongNumber);
+		tempInfo.put("pl_id", info.get("pl_id") );
+		
+		int result = sqlSession.insert("mapper.javafood.addContent", tempInfo);
+		if(result > 0)
+		{
+			insert++;
+		}
+	}
+	
+	System.out.println("추가 할 곡의 수 : " + ( (String[])info.get("songNumber") ).length); //확인용
+	System.out.println("추가 된 곡의 수 : " + insert); //확인용
+	
 }
 ////////////////////////////////////////////////////////////
 
@@ -396,6 +430,28 @@ public List<SongHit_DTO> loginplay(String id) {
 	return list;
 }
 
+/**
+ * 아자스를 이용한 좋아요 증가
+ * @paramMap : id : 가져올 아이디 값.
+ * 				song : 좋아요 증가할 노래 번호 값.
+ * @return : 좋아요 증가 성공 여부
+ */
+@Override
+public int good(Map<String, Object> map) {
+	logger.info("good dao 실행");
+	int i=0;
+	try {
+		List list = sqlSession.selectList("mapper.javafood.good",map);
+		if(list.size()==0)
+		
+		sqlSession.insert("mapper.javafood.good",map);
+		i=1;
+	} catch (Exception e) {
+		logger.info("good dao 오류");
+		e.printStackTrace();
+	}
+	return i;
+}
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르별

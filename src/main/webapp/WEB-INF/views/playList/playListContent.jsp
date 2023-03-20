@@ -84,9 +84,9 @@
 						<a href="${ list.link }" target="_blank"><span class="song_title">${ list.songName }</span></a>
 						<br>
 						<br>
-						${ list.artistName }
+						<a href="artistpage?artist=${ list.artistName }">${ list.artistName }</a>
 						<br>
-						${ list.album_name }
+						<a href="albumpage?album=${ list.album_name }">${ list.album_name }
 					</div>
 					<span class="deleteSong">
 						<form class="deleteSong">

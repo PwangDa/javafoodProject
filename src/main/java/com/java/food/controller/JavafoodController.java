@@ -1,5 +1,6 @@
 package com.java.food.controller;
 
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.AlbumDTO;
@@ -27,7 +30,6 @@ import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
-import com.java.food.dto.SongHit_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -337,6 +339,7 @@ public class JavafoodController {
 //		String id = "id3"; // 테스트 용 아이디.
 		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
 		
+		//로그인 상태가 아니면 로그인 페이지로 보내기
 		if(id == null)
 		{
 			return "lky/login";
@@ -384,8 +387,7 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "playList"
-				+ "/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "playList/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
@@ -494,15 +496,77 @@ public class JavafoodController {
 		// main.jsp로 보내기
 		return "/main";
 	}
+	
+	@RequestMapping("/playListAdd")
+	public String playListAdd(Model model, HttpServletRequest request, HttpSession session)
+	{
+		System.out.println("JavafoodController의 playListAdd 메서드 실행됨."); //확인용
+		
+		//로그인 중인 아이디 가져오기
+		String id = (String)request.getSession().getAttribute("loginId");
+		System.out.println("해당 플레이 리스트를 요청한 아이디 : " + id); // 확인용
+		
+		//로그인 상태가 아니면 로그인 페이지로 보내기
+		if(id == null)
+		{
+			return "lky/login";
+		}
+		
+		//주소에 전달된 값들을 받아오기
+		String[] songNumber = request.getParameterValues("songNumber");
+		System.out.println("playListAdd 메서드를 실행하며 주소에서 전달 받은 songNumber의 값은 : "); //확인용
+		for(int i=0; i<songNumber.length; i++) //확인용
+		{			
+			if(i%5 == 0 && i != 0)
+			{
+				System.out.println();
+			}
+			if(songNumber.length-1 != i)
+			{	
+				System.out.print(songNumber[i] + ", ");
+			}
+			else
+			{
+				System.out.println(songNumber[i]);
+			}
+		}
+		System.out.println("songNumber의 총 갯수는 : " + songNumber.length);
+		
+		//받은 값을 세션에 저장하기
+		session.setAttribute("songNumber", songNumber);
+		
+		//service에서 리스트 불러오는 메서드 실행하기
+		//실행한 결과를 필드에 담기
+		List<PlayListDTO> playList = javaService.selectPlayList(id);
+		
+		//필드를 모델에 담아 전송하기
+		model.addAttribute("playList", playList);
+		
+		//jsp 호출하기
+		return "playList/playListAdd"; // /view/playList/playListAdd.jsp 호출
+	}
 
 	@RequestMapping("/addContent")
-	public void addContent(HttpServletRequest request)
+	public String addContent(HttpServletRequest request, HttpSession session)
 	{
 		System.out.println("JavafoodController의 addContent 메서드 실행됨."); //확인용
 		
-		//주소에서 넘어온 값 받기
-		String songNumber = request.getParameter("songNumber");
-		System.out.println("addContent 메서드에서 받은 songNumber는 : " + songNumber);
+		//주소에서 전달된 값 받기
+		String pl_id = request.getParameter("pl_id");
+		
+		//세션에 저장해둔 songNumber 리스트를 받기
+		String[] songNumber = (String[])session.getAttribute("songNumber");
+		
+		//받은 값들을 HashMap에 저장하기
+		Map info = new HashMap();
+		info.put("songNumber", songNumber);
+		info.put("pl_id", pl_id);
+		
+		//serivce에서 addContent 메서드 실행하기
+		javaService.addContent(info);
+		
+		//플레이 리스트 내역으로 리다이렉트 하기
+		return "redirect:playListContent?pl_id="+pl_id;
 	}
 ////////////////////////////////////////////////////////////
 	// 경용
@@ -619,7 +683,23 @@ public class JavafoodController {
 		}
 	}
 	
-	
+	//아자스를 이용한 좋아요 증가
+	@RequestMapping("my_page/good")
+	@ResponseBody
+	public int good(
+			@RequestPart("good") int i,
+			HttpServletRequest re
+			) {
+		log.info("good 아자스 실행");
+		int resurt =0;
+		
+		try {
+			resurt = javaService.good(i, (String) re.getSession().getAttribute("loginId"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resurt;
+	}
 	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")

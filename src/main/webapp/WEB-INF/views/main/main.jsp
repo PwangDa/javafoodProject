@@ -63,7 +63,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -89,7 +89,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -114,7 +114,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -139,7 +139,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -164,7 +164,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -189,7 +189,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -214,7 +214,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -239,7 +239,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -264,7 +264,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -289,7 +289,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -337,7 +337,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -363,7 +363,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -388,7 +388,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -413,7 +413,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -438,7 +438,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -463,7 +463,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -488,7 +488,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -513,7 +513,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -538,7 +538,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -563,7 +563,7 @@
 			                    </div>
 			                    <div class="hitListViewerSongInfo">
 			                    <!-- 곡 정보와 앨범 정보 DB가 생기면 링크를 수정할 것. -->
-			                        <a target="_blank"  class="hitListViewerArtistName" href="javascript:void(0)">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="javascript:void(0)">${hitList.album_name }</a>
+			                        <a target="_blank"  class="hitListViewerArtistName" href="artistpage?artist=${ hitList.artistname }">${hitList.artistname }</a>·<a target="_blank"  class="hitListViewerAlbumName" href="albumpage?album=${ hitList.album_name }">${hitList.album_name }</a>
 			                    </div>
 			                </div>
 			            </div>
@@ -581,8 +581,8 @@
 	    	<div class="subtitle">
 	    		오늘의 추천 아티스트
 	    		<div class="hitListController">
-	    			<p class="point ranPrev"><</p>
-	    			<p class="point ranNext">></p>
+	    			<p class="point artistPrev"><</p>
+	    			<p class="point artistNext">></p>
 	    		</div>
 	    	</div>
 	    </div>		
