@@ -67,6 +67,9 @@ public interface JavafoodDAO {
 	
 	//메인페이지 인기곡 리스트 불러오기
 	List<GenreDTO> selectHitList();
+	
+	//플레이 리스트에 곡 추가하기
+	void addContent(Map info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인 정보 확인
@@ -95,5 +98,5 @@ public interface JavafoodDAO {
 	
 
 	//되나요?
-
+	//넹 고마워요
 }

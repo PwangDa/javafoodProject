@@ -22,11 +22,10 @@
 	<div class="title"><h1>노래를 추가할 플레이 리스트를 선택하세요.</h1></div>
 	<br>
 	<hr>
-	<img class="addList" src="https://c11.kr/1asbg"> <span class="addList">리스트 추가</span>
 	
 	<c:forEach var="playList" items="${ playList }">
 		<!-- 누르면 추가함  -->
-		<a href="javaScript.void(0)">
+		<a href="/addContent?pl_id=${ playList.pl_id }">
 			<div class="playList">
 				<!-- 앨범 표지가 추가되면 해당 부분의 src를 수정할 것. -->
 				<img class="album" src="https://image.bugsm.co.kr/album/images/original/203228/20322838.jpg?version=undefined">
