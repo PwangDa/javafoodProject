@@ -11,11 +11,19 @@
 <head>
 <meta charset="UTF-8">
 <title>리스트에 노래 추가</title>
+
+
+<!-- css 파일 불러오기 -->
+<link rel="stylesheet" href="/style/playList.css">
+
+
 </head>
 <body>
 	<div class="title"><h1>노래를 추가할 플레이 리스트를 선택하세요.</h1></div>
 	<br>
 	<hr>
+	<img class="addList" src="https://c11.kr/1asbg"> <span class="addList">리스트 추가</span>
+	
 	<c:forEach var="playList" items="${ playList }">
 		<!-- 누르면 추가함  -->
 		<a href="javaScript.void(0)">
@@ -26,5 +34,9 @@
 			</div>
 		</a>
 	</c:forEach>
+	   	
+   	<!-- js파일 불러오기 -->
+   	<script src="/script/playList.js"></script>
+   	
 </body>
 </html>

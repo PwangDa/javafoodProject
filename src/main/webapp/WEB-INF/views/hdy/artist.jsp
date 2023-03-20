@@ -51,13 +51,19 @@
            	
            		<c:forEach var="album" items="${album_list}" end="5" varStatus="loop">
 	            <div id = "cont1">
+	            	<input type="checkbox" id="cb1" name="chk" onclick="checkSelectAll(); getCheckedValue()" value="${ album.songnumber}">
 	                <div class = "box1_1">
 	                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.imagelink }"></a>
 	                </div>
 	                <div class = "box1 text2"><a href="${album.link}"><strong>${album.songname}</strong></a></div>
 	                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album_list[0].artistname }</div>
 	                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/albumpage?album=${album.album_name}">${album.album_name }</a></div>
-	                <div><img class="img img2" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'"></div>
+	                <div>
+	                	<img class="img img2" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'">
+	                </div>
+					<div><!-- 담기 버튼 -->
+            			<img class="img img2" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'">
+            		</div>	                
 	            </div>
 	            <hr>
             	</c:forEach>
@@ -71,6 +77,7 @@
 			                <div class = "box1 text2"><a href="${loop.count}"><strong>${album.songname}</strong></a></div>
 			                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album_list[0].artistname }</div>
 			                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/albumpage?album=${album.album_name}">${album.album_name }</a></div>
+			                <div><img class="img img2" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'"></div>
 	            		</div>
 	            		<hr>
             		</c:forEach>
@@ -108,7 +115,7 @@
                         <textarea class="text_area" name="cont" placeholder="*로그인을 해주세요"  disabled></textarea>
                     </div>
                     <div class="text2">
-                        <input class="btn" type="submit" value="등록">
+                        <input class="btn" type="submit" value="등록" disabled>
                     </div>
                 </c:if>
                 <c:if test="${not empty nic}">
