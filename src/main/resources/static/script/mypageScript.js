@@ -58,8 +58,13 @@ function good(num){
 	$.ajax({
 		type : 'get',
 		url : '/my_page/good?good='+num ,
-		data : 'text'
-	})
+		data : 'text' ,
+		success : function(res){
+       		console.log(res);
+       		if(res==1) alert('좋아요를 클릭했습니다.')
+       		else alert('좋아요 실패')
+		}
+ 	})
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //로딩후 진행
