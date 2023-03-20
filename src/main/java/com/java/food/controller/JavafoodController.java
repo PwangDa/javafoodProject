@@ -495,6 +495,15 @@ public class JavafoodController {
 		return "/main";
 	}
 
+	@RequestMapping("/addContent")
+	public void addContent(HttpServletRequest request)
+	{
+		System.out.println("JavafoodController의 addContent 메서드 실행됨."); //확인용
+		
+		//주소에서 넘어온 값 받기
+		String songNumber = request.getParameter("songNumber");
+		System.out.println("addContent 메서드에서 받은 songNumber는 : " + songNumber);
+	}
 ////////////////////////////////////////////////////////////
 	// 경용
 	
