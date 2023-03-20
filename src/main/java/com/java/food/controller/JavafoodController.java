@@ -799,6 +799,15 @@ public class JavafoodController {
 					
 			return "/popular_Music";
 		}
+		
+		//최신음악
+				@RequestMapping ("/insert_song")
+				public String insert_song(Model model,
+						HttpServletRequest request) {
+					System.out.println("controller의 insert_song  실행");
+					
+					return "/insert_song";
+				}
 
 ////////////////////////////////////////////////////////////
 }
