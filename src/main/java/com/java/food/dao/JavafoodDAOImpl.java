@@ -430,6 +430,25 @@ public List<SongHit_DTO> loginplay(String id) {
 	return list;
 }
 
+/**
+ * 아자스를 이용한 좋아요 증가
+ * @paramMap : id : 가져올 아이디 값.
+ * 				song : 좋아요 증가할 노래 번호 값.
+ * @return : 좋아요 증가 성공 여부
+ */
+@Override
+public int good(Map<String, Object> map) {
+	logger.info("good dao 실행");
+	int i=0;
+	try {
+		sqlSession.insert("mapper.javafood.good",(String)map.get("song"));
+		i++;
+	} catch (Exception e) {
+		logger.info("good dao 오류");
+		e.printStackTrace();
+	}
+	return i;
+}
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르별

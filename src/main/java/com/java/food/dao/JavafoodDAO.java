@@ -80,6 +80,8 @@ public interface JavafoodDAO {
 	int outId(String id);
 	//회원 재생목록
 	List<SongHit_DTO> loginplay(String id); 
+	//좋아요 증가
+	int good(Map<String, Object> map);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

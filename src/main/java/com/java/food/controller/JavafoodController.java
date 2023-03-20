@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.food.dto.AlbumDTO;
@@ -682,7 +683,28 @@ public class JavafoodController {
 		}
 	}
 	
-	
+	//아자스를 이용한 좋아요 증가
+	@RequestMapping("/my_page/good")
+	@ResponseBody
+	public int good(
+			@RequestParam("good") String i,
+			HttpServletRequest re
+			) {
+		log.info("good 아자스 실행");
+		int resurt = 0;
+		
+		try {
+			log.info("good 좋아요 실행");
+			
+			System.out.println("i : "+i);
+			System.out.println("song : "+re.getSession().getAttribute("loginId"));
+			
+			resurt = javaService.good(i, (String) re.getSession().getAttribute("loginId"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resurt;
+	}
 	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")
@@ -761,6 +783,10 @@ public class JavafoodController {
 					String tmp_pageNum = request.getParameter("pageNum");
 					if(tmp_pageNum != null) {
 						pageNum = Integer.parseInt(tmp_pageNum);
+					}
+					String tmp_countPerPage = request.getParameter("countPerPage");
+					if (tmp_countPerPage != null) {
+						countPerPage = Integer.parseInt(tmp_countPerPage);
 					}
 					System.out.println("pageNum : " + pageNum);
 					System.out.println("countPerPage : " + countPerPage);
