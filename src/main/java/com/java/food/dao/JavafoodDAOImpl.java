@@ -92,7 +92,12 @@ SqlSession sqlSession;
 			
 			return count;
 		}
-		
+		/**
+		 * 다영
+		 * 댓글 삭제 메소드
+		 * 전달인자 : int (부모댓글 숫자)
+		 * @return : int
+		 */
 		@Override
 		public int delComment(int articleNO) {
 			//logger.info("JavafoodDAOImpl > delComment 실행");
@@ -101,6 +106,12 @@ SqlSession sqlSession;
 			return article;
 		}
 		
+		/**
+		 * 다영
+		 * 리스트에 넣은 장르를 랜덤으로 뽑아 불러내는 메소드
+		 * 전달인자 : String (장르 이름)
+		 * @return : list
+		 */
 		@Override
 		public List randomGenre(String genre) {
 			logger.info("JavafoodDAOImpl > randomGenre 실행");
@@ -118,12 +129,16 @@ SqlSession sqlSession;
 			return album;
 		} 
 		
+		/**
+		 * 다영
+		 * DB에서 아티스트 8명 랜덤으로 뽑아오는 메소드
+		 */
 		@Override
 		public List randomArtist() {
 			logger.info("아티스트 8명을 추가합니다 실행");
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.randomArtist");
-			System.out.println(list.size());
+			System.out.println("randomArtist"+list.size());
 
 			return list;
 		}
