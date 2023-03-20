@@ -54,6 +54,11 @@
       <put-attribute name="body" value="/WEB-INF/views/chart/selectdance.jsp" />
    </definition>
    
+   <definition name="/insert_song" extends="baseLayout">
+      <put-attribute name="title" value="selectDance" />
+      <put-attribute name="body" value="/WEB-INF/views/lyj/insert_song.jsp" />
+   </definition>
+   
 <!--    <definition name="/playListContent" extands="baseLayout"> -->
 <!--       <put-attribute name="title" value="playListContent" /> -->
 <!--       <put-attribute name="body" value="/WEB-INF/views/playList/playListContent.jsp" /> -->

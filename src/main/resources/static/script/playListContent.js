@@ -1,17 +1,10 @@
-    document.querySelector("img.delete_icon").addEventListener("mouseover", ()=>
-    {
-        document.querySelector("img.delete_icon").classList.toggle("hidden");
-        document.querySelector("img.delete_icon2").classList.toggle("hidden");
-    });
-
-    document.querySelector("img.delete_icon").addEventListener("mouseout", ()=>
-    {
-        document.querySelector("img.delete_icon").classList.toggle("hidden");
-        document.querySelector("img.delete_icon2").classList.toggle("hidden");
-    });
-
+    let deleteList = document.querySelector("span.delete");
+    let deleteSong = document.querySelectorAll("span.deleteSong");
+    let deleteSong2 = document.querySelectorAll("span.deleteSong form");
     
-    document.querySelector("span.delete").addEventListener('click', ()=>
+    let selected = document.querySelectorAll("input.songCheck");
+    
+    deleteList.addEventListener('click', ()=>
     {
         if(confirm("정말로 해당 플레이 리스트를 삭제하겠습니까?") )
         {
@@ -21,23 +14,9 @@
         	deleteList.submit();
         }
     });
-    for(let i = 0; i < document.querySelectorAll("img.sDelete_icon").length; i++)
+    for(let i = 0; i < deleteSong.length; i++)
     {
-        document.querySelectorAll("img.sDelete_icon")[i].addEventListener("mouseover", ()=>
-        {
-            document.querySelectorAll("img.sDelete_icon")[i].classList.toggle("hidden");
-            document.querySelectorAll("img.sDelete_icon2")[i].classList.toggle("hidden");
-        });
-
-        document.querySelectorAll("img.sDelete_icon")[i].addEventListener("mouseout", ()=>
-        {
-            document.querySelectorAll("img.sDelete_icon")[i].classList.toggle("hidden");
-            document.querySelectorAll("img.sDelete_icon2")[i].classList.toggle("hidden");
-        });
-    }
-    for(let i = 0; i < document.querySelectorAll("span.deleteSong").length; i++)
-    {
-        document.querySelectorAll("span.deleteSong form")[i].addEventListener('click', (event)=>
+        deleteSong2[i].addEventListener('click', (event)=>
         {
             if(confirm("정말로 해당 곡을 리스트에서 삭제하겠습니까?") )
             {
@@ -47,6 +26,15 @@
             }
         });
     }
+    
+    //선택된 것 삭제하기 만들다 만거
+//    for(let i = 0; i < selected.length; i++)
+//    {
+//		selected[i].addEventListener('checked', ()=>
+//		{
+//			selected[i].parentNode.style.
+//		});
+//	}
     
     (function (){  
         document.onmousemove=function (e){ var ob=document.getElementById("foo").style; ob.left=e.pageX+15+"px"; ob.top=e.pageY+15+"px";}

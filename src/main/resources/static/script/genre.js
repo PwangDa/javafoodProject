@@ -61,8 +61,20 @@ for(let i = 0; i < addList.length; i++)
 //여러 개가 체크 된 곡들을 플레이 리스트에 추가하기
 let addLists = document.querySelector("img.addLists");
 
+
 addLists.addEventListener("click", ()=>{
-	addLists.parentNode.parentNode.action = "javafood?javafood=3_6&songNumbers="+getCheckedValue()+"&addWhere=NewGenre";
+let string = "";
+for(let i = 0; i < getCheckedValue().length; i++)
+{
+	string += "songNumber=";
+	string += getCheckedValue()[i];
+	if(getCheckedValue.length-1 != i)
+	{
+		string += "&";
+	}
+}
+	addLists.parentNode.parentNode.action = "playListAdd?"+string;
+	addLists.parentNode.parentNode.target = "_blank";
 	addLists.parentNode.parentNode.submit();
 });
 
