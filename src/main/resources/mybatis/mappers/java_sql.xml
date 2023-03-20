@@ -201,6 +201,46 @@
 			)
 	</insert>
 	
+<!-- 	songhit의 아이디값 불러오기 -->
+<!-- 	<select id="hitid" parameterType="String" resultType="SongHit_DTO"> -->
+		
+<!-- 		SELECT  -->
+<!-- 			songnumber  -->
+<!-- 		FROM  -->
+<!-- 			songhit -->
+<!-- 		WHERE  -->
+<!-- 			0 <![CDATA[ < ]]> ( -->
+<!-- 				SELECT  -->
+<!-- 					count(*)  -->
+<!-- 				FROM  -->
+<!-- 					songhit -->
+<!-- 				WHERE -->
+<!-- 					id = #(id) -->
+<!-- 				) -->
+<!-- 			AND  -->
+<!-- 				id = #(id) -->
+			
+<!-- 	</select> -->
+	
+<!-- 	장르의 노래 좋아요증가 -->
+	<update id="good" parameterType="String">
+		
+		UPDATE 
+			genre 
+		SET 
+			likes = 1+(
+					SELECT 
+						likes 
+					FROM
+						genre 
+					WHERE 
+						songnumber = #{song}
+					)
+		WHERE 
+			songnumber = #{song}
+		
+	</update>
+	
 <!-- 	회원 정보 수정 -->
 	<update id="idUpdate" parameterType="loginDTO">
 		UPDATE 
@@ -219,11 +259,11 @@
 	<!-- 범주 플레이 리스트 불러오기 -->
 	<select id="selectPlayList" resultType="playListDTO" parameterType="String">
 		SELECT
-			pl_title, pl_id, pl_date
+			pl.pl_title, pl.pl_id, pl.pl_date, pl.id
 		FROM
-			playList
+			playList pl
 		WHERE
-			id = #{id}
+			pl.id = #{id}
 		ORDER BY
 			pl_date DESC
 	</select>
@@ -289,4 +329,29 @@
 		ORDER BY
 			songNumber
 	</select>
+	
+	<!-- 범주 플레이 리스트에 곡 추가하기 -->
+	<insert id="addContent" parameterType="hashMap">
+		INSERT INTO
+			playList_Content
+				(
+					pl_id_id,
+					pl_id,
+					listNumber,
+					songName,
+					songNumber
+				)
+			VALUES
+				(
+					#{pl_id},
+					#{pl_id},
+					seq_listNumber.nextval,
+					(
+						SELECT songName
+						FROM genre
+						WHERE songNumber = #{songNumber}
+					),
+					#{songNumber}
+				)
+	</insert>
 </mapper>

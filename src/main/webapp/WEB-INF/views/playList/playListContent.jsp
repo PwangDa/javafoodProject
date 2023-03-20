@@ -43,8 +43,7 @@
 				<form name="deleteList">
 					<input type="hidden" name="pl_id" value="<%= pl_id%>">
 					<input type="hidden" name="id" value="<%=id %>">
-					<img class="delete_icon" src="https://popcat.click/twitter-card.jpg" width="50">
-					<img class="delete_icon2 hidden" src="https://play-lh.googleusercontent.com/ID5wHCs0FsgS018pX0e0My5z3u4cBG7dAYAr2owB9gwylWaNZTJ0pWAKl9It7ys5iEM" width="50">
+					<img class="delete_icon" src="https://cdn.discordapp.com/attachments/931150181540450368/1075584965003182150/x_before.JPG" width="50">
 					<div style="font-size:12px; text-align:center;">삭제하기</div>
 				</form>
  			</span>
@@ -70,8 +69,7 @@
 					<input type="hidden" name="pl_id" value="${ playListContent[0].pl_id }">
 					<input type="hidden" name="id" value="<%=id %>">
 					<input type="hidden" name="javafood" value="3_5">
-					<img class="delete_icon" src="https://popcat.click/twitter-card.jpg" width="50">
-					<img class="delete_icon2 hidden" src="https://play-lh.googleusercontent.com/ID5wHCs0FsgS018pX0e0My5z3u4cBG7dAYAr2owB9gwylWaNZTJ0pWAKl9It7ys5iEM" width="50">
+					<img class="delete_icon" src="https://cdn.discordapp.com/attachments/931150181540450368/1075584965003182150/x_before.JPG" width="50">
 					<div style="font-size:12px; text-align:center;">삭제하기</div>
 				</form>
  			</span>
@@ -79,19 +77,19 @@
 			<div class="list_parent">
 			<c:forEach var="list" items="${ playListContent }">
 				<div class="list_child">
+					<input style="vertical-align:top;" type="checkbox" name="songNumber" value="${ list.songNumber }">
 					<img class="album" src="${ list.imageLink }">
 					<div class="list_info">
 						<a href="${ list.link }" target="_blank"><span class="song_title">${ list.songName }</span></a>
 						<br>
 						<br>
-						${ list.artistName }
+						<a href="artistpage?artist=${ list.artistName }">${ list.artistName }</a>
 						<br>
-						${ list.album_name }
+						<a href="albumpage?album=${ list.album_name }">${ list.album_name }</a>
 					</div>
 					<span class="deleteSong">
 						<form class="deleteSong">
-							<img class="sDelete_icon" src="https://popcat.click/twitter-card.jpg" width="25">
-							<img class="sDelete_icon2 hidden" src="https://play-lh.googleusercontent.com/ID5wHCs0FsgS018pX0e0My5z3u4cBG7dAYAr2owB9gwylWaNZTJ0pWAKl9It7ys5iEM" width="25">
+							<img class="sDelete_icon" src="https://cdn.discordapp.com/attachments/931150181540450368/1075584965003182150/x_before.JPG" width="25">
 							<input type="hidden" name="listNumber" value="${ list.listNumber }">
 							<input type="hidden" name="pl_id" value="${ list.pl_id }">
 						</form>

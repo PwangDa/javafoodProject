@@ -58,6 +58,9 @@ public interface JavafoodService {
 	
 	//메인페이지 인기곡 불러오기
 	List<GenreDTO> selectHitList();
+	
+	//플레이 리스트에 노래 추가하기
+	void addContent(Map info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
@@ -72,6 +75,8 @@ public interface JavafoodService {
 	Map<String, Object> loginplay(String id,int i);
 	//회원 정보 수정
 	int idUpdate(Map<String, Object> map, String id);
+	//좋아요 증가
+	int good(String songnumb, String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르
