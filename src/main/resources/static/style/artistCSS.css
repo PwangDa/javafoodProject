@@ -378,3 +378,30 @@
             width: 180px;
             
         }
+        
+                input[type="checkbox"]{
+            -webkit-appearance: none;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            outline: none !important;
+            border: 1px solid #eeeeee;
+            border-radius: 2px;
+            background: #000000;
+        }
+
+        input[type="checkbox"]::before {
+            content: "\2713";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            overflow: hidden;
+            transform: scale(0) translate(-50%, -50%);
+            line-height: 1;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #adadad;
+            border-color: rgb(255, 255, 255);
+            color: white;
+        }

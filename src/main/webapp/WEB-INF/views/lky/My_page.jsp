@@ -143,8 +143,8 @@
 				<tr class="tdr ddr ">
 					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER })" target="blank"><img src="${i.IMAGELINK }"></a></td>
 					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER})" target="blank"><c:out value="${i.SONGNAME }"/></a></td>
-					<td class="td"><a class="at" href="javafood?javafood=ArtistList&num=${i.SONGNUMBER }"><c:out value="${i.ARTISTNAME }"/><img src=""></a></td>
-					<td class="td"><a class="at" href="javafood?javafood=AlbumList&num=${i.SONGNUMBER }"><c:out value="${i.ALBUM_NAME}"/></a></td>
+					<td class="td"><a class="at" href="/artistpage?artist=${i.ARTISTNAME}"><c:out value="${i.ARTISTNAME }"/><img src=""></a></td>
+					<td class="td"><a class="at" href="/albumpage?album=${i.ALBUM_NAME }"><c:out value="${i.ALBUM_NAME}"/></a></td>
 					<td class="td"><c:out value="${i.PLAYTIME }"/></td>
 					<td class="td">
 						<img class="img" src="https://c11.kr/1asbx" 
