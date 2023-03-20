@@ -59,6 +59,9 @@
 	                <div class = "box1 text2" style = "color:rgb(192, 192, 192);">${album_list[0].artistname }</div>
 	                <div class = "box1 text2"><a style = "color:rgb(192, 192, 192);" href="/albumpage?album=${album.album_name}">${album.album_name }</a></div>
 	                <div>
+	                	<img class="img2 heart" src="https://c11.kr/1asbx">
+	                </div>
+	                <div>
 	                	<img class="img img2" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'">
 	                </div>
 					<div><!-- 담기 버튼 -->
