@@ -42,9 +42,9 @@
 	
 	<!-- 앨범수록곡 출력 -->
 	<select id="viewAlbum" resultType="albumDTO" parameterType="String">
-		SELECT * FROM ALBUM a
-		LEFT JOIN INTOALBUM i ON (a.ALBUM_NAME = i.ALBUM_NAME)
-		WHERE a.ALBUM_NAME = #{album_name}
+		SELECT DISTINCT * FROM ALBUM_3 a
+		LEFT JOIN intoAlbum_2 i ON (a.ALBUM_NAME = i.ALBUM_NAME)
+		WHERE a.ALBUM_NAME LIKE #{album_name} || '%'
 	</select>
 	
 	<!-- 댓글등록 할 때 -->
