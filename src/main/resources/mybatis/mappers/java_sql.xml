@@ -202,25 +202,26 @@
 	</insert>
 	
 <!-- 	songhit의 아이디값 불러오기 -->
-<!-- 	<select id="hitid" parameterType="String" resultType="SongHit_DTO"> -->
-		
-<!-- 		SELECT  -->
-<!-- 			songnumber  -->
-<!-- 		FROM  -->
-<!-- 			songhit -->
-<!-- 		WHERE  -->
-<!-- 			0 <![CDATA[ < ]]> ( -->
-<!-- 				SELECT  -->
-<!-- 					count(*)  -->
-<!-- 				FROM  -->
-<!-- 					songhit -->
-<!-- 				WHERE -->
-<!-- 					id = #(id) -->
-<!-- 				) -->
-<!-- 			AND  -->
-<!-- 				id = #(id) -->
-			
-<!-- 	</select> -->
+
+	<select id="hitid" parameterType="String" resultType="int">
+		SELECT 
+			count(*) 
+		FROM 
+			songhit 
+		WHERE 
+			id = #{id}
+	</select>
+	
+<!-- 	아이디값 없을시 아이디 추가생성 하고 조회수1 증가-->
+	<insert id="hitaddid" parameterType="SongHit_DTO">
+		INSERT INTO 
+			SONGHIT 
+		VALUES (
+			#{ID},
+			'1',
+			#{SONGNUMBER}
+			)
+	</insert>
 	
 <!-- 	장르의 노래 좋아요증가 -->
 	<update id="good" parameterType="String">

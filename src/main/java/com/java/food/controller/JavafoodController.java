@@ -666,15 +666,12 @@ public class JavafoodController {
 					
 					System.out.println("page가져");
 				}
-				
 				//로그아웃
 				if("c".equals(map.get("page"))) {
 					log.info("로그아웃");
 					re.getSession().invalidate();
 				}
-				
 			}
-			
 			return "/my_page";
 		} catch (Exception e) {
 			log.info("my_page 오류");
@@ -705,6 +702,18 @@ public class JavafoodController {
 		}
 		return resurt;
 	}
+	
+	//아자스를 이용한 노래 재생시 조회수 증가
+	@RequestMapping("/my_page/hits")
+	@ResponseBody
+	public int hit(
+			HttpServletRequest re,
+			@RequestParam("song") String song
+			) {
+		return javaService.songhit(song ,(String) re.getSession().getAttribute("loginId"));
+	
+	}
+	
 	
 	//아자스 를 이용한 회원탈퇴
 	@RequestMapping("/my_page/out")
