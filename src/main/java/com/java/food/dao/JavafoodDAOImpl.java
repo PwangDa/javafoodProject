@@ -442,6 +442,7 @@ public int good(Map<String, Object> map) {
 	int i=0;
 	try {
 		sqlSession.insert("mapper.javafood.good",(String)map.get("song"));
+		i++;
 	} catch (Exception e) {
 		logger.info("good dao 오류");
 		e.printStackTrace();

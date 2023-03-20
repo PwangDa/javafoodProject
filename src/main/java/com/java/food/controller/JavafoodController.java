@@ -684,16 +684,21 @@ public class JavafoodController {
 	}
 	
 	//아자스를 이용한 좋아요 증가
-	@RequestMapping("my_page/good")
+	@RequestMapping("/my_page/good")
 	@ResponseBody
 	public int good(
-			@RequestPart("good") int i,
+			@RequestParam("good") String i,
 			HttpServletRequest re
 			) {
 		log.info("good 아자스 실행");
-		int resurt =0;
+		int resurt = 0;
 		
 		try {
+			log.info("good 좋아요 실행");
+			
+			System.out.println("i : "+i);
+			System.out.println("song : "+re.getSession().getAttribute("loginId"));
+			
 			resurt = javaService.good(i, (String) re.getSession().getAttribute("loginId"));
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -151,6 +151,7 @@
 							onmouseover="this.src='https://c11.kr/1asby'" 
 							onmouseout="this.src='https://c11.kr/1asbx'"
 							class="sub" onclick="good(${i.SONGNUMBER})">
+							<h1>${i.SONGNUMBER }</h1>
 					</td>
 					<td class="td">
 						<form name="addPlayList" method="post" action="/javafood_team/javafood?javafood=3_6" onclick="this.submit();">
