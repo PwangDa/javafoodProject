@@ -57,7 +57,7 @@ function hit(num){
 function good(num){
 	$.ajax({
 		type : 'get',
-		url : 'http://localhost:8080/javafood_team/aj?&good='+num,
+		url : '/my_page/good?good='+num ,
 		data : 'text'
 	})
 }

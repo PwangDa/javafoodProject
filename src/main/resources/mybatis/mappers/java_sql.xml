@@ -202,25 +202,25 @@
 	</insert>
 	
 <!-- 	songhit의 아이디값 불러오기 -->
-	<select id="hitid" parameterType="String" resultType="SongHit_DTO">
+<!-- 	<select id="hitid" parameterType="String" resultType="SongHit_DTO"> -->
 		
-		SELECT 
-			songnumber 
-		FROM 
-			songhit
-		WHERE 
-			0 <![CDATA[ < ]]> (
-				SELECT 
-					count(*) 
-				FROM 
-					songhit
-				WHERE
-					id = #(id)
-				)
-			AND 
-				id = #(id)
+<!-- 		SELECT  -->
+<!-- 			songnumber  -->
+<!-- 		FROM  -->
+<!-- 			songhit -->
+<!-- 		WHERE  -->
+<!-- 			0 <![CDATA[ < ]]> ( -->
+<!-- 				SELECT  -->
+<!-- 					count(*)  -->
+<!-- 				FROM  -->
+<!-- 					songhit -->
+<!-- 				WHERE -->
+<!-- 					id = #(id) -->
+<!-- 				) -->
+<!-- 			AND  -->
+<!-- 				id = #(id) -->
 			
-	</select>
+<!-- 	</select> -->
 	
 <!-- 	장르의 노래 좋아요증가 -->
 	<update id="good" parameterType="String">
