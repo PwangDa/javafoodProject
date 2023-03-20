@@ -313,4 +313,29 @@
 		ORDER BY
 			songNumber
 	</select>
+	
+	<!-- 범주 플레이 리스트에 곡 추가하기 -->
+	<insert id="addContent" parameterType="hashMap">
+		INSERT INTO
+			playList_Content
+				(
+					pl_id_id,
+					pl_id,
+					listNumber,
+					songName,
+					songNumber
+				)
+			VALUES
+				(
+					#{pl_id},
+					#{pl_id},
+					seq_listNumber.nextval,
+					(
+						SELECT songName
+						FROM genre
+						WHERE songNumber = #{songNumber}
+					),
+					#{songNumber}
+				)
+	</insert>
 </mapper>

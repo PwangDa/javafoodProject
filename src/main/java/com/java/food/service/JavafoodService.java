@@ -58,6 +58,9 @@ public interface JavafoodService {
 	
 	//메인페이지 인기곡 불러오기
 	List<GenreDTO> selectHitList();
+	
+	//플레이 리스트에 노래 추가하기
+	void addContent(Map info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
