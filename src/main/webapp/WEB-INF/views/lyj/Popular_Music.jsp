@@ -16,6 +16,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/style/genre.css">
 
+<script>
+	let addres = '/popular_Music?pageNum=1&countPerPage='
+</script>
+
 </head>
 <body>
 
@@ -25,7 +29,14 @@
         <span style="font-size: 34px; font-weight: 600;">Music</span>
     </header> -->
     <div id="home">
-        <h1><a href='http://localhost:8080/popular_Music'>최신음악</a></h1>
+        <a class="hhh" href='http://localhost:8080/popular_Music'><span class="h_1">최신음악</span></a>
+        
+        <select id="select" name="count_list" class="selectbox" onchange="changeSelection()">
+		<option value="5" <c:if test="${countPerPage eq 5}">selected</c:if>>5개</option>
+		<option value="10"<c:if test="${empty countPerPage || countPerPage eq 10}">selected</c:if>>10개</option>
+		<option value="20"<c:if test="${countPerPage eq 20}">selected</c:if>>20개</option>
+		</select>
+        
         
         <div class="no_chart">        
                 <input type="checkbox" id="cb1" name="selectall" onclick="selectAll(this); getCheckedValue()" value="selectall; ${ genre_list.songnumber}">
@@ -125,20 +136,20 @@
 		<img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 	<c:if test="<%= firstSec != 1 %>"> 
-		<a href="/popular_Music?pageNum=<%= firstSec-1 %>"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
+		<a href="/popular_Music?pageNum=<%= firstSec-1 %>&countPerPage=${countPerPage}"><img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 	</c:if>
 
 	<c:forEach var="i" begin="<%= firstSec %>" end="<%= lastSec %>" >
 		<c:if test="${ i == pageNum2 }">
-			<a href="/popular_Music?pageNum=${i }" class="num_p"><strong>${i}</strong></a>
+			<a href="/popular_Music?pageNum=${i }&countPerPage=${countPerPage}" class="num_p"><strong>${i}</strong></a>
 		</c:if>
 		<c:if test="${ i != pageNum2 }">
-			<a href="/popular_Music?pageNum=${i }" class="num_p">${i}</a>
+			<a href="/popular_Music?pageNum=${i }&countPerPage=${countPerPage}" class="num_p">${i}</a>
 		</c:if>
 	</c:forEach>
 
 	<c:if test="<%= lastSec != lastPage %>">
-		<a href="/popular_Music?pageNum=<%= lastSec+1 %>"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
+		<a href="/popular_Music?pageNum=<%= lastSec+1 %>&countPerPage=${countPerPage}"><img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
 	</c:if>
 	<c:if test="<%= lastSec == lastPage %>">
 		<img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
