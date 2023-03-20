@@ -21,8 +21,6 @@
 
 </head>
 <body>
-	<!-- 상단바 jsp 삽입하기 -->
-<%-- 	<jsp:include page="javascript:void(0)" /> --%>
 	<br>
 	<div class="title"><h1><%= id %>님의 플레이 리스트</h1></div>
 	    <br>
