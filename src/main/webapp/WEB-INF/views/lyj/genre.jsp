@@ -197,7 +197,7 @@
                 	<form method="post" action="/javafood_team/javafood?javafood=3">
                 		<div> <input type="hidden" class="btn"><a href="${ genre_list.link}"target='_blank'><img class="img" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'"></a></div><!-- 노래재생 유튜브 -->
                 	</form>
-                	<form name="addPlayList" method="post" action="/playListAdd?songNumber=${ genre_list.songnumber }">
+                	<form name="addPlayList" method="post" action="/playListAdd">
                 		<div> <input type="hidden" class="put" name="songNumber" value="${ genre_list.songnumber }"><input type="hidden" class="put" name="addWhere" value="NewGenre"><img class="img addList" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'"></div><!-- 담기 버튼 -->
              		</form>
              	</div>
