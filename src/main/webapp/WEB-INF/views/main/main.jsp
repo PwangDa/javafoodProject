@@ -51,7 +51,7 @@
 			    	<c:if test="${vs.count<=4 }">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -77,7 +77,7 @@
 			    	<c:if test="${vs.count>=5 && vs.count<=8}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -102,7 +102,7 @@
 			    	<c:if test="${vs.count>=9 && vs.count<=12}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -127,7 +127,7 @@
 			    	<c:if test="${vs.count>=13 && vs.count<=16}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -152,7 +152,7 @@
 			    	<c:if test="${vs.count>=17 && vs.count<=20}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -177,7 +177,7 @@
 			    	<c:if test="${vs.count>=21 && vs.count<=24}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -202,7 +202,7 @@
 			    	<c:if test="${vs.count>=25 && vs.count<=28}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -227,7 +227,7 @@
 			    	<c:if test="${vs.count>=29 && vs.count<=32}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -252,7 +252,7 @@
 			    	<c:if test="${vs.count>=33 && vs.count<=36}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -277,7 +277,7 @@
 			    	<c:if test="${vs.count>=37 && vs.count<=40}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -325,7 +325,7 @@
 			    	<c:if test="${vs.count<=4 }">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -351,7 +351,7 @@
 			    	<c:if test="${vs.count>=5 && vs.count<=8}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -376,7 +376,7 @@
 			    	<c:if test="${vs.count>=9 && vs.count<=12}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -401,7 +401,7 @@
 			    	<c:if test="${vs.count>=13 && vs.count<=16}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -426,7 +426,7 @@
 			    	<c:if test="${vs.count>=17 && vs.count<=20}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -451,7 +451,7 @@
 			    	<c:if test="${vs.count>=21 && vs.count<=24}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -476,7 +476,7 @@
 			    	<c:if test="${vs.count>=25 && vs.count<=28}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -501,7 +501,7 @@
 			    	<c:if test="${vs.count>=29 && vs.count<=32}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -526,7 +526,7 @@
 			    	<c:if test="${vs.count>=33 && vs.count<=36}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
@@ -551,7 +551,7 @@
 			    	<c:if test="${vs.count>=37 && vs.count<=40}">
 			            <div class="hitListViewerContent">
 			                <div class="hitListViewerThumnail">
-			                    <img class="thumnail" src="${hitList.imagelink }">
+			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
 			                <div class="hitListRank">${hitList.songnumber }</div>
