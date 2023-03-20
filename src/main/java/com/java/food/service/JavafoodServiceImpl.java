@@ -429,6 +429,18 @@ public class JavafoodServiceImpl implements JavafoodService {
 			
 	}
 	
+	public int good(int songnumb, String id) {
+		log.info("good service 실행");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("song", songnumb);
+		
+		javaDAO.good(map);
+		
+		return 1;
+	}
+	
 ////////////////////////////////////////////////////////////
 	// 용준 장르별 페이징
 

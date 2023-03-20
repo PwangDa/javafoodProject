@@ -27,7 +27,7 @@
 		<input type="hidden" id='id' value='${loginId}'>
 	    <div class="div ddr">
 		    <div class="mume div"><h3><a class="at" href="/my_page?page=a"><c:out value="회원정보 수정"/></a></h3></div>
-		    <div class="mume div"><h3><a class="at" href="/my_page?page=b" onclick="replay('${loginId}')"><c:out value="재생기록"/></a></h3></div>
+		    <div class="mume div"><h3><a class="at" href="/my_page?page=b"><c:out value="재생기록"/></a></h3></div>
 		    <div class="mume div" id="outsession" ><h3><a class="at"><c:out value="로그아웃"/></a></h3></div>
 		    <div class="mume div"><h3><a class="at" id="outid"><c:out value="회원탈퇴"/></a></h3></div>
 	    </div>
@@ -143,7 +143,7 @@
 				<tr class="tdr ddr ">
 					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER })" target="blank"><img src="${i.IMAGELINK }"></a></td>
 					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER})" target="blank"><c:out value="${i.SONGNAME }"/></a></td>
-					<td class="td"><a class="at" href="/artistpage?artist=${i.ARTISTNAME}"><c:out value="${i.ARTISTNAME }"/><img src=""></a></td>
+					<td class="td"><a class="at" href="/artistpage?artist=${i.ARTISTNAME}"><c:out value="${i.ARTISTNAME }"/></td>
 					<td class="td"><a class="at" href="/albumpage?album=${i.ALBUM_NAME }"><c:out value="${i.ALBUM_NAME}"/></a></td>
 					<td class="td"><c:out value="${i.PLAYTIME }"/></td>
 					<td class="td">
