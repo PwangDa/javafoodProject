@@ -699,6 +699,10 @@ public class JavafoodController {
 					if(tmp_pageNum != null) {
 						pageNum = Integer.parseInt(tmp_pageNum);
 					}
+					String tmp_countPerPage = request.getParameter("countPerPage");
+					if (tmp_countPerPage != null) {
+						countPerPage = Integer.parseInt(tmp_countPerPage);
+					}
 					System.out.println("pageNum : " + pageNum);
 					System.out.println("countPerPage : " + countPerPage);
 					Map Music_list = javaService.getMusic(pageNum, countPerPage);
