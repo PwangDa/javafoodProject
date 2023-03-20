@@ -441,11 +441,7 @@ public int good(Map<String, Object> map) {
 	logger.info("good dao 실행");
 	int i=0;
 	try {
-		List list = sqlSession.selectList("mapper.javafood.good",map);
-		if(list.size()==0)
-		
-		sqlSession.insert("mapper.javafood.good",map);
-		i=1;
+		sqlSession.insert("mapper.javafood.good",(String)map.get("song"));
 	} catch (Exception e) {
 		logger.info("good dao 오류");
 		e.printStackTrace();
