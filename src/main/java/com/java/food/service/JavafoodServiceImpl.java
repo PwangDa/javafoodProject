@@ -439,6 +439,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 			
 	}
 	
+	//좋아요 증가
 	public int good(String songnumb, String id) {
 		log.info("good service 실행");
 		int i=0;
@@ -455,6 +456,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 			e.printStackTrace();
 		}
 		return i;
+	}
+	
+	//조회수 증가
+	public int songhit(String song,String id) {
+		return javaDAO.songhit(song, id);
 	}
 	
 ////////////////////////////////////////////////////////////

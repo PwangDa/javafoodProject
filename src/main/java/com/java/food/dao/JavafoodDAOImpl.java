@@ -449,6 +449,30 @@ public int good(Map<String, Object> map) {
 	}
 	return i;
 }
+
+/**
+ * 아자스를 이용한 조회수 증가
+ * @paramMap : id : 가져올 아이디 값.
+ * 				song : 조회수 증가할 노래 번호 값.
+ * @return : 좋아요 증가 성공 여부
+ */
+@Override
+public int songhit(String song,String id) {
+	logger.info("songhit dao 실행");
+	
+	int i = sqlSession.selectOne("mapper.javafood.hitid", id);
+	System.out.println("아이디에 조회된 노래 : "+i);
+	if(i==0) {
+		SongHit_DTO dto = new SongHit_DTO();
+		dto.setID(id);
+		dto.setSONGNUMBER(song);
+		sqlSession.insert("mapper.javafood.hitaddid",dto);
+	}else {
+		
+	}
+	
+	return i;
+}
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르별

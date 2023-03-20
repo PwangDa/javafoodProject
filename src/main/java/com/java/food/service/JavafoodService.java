@@ -77,6 +77,8 @@ public interface JavafoodService {
 	int idUpdate(Map<String, Object> map, String id);
 	//좋아요 증가
 	int good(String songnumb, String id);
+	//조회수 증가
+	int songhit(String song,String id);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르
