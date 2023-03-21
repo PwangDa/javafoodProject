@@ -38,7 +38,6 @@
 				<td style="width: 200px;"><input type="checkbox" id="selectbtn" name="checkall" onclick="selectAll(this); getCheckedValue()" value="checkall; ${dao.songnumber }">체크</td>
 				<td style="width: 60px;">순위</td>
 				<td style="width: 250px;">인기점수</td>
-				<td style="width: 100px;">번호</td>
 				<td style="width: 100px;">앨범</td>
 				<td style="width: 400px;">앨범명</td>
 				<td style="width: 400px;">제목</td>
@@ -55,7 +54,6 @@
 					<td><input type="checkbox" id="checkbox1" name="check" onclick="checkSelectAll(); getCheckedValue()" value="${dao.songnumber }"></td>
 					<td>${dao.ranking }</td>
 					<td>${dao.famous }</td>
-					<td>${dao.songnumber }</td>
 					<td><img src=${ dao.imagelink} " style="width: 80px;"></td>
 					<td><a
 						href="/albumpage?album=${dao.album_name}">${ dao.album_name}</a></td>
@@ -123,7 +121,7 @@ System.out.println(">> lastPage : "+ lastPage);
 			</c:if>
 			<c:if test="<%=firstSec != 1%>">
 				<a
-					href="/chart?pageNum=<%= firstSec-1 %>&country=<%= country  %>"><img
+					href="/chart?pageNum=<%= firstSec-1 %>"><img
 					class="mouse" src="https://c11.kr/1ascb"
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
@@ -132,19 +130,19 @@ System.out.println(">> lastPage : "+ lastPage);
 			<c:forEach var="i" begin="<%=firstSec%>" end="<%=lastSec%>">
 				<c:if test="${ i == pageNum2 }">
 					<a
-						href="/chart?pageNum=${i }&countPerPage=${countPerPage}&country=<%= country  %>"
+						href="/chart?pageNum=${i }&countPerPage=${countPerPage}"
 						class="number"><strong>${i}</strong></a>
 				</c:if>
 				<c:if test="${ i != pageNum2 }">
 					<a
-						href="/chart?pageNum=${i }&countPerPage=${countPerPage}&country=<%= country  %>"
+						href="/chart?pageNum=${i }&countPerPage=${countPerPage}"
 						class="number">${i}</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="<%=lastSec != lastPage%>">
 				<a
-					href="/chart?pageNum=${i}<%= lastSec+1 %>&countPerPage=${countPerPage}&country=<%= country  %>"><img
+					href="/chart?pageNum=${i}<%= lastSec+1 %>&countPerPage=${countPerPage}"><img
 					class="img" src="https://c11.kr/1ascx"
 					onmouseover="this.src='https://c11.kr/1ascy'"
 					onmouseout="this.src='https://c11.kr/1ascx'"></a>
