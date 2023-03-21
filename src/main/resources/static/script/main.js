@@ -143,28 +143,6 @@
 //	document.getElementById('wrap').style.backgroundColor = color;
 	
 	
-	
-	/*이스터에그*/
-	let konamiCommand = "";
-	
-	document.addEventListener('keydown', (event) =>
-	{
-//		console.log("event.key : " + event.key);
-		konamiCommand += event.key;
-		console.log("konamiCommand : " + konamiCommand);
-		
-		if(konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
-		{
-			document.querySelector("img.esterEgg").classList.remove("hidden");
-			cursor = "https://cdn.discordapp.com/attachments/931150181540450368/1085371872557932606/giphy_1.gif";
-		}
-		if(konamiCommand != "" || konamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
-		{
-			setTimeout(()=>{konamiCommand = ""; console.log("konamiCommand is reseted.");}, 5000);
-		}
-	});
-	
-	
 		//팝업창 jQuery 작동
         jQuery(document).ready(function() {
                 $('#myModal').show();
