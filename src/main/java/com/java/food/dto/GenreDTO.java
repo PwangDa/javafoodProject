@@ -17,6 +17,8 @@ public class GenreDTO {
 	private String imagelink;
 	private String country;
 	private String album_name;
+	private String album_add;
+	private String artist_add;
 	
 	
 	public String getImagelink() {
@@ -25,8 +27,6 @@ public class GenreDTO {
 	public void setImagelink(String imagelink) {
 		this.imagelink = imagelink;
 	}
-	private String album_add;
-	private String artist_add;
 	
 	
 	public String getSongnumber() {
