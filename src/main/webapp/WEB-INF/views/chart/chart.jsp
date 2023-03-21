@@ -19,10 +19,10 @@
 <%-- <jsp:include page="/WEB-INF/views/menu.jsp"></jsp:include> --%>
 <body>
  		<div>
-			<form method="post" action="/chart">
+			<form name="addPlayList" method="post" action="/playListAdd"">
 				<input type="hidden" name="songNumber" value="${dao.songnumber }">
 				<input type="hidden" name="addWhere" value="song">
-				<img id="allsave" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'">
+				<img id="addLists" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'">
 			</form>
 		</div>
 		<div class="time">
@@ -58,10 +58,10 @@
 					<td>${dao.songnumber }</td>
 					<td><img src=${ dao.imagelink} " style="width: 80px;"></td>
 					<td><a
-						href="/chart=AlbumList&num=${dao.songnumber}">${ dao.album_name}</a></td>
+						href="/albumpage?album=${dao.album_name}">${ dao.album_name}</a></td>
 					<td>${dao.songname }</td>
 					<td><a
-						href="/chart=ArtistList&num=${dao.songnumber}">${ dao.artistname}</a></td>
+						href="/artistpage?artist=${dao.artistname}">${ dao.artistname}</a></td>
 
 					<td>${dao.bygenre }</td>
 
@@ -74,7 +74,7 @@
 					<form method="post" action="/chart">
 						<td>${dao.likes }<input type="image"
 							src="https://c11.kr/1asbx" value=" " class="like"> <input
-							type="hidden" name="good_like" value="${dao.songnumber}">
+							type="hidden" name="good" value="${dao.songnumber}">
 						</td>
 					</form>
 
@@ -85,10 +85,10 @@
 							class="play" src="https://c11.kr/1asd1"></a></td>
 
 					<td>
-						<form method="post" action="/chart">
+						<form name="addPlayList" method="post" action="/playListAdd">
 							<input type="hidden" name="songNumber" value="${dao.songnumber }">
 							<input type="hidden" name="addWhere" value="song">
-							<img class="save" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'">
+							<img class="addList" src="https://c11.kr/1asd6" onmouseover="this.src='https://c11.kr/1asd9'" onmouseout="this.src='https://c11.kr/1asd6'">
 						</form>
 					</td>
 				</tr>

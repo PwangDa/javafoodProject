@@ -61,7 +61,7 @@
  			 window.open(videoUrl, '_blank');
 		}*/
 		
-	let save = document.querySelectorAll("img.save");
+/*	let save = document.querySelectorAll("img.save");
 	for(let i=0; i<save.length; i++){
 		save[i].addEventListener("click",function(){
 			console.log("담기 버튼 눌림");
@@ -76,7 +76,43 @@
 	allsave.addEventListener("click", function(){
 		allsave.parentNode.action = "chart&songNumbers="+getCheckedValue()+"&addWhere=song";
 		allsave.parentNode.submit();
+	});*/
+	
+	//담기 버튼 누르면, 곡이 추가될 플레이 리스트 선택하는 팝업 뜨게 하기
+let addList = document.querySelectorAll("img.addList");
+
+//console.log(addList);
+
+for(let i = 0; i < addList.length; i++)
+{
+	addList[i].addEventListener("click", function()
+	{
+		console.log("save의 EventListener 실행됨."); //확인용
+		
+		addList[i].parentNode.target = "_blank"; //새 창으로 열기
+		addList[i].parentNode.submit(); //form 서밋하기
 	});
+}
+
+//여러 개가 체크 된 곡들을 플레이 리스트에 추가하기
+let addLists = document.querySelector("img#addLists");
+
+
+addLists.addEventListener("click", function(){
+let string = "";
+for(let i = 0; i < getCheckedValue().length; i++)
+{
+	string += "songNumber=";
+	string += getCheckedValue()[i];
+	if(getCheckedValue.length-1 != i)
+	{
+		string += "&";
+	}
+}
+	addLists.parentNode.action = "playListAdd?"+string;
+	addLists.parentNode.target = "_blank";
+	addLists.parentNode.submit();
+});
 //////////////////////////////////////////////////////////////////////////////////////////
 			/* refresh(); */
 			

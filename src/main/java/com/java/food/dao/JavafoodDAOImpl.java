@@ -468,19 +468,22 @@ public int songhit(String song,String id) {
 	
 	int i = sqlSession.selectOne("mapper.javafood.hitid", dto);
 	
-	
 	System.out.println("아이디에 조회된 노래 유무: "+i);
-	
-	if(i==0) {
-		logger.info("아이디가 없습니다. 아이디 생성");
-		sqlSession.insert("mapper.javafood.hitaddid",dto);
-		logger.info("조회수 증가");
-	}else {
-		logger.info("조회수 증가");
-		sqlSession.insert("mapper.javafood.addhit",dto);
+	try {
+		if(i==0) {
+			logger.info("아이디가 없습니다. 아이디 생성");
+			sqlSession.insert("mapper.javafood.hitaddid",dto);
+			sqlSession.insert("mapper.javafood.addgenrehit",dto);
+			logger.info("조회수 증가");
+		}else {
+			logger.info("조회수 증가");
+			sqlSession.insert("mapper.javafood.addsonghit",dto);
+			sqlSession.insert("mapper.javafood.addgenrehit",dto);
+		}
+	} catch (Exception e) {
+		logger.info("로그인을 해야 조회수가 증가합니다.");
 	}
-	
-	return i;
+	return sqlSession.insert("mapper.javafood.hits",dto.getSONGNUMBER());
 }
 ////////////////////////////////////////////////////////////
 //용준
