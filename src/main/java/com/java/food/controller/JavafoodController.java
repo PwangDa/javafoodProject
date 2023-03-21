@@ -784,7 +784,8 @@ public class JavafoodController {
 	// 최신음악
 		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
 		public String Popular_Music(Model model,
-				HttpServletRequest request) {
+				HttpServletRequest request
+				) {
 			// 페이징
 					int pageNum = 1;		// 현재 페이지
 					int countPerPage = 10;	// 한 페이지당 표시 수 
@@ -812,8 +813,10 @@ public class JavafoodController {
 		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song(Model model,
-						HttpServletRequest request) {
-					System.out.println("controller의 insert_song  실행");
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 insert_song  실행 : "+ dto);
 					
 					return "/insert_song";
 				}

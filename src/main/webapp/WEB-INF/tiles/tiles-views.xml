@@ -55,7 +55,7 @@
    </definition>
    
    <definition name="/insert_song" extends="baseLayout">
-      <put-attribute name="title" value="selectDance" />
+      <put-attribute name="title" value="insert" />
       <put-attribute name="body" value="/WEB-INF/views/lyj/insert_song.jsp" />
    </definition>
    

@@ -514,6 +514,13 @@ public int songhit(String song,String id) {
 			return totalcnt;
 		}
 		
+		// 음악 추가 페이지
+				public List insertsong(String dto) {
+					List list = sqlSession.selectOne("mapper.javafood.insert_song", dto);
+					System.out.println(list);
+					return list;
+				}
+		
 
 
 	
