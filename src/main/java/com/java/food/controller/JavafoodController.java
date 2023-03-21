@@ -891,7 +891,7 @@ public class JavafoodController {
 		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song() {
-					System.out.println("controller의 insert_song  실행");
+					System.out.println("controller의 insert_song 메인페이지 실행");
 					
 					return "/insert_song";
 				}
@@ -902,7 +902,7 @@ public class JavafoodController {
 						HttpServletRequest request,
 						@ModelAttribute	GenreDTO dto
 						) {
-					System.out.println("controller의 insert_song  실행 : "+ dto);
+					System.out.println("controller의 insert_song  등록 : " + dto);
 			
 			
 					int insert = javaService.insertsong(dto);
