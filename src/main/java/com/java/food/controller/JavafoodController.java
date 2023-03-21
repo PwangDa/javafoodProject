@@ -743,6 +743,15 @@ public class JavafoodController {
 		}
 		return i;
 	}
+	
+	//검색기능
+	@RequestMapping("/main/Search")
+	public String Search(Model mo,
+			@RequestParam Map<String, String> map) {
+		System.out.println("opt : "+map.get("opt"));
+		System.out.println("pot : "+map.get("pot"));
+		return "/main";
+	}
 
 ////////////////////////////////////////////////////////////
 	// 용준
