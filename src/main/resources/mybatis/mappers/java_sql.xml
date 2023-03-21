@@ -186,7 +186,7 @@
 			ORDER BY s.HIT DESC
 	</select>
 	
-	<!-- 	회원 가입	-->
+<!-- 	회원 가입	-->
 	<insert id="newures" parameterType="loginDTO">
 		insert into 
 			login 
@@ -201,15 +201,14 @@
 			)
 	</insert>
 	
-<!-- 	songhit의 아이디값 불러오기 -->
-
-	<select id="hitid" parameterType="String" resultType="int">
+<!-- 	songhit 의 아이디값 불러오기 -->
+	<select id="hitid" parameterType="SongHit_DTO" resultType="int">
 		SELECT 
 			count(*) 
 		FROM 
-			songhit 
-		WHERE 
-			id = #{id}
+			SONGHIT
+		WHERE
+			id = #{ID} AND SONGNUMBER = #{SONGNUMBER}
 	</select>
 	
 <!-- 	아이디값 없을시 아이디 추가생성 하고 조회수1 증가-->
@@ -223,6 +222,26 @@
 			)
 	</insert>
 	
+<!-- 	조회된 아이디의 노래 번호 조회수 증가. -->
+	<update id="addhit" parameterType="SongHit_DTO">
+		UPDATE 
+			SONGHIT 
+		SET 
+			hit = 1+(
+				SELECT 
+					HIT 
+				FROM 
+					SONGHIT
+				WHERE
+					id = #{ID} 
+				AND 
+					SONGNUMBER = #{SONGNUMBER}
+				)
+		WHERE 
+			id = #{ID} 
+		AND 
+			SONGNUMBER = #{SONGNUMBER}
+	</update>
 <!-- 	장르의 노래 좋아요증가 -->
 	<update id="good" parameterType="String">
 		
@@ -255,7 +274,6 @@
 		WHERE 
 			ID =#{ID}
 	</update>
-	
 	
 	<!-- 범주 플레이 리스트 불러오기 -->
 	<select id="selectPlayList" resultType="playListDTO" parameterType="String">
