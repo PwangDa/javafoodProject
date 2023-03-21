@@ -710,6 +710,7 @@ public class JavafoodController {
 			HttpServletRequest re,
 			@RequestParam("song") String song
 			) {
+		log.info("아자스 조회스 증가");
 		return javaService.songhit(song ,(String) re.getSession().getAttribute("loginId"));
 	
 	}
@@ -781,7 +782,7 @@ public class JavafoodController {
 		return "/genre";
 	}
 
-	//최신음악
+	// 최신음악
 		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
 		public String Popular_Music(Model model,
 				HttpServletRequest request) {
@@ -809,7 +810,7 @@ public class JavafoodController {
 			return "/popular_Music";
 		}
 		
-		//최신음악
+		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song(Model model,
 						HttpServletRequest request) {
