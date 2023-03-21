@@ -113,14 +113,20 @@ public class JavafoodController {
 
 	// 대댓글 등록할 때
 	@RequestMapping(value = "/reply.do", method = RequestMethod.POST)
-	public String reply(Model model, @ModelAttribute CommentDTO dto, 
+	public String reply(Model model, 
+			HttpServletRequest re,
+			@ModelAttribute CommentDTO dto, 
 			@RequestParam("id_2") String id,
 			@RequestParam("cont_2") String cont, 
 			@RequestParam("command_myimg") String ima,
 			@RequestParam("command_articleNO") int article, 
 			@RequestParam("arti") String arti
 			) {
-
+		
+		Object login_id = re.getSession().getAttribute("loginId");
+		Object nic = re.getSession().getAttribute("loginNic");
+		Object img = re.getSession().getAttribute("loginImg");
+		
 		System.out.println(">>>>>" + id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
@@ -132,6 +138,7 @@ public class JavafoodController {
 		dto.setMyimg(ima);
 		dto.setArtistname(arti);
 		dto.setParentNO(article);
+		dto.setId((String)login_id);
 
 		String encodeResult = null;
 		try {
@@ -156,16 +163,30 @@ public class JavafoodController {
 			HttpServletRequest re,
 			@ModelAttribute CommentDTO dto, 
 			@RequestParam("command_articleNO") int no,
-			@RequestParam("arti") String arti) {
-
+			@RequestParam("arti") String arti,
+			@RequestParam("command_nic") String nic,
+			@RequestParam("command_id") String id) {
+		
+		Object login_id = re.getSession().getAttribute("loginId");
 		Object nic_o = re.getSession().getAttribute("loginNic");
 		System.out.println("댓글삭제 메소드 접속");
 		System.out.println("no>>>>>" + no);
 		System.out.println("arti>>>>>" + arti);
-		System.out.println("nic_o>>>>>" + nic_o);
+		System.out.println("로그인한 아이디 이름>>>>>" + login_id);
+		System.out.println("로그인한 닉네임 이름>>>>>" + nic_o);
+		
+		System.out.println("삭제할 사람댓글의 id>>>>>" + id);
+		System.out.println("삭제할 사람댓글의 nic>>>>>" + nic);
+		
+//		if(nic_o.equals(nic)) {
+//			int article = javaService.delComment(no);
+//		}
+		if(login_id.equals(id)) {
+			int article = javaService.delComment(no);
+		}
 		
 
-		int article = javaService.delComment(no);
+		/* int article = javaService.delComment(no); */
 
 		String encodeResult = null;
 		try {
@@ -237,16 +258,21 @@ public class JavafoodController {
 	// 차트 + 페이징
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
 	public String chart(Model model, HttpServletRequest req) {
-		List<FamousChartDTO> list = new ArrayList();
+		List<FamousChartDTO> list = new ArrayList();	//list 선언 (dto 값은 아무것도없음 아직) , new ArrayList(); : 구현체, List<FamousChartDTO> list : 인터페이스
 		int pageNum = 1;
 		int countPerPage = 50;
 		
-		String country = req.getParameter("country");
+		String country = req.getParameter("country");	//country에 담겨있는 것을 country 변수에 담음
 //		System.out.println(country);
 //		if(country == null) {
 //			country = "all";
 //		}
-		javaService.chart(country, pageNum, countPerPage);
+			
+		// Map chart = javaService.chart(country, pageNum, countPerPage); 있으니까 주석 처리 해도 무관함
+//		Map map = javaService.chart(country, pageNum, countPerPage);
+		
+//		 map.put("list", list); : "list" 값 가져옴
+//		map.get("list");
 		
 //		if (req.getParameter("country") != null) {
 //			country = req.getParameter("country");
@@ -539,8 +565,13 @@ public class JavafoodController {
 		//실행한 결과를 필드에 담기
 		List<PlayListDTO> playList = javaService.selectPlayList(id);
 		
+		//service에서 플레이 리스트 표지를 불러오는 메서드 실행하기
+		//실행한 결과를 필드에 담기
+//		List<PlayListDTO> link = javaService.selectPlayListPoster(id);
+		
 		//필드를 모델에 담아 전송하기
 		model.addAttribute("playList", playList);
+//		model.addAttribute("poster", link);
 		
 		//jsp 호출하기
 		return "playList/playListAdd"; // /view/playList/playListAdd.jsp 호출
@@ -603,7 +634,7 @@ public class JavafoodController {
 				log.info("회원가입 페이지 이동");
 				mo.addAttribute("membership", map.get("membership"));
 			}
-		return "lky/login";
+			return "lky/login";
 		} catch (Exception e) {
 			log.info("login페이지 오류");
 			return "/main";

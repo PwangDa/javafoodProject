@@ -188,6 +188,21 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return result;
 	}
 	
+	//범주 플레이 리스트 표지 불러오기
+	@Override
+	public List<PlayListDTO> selectPlayListPoster(String id)
+	{
+		System.out.println("JavafoodServiceImpl의 selectPlayListPoster 메서드 실행됨."); //확인용
+		List<PlayListDTO> result = null;
+		
+		//JavafoodDAO의 selectPlayListPoster 메서드 실행하기
+		//실행한 결과를 필드에 담기
+//		result = javaDAO.selectPlayListPoster(id);
+		System.out.println("JavafoodServiceImpl의 selectPlayListPoster를 실행하여 얻은 리스트의 크기 : " + result.size() ); //확인용
+		
+		return result;
+	}
+	
 	//범주 플레이 리스트 내역(Content) 불러오기
 	@Override
 	public List<PlayListDTO> selectPlayListContent(String pl_id)

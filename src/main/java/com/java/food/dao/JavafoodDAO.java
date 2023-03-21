@@ -53,6 +53,9 @@ public interface JavafoodDAO {
 	//플레이 리스트 불러오기
 	List<PlayListDTO> selectPlayList(String id);
 	
+	//플레이 리스트 표지 불러오기
+	List<PlayListDTO> selectPlayListPoster(String id);
+	
 	//플레이 리스트 내역(Content) 불러오기
 	List<PlayListDTO> selectPlayListContent(String pl_id);
 	
