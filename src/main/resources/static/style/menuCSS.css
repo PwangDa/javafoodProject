@@ -52,6 +52,9 @@ header{
 #menu{
     margin: 0;
     background-color: black;
+    position: absolute;
+    top: 0px;
+    
 }
 
 .menu-box{
