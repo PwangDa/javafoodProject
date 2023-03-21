@@ -484,6 +484,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 		log.info("서비스 검색 시작");
 		List<GenreDTO> list = javaDAO.Search(map);
 		System.out.println("list : "+list.get(0).getAlbum_name());
+		System.out.println("list : "+list.get(1).getAlbum_name());
+		System.out.println("list : "+list.get(2).getAlbum_name());
+		System.out.println("list : "+list.get(3).getAlbum_name());
+		System.out.println("list : "+list.get(4).getAlbum_name());
+		System.out.println("list : "+list.get(5).getAlbum_name());
 		return list;
 	}
 	

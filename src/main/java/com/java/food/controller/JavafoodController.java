@@ -796,7 +796,7 @@ public class JavafoodController {
 	//검색기능
 	@RequestMapping("/search")
 	public String search(Model mo,
-			Map<String, Object> map) {
+			@RequestParam Map<String, Object> map) {
 		
 		try {
 				log.info("검색시작");
