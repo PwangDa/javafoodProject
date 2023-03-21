@@ -243,6 +243,16 @@
 			SONGNUMBER = #{SONGNUMBER}
 	</update>
 	
+	<select id="hits" parameterType="String" resultType="int">
+		SELECT 
+			hits 
+		FROM 
+			GENRE 
+		WHERE 
+			SONGNUMBER = #{songnum}
+	</select>
+	
+<!-- 	장르테이블의 조회수 증가 -->
 	<update id="addgenrehit" parameterType="SongHit_DTO">
 		UPDATE 
 			GENRE 
