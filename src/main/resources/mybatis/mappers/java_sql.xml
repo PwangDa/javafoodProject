@@ -373,4 +373,38 @@
 					#{songNumber}
 				)
 	</insert>
+	
+	<!-- 음악 추가 페이지 -->
+	<insert id="insert_song" parameterType="genreDTO">
+		INSERT INTO Genre (
+					SONGNUMBER,
+					ARTISTNAME,
+					SONGNAME,
+					LINK,
+					ALBUM_NAME,
+					HITS,
+					LIKES,
+					BYGENRE,
+					PLAYTIME,
+					IMAGELINK,
+					ALBUM_ADD,
+					ARTIST_ADD,
+					COUNTRY
+				)
+				values (
+					genre_seq.nextval,
+					#{artistname},
+					#{songname},
+				 	#{link},
+				 	#{album_name},
+				 	0,
+				 	0,
+				 	#{bygenre},
+				 	#{playtime},
+				 	#{imagelink},
+				 	#{album_add},
+				 	#{artist_add},
+				 	#{country}
+				 )
+	</insert>
 </mapper>
