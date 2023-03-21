@@ -237,16 +237,21 @@ public class JavafoodController {
 	// 차트 + 페이징
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
 	public String chart(Model model, HttpServletRequest req) {
-		List<FamousChartDTO> list = new ArrayList();
+		List<FamousChartDTO> list = new ArrayList();	//list 선언 (dto 값은 아무것도없음 아직) , new ArrayList(); : 구현체, List<FamousChartDTO> list : 인터페이스
 		int pageNum = 1;
 		int countPerPage = 50;
 		
-		String country = req.getParameter("country");
+		String country = req.getParameter("country");	//country에 담겨있는 것을 country 변수에 담음
 //		System.out.println(country);
 //		if(country == null) {
 //			country = "all";
 //		}
-		javaService.chart(country, pageNum, countPerPage);
+			
+		// Map chart = javaService.chart(country, pageNum, countPerPage); 있으니까 주석 처리 해도 무관함
+//		Map map = javaService.chart(country, pageNum, countPerPage);
+		
+//		 map.put("list", list); : "list" 값 가져옴
+//		map.get("list");
 		
 //		if (req.getParameter("country") != null) {
 //			country = req.getParameter("country");
