@@ -111,15 +111,17 @@ if (lastSec > lastPage) {
 	lastSec = lastPage;
 }
 String country = request.getParameter("country");
+/* System.out.println(">>"+ (country != null && country.equals("대한민국")));
+System.out.println(">> firstSec : "+ firstSec);
+System.out.println(">> lastSec : "+ lastSec);
+System.out.println(">> pageNum : "+ pageNum); */
 %>
 		<c:set var="pageNum2" value="<%=pageNum%>" />
 		<div class="paging">
-<% if(country != null && country.equals("대한민국") )
-	{%>
 
 			<c:if test="<%=firstSec != 1%>">
 				<a
-					href="/chart?pageNum=<%= firstSec-1 %>&country=<%= country %>"><img
+					href="/chart?pageNum=<%= firstSec-1 %>&country=<%= country  %>"><img
 					class="mouse" src="https://c11.kr/1ascb"
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
@@ -147,7 +149,6 @@ String country = request.getParameter("country");
 			</c:if>
 
 		</div>
-	<%} %>
 	</div>
 <script link src="/script/chartScript.js"></script>
 </body>
