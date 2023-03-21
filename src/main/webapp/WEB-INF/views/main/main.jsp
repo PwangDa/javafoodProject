@@ -586,10 +586,10 @@
 	    		</div>
 	    	</div>
 	    </div>		
-		<div id = "cont3">
-            <div id="cont3_1">
+		<div id = "cont3" >
+            <div id="cont3_1" class="songContentPage0 hitSongContent">
                 <ul id = "slds" class="clides">
-				<%-- 앨범 부분 forEach --%>
+				<%-- 아티스트 부분 forEach --%>
                 <c:forEach var ="artist" items="${random_artist}" varStatus="loop">
                     <li>
                         <a href="/artistpage?artist=${artist.artistname}"><img  class="image" src="${artist.artist_img}"></a>

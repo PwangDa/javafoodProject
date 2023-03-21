@@ -23,10 +23,10 @@
 		WHERE i.MUSIC_NUM = 1 AND al.ARTISTNAME = #{artistname}
 	</select> -->
 	<select id="viewArtist" resultType="albumDTO" parameterType="String">
-		SELECT * 
+		SELECT DISTINCT * 
 		FROM artist arti
 		LEFT JOIN GENRE g ON (g.ARTISTNAME  = arti.ARTISTNAME)
-		WHERE arti.ARTISTNAME = #{artistname}
+		WHERE arti.ARTISTNAME LIKE #{artistname} || '%'
 	</select>
 	
 	<insert id="plusAlbum" parameterType="albumDTO">
