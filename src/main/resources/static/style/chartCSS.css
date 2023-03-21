@@ -121,6 +121,11 @@ body {
             color: white;
  	}
 
+.img {
+	border-radius: 12px;
+	width : 30px;
+	
+}
 	  /*체크박스*/
         /*.but{
             display : none;

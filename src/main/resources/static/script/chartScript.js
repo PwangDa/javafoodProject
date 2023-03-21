@@ -10,7 +10,7 @@ function refresh() {
 }
 ////////////////////////////////////////////////////////////////////////////////////////		
 
-/*function nowtime() {
+function nowtime() {
 	let now = new Date();
 
 	let hour = now.getHours();
@@ -30,23 +30,23 @@ function refresh() {
 	document.getElementById("timebox").value = hour + ":" + minute
 		+ ":" + second;
 	//console.log(123, document.getElementById("timebox"));
-}*/
+}
 
-function severtime() {
+/*function severtime() {
   var now = new Date();
   var timeInMillis = now.getTime();
   return timeInMillis;
   
   document.getElementById("timebox").value = year + "-" + month + "-" + day + "-" + hour + ":" + minute
 		+ ":" + second;
-}
+}*/
 
 window.addEventListener("load", function() {
 	//HTML이 다 load가 완료 됐을 때 실행됨
-	severtime();
+	nowtime();
 	setInterval(function() {
 
-		severtime();
+		nowtime();
 	}, 1000); //1초 단위
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
