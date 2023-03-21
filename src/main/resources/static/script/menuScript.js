@@ -7,7 +7,7 @@ $("#di").hide();
 $("#cli").on("click",function (){
 	var tex = $('#opt').val();
 	var pot = $('#pot').val();
-	location.href="javafood?javafood=m&opt="+tex+"&pot="+pot
+	location.href="/main/Search?opt="+tex+"&pot="+pot
 	})
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //마우스 올리면 하위 매뉴바 보이기
