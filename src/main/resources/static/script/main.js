@@ -137,20 +137,20 @@
 	
 	
 	/*이스터에그*/
-	let conamiCommand = "";
+	let konamiCommand = "";
 	
 	document.addEventListener('keydown', (event) =>
 	{
-		console.log("event.key : " + event.key);
-		conamiCommand += event.key;
-		console.log("connamiCommand : " + conamiCommand);
+//		console.log("event.key : " + event.key);
+		konamiCommand += event.key;
+		console.log("konamiCommand : " + konamiCommand);
 		
-		if(conamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || conamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
+		if(konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
 		{
 			document.querySelector("img.esterEgg").classList.remove("hidden");
 		}
-		if(conamiCommand != "" || conamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || conamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
+		if(konamiCommand != "" || konamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
 		{
-			setTimeout(()=>{conamiCommand = ""; console.log("conamiCommand is reseted.");}, 5000);
+			setTimeout(()=>{konamiCommand = ""; console.log("konamiCommand is reseted.");}, 5000);
 		}
 	});
