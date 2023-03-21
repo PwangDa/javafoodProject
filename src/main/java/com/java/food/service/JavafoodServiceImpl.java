@@ -526,6 +526,36 @@ public class JavafoodServiceImpl implements JavafoodService {
 			return map;
 
 		}
+		
+	// 음악추가 페이지
+		
+		@Override
+		public int insertsong(GenreDTO dto) {
+			int i=0;
+			try {
+				dto.getArtistname();
+				dto.getSongname();
+				dto.getLink();
+				dto.getAlbum_name();
+				dto.getBygenre();
+				dto.getPlaytime();
+				dto.getImagelink();
+				dto.getAlbum_add();
+				dto.getArtist_add();
+				dto.getCountry();			
+				i++;
+			} catch (Exception e) {
+			}
+			if(i==1) {
+				System.out.println("정상작동");
+				return javaDAO.insertsong(dto);
+			}
+			else {
+				System.out.println("0값");
+				return i;
+			}
+			
+		}
 	
 
 ////////////////////////////////////////////////////////////

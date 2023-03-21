@@ -546,11 +546,11 @@ public int songhit(String song,String id) {
 		}
 		
 		// 음악 추가 페이지
-				public List insertsong(String dto) {
-					List list = sqlSession.selectOne("mapper.javafood.insert_song", dto);
-					System.out.println(list);
-					return list;
-				}
+		public int insertsong(GenreDTO dto) {
+			int insert = sqlSession.insert("mapper.javafood.insert_song", dto);
+			System.out.println("dao에 insert : " + insert);
+			return insert;
+		}
 		
 
 

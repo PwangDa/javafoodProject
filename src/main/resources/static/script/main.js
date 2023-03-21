@@ -163,3 +163,14 @@
 			setTimeout(()=>{konamiCommand = ""; console.log("konamiCommand is reseted.");}, 5000);
 		}
 	});
+	
+	
+		//팝업창 jQuery 작동
+        jQuery(document).ready(function() {
+                $('#myModal').show();
+        });
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+

@@ -188,6 +188,8 @@
 	                            	<input class='btn btn_del' type="submit" value="삭제">
 	                            	<input type ="hidden" name="command_articleNO" value="${comment.articleNO }">
 									<input type ="hidden" name="arti" value="${album_list[0].artistname}">
+									<input type ="hidden" name="command_nic" value="${comment.comment_id}">
+									<input type ="hidden" name="command_id" value="${comment.id}">
 								</form>	                            
 	                        </div>
 	                	</div>
@@ -205,6 +207,8 @@
 						                    <input class="btn1 comment_1_2 btn_del"  type="submit" value="삭제">
 						                    <input type ="hidden" name="command_articleNO" value="${comment.articleNO }">
 											<input type ="hidden" name="arti" value="${album_list[0].artistname}"> 
+											<input type ="hidden" name="command_nic" value="${comment.comment_id}">
+											<input type ="hidden" name="command_id" value="${comment.id}">
 				        			</div>
 				        			<div class="comment_1_3">
 				                        <span class="comment_1_4" style="margin-right :70px;"></span>
