@@ -628,6 +628,28 @@ public class JavafoodController {
 		//플레이 리스트 내역으로 리다이렉트 하기
 		return "redirect:playListContent?pl_id="+pl_id;
 	}
+	@RequestMapping("/addContentInNew")
+	public String addContentInNew(HttpServletRequest request, HttpSession session)
+	{
+		System.out.println("JavafoodController의 addContentInNew 메서드 실행됨."); //확인용
+		
+		//주소에서 전달된 값 받기
+		String pl_id = request.getParameter("pl_id");
+		
+		//세션에 저장해둔 songNumber 리스트를 받기
+		String[] songNumber = (String[])session.getAttribute("songNumber");
+		
+		//받은 값들을 HashMap에 저장하기
+		Map info = new HashMap();
+		info.put("songNumber", songNumber);
+		info.put("pl_id", pl_id);
+		
+		//serivce에서 addContent 메서드 실행하기
+		javaService.addContent(info);
+		
+		//플레이 리스트 내역으로 리다이렉트 하기
+		return "redirect:playListContent?pl_id="+pl_id;
+	}
 ////////////////////////////////////////////////////////////
 	// 경용
 	
@@ -892,7 +914,7 @@ public class JavafoodController {
 		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song() {
-					System.out.println("controller의 insert_song  실행");
+					System.out.println("controller의 insert_song 메인페이지 실행");
 					
 					return "/insert_song";
 				}
@@ -903,7 +925,7 @@ public class JavafoodController {
 						HttpServletRequest request,
 						@ModelAttribute	GenreDTO dto
 						) {
-					System.out.println("controller의 insert_song  실행 : "+ dto);
+					System.out.println("controller의 insert_song  등록 : " + dto);
 			
 			
 					int insert = javaService.insertsong(dto);

@@ -6,12 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/style/artistCSS.css">
+<link rel="stylesheet" href="/style/searchCSS.css">
 </head>
 
 <body>
  <div id ="cont1_1">
-            <h2 style="text-align: center; margin: 13px;">음악</h2>            
+ <br>
+ <br>
+ <br>
+ <h1 style="text-align: left; margin: 13px;">검색결과</h1>      
+ <br>      
 			<%-- 음악 부분 forEach --%>
            	
            		<c:forEach var="album" items="${searchlist}" varStatus="loop">

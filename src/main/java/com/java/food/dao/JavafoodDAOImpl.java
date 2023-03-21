@@ -362,6 +362,17 @@ public void addContent(Map info)
 	
 	int insert = 0;
 	
+	//pl_id를 변수에 담기
+	String pl_id = (String)info.get("pl_id");
+	System.out.println("info 맵에 담긴 pl_id의 값은 : " + pl_id);
+	
+//	//만약 pl_id의 값이 new라면 insert를 이용하여 플레이 리스트를 추가하기
+//	if(pl_id.equals("new") )
+//	{
+//		//sql을 이용하여 새로운 플레이 리스트 추가하기
+//		sqlSession.insert(")
+//	}
+	
 	//for문을 이용하여 insert를 songNumber 갯수 만큼 시도하기
 	for(int i=0; i<( (String[])info.get("songNumber") ).length; i++)
 	{
