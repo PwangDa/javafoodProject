@@ -22,7 +22,7 @@
             <!-- <div class="right_top_item_1">듣기</div>
             <div class="right_top_item_1">담기</div> -->
             <form method="post">
-            <div> <input type="hidden" class="btn" id="btn"><a href="${ genre_list.link}"target='_blank'><img class="img" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'"></a></div><!-- 노래재생 유튜브 -->
+            <div> <input type="hidden" class="btn" id="btn"><a href="${ searchlist.link}"target='_blank'><img class="img" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'"></a></div><!-- 노래재생 유튜브 -->
             </form>
             <form method="post">
             	<div><!-- 담기 버튼 -->
@@ -31,8 +31,8 @@
             </form>
         </div>
 		<c:choose>
-		<c:when test="${!empty genre}">
-			<c:forEach var="genre_list" items="${genre}" varStatus="status">
+		<c:when test="${!empty searchlist}">
+			<c:forEach var="genre_list" items="${searchlist}" varStatus="status">
         	<div class= "musiclist">
             	 <div class="cont2">
 <!-- 체크박스 -->   <input type="checkbox" id="cb1" name="chk" onclick="checkSelectAll(); getCheckedValue()" value="${ genre_list.songnumber}">
@@ -57,7 +57,7 @@
              	</div>
 			</c:forEach>
 		</c:when>
-		<c:when test="${empty genre}">
+		<c:when test="${empty searchlist}">
 			<div class="not">노래가 없습니다.</div>
 		</c:when>
 		</c:choose>
