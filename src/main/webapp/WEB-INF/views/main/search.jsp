@@ -39,6 +39,6 @@
 	            <hr>
             	</c:forEach>
 		
-<script link src ="/script/artistScript.js"></script>
+<script link src ="/script/search.js"></script>
 </body>
 </html>
