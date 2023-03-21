@@ -113,14 +113,20 @@ public class JavafoodController {
 
 	// 대댓글 등록할 때
 	@RequestMapping(value = "/reply.do", method = RequestMethod.POST)
-	public String reply(Model model, @ModelAttribute CommentDTO dto, 
+	public String reply(Model model, 
+			HttpServletRequest re,
+			@ModelAttribute CommentDTO dto, 
 			@RequestParam("id_2") String id,
 			@RequestParam("cont_2") String cont, 
 			@RequestParam("command_myimg") String ima,
 			@RequestParam("command_articleNO") int article, 
 			@RequestParam("arti") String arti
 			) {
-
+		
+		Object login_id = re.getSession().getAttribute("loginId");
+		Object nic = re.getSession().getAttribute("loginNic");
+		Object img = re.getSession().getAttribute("loginImg");
+		
 		System.out.println(">>>>>" + id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
@@ -132,6 +138,7 @@ public class JavafoodController {
 		dto.setMyimg(ima);
 		dto.setArtistname(arti);
 		dto.setParentNO(article);
+		dto.setId((String)login_id);
 
 		String encodeResult = null;
 		try {
@@ -156,16 +163,30 @@ public class JavafoodController {
 			HttpServletRequest re,
 			@ModelAttribute CommentDTO dto, 
 			@RequestParam("command_articleNO") int no,
-			@RequestParam("arti") String arti) {
-
+			@RequestParam("arti") String arti,
+			@RequestParam("command_nic") String nic,
+			@RequestParam("command_id") String id) {
+		
+		Object login_id = re.getSession().getAttribute("loginId");
 		Object nic_o = re.getSession().getAttribute("loginNic");
 		System.out.println("댓글삭제 메소드 접속");
 		System.out.println("no>>>>>" + no);
 		System.out.println("arti>>>>>" + arti);
-		System.out.println("nic_o>>>>>" + nic_o);
+		System.out.println("로그인한 아이디 이름>>>>>" + login_id);
+		System.out.println("로그인한 닉네임 이름>>>>>" + nic_o);
+		
+		System.out.println("삭제할 사람댓글의 id>>>>>" + id);
+		System.out.println("삭제할 사람댓글의 nic>>>>>" + nic);
+		
+//		if(nic_o.equals(nic)) {
+//			int article = javaService.delComment(no);
+//		}
+		if(login_id.equals(id)) {
+			int article = javaService.delComment(no);
+		}
 		
 
-		int article = javaService.delComment(no);
+		/* int article = javaService.delComment(no); */
 
 		String encodeResult = null;
 		try {

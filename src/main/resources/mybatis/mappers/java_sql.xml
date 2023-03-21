@@ -6,7 +6,7 @@
 
 	<!-- 댓글리스트 출력 -->
 	<select id="viewComment" resultType="commentDTO" parameterType="String">
-		SELECT LEVEL, articleNO, parentNO, comment_num, comment_id, comment_cont, comment_date, myimg
+		SELECT LEVEL, articleNO, parentNO, comment_num, comment_id, comment_cont, comment_date, myimg, id
 		from comment_com
 		WHERE artistname= #{artistname}
 		START WITH parentNO=0
@@ -50,15 +50,15 @@
 	<!-- 댓글등록 할 때 -->
 	<insert id="plusComment" parameterType="commentDTO">
 		insert into comment_com
-		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg)
-		values(comment_com_seq.nextval, 0, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg})
+		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg, id)
+		values(comment_com_seq.nextval, 0, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg}, #{id})
 	</insert>
 	
 	<!-- 대댓글등록 할 때 -->
 	<insert id="replyComment" parameterType="commentDTO">
 		insert into comment_com
-		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg)
-		values(comment_com_seq.nextval, #{parentNO}, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg})
+		(articleno, parentno, comment_num, comment_id, comment_cont, artistlist_num, artistname, myimg, id)
+		values(comment_com_seq.nextval, #{parentNO}, comment_com_seq1.nextval, #{comment_id}, #{comment_cont}, 0, #{artistname}, #{myimg}, #{id})
 	</insert>
 	
 	<!-- 댓글삭제 할 때 -->
