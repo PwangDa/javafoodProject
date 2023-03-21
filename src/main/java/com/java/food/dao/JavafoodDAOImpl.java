@@ -474,10 +474,12 @@ public int songhit(String song,String id) {
 	if(i==0) {
 		logger.info("아이디가 없습니다. 아이디 생성");
 		sqlSession.insert("mapper.javafood.hitaddid",dto);
+		sqlSession.insert("mapper.javafood.addgenrehit",dto);
 		logger.info("조회수 증가");
 	}else {
 		logger.info("조회수 증가");
 		sqlSession.insert("mapper.javafood.addhit",dto);
+		sqlSession.insert("mapper.javafood.addgenrehit",dto);
 	}
 	
 	return i;
