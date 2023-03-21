@@ -10,7 +10,7 @@ function refresh() {
 }
 ////////////////////////////////////////////////////////////////////////////////////////		
 
-function nowtime() {
+/*function nowtime() {
 	let now = new Date();
 
 	let hour = now.getHours();
@@ -30,17 +30,27 @@ function nowtime() {
 	document.getElementById("timebox").value = hour + ":" + minute
 		+ ":" + second;
 	//console.log(123, document.getElementById("timebox"));
+}*/
+
+function severtime() {
+  var now = new Date();
+  var timeInMillis = now.getTime();
+  return timeInMillis;
+  
+  document.getElementById("timebox").value = year + "-" + month + "-" + day + "-" + hour + ":" + minute
+		+ ":" + second;
 }
+
 window.addEventListener("load", function() {
 	//HTML이 다 load가 완료 됐을 때 실행됨
-	nowtime();
+	severtime();
 	setInterval(function() {
 
-		nowtime();
+		severtime();
 	}, 1000); //1초 단위
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// 조회수 증가
 function hit(num) {
 	console.log(num)
 	$.ajax({
@@ -54,7 +64,19 @@ function hit(num) {
 }
 
 
-
+//좋아요 증가
+function good(num){
+	$.ajax({
+		type : 'get',
+		url : '/my_page/good?good='+num ,
+		data : 'text' ,
+		success : function(res){
+       		console.log(res);
+       		if(res==1) alert('좋아요를 클릭했습니다.')
+       		else alert('좋아요 실패')
+		}
+ 	})
+}
 
 /*function addhit(id,song) {
 	console.log("id = "+id)
