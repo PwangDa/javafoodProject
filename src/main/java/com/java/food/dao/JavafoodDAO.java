@@ -97,6 +97,9 @@ public interface JavafoodDAO {
 	
 	// 최신음악 페이징
 	int pagetotal_Music();
+	
+	// 음악추가 페이지
+	int insertsong(GenreDTO dto);
 ////////////////////////////////////////////////////////////
 
 	

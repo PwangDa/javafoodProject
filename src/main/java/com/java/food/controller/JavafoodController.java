@@ -819,6 +819,9 @@ public class JavafoodController {
 						) {
 					System.out.println("controller의 insert_song  실행 : "+ dto);
 					
+					
+					int insert = javaService.insertsong(dto);
+					
 					return "/insert_song";
 				}
 
