@@ -350,6 +350,28 @@ public class JavafoodController {
 		return page;
 	}
 	
+	// 좋아요 증가
+		@RequestMapping("/my_page/good2")
+		public String good2(
+				@RequestParam("good") String i,
+				HttpServletRequest re
+				) {
+			log.info("good 아자스 실행");
+			int resurt = 0;
+			
+			try {
+				log.info("good 좋아요 실행");
+				
+				System.out.println("i : "+i);
+				System.out.println("song : "+re.getSession().getAttribute("loginId"));
+				
+				resurt = javaService.good(i, (String) re.getSession().getAttribute("loginId"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "redirect:/chart";
+		}
+	
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기

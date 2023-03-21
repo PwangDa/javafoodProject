@@ -71,7 +71,7 @@
 						</td>
 					</form>
 
-					<form method="post" action="/chart">
+					<form method="post" action="/my_page/good2">
 						<td>${dao.likes }<input type="image"
 							src="https://c11.kr/1asbx" value=" " class="like"> <input
 							type="hidden" name="good" value="${dao.songnumber}">
