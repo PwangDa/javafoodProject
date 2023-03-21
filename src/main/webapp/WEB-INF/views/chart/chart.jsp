@@ -81,7 +81,7 @@
 					<td>${dao.playtime }</td>
 
 					<td><a href="#"
-						onclick="window.open('https://www.youtube.com/results?search_query=${dao.songname }'); addhit('${login}','${dao.songnumber }'); "><img
+						onclick="window.open('https://www.youtube.com/results?search_query=${dao.songname }'); hit('${dao.songnumber }'); "><img
 							class="play" src="https://c11.kr/1asd1"></a></td>
 
 					<td>

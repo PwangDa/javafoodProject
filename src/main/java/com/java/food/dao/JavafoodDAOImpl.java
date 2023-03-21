@@ -167,7 +167,7 @@ public List chart(String country, int start, int end) {
 //	temp.add(end);
 	System.out.println("temp : " + map);
 	
-	List list = sqlSession.selectList("mapper.javafood.chart", map);
+	List list = sqlSession.selectList("mapper.javafood.chart", map);	//selectList("sql 특정", sql로 전달할 전달인자)
 	
 	System.out.println("list.size : " +list.size());
 	for(int i=0; i<list.size(); i++) {
@@ -226,6 +226,21 @@ public List<PlayListDTO> selectPlayList(String id)
 	//sql을 이용하여 DB에 접속 후 플레이 리스트 가져오기
 	//가져온 리스트를 필드에 담기
 	result = sqlSession.selectList("mapper.javafood.selectPlayList", id);
+	System.out.println("sqlSession을 이용하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
+	
+	return result;
+}
+
+@Override
+public List<PlayListDTO> selectPlayListPoster(String id)
+{
+	System.out.println("JavafoodDAOImpl의 selectPlayListPoster 메서드 실행됨."); //확인용
+	
+	List<PlayListDTO> result = null;
+	
+	//sql을 이용하여 DB에 접속 후 플레이 리스트의 표지를 가져오기
+	//가져온 리스트를 필드에 담기
+	result = sqlSession.selectList("mapper.javafood.selectPlayListPoster", id);
 	System.out.println("sqlSession을 이용하여 가져온 리스트의 크기는 : " + result.size() ); //확인용
 	
 	return result;
@@ -337,6 +352,10 @@ public List<GenreDTO> selectHitList()
 }
 
 @Override
+/**
+ * 플레이 리스트에 곡을 추가하는 메서드 입니다. (리턴 : void)
+ * 전달인자 : 추가할 곡들의 songNumber들이 담긴 List와, 추가할 플레이 리스트의 id(pl_id)가 들어가야 합니다.
+ */
 public void addContent(Map info)
 {
 	System.out.println("JavafoodDAOImpl의 addContent 메서드 실행됨."); //확인용
@@ -525,6 +544,13 @@ public int songhit(String song,String id) {
 			System.out.println(totalcnt);
 			return totalcnt;
 		}
+		
+		// 음악 추가 페이지
+				public List insertsong(String dto) {
+					List list = sqlSession.selectOne("mapper.javafood.insert_song", dto);
+					System.out.println(list);
+					return list;
+				}
 		
 
 

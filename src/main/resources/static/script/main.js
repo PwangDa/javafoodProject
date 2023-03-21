@@ -12,7 +12,7 @@
 	 
 	 let randomNextButton = document.querySelector(".ranNext");
 	 let randomPrevButton = document.querySelector(".ranPrev");
-	 let randomListContent = document.querySelector(".ranSongContent")
+	 let randomListContent = document.querySelector(".ranSongContent");
 	 
 	 hitListNextButton.addEventListener("click", ()=>
 	 {
@@ -128,4 +128,29 @@
 		})
 	}
 	
-
+	let color = '#';
+	let letters = ['f6c9cc', 'a8c0c0', 'FEBF36', 'FF7238', '6475A0', 'acc7bf', '5e5f67', 'c37070', 'eae160', 'bf7aa3', 'd7d967'];
+	
+	color += letters[Math.floor(Math.random() * letters.length)];
+	document.getElementById('wrap').style.backgroundColor = color;
+	
+	
+	
+	/*이스터에그*/
+	let conamiCommand = "";
+	
+	document.addEventListener('keydown', (event) =>
+	{
+		console.log("event.key : " + event.key);
+		conamiCommand += event.key;
+		console.log("connamiCommand : " + conamiCommand);
+		
+		if(conamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || conamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
+		{
+			document.querySelector("img.esterEgg").classList.remove("hidden");
+		}
+		if(conamiCommand != "" || conamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || conamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
+		{
+			setTimeout(()=>{conamiCommand = ""; console.log("conamiCommand is reseted.");}, 5000);
+		}
+	});

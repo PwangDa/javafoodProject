@@ -237,16 +237,21 @@ public class JavafoodController {
 	// 차트 + 페이징
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
 	public String chart(Model model, HttpServletRequest req) {
-		List<FamousChartDTO> list = new ArrayList();
+		List<FamousChartDTO> list = new ArrayList();	//list 선언 (dto 값은 아무것도없음 아직) , new ArrayList(); : 구현체, List<FamousChartDTO> list : 인터페이스
 		int pageNum = 1;
 		int countPerPage = 50;
 		
-		String country = req.getParameter("country");
+		String country = req.getParameter("country");	//country에 담겨있는 것을 country 변수에 담음
 //		System.out.println(country);
 //		if(country == null) {
 //			country = "all";
 //		}
-		javaService.chart(country, pageNum, countPerPage);
+			
+		// Map chart = javaService.chart(country, pageNum, countPerPage); 있으니까 주석 처리 해도 무관함
+//		Map map = javaService.chart(country, pageNum, countPerPage);
+		
+//		 map.put("list", list); : "list" 값 가져옴
+//		map.get("list");
 		
 //		if (req.getParameter("country") != null) {
 //			country = req.getParameter("country");
@@ -539,8 +544,13 @@ public class JavafoodController {
 		//실행한 결과를 필드에 담기
 		List<PlayListDTO> playList = javaService.selectPlayList(id);
 		
+		//service에서 플레이 리스트 표지를 불러오는 메서드 실행하기
+		//실행한 결과를 필드에 담기
+//		List<PlayListDTO> link = javaService.selectPlayListPoster(id);
+		
 		//필드를 모델에 담아 전송하기
 		model.addAttribute("playList", playList);
+//		model.addAttribute("poster", link);
 		
 		//jsp 호출하기
 		return "playList/playListAdd"; // /view/playList/playListAdd.jsp 호출
@@ -785,7 +795,8 @@ public class JavafoodController {
 	// 최신음악
 		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
 		public String Popular_Music(Model model,
-				HttpServletRequest request) {
+				HttpServletRequest request
+				) {
 			// 페이징
 					int pageNum = 1;		// 현재 페이지
 					int countPerPage = 10;	// 한 페이지당 표시 수 
@@ -813,8 +824,10 @@ public class JavafoodController {
 		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song(Model model,
-						HttpServletRequest request) {
-					System.out.println("controller의 insert_song  실행");
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 insert_song  실행 : "+ dto);
 					
 					return "/insert_song";
 				}
