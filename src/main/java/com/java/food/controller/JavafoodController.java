@@ -260,7 +260,7 @@ public class JavafoodController {
 	public String chart(Model model, HttpServletRequest req) {
 		List<FamousChartDTO> list = new ArrayList();	//list 선언 (dto 값은 아무것도없음 아직) , new ArrayList(); : 구현체, List<FamousChartDTO> list : 인터페이스
 		int pageNum = 1;
-		int countPerPage = 50;
+		int countPerPage = 20;
 		
 		String country = req.getParameter("country");	//country에 담겨있는 것을 country 변수에 담음
 //		System.out.println(country);
@@ -290,6 +290,7 @@ public class JavafoodController {
 				model.addAttribute("totalCount", chart.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
+				model.addAttribute("country", country);
 
 
 //				return "chart/chart";

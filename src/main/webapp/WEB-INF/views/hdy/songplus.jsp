@@ -27,7 +27,21 @@ textarea {
 </style>
 </head>
 <body>
-	<form action="/albumpage">
+	<form action="/artistplus">
+		<div>
+			<h2>앨범정보등록</h2>
+			<input type="text" name="SONGNUMBER" placeholder="앨범순번">
+			<textarea name="album_cover" placeholder="앨범표지링크"></textarea>
+		</div>
+	</form>
+	<form action="/albumplus">
+		<div>
+			<h2>앨범정보등록</h2>
+			<input type="text" name="SONGNUMBER" placeholder="앨범순번">
+			<textarea name="album_cover" placeholder="앨범표지링크"></textarea>
+		</div>
+	</form>
+	<form action="/intoplus">
 		<div>
 			<h2>앨범정보등록</h2>
 			<input type="text" name="SONGNUMBER" placeholder="앨범순번">
