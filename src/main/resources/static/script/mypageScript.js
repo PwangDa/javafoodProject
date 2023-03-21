@@ -42,7 +42,7 @@ function but() {
     })
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//유튜브 링크
+//조회수 증가
 function hit(num){
     console.log(num)
     $.ajax({
@@ -50,7 +50,7 @@ function hit(num){
         url : '/my_page/hits?song='+num ,
         data: 'text' ,
 		success : function(res){
-       		console.log(res);
+       		console.log('조회수 : ',res);
 		}
     })
 }

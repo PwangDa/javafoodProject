@@ -105,7 +105,7 @@
         }
         
         hr{
-            width: 62%;
+            width: 80%;
             border: 0;
             border-top: 1px solid rgb(98, 98, 98);
         }
@@ -116,6 +116,8 @@
         .img2{
             width: 30px;
             cursor: pointer;
+            margin-top: 20px; 
+            margin-right: 10px;   
         }
 
         .detail{
@@ -277,7 +279,8 @@
 
         .image2{
             width: 75px;
-            border-radius: 70%;          
+            border-radius: 70%;    
+ 
         }
         
         /*댓글 입력한 날짜출력 스타일*/
@@ -405,3 +408,4 @@
             border-color: rgb(255, 255, 255);
             color: white;
         }
+        

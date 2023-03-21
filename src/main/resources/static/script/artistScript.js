@@ -157,19 +157,30 @@ let addLists = document.querySelector(".addLists");
 let addLists_b = document.querySelector(".addLists");
 
 
-addLists.addEventListener("click", ()=>{
-	console.log('123');
-	let string = "";
-	for(let i = 0; i < getCheckedValue().length; i++)
-	{
-		string += "songNumber=";
-		string += getCheckedValue()[i];
-		if(getCheckedValue.length-1 != i)
-		{
-			string += "&";
+	
+	//좋아요 증가
+function good(num){
+	$.ajax({
+		type : 'get',
+		url : '/my_page/good?good='+num ,
+		data : 'text' ,
+		success : function(res){
+       		console.log(res);
+       		if(res==1) alert('좋아요를 클릭했습니다.')
+       		else alert('좋아요 실패')
 		}
-	}
-		addLists.parentNode.parentNode.action = "playListAdd?"+string;
-		addLists.parentNode.parentNode.target = "_blank";
-		addLists.parentNode.submit();
-	});
+ 	})
+}
+
+//조회수 증가
+function hit(num){
+    console.log(num)
+    $.ajax({
+        type : 'get',
+        url : '/my_page/hits?song='+num ,
+        data: 'text' ,
+		success : function(res){
+       		console.log('조회수 : ',res);
+		}
+    })
+}

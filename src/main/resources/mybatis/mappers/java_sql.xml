@@ -223,7 +223,7 @@
 	</insert>
 	
 <!-- 	조회된 아이디의 노래 번호 조회수 증가. -->
-	<update id="addhit" parameterType="SongHit_DTO">
+	<update id="addsonghit" parameterType="SongHit_DTO">
 		UPDATE 
 			SONGHIT 
 		SET 
@@ -242,6 +242,32 @@
 		AND 
 			SONGNUMBER = #{SONGNUMBER}
 	</update>
+	
+	<select id="hits" parameterType="String" resultType="int">
+		SELECT 
+			hits 
+		FROM 
+			GENRE 
+		WHERE 
+			SONGNUMBER = #{songnum}
+	</select>
+	
+<!-- 	장르테이블의 조회수 증가 -->
+	<update id="addgenrehit" parameterType="SongHit_DTO">
+		UPDATE 
+			GENRE 
+		SET 
+			hits = 1+(
+				SELECT 
+					HITs 
+				FROM 
+					GENRE
+				WHERE
+					SONGNUMBER = #{SONGNUMBER}
+				)
+		WHERE SONGNUMBER = #{SONGNUMBER}
+	</update>
+	
 <!-- 	장르의 노래 좋아요증가 -->
 	<update id="good" parameterType="String">
 		
@@ -280,7 +306,7 @@
 		SELECT
 			pl.pl_title, pl.pl_id, pl.pl_date, pl.id
 		FROM
-			playList pl
+			playList pl, PLAYLIST_CONTENT pc
 		WHERE
 			pl.id = #{id}
 		ORDER BY
