@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-
+<h1 class="h_1 h_2">검색결과</h1>
 <div class="no_chart">        
             <input type="checkbox" id="cb1" name="selectall" onclick="selectAll(this); getCheckedValue()" value="selectall; ${ genre_list.songnumber}">
                    <!-- <label for="cd1"></label> -->
@@ -60,6 +61,6 @@
 			</c:forEach>
 		</c:if>
 		
-
+	<script link src ="/script/genre.js"></script>
 </body>
 </html>
