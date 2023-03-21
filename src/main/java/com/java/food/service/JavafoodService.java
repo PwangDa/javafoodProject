@@ -91,6 +91,8 @@ public interface JavafoodService {
 	// 최신음악
 	Map getMusic(int pageNum, int countPerPage);
 	
+	// 음악추가 페이지
+	int insertsong(GenreDTO dto);
 ////////////////////////////////////////////////////////////
 	
 }
