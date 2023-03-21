@@ -71,7 +71,7 @@
 						</td>
 					</form>
 
-					<form method="post" action="/chart">
+					<form method="post" action="/my_page/good2">
 						<td>${dao.likes }<input type="image"
 							src="https://c11.kr/1asbx" value=" " class="like"> <input
 							type="hidden" name="good" value="${dao.songnumber}">
@@ -102,7 +102,7 @@ int countPerPage = (int) request.getAttribute("countPerPage");
 // int / int = int
 // double / int = double
 int lastPage = (int) Math.ceil((double) totalCount / countPerPage);
-int section = 50;
+int section = 5;
 
 int sec_position = (((int) Math.ceil((double) pageNum / section)) - 1);
 int firstSec = (sec_position * section) + 1;

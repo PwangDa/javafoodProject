@@ -17,7 +17,7 @@ body {
 
 
 <body>
-	<form action="insert_song">
+	<form action="insert_song_up">
 		<h1>관리자 페이지</h1>
 		<div>
 			artistname : <input type="text" name="artistname" placeholder="가수명"><br>
