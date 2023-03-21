@@ -169,10 +169,10 @@ public List chart(String country, int start, int end) {
 	
 	List list = sqlSession.selectList("mapper.javafood.chart", map);	//selectList("sql 특정", sql로 전달할 전달인자)
 	
-	System.out.println("list.size : " +list.size());
-	for(int i=0; i<list.size(); i++) {
-		System.out.println("list : "+ list.get(i));
-	}
+	System.out.println("DAO list.size : " +list.size());
+//	for(int i=0; i<list.size(); i++) {
+//		System.out.println("DAO list : "+ list.get(i));
+//	}
 	return list;
 	
 }
