@@ -192,13 +192,13 @@
 			* 
 		FROM
 			GENRE
-		<if test="#{opt==song}">
+		<if test="opt==song">
 			WHERE 
-				SONGNAME LIKE  '%'||#{pot}||'%'
+				SONGNAME LIKE  '%' || #{pot} || '%'
 		</if>
-		<if test="#{opt==man}">
+		<if test="opt==man">
 			WHERE 
-				artistname LIKE '%'||#{pot}||'%'
+				artistname LIKE '%' || #{pot} || '%'
 		</if>
 		
 	</select>

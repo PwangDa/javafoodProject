@@ -27,7 +27,7 @@ textarea {
 </style>
 </head>
 <body>
-	<form action="">
+	<form action="/albumpage">
 		<div>
 			<h2>앨범정보등록</h2>
 			<input type="text" name="SONGNUMBER" placeholder="앨범순번">
