@@ -45,18 +45,11 @@
             </div>
         </div>
         <div id ="cont1_1">
-            <h2 style="text-align: center; margin: 13px;">음악</h2>
-            <form name="addPlayList" method="post" action="/playListAdd">
-            	<input class="btn addLists" type="button" style="font-size: 16px;" value="+ 보관함에 추가">
-            	<input type="hidden" class="put" name="songNumber" value="${ album.songnumber }">
-				<input type="hidden" class="put" name="addWhere" value="NewGenre">
-            </form>
-            
+            <h2 style="text-align: center; margin: 13px;">음악</h2>            
 			<%-- 음악 부분 forEach --%>
            	
            		<c:forEach var="album" items="${album_list}" end="5" varStatus="loop">
 	            <div id = "cont1">
-	            	<input type="checkbox" id="cb1" name="chk" onclick="getCheckedValue()" value="${ album.songnumber}">
 	                <div class = "box1_1">
 	                    <a href="/albumpage?album=${album.album_name}"><img class="img1" src="${album.imagelink }"></a>
 	                </div>

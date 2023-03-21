@@ -280,7 +280,7 @@
 		SELECT
 			pl.pl_title, pl.pl_id, pl.pl_date, pl.id
 		FROM
-			playList pl
+			playList pl, PLAYLIST_CONTENT pc
 		WHERE
 			pl.id = #{id}
 		ORDER BY
