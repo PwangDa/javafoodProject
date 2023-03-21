@@ -114,8 +114,13 @@
 	</select>
 	
 	<!-- 인기차트 페이징 -->
-	<select id="totalpage" resultType="int">
+	<select id="totalpage" resultType="int" parameterType="java.util.HashMap">
 		SELECT count(*) cnt FROM  Genre
+		<where>
+			<if test="country != null">
+					country = #{country}
+			</if>
+		</where>
 	</select>
 	
 	<!-- 댄스 장르 출력 -->
