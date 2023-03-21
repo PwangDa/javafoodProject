@@ -260,7 +260,7 @@ public class JavafoodController {
 	public String chart(Model model, HttpServletRequest req) {
 		List<FamousChartDTO> list = new ArrayList();	//list 선언 (dto 값은 아무것도없음 아직) , new ArrayList(); : 구현체, List<FamousChartDTO> list : 인터페이스
 		int pageNum = 1;
-		int countPerPage = 50;
+		int countPerPage = 20;
 		
 		String country = req.getParameter("country");	//country에 담겨있는 것을 country 변수에 담음
 //		System.out.println(country);
@@ -290,6 +290,7 @@ public class JavafoodController {
 				model.addAttribute("totalCount", chart.get("totalCount"));
 				model.addAttribute("pageNum", pageNum);
 				model.addAttribute("countPerPage", countPerPage);
+				model.addAttribute("country", country);
 
 
 //				return "chart/chart";
@@ -816,18 +817,16 @@ public class JavafoodController {
 	}
 	
 	//검색기능
-	@RequestMapping("search")
+	@RequestMapping("/search")
 	public String search(Model mo,
-			Map<String, Object> map) {
+			@RequestParam Map<String, Object> map) {
 		
 		try {
-			if(map.get("Search")!=null) {
 				log.info("검색시작");
 				System.out.println("옵션값opt : "+map.get("opt"));
 				System.out.println("검색값pot : "+map.get("pot"));
 				List<GenreDTO> searchlist = javaService.Search(map);
 				mo.addAttribute("searchlist",searchlist);
-			}
 		} catch (Exception e) {
 			log.info("검색 오류");
 			e.printStackTrace();
@@ -915,7 +914,7 @@ public class JavafoodController {
 		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song() {
-					System.out.println("controller의 insert_song  실행");
+					System.out.println("controller의 insert_song 메인페이지 실행");
 					
 					return "/insert_song";
 				}
@@ -926,7 +925,7 @@ public class JavafoodController {
 						HttpServletRequest request,
 						@ModelAttribute	GenreDTO dto
 						) {
-					System.out.println("controller의 insert_song  실행 : "+ dto);
+					System.out.println("controller의 insert_song  등록 : " + dto);
 			
 			
 					int insert = javaService.insertsong(dto);

@@ -484,6 +484,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 		log.info("서비스 검색 시작");
 		List<GenreDTO> list = javaDAO.Search(map);
 		System.out.println("list : "+list.get(0).getAlbum_name());
+		System.out.println("list : "+list.get(1).getAlbum_name());
+		System.out.println("list : "+list.get(2).getAlbum_name());
+		System.out.println("list : "+list.get(3).getAlbum_name());
+		System.out.println("list : "+list.get(4).getAlbum_name());
+		System.out.println("list : "+list.get(5).getAlbum_name());
 		return list;
 	}
 	
@@ -539,33 +544,33 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 		@Override
 		public int insertsong(GenreDTO dto) {
-			int i=0;
-			try {
-				dto.getArtistname();
-				dto.getSongname();
-				dto.getLink();
-				dto.getAlbum_name();
-				dto.getBygenre();
-				dto.getPlaytime();
-				dto.getImagelink();
-				dto.getAlbum_add();
-				dto.getArtist_add();
-				dto.getCountry();			
-				i++;
-			} catch (Exception e) {
-			}
-			if(i==1) {
-				System.out.println("정상작동");
-				return javaDAO.insertsong(dto);
-			}
-			else {
-				System.out.println("0값");
-				return i;
-			}
 			
+			if(
+					dto.getArtistname() != null && dto.getArtistname() != "" && 
+					dto.getSongname() != null && dto.getSongname() != "" && 
+					dto.getLink() != null && dto.getLink() != "" &&
+					dto.getAlbum_name() != null && dto.getAlbum_name() != "" &&
+					dto.getBygenre() != null && dto.getBygenre() != "" &&
+					dto.getPlaytime() != null && dto.getPlaytime() != "" &&
+					dto.getImagelink() != null && dto.getImagelink() != "" &&
+					dto.getAlbum_add() != null && dto.getAlbum_add() != "" &&
+					dto.getArtist_add() != null && dto.getArtist_add() != "" &&
+					dto.getCountry() != null && dto.getCountry() != ""
+					
+				) {
+				System.out.println("server insert 입력 성공");
+				return javaDAO.insertsong(dto);
+				
+			} else {
+				System.out.println("server insert 모든 값을 입력하시오. ");
+			}
+			return 0;
 		}
-	
+			
+			
+}
+
 
 ////////////////////////////////////////////////////////////
 
-}
+

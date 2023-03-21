@@ -102,7 +102,7 @@ int countPerPage = (int) request.getAttribute("countPerPage");
 // int / int = int
 // double / int = double
 int lastPage = (int) Math.ceil((double) totalCount / countPerPage);
-int section = 5;
+int section = 2;
 
 int sec_position = (((int) Math.ceil((double) pageNum / section)) - 1);
 int firstSec = (sec_position * section) + 1;
@@ -111,15 +111,19 @@ if (lastSec > lastPage) {
 	lastSec = lastPage;
 }
 String country = request.getParameter("country");
+System.out.println(">> firstSec : "+ firstSec);
+System.out.println(">> lastSec : "+ lastSec);
+System.out.println(">> pageNum : "+ pageNum); 
+System.out.println(">> lastPage : "+ lastPage); 
 %>
 		<c:set var="pageNum2" value="<%=pageNum%>" />
 		<div class="paging">
-<% if(country != null && country.equals("대한민국") )
-	{%>
-
+			<c:if test="<%= firstSec == 1 || firstSec == 2 %>"> 
+				<img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
+			</c:if>
 			<c:if test="<%=firstSec != 1%>">
 				<a
-					href="/chart?pageNum=<%= firstSec-1 %>&country=<%= country %>"><img
+					href="/chart?pageNum=<%= firstSec-1 %>&country=<%= country  %>"><img
 					class="mouse" src="https://c11.kr/1ascb"
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
@@ -128,26 +132,28 @@ String country = request.getParameter("country");
 			<c:forEach var="i" begin="<%=firstSec%>" end="<%=lastSec%>">
 				<c:if test="${ i == pageNum2 }">
 					<a
-						href="/chart?pageNum=${i }&country=<%= country %>"
+						href="/chart?pageNum=${i }&countPerPage=${countPerPage}&country=<%= country  %>"
 						class="number"><strong>${i}</strong></a>
 				</c:if>
 				<c:if test="${ i != pageNum2 }">
 					<a
-						href="/chart?pageNum=${i }&country=<%= country %>"
+						href="/chart?pageNum=${i }&countPerPage=${countPerPage}&country=<%= country  %>"
 						class="number">${i}</a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="<%=lastSec != lastPage%>">
 				<a
-					href="/chart?pageNum=<%= lastSec+1 %>&country=<%= country %>"><img
+					href="/chart?pageNum=${i}<%= lastSec+1 %>&countPerPage=${countPerPage}&country=<%= country  %>"><img
 					class="img" src="https://c11.kr/1ascx"
 					onmouseover="this.src='https://c11.kr/1ascy'"
 					onmouseout="this.src='https://c11.kr/1ascx'"></a>
 			</c:if>
+			<c:if test="<%= lastSec == lastPage %>">
+				<img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
+			</c:if>
 
 		</div>
-	<%} %>
 	</div>
 <script link src="/script/chartScript.js"></script>
 </body>
