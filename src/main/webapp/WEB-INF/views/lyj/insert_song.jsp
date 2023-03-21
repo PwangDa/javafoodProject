@@ -17,10 +17,9 @@ body {
 
 
 <body>
-	<form action="">
+	<form action="insert_song">
 		<h1>관리자 페이지</h1>
 		<div>
-			songnumber : <input type="text" name="songnumber" placeholder="노래번호"><br>
 			artistname : <input type="text" name="artistname" placeholder="가수명"><br>
 			songname : <input type="text" name="songname" placeholder="노래명"><br>
 			link : <textarea name="link" placeholder="노래링크"></textarea><br> 
@@ -43,7 +42,10 @@ body {
 						<option value="대한민국">대한민국</option>
 						<option value="일본">일본</option>
 						<option value="미국">미국</option>
-					  </select>
+					  </select><br>
+					  <input type="submit" value="추가">
+					  <input type="reset" value="다시입력">
+					  
 		</div>
 	</form>
 </body>

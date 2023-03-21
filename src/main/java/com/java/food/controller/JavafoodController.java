@@ -715,6 +715,7 @@ public class JavafoodController {
 			HttpServletRequest re,
 			@RequestParam("song") String song
 			) {
+		log.info("아자스 조회스 증가");
 		return javaService.songhit(song ,(String) re.getSession().getAttribute("loginId"));
 	
 	}
@@ -786,10 +787,11 @@ public class JavafoodController {
 		return "/genre";
 	}
 
-	//최신음악
+	// 최신음악
 		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
 		public String Popular_Music(Model model,
-				HttpServletRequest request) {
+				HttpServletRequest request
+				) {
 			// 페이징
 					int pageNum = 1;		// 현재 페이지
 					int countPerPage = 10;	// 한 페이지당 표시 수 
@@ -814,11 +816,13 @@ public class JavafoodController {
 			return "/popular_Music";
 		}
 		
-		//최신음악
+		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song(Model model,
-						HttpServletRequest request) {
-					System.out.println("controller의 insert_song  실행");
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 insert_song  실행 : "+ dto);
 					
 					return "/insert_song";
 				}

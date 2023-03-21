@@ -13,7 +13,7 @@
         padding: 0px;
         margin: 0px;
         border: 0px solid #bcbcbc;
-        background-color: lightgreen;
+       
       }
       .con{
         width: 100%;

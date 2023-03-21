@@ -131,8 +131,8 @@
 	let color = '#';
 	let letters = ['f6c9cc', 'a8c0c0', 'FEBF36', 'FF7238', '6475A0', 'acc7bf', '5e5f67', 'c37070', 'eae160', 'bf7aa3', 'd7d967'];
 	
-//	color += letters[Math.floor(Math.random() * letters.length)];
-//	document.getElementById('wrap').style.backgroundColor = color;
+	color += letters[Math.floor(Math.random() * letters.length)];
+	document.getElementById('wrap').style.backgroundColor = color;
 	
 	
 	

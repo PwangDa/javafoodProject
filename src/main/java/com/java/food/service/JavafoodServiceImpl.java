@@ -475,6 +475,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 	
 	//조회수 증가
 	public int songhit(String song,String id) {
+		log.info("조회수 증가 서비스");
 		return javaDAO.songhit(song, id);
 	}
 	
