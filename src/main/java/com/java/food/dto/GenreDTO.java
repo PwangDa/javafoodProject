@@ -21,6 +21,15 @@ public class GenreDTO {
 	private String artist_add;
 	
 	
+	@Override
+	public String toString() {
+		return "GenreDTO [songnumber=" + songnumber + ", artistname=" + artistname + ", songname=" + songname
+				+ ", bygenre=" + bygenre + ", hits=" + hits + ", likes=" + likes + ", link=" + link + ", famous="
+				+ famous + ", record=" + record + ", playtime=" + playtime + ", ranking=" + ranking + ", album=" + album
+				+ ", imagelink=" + imagelink + ", country=" + country + ", album_name=" + album_name + ", album_add="
+				+ album_add + ", artist_add=" + artist_add + "]";
+	}
+	
 	public String getImagelink() {
 		return imagelink;
 	}

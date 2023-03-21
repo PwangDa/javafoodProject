@@ -1,10 +1,10 @@
-    let deleteList = document.querySelector("span.delete");
+    let deleteList1 = document.querySelector("span.delete");
     let deleteSong = document.querySelectorAll("span.deleteSong");
     let deleteSong2 = document.querySelectorAll("span.deleteSong form");
     
     let selected = document.querySelectorAll("input.songCheck");
     
-    deleteList.addEventListener('click', ()=>
+    deleteList1.addEventListener('click', ()=>
     {
         if(confirm("정말로 해당 플레이 리스트를 삭제하겠습니까?") )
         {
