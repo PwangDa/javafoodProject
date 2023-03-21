@@ -102,7 +102,7 @@ int countPerPage = (int) request.getAttribute("countPerPage");
 // int / int = int
 // double / int = double
 int lastPage = (int) Math.ceil((double) totalCount / countPerPage);
-int section = 50;
+int section = 5;
 
 int sec_position = (((int) Math.ceil((double) pageNum / section)) - 1);
 int firstSec = (sec_position * section) + 1;
