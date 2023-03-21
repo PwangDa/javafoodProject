@@ -516,7 +516,8 @@ public List<GenreDTO> Search(Map<String, Object> map){
 	logger.info("검색 dao 시작");
 	System.out.println("opt : "+map.get("opt"));
 	System.out.println("pot : "+map.get("pot"));
-	return sqlSession.selectList("mapper.javafood.",map);
+	
+	return sqlSession.selectList("mapper.javafood.search",map);
 }
 ////////////////////////////////////////////////////////////
 //용준

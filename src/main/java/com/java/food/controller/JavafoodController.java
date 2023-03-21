@@ -547,22 +547,6 @@ public class JavafoodController {
 			e.printStackTrace();
 		}
 		
-		//검색기능
-		try {
-			if(map.get("Search")!=null) {
-				log.info("검색시작");
-				System.out.println("옵션값opt : "+map.get("opt"));
-				System.out.println("검색값pot : "+map.get("pot"));
-				List<GenreDTO> searchlist = javaService.Search(map);
-				model.addAttribute("searchlist",searchlist);
-			}
-		} catch (Exception e) {
-			log.info("검색 오류");
-			e.printStackTrace();
-		}
-		
-		
-		
 		// main.jsp로 보내기
 		return "/main";
 	}
@@ -807,6 +791,26 @@ public class JavafoodController {
 			log.info("회원탈퇴 오류");
 		}
 		return i;
+	}
+	
+	//검색기능
+	@RequestMapping("search")
+	public String search(Model mo,
+			Map<String, Object> map) {
+		
+		try {
+			if(map.get("Search")!=null) {
+				log.info("검색시작");
+				System.out.println("옵션값opt : "+map.get("opt"));
+				System.out.println("검색값pot : "+map.get("pot"));
+				List<GenreDTO> searchlist = javaService.Search(map);
+				mo.addAttribute("searchlist",searchlist);
+			}
+		} catch (Exception e) {
+			log.info("검색 오류");
+			e.printStackTrace();
+			}
+		return "/search";
 	}
 
 ////////////////////////////////////////////////////////////
