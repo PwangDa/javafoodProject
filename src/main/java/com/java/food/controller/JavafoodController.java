@@ -603,7 +603,7 @@ public class JavafoodController {
 				log.info("회원가입 페이지 이동");
 				mo.addAttribute("membership", map.get("membership"));
 			}
-		return "lky/login";
+			return "lky/login";
 		} catch (Exception e) {
 			log.info("login페이지 오류");
 			return "/main";
