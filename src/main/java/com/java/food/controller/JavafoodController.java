@@ -710,6 +710,7 @@ public class JavafoodController {
 			HttpServletRequest re,
 			@RequestParam("song") String song
 			) {
+		log.info("아자스 조회스 증가");
 		return javaService.songhit(song ,(String) re.getSession().getAttribute("loginId"));
 	
 	}

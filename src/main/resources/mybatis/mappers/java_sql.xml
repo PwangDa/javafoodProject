@@ -24,9 +24,9 @@
 	</select> -->
 	<select id="viewArtist" resultType="albumDTO" parameterType="String">
 		SELECT * 
-		FROM artist arti
-		LEFT JOIN GENRE g ON (g.ARTISTNAME  = arti.ARTISTNAME)
-		WHERE arti.ARTISTNAME = #{artistname}
+		FROM artist arti, GENRE g
+<!-- 		LEFT JOIN GENRE g ON (g.ARTISTNAME  = arti.ARTISTNAME) -->
+		WHERE arti.ARTISTNAME LIKE #{artistname} || '%' AND g.ARTISTNAME LIKE #{artistname} || '%'
 	</select>
 	
 	<insert id="plusAlbum" parameterType="albumDTO">
@@ -186,7 +186,7 @@
 			ORDER BY s.HIT DESC
 	</select>
 	
-	<!-- 	회원 가입	-->
+<!-- 	회원 가입	-->
 	<insert id="newures" parameterType="loginDTO">
 		insert into 
 			login 
@@ -201,15 +201,14 @@
 			)
 	</insert>
 	
-<!-- 	songhit의 아이디값 불러오기 -->
-
-	<select id="hitid" parameterType="String" resultType="int">
+<!-- 	songhit 의 아이디값 불러오기 -->
+	<select id="hitid" parameterType="SongHit_DTO" resultType="int">
 		SELECT 
 			count(*) 
 		FROM 
-			songhit 
-		WHERE 
-			id = #{id}
+			SONGHIT
+		WHERE
+			id = #{ID} AND SONGNUMBER = #{SONGNUMBER}
 	</select>
 	
 <!-- 	아이디값 없을시 아이디 추가생성 하고 조회수1 증가-->
@@ -222,6 +221,52 @@
 			#{SONGNUMBER}
 			)
 	</insert>
+	
+<!-- 	조회된 아이디의 노래 번호 조회수 증가. -->
+	<update id="addsonghit" parameterType="SongHit_DTO">
+		UPDATE 
+			SONGHIT 
+		SET 
+			hit = 1+(
+				SELECT 
+					HIT 
+				FROM 
+					SONGHIT
+				WHERE
+					id = #{ID} 
+				AND 
+					SONGNUMBER = #{SONGNUMBER}
+				)
+		WHERE 
+			id = #{ID} 
+		AND 
+			SONGNUMBER = #{SONGNUMBER}
+	</update>
+	
+	<select id="hits" parameterType="String" resultType="int">
+		SELECT 
+			hits 
+		FROM 
+			GENRE 
+		WHERE 
+			SONGNUMBER = #{songnum}
+	</select>
+	
+<!-- 	장르테이블의 조회수 증가 -->
+	<update id="addgenrehit" parameterType="SongHit_DTO">
+		UPDATE 
+			GENRE 
+		SET 
+			hits = 1+(
+				SELECT 
+					HITs 
+				FROM 
+					GENRE
+				WHERE
+					SONGNUMBER = #{SONGNUMBER}
+				)
+		WHERE SONGNUMBER = #{SONGNUMBER}
+	</update>
 	
 <!-- 	장르의 노래 좋아요증가 -->
 	<update id="good" parameterType="String">
@@ -256,13 +301,12 @@
 			ID =#{ID}
 	</update>
 	
-	
 	<!-- 범주 플레이 리스트 불러오기 -->
 	<select id="selectPlayList" resultType="playListDTO" parameterType="String">
 		SELECT
 			pl.pl_title, pl.pl_id, pl.pl_date, pl.id
 		FROM
-			playList pl
+			playList pl, PLAYLIST_CONTENT pc
 		WHERE
 			pl.id = #{id}
 		ORDER BY
