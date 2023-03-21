@@ -154,3 +154,5 @@
 			setTimeout(()=>{konamiCommand = ""; console.log("konamiCommand is reseted.");}, 5000);
 		}
 	});
+	
+	window.open('popup.jsp', 'popup01', 'width=300, height=400, scrollbars= 0, toolbar=0, menubar=no');
