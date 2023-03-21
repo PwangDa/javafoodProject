@@ -844,17 +844,26 @@ public class JavafoodController {
 		
 		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
-				public String insert_song(Model model,
+				public String insert_song() {
+					System.out.println("controller의 insert_song  실행");
+					
+					return "/insert_song";
+				}
+				
+		// 노래 추가 페이지
+				@RequestMapping ("/insert_song_up")
+				public String insert_song(Model model,	
 						HttpServletRequest request,
 						@ModelAttribute	GenreDTO dto
 						) {
 					System.out.println("controller의 insert_song  실행 : "+ dto);
-					
-					
+			
+			
 					int insert = javaService.insertsong(dto);
-					
-					return "/insert_song";
-				}
+			
+		// redirect는 새로운 주소로 새로고침.
+			return "redirect:/insert_song";
+		}
 
 ////////////////////////////////////////////////////////////
 }
