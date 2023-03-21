@@ -512,11 +512,33 @@ public class JavafoodController {
 		List random_artist = javaService.randomArtist();
 		model.addAttribute("random_artist", random_artist);
 		
+		
+		
 		//매뉴 상단바 로그아웃
-		if(map.get("out")!=null) {
-			log.info("로그아웃 시작");
-			re.getSession().invalidate();
+		try {
+			if(map.get("out")!=null) {
+				log.info("로그아웃 시작");
+				re.getSession().invalidate();
+			}
+		} catch (Exception e) {
+			log.info("로그아웃 오류");
+			e.printStackTrace();
 		}
+		
+		//검색기능
+		try {
+			if(map.get("Search")!=null) {
+				log.info("검색시작");
+				System.out.println("옵션값opt : "+map.get("opt"));
+				System.out.println("검색값pot : "+map.get("pot"));
+				List<GenreDTO> searchlist = javaService.Search(map);
+				model.addAttribute("searchlist",searchlist);
+			}
+		} catch (Exception e) {
+			log.info("검색 오류");
+			e.printStackTrace();
+		}
+		
 		
 		
 		// main.jsp로 보내기
@@ -763,15 +785,6 @@ public class JavafoodController {
 			log.info("회원탈퇴 오류");
 		}
 		return i;
-	}
-	
-	//검색기능
-	@RequestMapping("/main/Search")
-	public String Search(Model mo,
-			@RequestParam Map<String, String> map) {
-		System.out.println("opt : "+map.get("opt"));
-		System.out.println("pot : "+map.get("pot"));
-		return "/main";
 	}
 
 ////////////////////////////////////////////////////////////

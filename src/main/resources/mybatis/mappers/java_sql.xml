@@ -186,6 +186,23 @@
 			ORDER BY s.HIT DESC
 	</select>
 	
+<!-- 	노래 검색 -->
+	<select id="search" resultType="genreDTO" parameterType="hashMap">
+		SELECT 
+			* 
+		FROM
+			GENRE
+		<if test="#{opt==song}">
+			WHERE 
+				SONGNAME LIKE  '%'||#{pot}||'%'
+		</if>
+		<if test="#{opt==man}">
+			WHERE 
+				artistname LIKE '%'||#{pot}||'%'
+		</if>
+		
+	</select>
+	
 <!-- 	회원 가입	-->
 	<insert id="newures" parameterType="loginDTO">
 		insert into 

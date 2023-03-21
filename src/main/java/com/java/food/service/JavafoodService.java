@@ -83,6 +83,8 @@ public interface JavafoodService {
 	int good(String songnumb, String id);
 	//조회수 증가
 	int songhit(String song,String id);
+	//검색
+	List<GenreDTO> Search(Map<String, Object> map);
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르

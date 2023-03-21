@@ -479,6 +479,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return javaDAO.songhit(song, id);
 	}
 	
+	//매뉴 상단바 검색
+	public List<GenreDTO> Search(Map<String, Object> map){
+		log.info("서비스 검색 시작");
+		return javaDAO.Search(map);
+	}
+	
 ////////////////////////////////////////////////////////////
 	// 용준 장르별 페이징
 
