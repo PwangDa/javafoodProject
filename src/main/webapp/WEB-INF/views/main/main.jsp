@@ -28,6 +28,7 @@
     </div>
     
     <br>
+    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1085371872557932606/giphy_1.gif">
     <br>
    
     <%-- 인기곡 리스트 컨트롤러 --%>

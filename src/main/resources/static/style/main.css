@@ -340,4 +340,16 @@
         	background-color: rgba(128, 128, 128, 0.652);
         	text-align: center;
         }
+        
+        
+        /*이스터에그*/
+        img.esterEgg
+        {
+        	margin:auto;
+        	display:block;
+        }
+        img.hidden
+        {
+        	display:none;
+        }
 	

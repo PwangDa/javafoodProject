@@ -539,8 +539,13 @@ public class JavafoodController {
 		//실행한 결과를 필드에 담기
 		List<PlayListDTO> playList = javaService.selectPlayList(id);
 		
+		//service에서 플레이 리스트 표지를 불러오는 메서드 실행하기
+		//실행한 결과를 필드에 담기
+//		List<PlayListDTO> link = javaService.selectPlayListPoster(id);
+		
 		//필드를 모델에 담아 전송하기
 		model.addAttribute("playList", playList);
+//		model.addAttribute("poster", link);
 		
 		//jsp 호출하기
 		return "playList/playListAdd"; // /view/playList/playListAdd.jsp 호출
