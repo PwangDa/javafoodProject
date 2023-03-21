@@ -6,9 +6,7 @@
 
 
 body {
-	margin: 0 63px;
 	background-color: black;
-	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -52,7 +50,7 @@ body {
  	border-radius: 2px;
 	width : 30px;
 }
-.save {
+.addList {
 	border-radius: 2px;
 	width : 30px;
 }
@@ -67,7 +65,7 @@ body {
 	
 }
 
-#allsave {
+#addLists {
 	width: 50px;
     margin-right: 1213px;
     margin-bottom: -91px;
