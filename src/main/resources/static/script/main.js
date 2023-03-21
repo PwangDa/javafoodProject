@@ -1,7 +1,7 @@
-
+	let cursor = "https://tistory1.daumcdn.net/tistory/4694508/skin/images/hai1.gif";
 	(function (){  
 	    document.onmousemove=function (e){ var ob=document.getElementById("foo").style; ob.left=e.pageX+15+"px"; ob.top=e.pageY+15+"px";}
-	    document.write("<img src='https://tistory1.daumcdn.net/tistory/4694508/skin/images/hai1.gif' id='foo' style='position:absolute; transition:all 0.3s ease-in'>");
+	    document.write("<img src='"+cursor+"' id='foo' style='position:absolute; transition:all 0.3s ease-in'>");
 	 }());
 
 	 let hitListPage = 0;
@@ -13,6 +13,10 @@
 	 let randomNextButton = document.querySelector(".ranNext");
 	 let randomPrevButton = document.querySelector(".ranPrev");
 	 let randomListContent = document.querySelector(".ranSongContent");
+	 
+	 let artistNextButton = document.querySelector(".artistNext");
+	 let artistPrevButton = document.querySelector(".artistPrev");
+	 let artistListContent = document.querySelector(".artistContent");
 	 
 	 hitListNextButton.addEventListener("click", ()=>
 	 {
@@ -84,6 +88,8 @@
 		}
 	});
 	
+	
+	
 	randomPrevButton.addEventListener("click", ()=>
 	 {
 
@@ -107,6 +113,8 @@
 			}
 		}
 	});
+	
+	
 	
 	
 	function hit(num){
@@ -148,6 +156,7 @@
 		if(konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
 		{
 			document.querySelector("img.esterEgg").classList.remove("hidden");
+			cursor = "https://cdn.discordapp.com/attachments/931150181540450368/1085371872557932606/giphy_1.gif";
 		}
 		if(konamiCommand != "" || konamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand != "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
 		{
@@ -155,4 +164,13 @@
 		}
 	});
 	
-	window.open('popup.jsp', 'popup01', 'width=300, height=400, scrollbars= 0, toolbar=0, menubar=no');
+	
+		//팝업창 jQuery 작동
+        jQuery(document).ready(function() {
+                $('#myModal').show();
+        });
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+
