@@ -794,18 +794,16 @@ public class JavafoodController {
 	}
 	
 	//검색기능
-	@RequestMapping("search")
+	@RequestMapping("/search")
 	public String search(Model mo,
 			Map<String, Object> map) {
 		
 		try {
-			if(map.get("Search")!=null) {
 				log.info("검색시작");
 				System.out.println("옵션값opt : "+map.get("opt"));
 				System.out.println("검색값pot : "+map.get("pot"));
 				List<GenreDTO> searchlist = javaService.Search(map);
 				mo.addAttribute("searchlist",searchlist);
-			}
 		} catch (Exception e) {
 			log.info("검색 오류");
 			e.printStackTrace();
