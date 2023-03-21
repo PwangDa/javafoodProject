@@ -153,7 +153,7 @@
 							class="sub" onclick="good(${i.SONGNUMBER})">
 					</td>
 					<td class="td">
-						<form name="addPlayList" method="post" action="/javafood_team/javafood?javafood=3_6" onclick="this.submit();">
+						<form name="addPlayList" method="post" action="/playListAdd?songNumber=${i.SONGNUMBER }" onclick="this.submit();">
 							<img class="img" src="https://c11.kr/1asd6" 
 								onmouseover="this.src='https://c11.kr/1asd9'" 
 								onmouseout="this.src='https://c11.kr/1asd6'">
