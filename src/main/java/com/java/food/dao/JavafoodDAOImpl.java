@@ -504,6 +504,21 @@ public int songhit(String song,String id) {
 	}
 	return sqlSession.insert("mapper.javafood.hits",dto.getSONGNUMBER());
 }
+
+/**
+ * 매뉴 상단바 검색
+ * @paramMap : opt : 검색주제 , 
+ * 				pot : 검색내용
+ * @return : list : 결과값
+ */
+@Override
+public List<GenreDTO> Search(Map<String, Object> map){
+	logger.info("검색 dao 시작");
+	System.out.println("opt : "+map.get("opt"));
+	System.out.println("pot : "+map.get("pot"));
+	
+	return sqlSession.selectList("mapper.javafood.search",map);
+}
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르별
