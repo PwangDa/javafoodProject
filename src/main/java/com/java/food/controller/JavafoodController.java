@@ -544,8 +544,13 @@ public class JavafoodController {
 		//실행한 결과를 필드에 담기
 		List<PlayListDTO> playList = javaService.selectPlayList(id);
 		
+		//service에서 플레이 리스트 표지를 불러오는 메서드 실행하기
+		//실행한 결과를 필드에 담기
+//		List<PlayListDTO> link = javaService.selectPlayListPoster(id);
+		
 		//필드를 모델에 담아 전송하기
 		model.addAttribute("playList", playList);
+//		model.addAttribute("poster", link);
 		
 		//jsp 호출하기
 		return "playList/playListAdd"; // /view/playList/playListAdd.jsp 호출
@@ -790,7 +795,8 @@ public class JavafoodController {
 	// 최신음악
 		@RequestMapping (value = "/popular_Music", method = RequestMethod.GET)
 		public String Popular_Music(Model model,
-				HttpServletRequest request) {
+				HttpServletRequest request
+				) {
 			// 페이징
 					int pageNum = 1;		// 현재 페이지
 					int countPerPage = 10;	// 한 페이지당 표시 수 
@@ -818,8 +824,10 @@ public class JavafoodController {
 		// 노래 추가 페이지
 				@RequestMapping ("/insert_song")
 				public String insert_song(Model model,
-						HttpServletRequest request) {
-					System.out.println("controller의 insert_song  실행");
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 insert_song  실행 : "+ dto);
 					
 					return "/insert_song";
 				}
