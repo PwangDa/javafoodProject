@@ -23,6 +23,7 @@
 </c:if>
 
 <c:if test="${re!=null }"><script>alert('회원정보 수정이 완료되었습니다. 다시 로그인 해주세요.')</script></c:if>
+	
 	<h1>쿠키 : 과자</h1>
 
 <c:if test="${membership!=null }">
@@ -30,7 +31,7 @@
 	<title>javafood 회원가입</title>
 	</head>
 	<body>
-	        <form id="form" method="post" action="http://localhost:8080/javafood_team/aj" 
+	        <form id="form" method="post" action="login/ajax/file" 
 		   		   enctype="multipart/form-data" 
 		  		   accept-charset="utf-8">
 		  		<div class="div_1" style="margin-top:30px;">

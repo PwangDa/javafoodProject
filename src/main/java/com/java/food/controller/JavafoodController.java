@@ -1,8 +1,10 @@
 package com.java.food.controller;
 
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,18 +17,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
@@ -390,7 +393,13 @@ public class JavafoodController {
 			}
 			return "redirect:/chart";
 		}
-	
+		
+		@GetMapping("/get-current-time")
+	    public @ResponseBody LocalDateTime getCurrentTime() {
+			/* System.out.println(LocalDateTime.now()); */
+	        return LocalDateTime.now();
+	    }
+		
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
@@ -683,7 +692,8 @@ public class JavafoodController {
 	
 	//로그인 페이지 이동
 	@RequestMapping(value = "/login")
-	public String loginpage(Model mo, 
+	public String loginpage(
+			Model mo, 
 			HttpServletRequest re,
 			HttpServletResponse rp,
 			@RequestParam Map<String, Object> map) {
@@ -702,8 +712,14 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginEmail", m.get("email"));
 				re.getSession().setAttribute("loginPn", m.get("pn"));
 				re.getSession().setAttribute("loginImg", m.get("img"));
-				
 				re.getSession().setMaxInactiveInterval(300);
+				
+				
+				//쿠키에 아이디값 저장
+				Cookie cok = new Cookie("id", (String) m.get("id"));
+				cok.setPath("/");			//모든경로
+				cok.setMaxAge(60*60*24);	//60초*60분*24시간
+				rp.addCookie(cok);
 				log.info("로그인 세션 유지시간 : 5분");
 
 			}
@@ -728,8 +744,9 @@ public class JavafoodController {
 
 	// 회원가입 중복체크 아자스로 이동
 	@RequestMapping("/login/ajax")
-	@ResponseBody public int ajax(@RequestParam Map<String, Object> map) {
-		
+	@ResponseBody public int ajax(
+			@RequestParam Map<String, Object> map
+			) {
 		log.info("ajax 실행");
 		
 		try {
@@ -743,7 +760,8 @@ public class JavafoodController {
 	
 	//마이 페이지 이동
 	@RequestMapping("/my_page")
-	public String my_page(Model mo,
+	public String my_page(
+			Model mo,
 			@RequestParam Map<String, Object> map,
 			HttpServletRequest re) {
 		
@@ -794,6 +812,36 @@ public class JavafoodController {
 			e.printStackTrace();
 			return "/main";
 		}
+	}
+	//아자스를 이용한 파일 업로드
+	@RequestMapping("login/ajax/file")
+	@ResponseBody
+	public int fileup(
+			HttpServletRequest re
+			) {
+		log.info(">>>>>>파일 업로드 시작<<<<<<");
+		try {
+			File file = new File("C:\\javafood");
+			if(!file.exists()) {
+				try {
+					file.mkdir();
+					log.info("폴더생성 성공");
+				} catch (Exception e) {
+					log.info("폴더생성 실패");
+				}
+			}else 
+				log.info("이미 생성된 폴더가 있습니다.");
+			DiskFileItemFactory disk = new DiskFileItemFactory();
+			disk.setRepository(file);
+			disk.setSizeThreshold(1024*100);
+			ServletFileUpload ser = new ServletFileUpload(disk);
+			
+		} catch (Exception e) {
+			log.info(">>>>>>파일 업로드 실패<<<<<<");
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 	
 	//아자스를 이용한 좋아요 증가
@@ -852,7 +900,8 @@ public class JavafoodController {
 	
 	//검색기능
 	@RequestMapping("/search")
-	public String search(Model mo,
+	public String search(
+			Model mo,
 			@RequestParam Map<String, Object> map) {
 		
 		try {
