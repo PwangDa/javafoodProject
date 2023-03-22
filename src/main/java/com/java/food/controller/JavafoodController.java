@@ -931,25 +931,67 @@ public class JavafoodController {
 		}
 		
 		// 노래 추가 페이지
-				@RequestMapping ("/insert_song")
-				public String insert_song() {
-					System.out.println("controller의 insert_song 메인페이지 실행");
+		@RequestMapping ("/insert_song")
+		public String insert_song(Model model,
+				@RequestParam Map<String, Object> map,
+				HttpServletRequest re) {
+			System.out.println("controller의 insert_song 메인페이지 실행");
+			String id = (String)re.getSession().getAttribute("loginId");
+			System.out.println("환영합니다!! 관리자님! : "+id);
+			
+			try {				
+				//페이지 이동
+				if(map.get("page") != null) {
 					
-					return "/insert_song";
+					log.info("page 이동");
+					model.addAttribute("page",map.get("page"));
+					
+					//장르 테이블 관리 페이지
+					if("a".equals(map.get("a"))) {
+						log.info("Genre 테이블 수정");
+						model.addAttribute("remove",javaService.idUpdate(map, id));
+					}
+					
+					//아티스트 테이블 관리 페이지
+					if("b".equals(map.get("page"))) {
+						log.info("Artist 테이블 수정");
+						
+			
+						System.out.println("page가져");
+					}
+					//앨범 테이블 관리 페이지
+					if("c".equals(map.get("page"))) {
+						log.info("Album 테이블 관리");
+					}
+					//수록곡 테이블 관리 페이지
+					if("d".equals(map.get("page"))) {
+						log.info("Song 테이블 관리");
+					}
+					
 				}
 				
+				return "/insert_song";
+			} catch (Exception e) {
+				log.info("my_page 오류");
+				e.printStackTrace();
+				return "/main";
+			}		
+					
+			
+		}
+				
 		// 노래 추가 페이지
-				@RequestMapping ("/insert_song_up")
-				public String insert_song(Model model,	
-						HttpServletRequest request,
-						@ModelAttribute	GenreDTO dto
-						) {
-					System.out.println("controller의 insert_song  등록 : " + dto);
+		@RequestMapping ("/insert_song_up")
+		public String insert_song(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	GenreDTO dto
+				) {
+			System.out.println("controller의 insert_song  등록 : " + dto);
 			
 			
-					int insert = javaService.insertsong(dto);
+			int insert = javaService.insertsong(dto);
 			
-		// redirect는 새로운 주소로 새로고침.
+// redirect는 새로운 주소로 새로고침.
 			return "redirect:/insert_song";
 		}
 

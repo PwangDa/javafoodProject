@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+body{
+	color: white; 
+	background-color: black; 
+}
+      body::-webkit-scrollbar {
+            width: 15px; /*스크롤바의 너비*/
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: rgb(92, 92, 92); /*스크롤바의 색상*/
+            border: none;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: rgb(39, 39, 39); /*스크롤바 트랙 색상*/ 
+            border: none;
+        }
+div{
+	color : white;
+	}
+.ddr{
+	border: 1px solid white;
+	display: flex;
+	text-align: center;
+}
+.mume{
+	width: 20%;
+	border: 1px solid white;
+	border-radius: 15px;
+	margin: 10px;
+	background-color: rgb(53, 53, 53);
+}
+.mume:hover{
+	background-color: rgb(86, 86, 86);
+}
+
+hr{
+    width: 100%;
+    border: 0;
+    border-top: 1px solid rgb(98, 98, 98);
+   }
+
+.page_1{
+	padding: 10px;
+
+}
+.h2h2{
+	font-weight: bolder;
+	font-size: 28px;
+	color: rgb(255, 242, 94);
+}
+.butt_1{
+	display: inline;
+}
+.text_a{
+	color : white;	    
+	height: 32px;
+	width:260px;
+	border: 1px solid rgb(98, 98, 98);
+ 	background-color: transparent;
+	
+}
+
+textarea{
+	border: 1px solid rgb(98, 98, 98);
+	color : white;	 
+    resize: none;
+	width: 260px;
+	height: 100px;
+	background-color: transparent;
+
+}
+
+.selectbox{
+	border: 1px solid rgb(98, 98, 98);
+	width: 260px;
+	height: 30px;
+}
+.conn_1{
+	border: 1px solid rgb(255, 99, 99);
+	font-size: 20px;
+	
+}
+.conn{
+	border: 1px solid rgb(255, 255, 255);	
+	width: 350px;
+	display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+.at{
+	color: white; 
+	text-decoration: none;
+	}
+
+	.butt{
+		color: rgba(255, 255, 255, 0.747);
+		background-color: rgb(80, 80, 80);
+		width: 110px;
+		height: 30px;
+		padding: 3px;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		border-radius: 7px;
+	}
+	
+	.butt:hover{
+		background-color: rgb(138, 138, 138);
+	}
+
+table{
+	background-size: contain; 
+	background-color: black;   
+	text-align: right; 
+	margin: auto; 
+	border: 1px solid black; 
+	border-collapse: collapse;
+	}
+
+
+	/* 로그인 페이지 css  */
+.tt{
+	color : white;	    
+   	height: 32px;
+    width:260px;
+    border: 1px solid rgb(98, 98, 98);
+    background-color: transparent;
+}
+
+.table{
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.table1{
+	
+	background-color: rgba(59, 59, 59, 0.564);
+	border-radius: 15px;
+	margin-top: 10px;
+	padding: 10px;
+	width: 450px;
+}
+
