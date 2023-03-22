@@ -699,8 +699,14 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginEmail", m.get("email"));
 				re.getSession().setAttribute("loginPn", m.get("pn"));
 				re.getSession().setAttribute("loginImg", m.get("img"));
-				
 				re.getSession().setMaxInactiveInterval(300);
+				
+				
+				//쿠키에 아이디값 저장
+				Cookie cok = new Cookie("id", (String) m.get("id"));
+				cok.setPath("/");			//모든경로
+				cok.setMaxAge(60*60*24);	//60초*60분*24시간
+				rp.addCookie(cok);
 				log.info("로그인 세션 유지시간 : 5분");
 
 			}
