@@ -8,6 +8,7 @@
 <%
 	String id = (String)request.getSession().getAttribute("loginId");
 	String pl_id = request.getParameter("pl_id");
+	String listImage = request.getParameter("listImage");
 %>
 <!DOCTYPE html>
 <html>
@@ -29,7 +30,7 @@
 		<c:when test="${ empty playListContent }">
 		<div class="album_info">
 				<!-- 아래 코드는 플레이 리스트의 대표 앨범사진 코드. 좀 더 고민해보기. -->
-				<img class="list_thumnail" src="https://image.bugsm.co.kr/album/images/original/203228/20322838.jpg?version=undefined">
+				<img class="list_thumnail" src="<%= listImage %>">
 				<br>
 				<br>
 				<h2 style="text-shadow:2px 2px 2px gray; color:whitesmoke;">${ playListContent[0].pl_title }</h2>
@@ -54,7 +55,7 @@
 		<c:when test="${ !empty playListContent }">
 			<div class="album_info">
 				<!-- 아래 코드는 플레이 리스트의 대표 앨범사진 코드. 좀 더 고민해보기. -->
-				<img class="list_thumnail" src="https://image.bugsm.co.kr/album/images/original/203228/20322838.jpg?version=undefined">
+				<img class="list_thumnail" src="<%= listImage %>">
 				<br>
 				<br>
 				<h2 style="text-shadow:2px 2px 2px gray; color:whitesmoke;">${ playListContent[0].pl_title }</h2>

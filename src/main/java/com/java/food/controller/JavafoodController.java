@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
@@ -417,12 +420,16 @@ public class JavafoodController {
 		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 title 값 :" + title); // 확인용
 		String explain = request.getParameter("addList_explain");
 		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 explain 값 : " + explain); // 확인용
+		String listImage = request.getParameter("addList_listImage");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 listImage 값 : " + listImage);
 
 		// 전달 받은 값을 List로 바꾸기
 		Map<String, String> info = new HashMap<String, String>();
 		info.put("id", id);
 		info.put("title", title);
 		info.put("explain", explain);
+		info.put("listImage", listImage);
+		
 
 		// 받아온 값들을 Service의 addPlayList 메서드에 전달하여 실행하기
 		javaService.addPlayList(info);
@@ -655,7 +662,9 @@ public class JavafoodController {
 	
 	//로그인 페이지 이동
 	@RequestMapping(value = "/login")
-	public String loginpage(Model mo, HttpServletRequest re,
+	public String loginpage(Model mo, 
+			HttpServletRequest re,
+			HttpServletResponse rp,
 			@RequestParam Map<String, Object> map) {
 		log.info("login 페이지 이동");
 		try {
@@ -672,6 +681,10 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginEmail", m.get("email"));
 				re.getSession().setAttribute("loginPn", m.get("pn"));
 				re.getSession().setAttribute("loginImg", m.get("img"));
+				
+				rp.addCookie(new Cookie("id", (String) m.get("id")));
+				log.info("세션 아이디 유지시간 : 5분");
+				re.getSession().setMaxInactiveInterval(300);
 			}
 			
 			// 회원가입

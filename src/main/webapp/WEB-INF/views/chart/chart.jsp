@@ -35,7 +35,7 @@
 	<div class="list">		
 		<table class="table">
 			<tr class="table2">
-				<td style="width: 200px;"><input type="checkbox" id="selectbtn" name="checkall" onclick="selectAll(this); getCheckedValue()" value="checkall; ${dao.songnumber }">체크</td>
+				<td style="width: 200px;"><input type="checkbox" id="selectbtn" name="checkall" onclick="selectAll(this); getCheckedValue()" value="checkall; ${dao.songnumber }"></td>
 				<td style="width: 60px;">순위</td>
 				<td style="width: 250px;">인기점수</td>
 				<td style="width: 100px;">앨범</td>
@@ -114,8 +114,13 @@ System.out.println(">> lastSec : "+ lastSec);
 System.out.println(">> pageNum : "+ pageNum); 
 System.out.println(">> lastPage : "+ lastPage); 
 %>
+
 		<c:set var="pageNum2" value="<%=pageNum%>" />
 		<div class="paging">
+			${country}<br>
+			${country != null}<br>
+			<hr>
+			
 			<c:if test="<%= firstSec == 1 || firstSec == 2 %>"> 
 				<img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 			</c:if>
@@ -126,12 +131,19 @@ System.out.println(">> lastPage : "+ lastPage);
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
 			</c:if>
-
+		
 			<c:forEach var="i" begin="<%=firstSec%>" end="<%=lastSec%>">
 				<c:if test="${ i == pageNum2 }">
+					<c:if test="${country == null}">
 					<a
 						href="/chart?pageNum=${i }&countPerPage=${countPerPage}"
 						class="number"><strong>${i}</strong></a>
+					</c:if>
+					<c:if test="${country} ">
+					<a
+						href="/chart?pageNum=${i }&countPerPage=${countPerPage}&country=${country}"
+						class="number"><strong>${i}</strong></a>
+					</c:if>
 				</c:if>
 				<c:if test="${ i != pageNum2 }">
 					<a
@@ -139,7 +151,7 @@ System.out.println(">> lastPage : "+ lastPage);
 						class="number">${i}</a>
 				</c:if>
 			</c:forEach>
-
+		
 			<c:if test="<%=lastSec != lastPage%>">
 				<a
 					href="/chart?pageNum=${i}<%= lastSec+1 %>&countPerPage=${countPerPage}"><img
