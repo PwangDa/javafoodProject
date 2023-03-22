@@ -1006,7 +1006,6 @@ public class JavafoodController {
 // redirect는 새로운 주소로 새로고침.
 			return "redirect:/insert_song";
 		}
-<<<<<<< HEAD
 				
 		// 좋아요 증가
 				@RequestMapping("/genre/good")
@@ -1029,7 +1028,6 @@ public class JavafoodController {
 					}
 					return "redirect:/genre";
 				}
-=======
 		
 		// 아티스트 정보 목록 전체 조회
 		@RequestMapping ("/list/artist")
@@ -1046,7 +1044,6 @@ public class JavafoodController {
 		}
 		
 
->>>>>>> 2ad02101d82298e12b85229f09b0fc457e846e1a
 
 ////////////////////////////////////////////////////////////
 }
