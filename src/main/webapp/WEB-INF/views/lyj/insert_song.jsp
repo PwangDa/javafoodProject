@@ -69,14 +69,14 @@
 				<input id="btn_all" class="butt" type="button" value="목록 전체조회">
 			</form>
 			<form action="/artistplus">
-			<div class="conn_1">
-				<div class="conn">아티스트 이름<input class="text_a" type="text" name="artistname" placeholder="Artistname"></div>
-				<div class="conn">아티스트 소개<textarea name="artis_info" placeholder="artis_info"></textarea></div>
-				<div class="conn">아티스트 사진링크<textarea name="artis_img" placeholder="artis_img"></textarea></div>
-				<input class="butt" type="submit" value="추가">
-				<input class="butt" type="reset" value="다시입력">
-			</div>
-		</form>
+				<div class="conn_1">
+					<div class="conn">아티스트 이름<input class="text_a" type="text" name="artistname" placeholder="Artistname"></div>
+					<div class="conn">아티스트 소개<textarea name="artis_info" placeholder="artis_info"></textarea></div>
+					<div class="conn">아티스트 사진링크<textarea name="artis_img" placeholder="artis_img"></textarea></div>
+					<input class="butt" type="submit" value="추가">
+					<input class="butt" type="reset" value="다시입력">
+				</div>
+			</form>
 	</c:if>
 </div>
 <div class="page_1">
@@ -120,5 +120,33 @@
 	</c:if>
 </div>
 <hr>
+<!--여기서 부터 조회한 값이 테이블로 출력 -->
+<table border=1>
+				<c:if test="${not empty list }">
+					<thead>
+						<tr>
+							<th>Artistname</th>
+							<th>Artist_info</th>
+							<th>Artist_img</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+					<c:forEach var="artist" items= "${list }" >
+						<tr>
+							<td><input type="checkbox" name="chk" value="${emp.empno}"></td>
+							<td>${artist.artistname}</td>
+							<td>${artist.artist_info}</td>
+							<td>${artist.artist_img}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${ empty list }">
+					<tr>
+						<td colspan="7" style="text-align:center;">데이터를 조회해 주세요.
+					</tr>
+				</c:if>
+				</tbody>
+			</table>
 </body>
+<script link src ="/script/insert_song.js"></script>
 </html>
