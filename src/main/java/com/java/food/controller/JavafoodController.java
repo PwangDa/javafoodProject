@@ -455,7 +455,7 @@ public class JavafoodController {
 	{
 		System.out.println("JavafoodController의 selectPlayListContent 메서드 실행됨."); //확인용
 		
-		String result = "playList/playListContent"; // /view/playList/playListContent.jsp로 이동.
+		String result = "/playListContent"; // /view/playList/playListContent.jsp로 이동.
 		
 		//주소에서 받은 값 가져오기
 		String pl_id = request.getParameter("pl_id");
