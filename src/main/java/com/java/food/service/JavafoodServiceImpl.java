@@ -105,6 +105,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 	public int albumplus(AlbumDTO dto) {
 		return javaDAO.albumplus(dto);
 	}
+	
+	@Override
+	public int artistplus(AlbumDTO dto) {
+		System.out.println("아티스트 추가!!!");
+		return javaDAO.artistplus(dto);
+	}
 ////////////////////////////////////////////////////////////
 //귀범
 //	// 차트
@@ -140,7 +146,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		start = (countPerPage * (pageNum - 1)) + 1;
 		end = start + countPerPage - 1;
 		List list = javaDAO.chart(country, start, end);
-		int totalCount = javaDAO.totalpage();
+		int totalCount = javaDAO.totalpage(country);
 		
 		Map map = new HashMap();
 		map.put("list", list);
@@ -566,7 +572,13 @@ public class JavafoodServiceImpl implements JavafoodService {
 			}
 			return 0;
 		}
-			
+		
+		@Autowired
+		public List listArtist() {
+			System.out.println("listArtist 메소드 접속!!");
+			List listArtist= javaDAO.listArtist();
+			return listArtist;
+		}
 			
 }
 

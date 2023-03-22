@@ -13,6 +13,7 @@ public class PlayListDTO
 	private String imageLink;
 	private String album_name;
 	private String link;
+	private String listImage;
 	
 	
 	
@@ -21,6 +22,12 @@ public class PlayListDTO
 	
 
 	//getter setter
+	public String getListImage() {
+		return listImage;
+	}
+	public void setListImage(String listImage) {
+		this.listImage = listImage;
+	}
 	public String getpl_title() {
 		return pl_title;
 	}

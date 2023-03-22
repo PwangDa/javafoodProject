@@ -20,6 +20,7 @@ public interface JavafoodDAO {
 	List viewComment(String artist);
 	
 	List viewAlbum(String album);
+	List listArtist();
 	
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
@@ -29,6 +30,7 @@ public interface JavafoodDAO {
 	List randomGenre(String genre);
 	List randomArtist();
 	
+	int artistplus(AlbumDTO dto);
 	int albumplus(AlbumDTO dto);
 	
 ////////////////////////////////////////////////////////////
@@ -40,7 +42,7 @@ public interface JavafoodDAO {
 	List chart(String country, int start, int end);
 	
 	// 페이징
-	int totalpage();
+	int totalpage(String country);
 	
 	// 조회수 증가
 	void addhit(String id, String songnumber);

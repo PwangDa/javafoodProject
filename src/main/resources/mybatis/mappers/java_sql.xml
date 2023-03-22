@@ -29,13 +29,19 @@
 		WHERE arti.ARTISTNAME LIKE #{artistname} || '%' AND g.ARTISTNAME LIKE #{artistname} || '%'
 	</select>
 	
+	<!-- 각 테이블에 정보 넣는 sql -->
+	<insert id="artistplus" parameterType="albumDTO">
+		insert into artist
+		(artistname, artist_info, artist_img)
+		values(#{artistname}, #{artist_info}, #{artist_img})
+	</insert>
 	<insert id="plusAlbum" parameterType="albumDTO">
-		insert into ALBUM_1
+		insert into ALBUM_3
 		(album_num, album_cover, album_name, album_into, artistname)
-		values(#{album_num}, #{album_cover}, #{album_name}, #{album_into}, #{artistname})
+		values(al_ss.nextval, #{album_cover}, #{album_name}, #{album_into}, #{artistname})
 	</insert>
 	<insert id="plusSong" parameterType="albumDTO">
-		insert into intoAlbum_1
+		insert into intoAlbum_2
 		(album_num, music_num, music_name, music_link, music_time, album_name)
 		values(#{album_num}, #{music_num}, #{music_name}, #{music_link}, #{music_time}, #{album_name})
 	</insert>
@@ -45,6 +51,11 @@
 		SELECT DISTINCT * FROM ALBUM_3 a
 		LEFT JOIN intoAlbum_2 i ON (a.ALBUM_NAME = i.ALBUM_NAME)
 		WHERE a.ALBUM_NAME LIKE #{album_name} || '%'
+	</select>
+	
+	<!-- 관리자페이지에서 아티스트 전체목록 조회 시 -->
+	<select id="listArtist" resultType="albumDTO" parameterType="String">
+		SELECT DISTINCT * FROM artist
 	</select>
 	
 	<!-- 댓글등록 할 때 -->
@@ -326,9 +337,9 @@
 	<!-- 범주 플레이 리스트 불러오기 -->
 	<select id="selectPlayList" resultType="playListDTO" parameterType="String">
 		SELECT
-			pl.pl_title, pl.pl_id, pl.pl_date, pl.id
+			pl.pl_title, pl.pl_id, pl.pl_date, pl.id, pl.listImage
 		FROM
-			playList pl, PLAYLIST_CONTENT pc
+			playList pl
 		WHERE
 			pl.id = #{id}
 		ORDER BY
@@ -374,15 +385,29 @@
 	
 	<!-- 범주 플레이 리스트 추가하기 -->
 	<insert id="addPlayList" parameterType="hashMap">
-		INSERT INTO
-			playList(pl_id, id, pl_title, pl_explain)
-		VALUES
-		(
-			seq_pl_id.nextval,
-			#{id},
-			#{title},
-			#{explain}
-		)
+		<if test="listImage != null">
+			INSERT INTO
+				playList(pl_id, id, pl_title, pl_explain, listImage)
+			VALUES
+			(
+				seq_pl_id.nextval,
+				#{id},
+				#{title},
+				#{explain},
+				#{listImage}
+			)
+		</if>
+		<if test="listImage == null">
+			INSERT INTO
+				playList(pl_id, id, pl_title, pl_explain)
+			VALUES
+			(
+				seq_pl_id.nextval,
+				#{id},
+				#{title},
+				#{explain}
+			)
+		</if>
 	</insert>
 	
 	<!-- 범주 플레이 리스트 내역(Content) 삭제하기 -->
