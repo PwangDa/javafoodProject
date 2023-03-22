@@ -71,8 +71,8 @@
 			<form action="/artistplus">
 				<div class="conn_1">
 					<div class="conn">아티스트 이름<input class="text_a" type="text" name="artistname" placeholder="Artistname"></div>
-					<div class="conn">아티스트 소개<textarea name="artis_info" placeholder="artis_info"></textarea></div>
-					<div class="conn">아티스트 사진링크<textarea name="artis_img" placeholder="artis_img"></textarea></div>
+					<div class="conn">아티스트 소개<textarea name="artist_info" placeholder="artist_info"></textarea></div>
+					<div class="conn">아티스트 사진링크<textarea name="artist_img" placeholder="artist_img"></textarea></div>
 					<input class="butt" type="submit" value="추가">
 					<input class="butt" type="reset" value="다시입력">
 				</div>
