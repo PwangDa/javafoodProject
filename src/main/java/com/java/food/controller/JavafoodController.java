@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
@@ -811,12 +812,12 @@ public class JavafoodController {
 		}
 	}
 	//아자스를 이용한 파일 업로드
-	@RequestMapping("login/ajax/file")
+	@RequestMapping("/login/ajax/file")
 	@ResponseBody
 	public int fileup(
 			HttpServletRequest re
 			) {
-		log.info(">>>>>>파일 업로드 시작<<<<<<");
+		log.info(">>>>>> 파일 업로드 <<<<<<");
 		try {
 			File file = new File("C:\\javafood");
 			if(!file.exists()) {
@@ -825,13 +826,30 @@ public class JavafoodController {
 					log.info("폴더생성 성공");
 				} catch (Exception e) {
 					log.info("폴더생성 실패");
+					e.printStackTrace();
 				}
 			}else 
 				log.info("이미 생성된 폴더가 있습니다.");
+			
+			log.info(">>>>>> 파일 업로드 시작1 <<<<<<");
 			DiskFileItemFactory disk = new DiskFileItemFactory();
+			log.info(">>>>>> 파일 업로드 시작2 <<<<<<");
 			disk.setRepository(file);
+			log.info(">>>>>> 파일 업로드 시작3 <<<<<<");
 			disk.setSizeThreshold(1024*100);
+			log.info(">>>>>> 파일 업로드 시작4 <<<<<<");
+			
+			log.info(">>>>>> 파일 업로드 시작5 <<<<<<");
 			ServletFileUpload ser = new ServletFileUpload(disk);
+			log.info(">>>>>> 파일 업로드 시작6 <<<<<<");
+			ser.setFileSizeMax(1024*1024*100);
+			log.info(">>>>>> 파일 업로드 시작7 <<<<<<");
+			
+//			List items = ser.parseRequest((RequestContext) re);
+			log.info(">>>>>> 파일 업로드 시작8 <<<<<<");
+//			System.out.println("items size : "+items.size());
+			log.info(">>>>>> 파일 업로드 시작9 <<<<<<");
+			
 			
 		} catch (Exception e) {
 			log.info(">>>>>>파일 업로드 실패<<<<<<");

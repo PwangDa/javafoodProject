@@ -61,7 +61,7 @@ window.onload=function() {
 			cache: false,
 			success: function () {
 				alert("이미지 저장 성공")
-				location.href='javafood?javafood=4&membership=O';
+				location.href='#';
 			},
 			error: function () {
 				alert("이미지 저장 실패")

@@ -31,11 +31,11 @@
 	<title>javafood 회원가입</title>
 	</head>
 	<body>
-	        <form id="form" method="post" action="login/ajax/file" 
+			<div><img src="https://c11.kr/1asbb" class="logo-img"><h1 style="margin-top:-11px;"><c:out value="Create Account"/></h1></div>
+	        <form id="form" method="post" action="/login/ajax/file" 
 		   		   enctype="multipart/form-data" 
 		  		   accept-charset="utf-8">
 		  		<div class="div_1" style="margin-top:30px;">
-					<div><img src="https://c11.kr/1asbb" class="logo-img"><h1 style="margin-top:-11px;"><c:out value="Create Account"/></h1></div>
 					<div class="upload">
 						<img class="upload_img" src="http://localhost:8080/javafood_team/aj1?fileName=new_javafood.JPG" style="width: 150px;height: 150px;">
 						<input type="file" name="file1">
