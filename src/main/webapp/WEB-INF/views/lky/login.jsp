@@ -23,6 +23,7 @@
 </c:if>
 
 <c:if test="${re!=null }"><script>alert('회원정보 수정이 완료되었습니다. 다시 로그인 해주세요.')</script></c:if>
+	<h1>쿠키 : [${id }]</h1>
 
 <c:if test="${membership!=null }">
 
@@ -142,7 +143,10 @@
 		<h1><c:out value="javafood 로그인성공"/></h1>
 		<h1>${loginNic } <c:out value="님 환영합니다."/></h1>
 		<strong id="time"></strong><c:out value="초후에 매인 화면으로 이동됩니다. 마음의 준비를 해주세요."/>
-		<script>loging();</script>
+		<script>
+			loging(); 
+			cookie(${loginId});
+		</script>
 	</body>
 	</html>
  </c:if>
@@ -164,14 +168,20 @@
 					    <form method="post" action="/login">
 					        <div class="head1">
 					            <div class = "inputbtn">
-					            	<input class = "tt" type="text" name="ID" placeholder="USER NAME">
+					            	<input class = "tt" type="text" name="ID" id="id12" placeholder="USER NAME">
 					            	<button class="btnClear" type="button" ></button>
 					            </div>
 					            <br>
 					            <input class = "tt" type="password" name="PW" placeholder="PASSWORD">
 					            <button class="btnClear" type="button" ></button>
 					            <input class="sub sub1" type="submit" value="Log In"><br>
-					            <span class = "chec"><input type="checkbox" name="ID" value="ID">Remember me</span> <span class ="chec" style= "margin-left :77px;">계정 찾기</span>
+					            <span class = "chec">
+					            	<input type="checkbox" id="idcook">
+					            	Remember me
+				            	</span> 
+				            	<span class ="chec" style= "margin-left :77px;">
+				            		계정 찾기
+			            		</span>
 					            <p><a href="/login?membership=0" class="at"><c:out value="아직 JavaMusic을 사용하고 있지 않으신가요? 가입하기"/></a></p>
 					        </div>
 					    </form>

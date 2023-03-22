@@ -678,9 +678,9 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginPn", m.get("pn"));
 				re.getSession().setAttribute("loginImg", m.get("img"));
 				
-				rp.addCookie(new Cookie("id", (String) m.get("id")));
-				log.info("세션 아이디 유지시간 : 5분");
 				re.getSession().setMaxInactiveInterval(300);
+				log.info("로그인 세션 유지시간 : 5분");
+
 			}
 			
 			// 회원가입
