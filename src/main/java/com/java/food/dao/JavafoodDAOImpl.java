@@ -275,6 +275,27 @@ public List<PlayListDTO> selectPlayListContent(String pl_id)
 
 @Override
 /**
+ * 플레이 리스트의 제목, 설명, 표지를 수정합니다. (리턴 : void)
+ * 전달인자 : 수정할 플레이 리스트의 아이디(pl_id), 수정할 제목, 설명, 표지 이미지의 링크가 담긴 Map
+ */
+public void editPlayList(Map info)
+{
+	System.out.println("JavafoodDAOImpl의 editPlayList 메서드 실행됨."); //확인용
+	
+	//sql을 이용하여 DB에 접속 후 플레이 리스트 수정하기
+	int result = sqlSession.update("mappger.javafood.editPlayList", info);
+	if(result >= 1) //확인용
+	{
+		System.out.println("editPlayList 성공!!");
+	}
+	else
+	{
+		System.out.println("editPlayList 실패...");
+	}
+}
+
+@Override
+/**
  * 플레이 리스트를 추가합니다.(리턴 : void)
  * 전달인자 : id, title, explain이라는 key와 value가 담긴 Map<String, String>
  */

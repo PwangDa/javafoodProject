@@ -26,7 +26,6 @@
 	    <br>
     <hr>
     <img class="addList" src="https://c11.kr/1asbg"> <span class="addList">리스트 추가</span>
-    <img id="editList" class="addList" src="https://cdn.discordapp.com/attachments/931150181540450368/1087936598156525578/edit-icon.png"> <span id="editList" class="addList">리스트 수정하기</span>
     
     <!-- 플레이 리스트 추가하는 폼 -->
     <div class="search hidden">
@@ -51,12 +50,12 @@
 		<%-- 해당 유저의 플레이 리스트가 하나라도 존재한다면 --%>
 		<c:when test="${ !empty playList }">
 			<c:forEach var="list" items="${ playList }">
-			<a href="playListContent?pl_id=${ list.pl_id }&listImage=${ list.listImage }">
-				<div class="playList">
+			<div class="playList">
+				<a href="playListContent?pl_id=${ list.pl_id }&listImage=${ list.listImage }">
 					<img class="album" src="${ list.listImage }">
 					<div class="plText">${ list.pl_title }</div>
-				</div>
-			</a>
+				</a>
+			</div>
 			</c:forEach>
 		</c:when>
    	</c:choose>

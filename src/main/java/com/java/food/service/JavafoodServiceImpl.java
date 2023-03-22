@@ -224,6 +224,16 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return result;
 	}
 	
+	//범주 플레이 리스트 수정하기
+	@Override
+	public void editPlayList(Map info)
+	{
+		System.out.println("JavafoodServiceImpl의 editPlayList 메서드 실행됨."); //확인용
+		
+		//DAO의 editPlayList 메서드 실행하기
+		javaDAO.editPlayList(info);
+	}
+	
 	//범주 플레이 리스트 추가하기
 	@Override
 	public void addPlayList(Map<String, String> info)

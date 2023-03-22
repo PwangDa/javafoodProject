@@ -1,6 +1,10 @@
-    let deleteList1 = document.querySelector("span.delete");
+    let deleteList1 = document.querySelector("span#delete");
     let deleteSong = document.querySelectorAll("span.deleteSong");
     let deleteSong2 = document.querySelectorAll("span.deleteSong form");
+    
+    let editBtn = document.querySelector("span#editList");
+    let editInputs = document.querySelectorAll(".edit");
+	let inputEditListBtn = document.querySelector("input.editList_btn");
     
     let selected = document.querySelectorAll("input.songCheck");
     
@@ -26,6 +30,44 @@
             }
         });
     }
+    
+    editBtn.addEventListener('click', ()=>
+    {
+		for(let i=0; i<editInputs.length; i++)
+		{			
+			editInputs[i].classList.toggle("hidden");
+		}
+	});
+    
+    inputEditListBtn.addEventListener("click", ()=>
+	{
+	let title = PL_editList.editList_title.value;
+	let explain = PL_editList.editList_explain.value;
+	let listImage = PL_editList.editList_listImage.value;
+	
+	if(title.length == 0 || title == "")
+	{
+		alert("플레이 리스트 제목을 입력해주세요.");
+	}
+	else
+	{
+		if(explain == "" || listImage == "" || explain.length == 0 || listImage == 0)
+		{
+			if(confirm("플레이 리스트의 설명이나 이미지 URL 란이 비었습니다. 정말로 수정하시겠습니까?") )
+			{
+				PL_editList.method = 'get';
+				PL_editList.action = 'editPlayList';
+				PL_editList.submit();
+			}
+		}
+		else
+		{
+			PL_editList.method = 'get';
+			PL_editList.action = 'editPlayList';
+			PL_editList.submit();
+		}
+	}
+});
     
     //선택된 것 삭제하기 만들다 만거
 //    for(let i = 0; i < selected.length; i++)
