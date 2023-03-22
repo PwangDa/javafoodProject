@@ -611,6 +611,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 			List<AlbumDTO> listIntoAlbum= javaDAO.listIntoAlbum();
 			return listIntoAlbum;
 		}
+
 		//관리자페이지에서 아티스트 이름 검색했을 때
 		@Override	
 		public List searchArtist(String artist) {

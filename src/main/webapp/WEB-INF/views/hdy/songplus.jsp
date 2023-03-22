@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>수록곡 관리페이지</title>
 </head>
 <link rel="stylesheet" href="/style/insert_song.css?css=css">
 <br>

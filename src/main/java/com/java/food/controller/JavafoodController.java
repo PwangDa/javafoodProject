@@ -1117,6 +1117,23 @@ public class JavafoodController {
 				return "/main";
 			}			
 		}
+		// 댓글관리 페이지
+		@RequestMapping ("/comment")
+		public String insert_intoalbum(Model model,
+				@RequestParam Map<String, Object> map,
+				@ModelAttribute	CommentDTO dto,
+				HttpServletRequest re) {
+			System.out.println("insert_intoalbum 메인페이지 실행");
+			String id = (String)re.getSession().getAttribute("loginId");
+			System.out.println("환영합니다!! 관리자님! : "+id);
+			try {							
+				return "/comment";
+			} catch (Exception e) {
+				log.info("my_page 오류");
+				e.printStackTrace();
+				return "/main";
+			}			
+		}
 				
 		// 노래 추가 페이지
 		@RequestMapping ("/insert_song_up")
@@ -1206,6 +1223,19 @@ public class JavafoodController {
 			model.addAttribute("list", listIntoAlbum);
 			return "forward:/insert_intoalbum";
 		}
+		
+		// 댓글목록 전체 조회
+//		@RequestMapping ("/list/comment")
+//		public String listComment(Model model,	
+//				HttpServletRequest request,
+//				@ModelAttribute	CommentDTO dto
+//				) {
+//			System.out.println("댓글 테이블을 조회합니다.");
+//			
+//			List<CommentDTO> listComment = javaService.listComment();
+//			model.addAttribute("list", listComment);
+//			return "forward:/comment";
+//		}
 		
 		// 관리자 페이지에서 아티스트 검색조회 했을 때
 		@RequestMapping ("/search/artist")

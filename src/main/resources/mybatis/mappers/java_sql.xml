@@ -70,6 +70,17 @@
 	<select id="listIntoAlbum" resultType="albumDTO">
 		SELECT * FROM intoAlbum_2
 	</select>
+	<!-- 관리자페이지에서 댓글리스트 출력 -->
+<!-- 	<select id="listComment" resultType="commentDTO">
+		SELECT LEVEL, articleno, parentno, 
+		comment_num, comment_id, 
+		LPAD(' ', 4*(LEVEL-1)) || comment_cont,  
+		comment_date, artistname, MYIMG, id
+		FROM comment_com
+		START WITH parentno = 0
+		CONNECT BY PRIOR articleno = parentno 
+		ORDER siblings BY articleno DESC;
+	</select> -->
 	
 	<!-- 관리자페이지에서 아티스트이름으로 검색할 때 -->
  	<select id="searchArtist" resultType="albumDTO" parameterType="String">
