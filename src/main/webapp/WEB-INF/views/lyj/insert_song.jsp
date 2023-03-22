@@ -27,8 +27,8 @@
 <hr>
 <div class="page_1">
 
-		<span class="h2h2">장르관리 페이지</span>
 		<form action="/list/genre" class="butt_1">
+			<span class="h2h2">장르관리 페이지</span>
 			<input class="butt" type="submit" value="목록 전체조회"> 
 		</form>
 		<form id="join" action="insert_song_up">
@@ -67,7 +67,7 @@
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
 
-<table border=1>
+<table class="table_1">
 				<c:if test="${not empty list }">
 					<thead>
 						<tr>

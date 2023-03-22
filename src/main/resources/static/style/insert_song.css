@@ -54,6 +54,7 @@ hr{
 }
 .conn_2{
 	width: 500px;
+	margin: 10px;
 }
 .text_a{
 	color : white;	    
@@ -116,10 +117,28 @@ textarea{
 	background-size: contain;   
 	text-align: left; 
 	margin: auto; 
-	border: 1px solid white; 
+	/* border: 1px solid rgb(98, 98, 98);  */
 	border-collapse: collapse;
 	}
+	th{
+		border-bottom: 1px solid rgb(98, 98, 98);
+	}
+	td{
+		border-bottom: 1px solid rgb(98, 98, 98);
+	}
+	.text_b{
+		width: 150px;
+	}
 
+	.text_c{
+		border: 1px solid rgb(98, 98, 98);
+		color : white;	 
+		resize: none;
+		width: 400px;
+		height: 100px;
+		background-color: transparent;
+	
+	}
 
 	/* 로그인 페이지 css  */
 .tt{
