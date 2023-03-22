@@ -409,136 +409,136 @@ public void addContent(Map info)
 }
 ////////////////////////////////////////////////////////////
 
-//경용
-/**
- * 아이디 리스트
- * @return list : 회원정보를 리턴해줍니다.
- */
-@Override
-public List<login_DTO> listID() {
-	return sqlSession.selectList("mapper.javafood.login");
-}
-
-/**
- * 회원가입
- * @paramlogin_DTO : 가입할 회원정보 DTO를 넣어줍니다.
- * @return : 가입 성공 여부
- */
-@Override
-public int addId(login_DTO vo) {
-	int i =0;
-	try {
-		sqlSession.insert("mapper.javafood.newures",vo);
-		i=1;
-	} catch (Exception e) {
-		e.printStackTrace();
+	//경용
+	/**
+	 * 아이디 리스트
+	 * @return list : 회원정보를 리턴해줍니다.
+	 */
+	@Override
+	public List<login_DTO> listID() {
+		return sqlSession.selectList("mapper.javafood.login");
 	}
-	return i;
-}
-
-/**
- * 회원탈퇴
- * @paramString : 탈퇴할 세션 아이디값.
- * @return : 탈퇴 성공 여부
- */
-@Override
-public int outId(String id) {
-	int a = 0;
-	try {
-		a = sqlSession.delete("mapper.javafood.outId",id);
-		sqlSession.close();
-	} catch (Exception e) {
-	}
-	return a;
-}
-/**
- * 회원 재생목록 가져오기
- * @paramString : 가져올 아이디 값.
- * @return : 탈퇴 성공 여부
- */
-@Override
-public List<SongHit_DTO> loginplay(String id) {
-	List<SongHit_DTO> list = new ArrayList<SongHit_DTO>(); 
-	try {
-		logger.info("sql 가져오기");
-		list = sqlSession.selectList("mapper.javafood.SongHit",id);
-	} catch (Exception e) {
-		logger.info("dao 오류");
-		e.printStackTrace();
-	}
-	return list;
-}
-
-/**
- * 아자스를 이용한 좋아요 증가
- * @paramMap : id : 가져올 아이디 값.
- * 				song : 좋아요 증가할 노래 번호 값.
- * @return : 좋아요 증가 성공 여부
- */
-@Override
-public int good(Map<String, Object> map) {
-	logger.info("good dao 실행");
-	int i=0;
-	try {
-		sqlSession.insert("mapper.javafood.good",(String)map.get("song"));
-		i++;
-	} catch (Exception e) {
-		logger.info("good dao 오류 로그인을 하셔야 합니다.");
-		e.printStackTrace();
-	}
-	return i;
-}
-
-/**
- * 아자스를 이용한 조회수 증가
- * @paramMap : id : 가져올 아이디 값.
- * 				song : 조회수 증가할 노래 번호 값.
- * @return : 조회수 증가 성공 여부
- */
-@Override
-public int songhit(String song,String id) {
-	logger.info("songhit dao 실행");
 	
-	SongHit_DTO dto = new SongHit_DTO();
-	dto.setID(id);
-	dto.setSONGNUMBER(song);
-	System.out.println("dto : "+dto.getID());
-	System.out.println("dto : "+dto.getSONGNUMBER());
-	
-	int i = sqlSession.selectOne("mapper.javafood.hitid", dto);
-	
-	System.out.println("아이디에 조회된 노래 유무: "+i);
-	try {
-		if(i==0) {
-			logger.info("아이디가 없습니다. 아이디 생성");
-			sqlSession.insert("mapper.javafood.hitaddid",dto);
-			sqlSession.insert("mapper.javafood.addgenrehit",dto);
-			logger.info("조회수 증가");
-		}else {
-			logger.info("조회수 증가");
-			sqlSession.insert("mapper.javafood.addsonghit",dto);
-			sqlSession.insert("mapper.javafood.addgenrehit",dto);
+	/**
+	 * 회원가입
+	 * @paramlogin_DTO : 가입할 회원정보 DTO를 넣어줍니다.
+	 * @return : 가입 성공 여부
+	 */
+	@Override
+	public int addId(login_DTO vo) {
+		int i =0;
+		try {
+			sqlSession.insert("mapper.javafood.newures",vo);
+			i=1;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	} catch (Exception e) {
-		logger.info("로그인을 해야 조회수가 증가합니다.");
+		return i;
 	}
-	return sqlSession.insert("mapper.javafood.hits",dto.getSONGNUMBER());
-}
-
-/**
- * 매뉴 상단바 검색
- * @paramMap : opt : 검색주제 , 
- * 				pot : 검색내용
- * @return : list : 결과값
- */
-@Override
-public List<GenreDTO> Search(Map<String, Object> map){
-	logger.info("검색 dao 시작");
-	System.out.println("opt : "+map.get("opt"));
-	System.out.println("pot : "+map.get("pot"));
 	
-	return sqlSession.selectList("mapper.javafood.search",map);
-}
+	/**
+	 * 회원탈퇴
+	 * @paramString : 탈퇴할 세션 아이디값.
+	 * @return : 탈퇴 성공 여부
+	 */
+	@Override
+	public int outId(String id) {
+		int a = 0;
+		try {
+			a = sqlSession.delete("mapper.javafood.outId",id);
+			sqlSession.close();
+		} catch (Exception e) {
+		}
+		return a;
+	}
+	/**
+	 * 회원 재생목록 가져오기
+	 * @paramString : 가져올 아이디 값.
+	 * @return : 탈퇴 성공 여부
+	 */
+	@Override
+	public List<SongHit_DTO> loginplay(String id) {
+		List<SongHit_DTO> list = new ArrayList<SongHit_DTO>(); 
+		try {
+			logger.info("sql 가져오기");
+			list = sqlSession.selectList("mapper.javafood.SongHit",id);
+		} catch (Exception e) {
+			logger.info("dao 오류");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	/**
+	 * 아자스를 이용한 좋아요 증가
+	 * @paramMap : id : 가져올 아이디 값.
+	 * 				song : 좋아요 증가할 노래 번호 값.
+	 * @return : 좋아요 증가 성공 여부
+	 */
+	@Override
+	public int good(Map<String, Object> map) {
+		logger.info("good dao 실행");
+		int i=0;
+		try {
+			sqlSession.insert("mapper.javafood.good",(String)map.get("song"));
+			i++;
+		} catch (Exception e) {
+			logger.info("good dao 오류 로그인을 하셔야 합니다.");
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
+	/**
+	 * 아자스를 이용한 조회수 증가
+	 * @paramMap : id : 가져올 아이디 값.
+	 * 				song : 조회수 증가할 노래 번호 값.
+	 * @return : 조회수 증가 성공 여부
+	 */
+	@Override
+	public int songhit(String song,String id) {
+		logger.info("songhit dao 실행");
+		
+		SongHit_DTO dto = new SongHit_DTO();
+		dto.setID(id);
+		dto.setSONGNUMBER(song);
+		System.out.println("dto : "+dto.getID());
+		System.out.println("dto : "+dto.getSONGNUMBER());
+		
+		int i = sqlSession.selectOne("mapper.javafood.hitid", dto);
+		
+		System.out.println("아이디에 조회된 노래 유무: "+i);
+		try {
+			if(i==0) {
+				logger.info("아이디가 없습니다. 아이디 생성");
+				sqlSession.insert("mapper.javafood.hitaddid",dto);
+				sqlSession.insert("mapper.javafood.addgenrehit",dto);
+				logger.info("조회수 증가");
+			}else {
+				logger.info("조회수 증가");
+				sqlSession.insert("mapper.javafood.addsonghit",dto);
+				sqlSession.insert("mapper.javafood.addgenrehit",dto);
+			}
+		} catch (Exception e) {
+			logger.info("로그인을 해야 조회수가 증가합니다.");
+		}
+		return sqlSession.insert("mapper.javafood.hits",dto.getSONGNUMBER());
+	}
+
+	/**
+	 * 매뉴 상단바 검색
+	 * @paramMap : opt : 검색주제 , 
+	 * 				pot : 검색내용
+	 * @return : list : 결과값
+	 */
+	@Override
+	public List<GenreDTO> Search(Map<String, Object> map){
+		logger.info("검색 dao 시작");
+		System.out.println("opt : "+map.get("opt"));
+		System.out.println("pot : "+map.get("pot"));
+		
+		return sqlSession.selectList("mapper.javafood.search",map);
+	}
 ////////////////////////////////////////////////////////////
 //용준
 	// 장르별
