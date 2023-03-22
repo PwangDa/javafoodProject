@@ -1154,6 +1154,18 @@ public class JavafoodController {
 			return "forward:/insert_intoalbum";
 		}
 		
+		// 관리자 페이지에서 아티스트 검색조회 했을 때
+		@RequestMapping ("/search/artist")
+		public String searchArtist(Model model,	
+				@RequestParam("artistname") String name
+				) {
+			System.out.println(name+" 아티스트를 조회합니다.");
+			
+			List searchArtist = javaService.searchArtist(name);
+			model.addAttribute("list", searchArtist);
+			return "forward:/insert_artist";
+		}
+		
 
 
 ////////////////////////////////////////////////////////////

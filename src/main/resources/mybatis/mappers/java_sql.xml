@@ -71,6 +71,12 @@
 		SELECT * FROM intoAlbum_2
 	</select>
 	
+	<!-- 관리자페이지에서 아티스트이름으로 검색할 때 -->
+ 	<select id="searchArtist" resultType="albumDTO" parameterType="String">
+		SELECT * FROM ARTIST
+		WHERE ARTISTNAME LIKE #{artistname} || '%'
+	</select>
+	
 	<!-- 댓글등록 할 때 -->
 	<insert id="plusComment" parameterType="commentDTO">
 		insert into comment_com

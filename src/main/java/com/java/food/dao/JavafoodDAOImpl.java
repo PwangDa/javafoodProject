@@ -588,7 +588,7 @@ public List<GenreDTO> Search(Map<String, Object> map){
 		}
 		
 		//Genre관리자 페이지에서 목록 전체조회 출력
-		@Autowired
+		@Override
 		public List<GenreDTO> listGenre(){
 			List<GenreDTO> list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.listGenre");
@@ -596,25 +596,33 @@ public List<GenreDTO> Search(Map<String, Object> map){
 			return list;			
 		}
 				
-		@Autowired
+		@Override
 		public List<AlbumDTO> listArtist() {
 			List<AlbumDTO> list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.listArtist");
 			logger.info("Artist list.size >>>"+list.size()); 
 			return list;
 		}
-		@Autowired
+		@Override
 		public List<AlbumDTO> listAlbum() {
 			List<AlbumDTO> list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.listAlbum");
 			logger.info("Album list.size >>>"+list.size()); 
 			return list;
 		}
-		@Autowired
+		@Override
 		public List<AlbumDTO> listIntoAlbum() {
 			List<AlbumDTO> list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.listIntoAlbum");
 			logger.info("intoAlbum list.size >>>"+list.size()); 
+			return list;
+		}
+		
+		@Override
+		public List searchArtist(String artist) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchArtist", artist);
+			System.out.println(artist+" : 조회!!!!!");
 			return list;
 		}
 		

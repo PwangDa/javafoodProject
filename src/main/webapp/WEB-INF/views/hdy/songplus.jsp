@@ -18,8 +18,9 @@
 	<div class="ddr">
 		<div class="mume"><h3><a class="at" href="/insert_song"><c:out value="Genre 관리"/></a></h3></div>
 		<div class="mume"><h3><a class="at" href="/insert_artist"><c:out value="Artist 관리"/></a></h3></div>
-		<div class="mume" id="outsession" ><h3><a class="at" href="/insert_album"><c:out value="Album 관리"/></a></h3></div>
-		<div class="mume"><h3><a class="at" id="outid" href="/insert_intoalbum"><c:out value="IntoAlbum 관리"/></a></h3></div>
+		<div class="mume"><h3><a class="at" href="/insert_album"><c:out value="Album 관리"/></a></h3></div>
+		<div class="mume" style="background-color:rgb(105, 116, 239)"><h3><a class="at" id="outid" href="/insert_intoalbum"><c:out value="IntoAlbum 관리"/></a></h3></div>
+		<div class="mume"><h3><a class="at" id="outid" href="/del_comment"><c:out value="댓글 관리"/></a></h3></div>
 	</div>
 <hr>
 <div class="page_1">	
