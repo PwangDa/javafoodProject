@@ -1,10 +1,15 @@
 @charset "UTF-8";
 	body
     {
-        display:flex;
+/*         display:flex; */
         margin:0;
         background-color: black;
         color:white;
+    }
+    
+    div.divBody
+    {
+    	display:flex;
     }
     
     div.album_info

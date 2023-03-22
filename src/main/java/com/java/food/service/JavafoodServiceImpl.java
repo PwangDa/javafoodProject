@@ -146,7 +146,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 		start = (countPerPage * (pageNum - 1)) + 1;
 		end = start + countPerPage - 1;
 		List list = javaDAO.chart(country, start, end);
-		int totalCount = javaDAO.totalpage();
+		int totalCount = javaDAO.totalpage(country);
 		
 		Map map = new HashMap();
 		map.put("list", list);

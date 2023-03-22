@@ -186,9 +186,9 @@ public List chart(String country, int start, int end) {
 }
 
 @Override
-public int totalpage() {
+public int totalpage(String country) {
 	
-	int totalcount = sqlSession.selectOne("mapper.javafood.totalpage");
+	int totalcount = sqlSession.selectOne("mapper.javafood.totalpage", country);
 	System.out.println("DAOimpl : " +totalcount);
 	
 	return totalcount;
