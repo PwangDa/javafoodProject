@@ -20,8 +20,11 @@ public interface JavafoodDAO {
 	List viewComment(String artist);
 	
 	List viewAlbum(String album);
-	List listArtist();
+	List<AlbumDTO> listArtist();
+	List<AlbumDTO> listAlbum();
+	List<AlbumDTO> listIntoAlbum();
 	
+	List searchArtist(String artist);
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
 	
@@ -108,6 +111,9 @@ public interface JavafoodDAO {
 	
 	// 음악추가 페이지
 	int insertsong(GenreDTO dto);
+	
+	//Genre관리자 페이지에서 목록 전체조회 출력
+	List<GenreDTO> listGenre();
 ////////////////////////////////////////////////////////////
 
 

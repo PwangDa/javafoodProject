@@ -574,13 +574,42 @@ public class JavafoodServiceImpl implements JavafoodService {
 			return 0;
 		}
 		
-		@Autowired
-		public List listArtist() {
-			System.out.println("listArtist 메소드 접속!!");
-			List listArtist= javaDAO.listArtist();
+		//Genre관리자 페이지에서 목록 전체조회 출력
+		@Override
+		public List<GenreDTO> listGenre(){
+
+			System.out.println("list장르 메소드 접속!!");
+			List<GenreDTO> listGenre= javaDAO.listGenre();
+			return listGenre;			
+		}
+		
+		@Override
+		public List<AlbumDTO> listArtist() {
+			System.out.println("list아티스트 메소드 접속!!");
+			List<AlbumDTO> listArtist= javaDAO.listArtist();
 			return listArtist;
 		}
-			
+		@Override
+		public List<AlbumDTO> listAlbum() {
+			System.out.println("list앨범 메소드 접속!!");
+			List<AlbumDTO> listAlbum= javaDAO.listAlbum();
+			return listAlbum;
+		}
+		@Override
+		public List<AlbumDTO> listIntoAlbum() {
+			System.out.println("list수록곡 메소드 접속!!");
+			List<AlbumDTO> listIntoAlbum= javaDAO.listIntoAlbum();
+			return listIntoAlbum;
+		}
+		//관리자페이지에서 아티스트 이름 검색했을 때
+		@Override	
+		public List searchArtist(String artist) {
+			System.out.println("searchArtist 메소드 접속!!");
+			List searchArtist= javaDAO.searchArtist(artist);
+			return searchArtist;
+		}
+		
+		
 }
 
 

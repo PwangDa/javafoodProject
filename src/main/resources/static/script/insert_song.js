@@ -1,14 +1,17 @@
-
-
-	let btn_all = document.querySelector("#btn_all");
+	let join = document.querySelector("#join");
 	
-	btn_all.addEventListener("click", function(){
-		console.log('리스트를 조회합니다');
-		let xhr = new XMLHttpRequest();
-        xhr.open("get", "/list/artist");
-        xhr.send();      
-        
+	join.addEventListener("submit", function(){
+		if(join.artistname.value.length == 0){
+			alert('내용을 입력해주세요');
+		}else if(join.artistname.value.length != 0){
+			console.log('123');
+			alert('!!!추가완료!!!');
+		}
+
 	});
+		
+
+
 	
 
 	
