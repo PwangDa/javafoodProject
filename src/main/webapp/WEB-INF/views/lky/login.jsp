@@ -23,7 +23,8 @@
 </c:if>
 
 <c:if test="${re!=null }"><script>alert('회원정보 수정이 완료되었습니다. 다시 로그인 해주세요.')</script></c:if>
-	<h1>쿠키 : [${id }]</h1>
+	
+	<h1>쿠키 : 과자</h1>
 
 <c:if test="${membership!=null }">
 
