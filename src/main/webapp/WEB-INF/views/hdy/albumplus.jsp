@@ -24,8 +24,8 @@
 	</div>
 <hr>
 <div class="page_1">
-			<span class="h2h2">Album_3 앨범정보등록</span>
 			<form action="/list/album" class="butt_1">
+				<span class="h2h2">Album_3 앨범정보등록</span>
 				<input class="butt" type="submit" value="목록 전체조회"> 
 			</form>
 			<form  id="join" action="/albumplus">

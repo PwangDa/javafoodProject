@@ -24,8 +24,8 @@
 	</div>
 <hr>
 <div class="page_1">	
-		<span class="h2h2">intoAlbum_2 의 수록곡 등록</span>
 		<form action="/list/song" class="butt_1">
+			<span class="h2h2">intoAlbum_2 의 수록곡 등록</span>
 			<input class="butt" type="submit" value="목록 전체조회"> 
 		</form>
 		 <form>
@@ -44,7 +44,7 @@
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
 
-<table border=1>
+<table class="table_1">
 				<c:if test="${not empty list }">
 					<thead>
 						<tr>

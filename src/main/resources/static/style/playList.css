@@ -1,110 +1,115 @@
 @charset "UTF-8";
-        body
-        {
-            background-color: black;
-            color:white;
-        }
+body
+{
+    background-color: black;
+    color:white;
+}
 
-        div.title
-        {
-            text-align:center;
-            margin:5% 0% 0% 0%;
-            text-shadow:2px 2px 2px gray;
-            color:whitesmoke;
-        }
-        
-
-        img.addList
-        {
-            width: 30px;
-            height: 30px;
-            /* border-right:1px solid rgb(184, 184, 184); */
-            margin-bottom: 1%;
-        }
+div.title
+{
+    text-align:center;
+    margin:5% 0% 0% 0%;
+    text-shadow:2px 2px 2px gray;
+    color:whitesmoke;
+}
 
 
-        div.playList
-        {
-            font-size:100%;
-            text-align:center;
+img.addList
+{
+    width: 30px;
+    height: 30px;
+    /* border-right:1px solid rgb(184, 184, 184); */
+    margin-bottom: 1%;
+}
 
-            display:inline-block;
 
-            /* border:1px solid black; */
-            width:19%;
-            margin:0% 3% 10% 2%;
-        }
-        div.plText
-        {
-            display:block;
-            margin-top:3%;
-            /* border-top:1px solid rgb(184, 184, 184); */
-        }
-        img.album
-        {
-            height: 250px;
-            width: 250px;
-            box-shadow: 5px 5px 5px 5px gray;
-        }
+div.playList
+{
+    font-size:80%;
+    text-align:center;
 
-        a
-        {
-            text-decoration: none; /* 링크의 밑줄 제거 */
-            color: inherit; /* 링크의 색상 제거 */
-        }
+    display:inline-block;
 
-        input.addList_textbar
-        {
-            border:hidden;
-            border-radius: 5px;
+    /* border:1px solid black; */
+    width:19%;
+    margin:0% 3% 10% 2%;
+}
+div.plText
+{
+    display:block;
+    margin-top:3%;
+    /* border-top:1px solid rgb(184, 184, 184); */
+}
+img.album
+{
+    height: 250px;
+    width: 250px;
+    box-shadow: 5px 5px 5px 5px gray;
+}
 
-            margin:0 0 1% 1%;
+a
+{
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 링크의 색상 제거 */
+}
 
-            background-color: rgb(63, 63, 63);
-            color:rgb(247, 212, 147);
-            
-            width:50%;
-            height: 30px;
-        }
+input.addList_textbar
+{
+    border:hidden;
+    border-radius: 5px;
 
-        input.addList_ex_textbar
-        {
-            border:hidden;
-            border-radius: 5px;
+    margin:0 0 1% 1%;
 
-            margin:0 0 1% 1%;
+    background-color: rgb(63, 63, 63);
+    color:rgb(247, 212, 147);
+    
+    width:50%;
+    height: 30px;
+}
 
-            background-color: rgb(63, 63, 63);
-            color:rgb(247, 212, 147);
-            
-            width:50%;
-            height: 150px;
-        }
 
-        input.addList_btn
-        {
-            border:hidden;
+input.addList_ex_textbar
+{
+    border:hidden;
+    border-radius: 5px;
 
-            background-color:black;
-            color:white;
+    margin:0 0 1% 1%;
 
-            width:6%;
-            height: 32px;
-        }
+    background-color: rgb(63, 63, 63);
+    color:rgb(247, 212, 147);
+    
+    width:50%;
+    height: 150px;
+}
 
-        .hidden
-        {
-            display:none;
-        }
+input.addList_btn
+{
+    border:1px solid white;
+    
+    margin-left:1%;
 
-        span.addList
-        {
-            vertical-align: top;
-        }
+    background-color:black;
+    color:white;
 
-        div.noList
-        {
-        	color:white;
-        	padding:25%;
-        	text-align:center;
-        }
+    width:4%;
+    height: 32px;
+}
+
+.hidden
+{
+    display:none;
+}
+
+span.addList
+{
+    vertical-align: top;
+    
+    margin-right:3%;
+}
+
+div.noList
+{
+	color:white;
+	padding:25%;
+	text-align:center;
+}

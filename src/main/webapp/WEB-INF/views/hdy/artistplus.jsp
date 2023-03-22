@@ -24,8 +24,8 @@
 	</div>
 <hr>
 <div class="page_1">
-		<span class="h2h2">아티스트 정보등록</span>
 			<form action="/list/artist" class="butt_1">
+			<span class="h2h2">아티스트 정보등록</span>
 				<input class="butt" type="submit" value="목록 전체조회"> 
 			</form>
 			<form id="join" action="/artistplus">
@@ -46,21 +46,40 @@
 		<input class="butt" type="submit" value="검색">
 	</form>
 </div>
- <table border=1>
+<hr>
+ <table class="table_1">
 				<c:if test="${not empty list }">
 					<thead>
-						<tr>
+						<tr class="trtr">
 							<th>Artistname</th>
 							<th>Artist_info</th>
 							<th>Artist_img</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-							<td>${artist.artistname}</td>
-							<td>${artist.artist_info}</td>
-							<td>${artist.artist_img}</td>
+							<td>
+								<input class="text_a text_b" type="text" name="artistname" placeholder="${artist.artistname}" value="${artist.artistname}">
+							</td>
+							<td>
+								<textarea class="text_c" name="artist_info" placeholder="${artist.artist_info}" value="${artist.artist_info}"></textarea>
+							</td>
+							<td>
+								<textarea class="text_c" name="artist_img" placeholder="${artist.artist_img}" value="${artist.artist_img}"></textarea>
+							</td>
+							<td>
+								<form action="/modify/artist">
+									<input class="butt" type="submit" value="수정">
+								</form>
+							</td>
+							<td>
+								<form action="/delete/artist">
+									<input class="butt" type="submit" value="삭제">
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>

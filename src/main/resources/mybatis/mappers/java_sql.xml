@@ -365,25 +365,17 @@
 			pl_date DESC
 	</select>
 	
-	<!-- 범주 플레이 리스트 표지 불러오기 -->
-	<select id="selectPlayListPoster" resultType="playListDTO" parameterType="String">
-		SELECT
-			pl.pl_id,
-			plc.pl_id, MIN(plc.listNumber),
-			g.imageLink
-		FROM
-			playList pl,
-			playList_Content plc,
-			genre g
+	<!-- 범주 플레이 리스트 수정하기 -->
+	<update id="editPlayList" parameterType="hashMap">
+		UPDATE
+			playList pl
+		SET
+			pl.pl_title = #{title},
+			pl.pl_explain = #{explain},
+			pl.listImage = #{listImage}
 		WHERE
-			pl.pl_id = plc.pl_id
-			AND
-			plc.songNumber = g.songNumber
-			AND
-			pl.id = #{id}
-			AND
-			
-	</select>
+			pl.pl_id = #{pl_id};
+	</update>
 	
 	<!-- 범주 플레이 리스트 내역(Content) 불러오기 -->
 	<select id="selectPlayListContent" resultType="playListDTO" parameterType="String">
