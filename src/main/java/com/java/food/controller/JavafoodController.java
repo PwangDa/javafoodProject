@@ -235,7 +235,19 @@ public class JavafoodController {
 			
 			int count = javaService.albumplus(dto);
 		
-		return "/hdy/songplus";
+		return "redirect:/insert_song?page=c";
+	}
+	
+	// 아티스트정보를 추가하는 메소드
+	@RequestMapping(value = "/artistplus")
+	public String artistplus(Model model, 
+			@ModelAttribute AlbumDTO dto) {
+		System.out.println("!!!아티스트 추가!!!!");
+
+		
+		int count = javaService.artistplus(dto);
+		
+		return "redirect:/insert_song?page=b";
 	}
 
 	@RequestMapping(value = "/plus")
@@ -930,7 +942,7 @@ public class JavafoodController {
 			return "/popular_Music";
 		}
 		
-		// 노래 추가 페이지
+		// 관리자 페이지
 		@RequestMapping ("/insert_song")
 		public String insert_song(Model model,
 				@RequestParam Map<String, Object> map,
@@ -948,24 +960,24 @@ public class JavafoodController {
 					
 					//장르 테이블 관리 페이지
 					if("a".equals(map.get("a"))) {
-						log.info("Genre 테이블 수정");
+						log.info("Genre 관리페이지 입니다.");
 						model.addAttribute("remove",javaService.idUpdate(map, id));
 					}
 					
 					//아티스트 테이블 관리 페이지
 					if("b".equals(map.get("page"))) {
-						log.info("Artist 테이블 수정");
+						log.info("Artist 관리페이지 입니다.");
 						
 			
 						System.out.println("page가져");
 					}
 					//앨범 테이블 관리 페이지
 					if("c".equals(map.get("page"))) {
-						log.info("Album 테이블 관리");
+						log.info("Album 관리페이지 입니다.");
 					}
 					//수록곡 테이블 관리 페이지
 					if("d".equals(map.get("page"))) {
-						log.info("Song 테이블 관리");
+						log.info("Song 관리페이지 입니다.");
 					}
 					
 				}
@@ -994,6 +1006,22 @@ public class JavafoodController {
 // redirect는 새로운 주소로 새로고침.
 			return "redirect:/insert_song";
 		}
+		
+		// 아티스트 정보 목록 전체 조회
+		@RequestMapping ("/list/artist")
+		public String listArtist(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("아티스트 테이블을 조회합니다.");
+			
+			List listArtist = javaService.listArtist();
+			model.addAttribute("list", listArtist);
+			
+			return "/insert_song";
+		}
+		
+
 
 ////////////////////////////////////////////////////////////
 }

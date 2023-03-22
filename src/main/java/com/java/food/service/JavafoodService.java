@@ -26,6 +26,8 @@ public interface JavafoodService {
 	List randomGenre(String genre);
 	List randomArtist();
 	int albumplus(AlbumDTO dto);
+	int artistplus(AlbumDTO dto);
+	List listArtist();
 ////////////////////////////////////////////////////////////
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);
