@@ -35,7 +35,7 @@
 	<div class="list">		
 		<table class="table">
 			<tr class="table2">
-				<td style="width: 200px;"><input type="checkbox" id="selectbtn" name="checkall" onclick="selectAll(this); getCheckedValue()" value="checkall; ${dao.songnumber }">체크</td>
+				<td style="width: 200px;"><input type="checkbox" id="selectbtn" name="checkall" onclick="selectAll(this); getCheckedValue()" value="checkall; ${dao.songnumber }"></td>
 				<td style="width: 60px;">순위</td>
 				<td style="width: 250px;">인기점수</td>
 				<td style="width: 100px;">앨범</td>
