@@ -188,7 +188,7 @@
                 	</c:if>
                 	<div class="left_album_bot" title="${ genre_list.album_name}"><a href = "/albumpage?album=${genre_list.album_name}">${ genre_list.album_name}</a></div> <!-- 앨범 --> 
                 	<div class="right_item_bot">${ genre_list.playtime}</div> <!-- 재생시간 -->
-                	<form method="post" action="/javafood_team/javafood?javafood=6">
+                	<form method="post" action="/genre/good">
 	                	<div class="right_item_bot" id="like"><%-- ${ genre_list.likes} --%><input type="image"  src="https://c11.kr/1asbx" onmouseover="this.src='https://c11.kr/1asby'" onmouseout="this.src='https://c11.kr/1asbx'" value="" class="sub"><input type="hidden" name="good" value="${genre_list.songnumber}"><!-- 좋아요 --> 
 	<%--                 <div class="right_item_bot" id="like">${ genre_list.likes}<input type="image"  src="https://c11.kr/1asbx"  value="" class="sub"><input type="hidden" name="good" value="${genre_list.songnumber}"><!-- 좋아요 -->  --%>
 	                		<input type="hidden" name="number" value="${ genre_list.songnumber}"> <!-- 곡 번호 -->
