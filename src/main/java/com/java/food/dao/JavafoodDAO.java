@@ -42,7 +42,7 @@ public interface JavafoodDAO {
 	List chart(String country, int start, int end);
 	
 	// 페이징
-	int totalpage();
+	int totalpage(String country);
 	
 	// 조회수 증가
 	void addhit(String id, String songnumber);
