@@ -10,7 +10,6 @@
         function fn_addList()
         {
             let title = PL_addList.addList_title.value;
-            let explain = PL_addList.addList_explain.value;
 
             if(title.length == 0 || title == "")
             {
