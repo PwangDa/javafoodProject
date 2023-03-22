@@ -1225,17 +1225,17 @@ public class JavafoodController {
 		}
 		
 		// 댓글목록 전체 조회
-//		@RequestMapping ("/list/comment")
-//		public String listComment(Model model,	
-//				HttpServletRequest request,
-//				@ModelAttribute	CommentDTO dto
-//				) {
-//			System.out.println("댓글 테이블을 조회합니다.");
-//			
-//			List<CommentDTO> listComment = javaService.listComment();
-//			model.addAttribute("list", listComment);
-//			return "forward:/comment";
-//		}
+		@RequestMapping ("/list/comment")
+		public String listComment(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	CommentDTO dto
+				) {
+			System.out.println("댓글 테이블을 조회합니다.");
+			
+			List<CommentDTO> listComment = javaService.listComment();
+			model.addAttribute("list", listComment);
+			return "forward:/comment";
+		}
 		
 		// 관리자 페이지에서 아티스트 검색조회 했을 때
 		@RequestMapping ("/search/artist")
