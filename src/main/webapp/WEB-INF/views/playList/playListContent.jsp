@@ -23,13 +23,13 @@
 </head>
 <body>
 	<!-- 상단바 jsp 삽입하기 -->
-	<jsp:include page="/WEB-INF/views/menu.jsp" />
+<%-- 	<jsp:include page="/WEB-INF/views/menu.jsp" /> --%>
+	<div class="divBody">
 	
 		<c:choose>
 		<%-- 해당 플레이 리스트의 내용이 하나도 없다면 --%>
 		<c:when test="${ empty playListContent }">
 		<div class="album_info">
-				<!-- 아래 코드는 플레이 리스트의 대표 앨범사진 코드. 좀 더 고민해보기. -->
 				<img class="list_thumnail" src="<%= listImage %>">
 				<br>
 				<br>
@@ -54,7 +54,6 @@
 		<%-- 해당 플레이 리스트의 내용이 하나라도 존재한다면 --%>
 		<c:when test="${ !empty playListContent }">
 			<div class="album_info">
-				<!-- 아래 코드는 플레이 리스트의 대표 앨범사진 코드. 좀 더 고민해보기. -->
 				<img class="list_thumnail" src="<%= listImage %>">
 				<br>
 				<br>
@@ -104,7 +103,7 @@
 			</div>
 		</c:when>
 	</c:choose>
-	   	
+	</div>
    	
    	<!-- js파일 불러오기 -->
    	<script src="/script/playListContent.js"></script>
