@@ -620,6 +620,9 @@ public class JavafoodController {
 		
 		//주소에서 전달된 값 받기
 		String pl_id = request.getParameter("pl_id");
+		System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 pl_id의 값 : " + pl_id); //확인용
+    	String listImage = request.getParameter("listImage");
+    	System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 listImage의 값 : " + listImage); //확인용
 		
 		//세션에 저장해둔 songNumber 리스트를 받기
 		String[] songNumber = (String[])session.getAttribute("songNumber");
@@ -633,7 +636,7 @@ public class JavafoodController {
 		javaService.addContent(info);
 		
 		//플레이 리스트 내역으로 리다이렉트 하기
-		return "redirect:playListContent?pl_id="+pl_id;
+		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
 	@RequestMapping("/addContentInNew")
 	public String addContentInNew(HttpServletRequest request, HttpSession session)
@@ -642,6 +645,9 @@ public class JavafoodController {
 		
 		//주소에서 전달된 값 받기
 		String pl_id = request.getParameter("pl_id");
+		System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 pl_id의 값 : " + pl_id); //확인용
+    	String listImage = request.getParameter("listImage");
+    	System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 listImage의 값 : " + listImage); //확인용
 		
 		//세션에 저장해둔 songNumber 리스트를 받기
 		String[] songNumber = (String[])session.getAttribute("songNumber");
@@ -655,7 +661,7 @@ public class JavafoodController {
 		javaService.addContent(info);
 		
 		//플레이 리스트 내역으로 리다이렉트 하기
-		return "redirect:playListContent?pl_id="+pl_id;
+		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
 ////////////////////////////////////////////////////////////
 	// 경용
