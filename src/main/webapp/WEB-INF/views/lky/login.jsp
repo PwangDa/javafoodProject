@@ -31,7 +31,7 @@
 	<title>javafood 회원가입</title>
 	</head>
 	<body>
-	        <form id="form" method="post" action="http://localhost:8080/javafood_team/aj" 
+	        <form id="form" method="post" action="login/ajax/file" 
 		   		   enctype="multipart/form-data" 
 		  		   accept-charset="utf-8">
 		  		<div class="div_1" style="margin-top:30px;">

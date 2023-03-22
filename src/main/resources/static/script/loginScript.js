@@ -47,6 +47,11 @@ window.onload=function() {
 		var url = $("#form").attr("action");
 		var form = $('#form')[0];
 		var formData = new FormData(form);
+		
+		console.log(url)
+		console.log(form)
+		console.log(formData)
+		
 		$.ajax({
 			url: url,
 			type: 'POST',
