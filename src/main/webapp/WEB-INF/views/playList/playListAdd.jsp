@@ -33,6 +33,7 @@
         	<input type="hidden" name="id" value="<%=id %>">
             <input type="text" name="addList_title" class="addList_textbar" placeholder="플레이리스트 제목을 입력해주세요."> <br>
             <input type="text" name="addList_explain" class="addList_ex_textbar" placeholder="플레이리스트 설명을 입력해주세요."> <br>
+                        <input type="text" name="addList_listImage" class="addList_textbar" placeholder="(Option)플레이 리스트에 들어갈 이미지 주소를 입력해주세요."> <br>
             <input type="button" name="addList_btn" class="addList_btn" value="추가">
         </form>
     </div>
@@ -40,10 +41,9 @@
 	
 	<c:forEach var="playList" items="${ playList }">
 		<!-- 누르면 추가함  -->
-		<a href="/addContent?pl_id=${ playList.pl_id }">
+		<a href="/addContent?pl_id=${ playList.pl_id }&listImage=${ playList.listImage }">
 			<div class="playList">
-				<!-- 앨범 표지가 추가되면 해당 부분의 src를 수정할 것. -->
-				<img class="album" src="https://image.bugsm.co.kr/album/images/original/203228/20322838.jpg?version=undefined">
+				<img class="album" src="${ playList.listImage }">
 				<div class="plText">${ playList.pl_title }</div>
 			</div>
 		</a>

@@ -235,7 +235,19 @@ public class JavafoodController {
 			
 			int count = javaService.albumplus(dto);
 		
-		return "/hdy/songplus";
+		return "redirect:/insert_song?page=c";
+	}
+	
+	// 아티스트정보를 추가하는 메소드
+	@RequestMapping(value = "/artistplus")
+	public String artistplus(Model model, 
+			@ModelAttribute AlbumDTO dto) {
+		System.out.println("!!!아티스트 추가!!!!");
+
+		
+		int count = javaService.artistplus(dto);
+		
+		return "redirect:/insert_song?page=b";
 	}
 
 	@RequestMapping(value = "/plus")
@@ -620,6 +632,9 @@ public class JavafoodController {
 		
 		//주소에서 전달된 값 받기
 		String pl_id = request.getParameter("pl_id");
+		System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 pl_id의 값 : " + pl_id); //확인용
+    	String listImage = request.getParameter("listImage");
+    	System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 listImage의 값 : " + listImage); //확인용
 		
 		//세션에 저장해둔 songNumber 리스트를 받기
 		String[] songNumber = (String[])session.getAttribute("songNumber");
@@ -633,7 +648,7 @@ public class JavafoodController {
 		javaService.addContent(info);
 		
 		//플레이 리스트 내역으로 리다이렉트 하기
-		return "redirect:playListContent?pl_id="+pl_id;
+		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
 	@RequestMapping("/addContentInNew")
 	public String addContentInNew(HttpServletRequest request, HttpSession session)
@@ -642,6 +657,9 @@ public class JavafoodController {
 		
 		//주소에서 전달된 값 받기
 		String pl_id = request.getParameter("pl_id");
+		System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 pl_id의 값 : " + pl_id); //확인용
+    	String listImage = request.getParameter("listImage");
+    	System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 listImage의 값 : " + listImage); //확인용
 		
 		//세션에 저장해둔 songNumber 리스트를 받기
 		String[] songNumber = (String[])session.getAttribute("songNumber");
@@ -655,7 +673,7 @@ public class JavafoodController {
 		javaService.addContent(info);
 		
 		//플레이 리스트 내역으로 리다이렉트 하기
-		return "redirect:playListContent?pl_id="+pl_id;
+		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
 ////////////////////////////////////////////////////////////
 	// 경용
@@ -924,28 +942,86 @@ public class JavafoodController {
 			return "/popular_Music";
 		}
 		
-		// 노래 추가 페이지
-				@RequestMapping ("/insert_song")
-				public String insert_song() {
-					System.out.println("controller의 insert_song 메인페이지 실행");
+		// 관리자 페이지
+		@RequestMapping ("/insert_song")
+		public String insert_song(Model model,
+				@RequestParam Map<String, Object> map,
+				HttpServletRequest re) {
+			System.out.println("controller의 insert_song 메인페이지 실행");
+			String id = (String)re.getSession().getAttribute("loginId");
+			System.out.println("환영합니다!! 관리자님! : "+id);
+			
+			try {				
+				//페이지 이동
+				if(map.get("page") != null) {
 					
-					return "/insert_song";
+					log.info("page 이동");
+					model.addAttribute("page",map.get("page"));
+					
+					//장르 테이블 관리 페이지
+					if("a".equals(map.get("a"))) {
+						log.info("Genre 관리페이지 입니다.");
+						model.addAttribute("remove",javaService.idUpdate(map, id));
+					}
+					
+					//아티스트 테이블 관리 페이지
+					if("b".equals(map.get("page"))) {
+						log.info("Artist 관리페이지 입니다.");
+						
+			
+						System.out.println("page가져");
+					}
+					//앨범 테이블 관리 페이지
+					if("c".equals(map.get("page"))) {
+						log.info("Album 관리페이지 입니다.");
+					}
+					//수록곡 테이블 관리 페이지
+					if("d".equals(map.get("page"))) {
+						log.info("Song 관리페이지 입니다.");
+					}
+					
 				}
 				
+				return "/insert_song";
+			} catch (Exception e) {
+				log.info("my_page 오류");
+				e.printStackTrace();
+				return "/main";
+			}		
+					
+			
+		}
+				
 		// 노래 추가 페이지
-				@RequestMapping ("/insert_song_up")
-				public String insert_song(Model model,	
-						HttpServletRequest request,
-						@ModelAttribute	GenreDTO dto
-						) {
-					System.out.println("controller의 insert_song  등록 : " + dto);
+		@RequestMapping ("/insert_song_up")
+		public String insert_song(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	GenreDTO dto
+				) {
+			System.out.println("controller의 insert_song  등록 : " + dto);
 			
 			
-					int insert = javaService.insertsong(dto);
+			int insert = javaService.insertsong(dto);
 			
-		// redirect는 새로운 주소로 새로고침.
+// redirect는 새로운 주소로 새로고침.
 			return "redirect:/insert_song";
 		}
+		
+		// 아티스트 정보 목록 전체 조회
+		@RequestMapping ("/list/artist")
+		public String listArtist(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("아티스트 테이블을 조회합니다.");
+			
+			List listArtist = javaService.listArtist();
+			model.addAttribute("list", listArtist);
+			
+			return "/insert_song";
+		}
+		
+
 
 ////////////////////////////////////////////////////////////
 }

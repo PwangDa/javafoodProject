@@ -20,6 +20,7 @@ public interface JavafoodDAO {
 	List viewComment(String artist);
 	
 	List viewAlbum(String album);
+	List listArtist();
 	
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
@@ -29,6 +30,7 @@ public interface JavafoodDAO {
 	List randomGenre(String genre);
 	List randomArtist();
 	
+	int artistplus(AlbumDTO dto);
 	int albumplus(AlbumDTO dto);
 	
 ////////////////////////////////////////////////////////////

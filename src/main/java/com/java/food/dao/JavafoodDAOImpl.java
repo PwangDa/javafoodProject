@@ -129,6 +129,14 @@ SqlSession sqlSession;
 			return album;
 		} 
 		
+		@Override
+		public int artistplus(AlbumDTO dto){
+			logger.info("아티스트를 추가합니다 실행");
+			int artist = sqlSession.insert("mapper.javafood.artistplus", dto);
+			
+			return artist;
+		} 
+		
 		/**
 		 * 다영
 		 * DB에서 아티스트 8명 랜덤으로 뽑아오는 메소드
@@ -578,7 +586,13 @@ public List<GenreDTO> Search(Map<String, Object> map){
 			return insert;
 		}
 		
-
+		@Autowired
+		public List listArtist() {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.listArtist");
+			logger.info("Album list.size >>>"+list.size()); 
+			return list;
+		}
 
 	
 
