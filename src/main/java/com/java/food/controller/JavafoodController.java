@@ -417,12 +417,16 @@ public class JavafoodController {
 		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 title 값 :" + title); // 확인용
 		String explain = request.getParameter("addList_explain");
 		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 explain 값 : " + explain); // 확인용
+		String listImage = request.getParameter("addList_listImage");
+		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 listImage 값 : " + listImage);
 
 		// 전달 받은 값을 List로 바꾸기
 		Map<String, String> info = new HashMap<String, String>();
 		info.put("id", id);
 		info.put("title", title);
 		info.put("explain", explain);
+		info.put("listImage", listImage);
+		
 
 		// 받아온 값들을 Service의 addPlayList 메서드에 전달하여 실행하기
 		javaService.addPlayList(info);
