@@ -657,5 +657,43 @@
 	<!-- js파일 불러오기 -->
 	<script src="/script/main.js"></script>
 	
+	<!-- 반드시 jsp에 써야만 하는 스크립트 -->
+   	<script>
+	/*이스터에그*/
+	let konamiCommand = "";
+	
+	document.addEventListener('keydown', (event) =>
+	{
+		if(event.key != "Backspace")
+		{			
+			konamiCommand += event.key;
+			console.log("konamiCommand : " + konamiCommand);
+		}
+		
+		if(konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
+		{
+			document.querySelector("img.esterEgg").classList.remove("hidden");
+			cursor = "https://cdn.discordapp.com/attachments/931150181540450368/1085371872557932606/giphy_1.gif";
+			konamiCommand = "";
+		}
+		if
+		(
+				konamiCommand == "rhksflwkvpdlwl"
+// 				&&
+<%-- 				"admin".equals("<%= id %>")  --%>
+		)
+		{
+			window.open('http://localhost:8080/insert_song');
+			konamiCommand = "";
+		}
+		if(event.key == "Backspace")
+		{
+			konamiCommand = "";
+			console.log("KonamiCommand is reseted.");
+		}
+		
+	});
+	</script>
+	
 </body>
 </html>
