@@ -29,13 +29,18 @@
 		WHERE arti.ARTISTNAME LIKE #{artistname} || '%' AND g.ARTISTNAME LIKE #{artistname} || '%'
 	</select>
 	
+	<insert id="artistplus" parameterType="albumDTO">
+		insert into artist
+		(artistname, artist_info, artist_img)
+		values(#{artistname}, #{artist_info}, #{artist_img})
+	</insert>
 	<insert id="plusAlbum" parameterType="albumDTO">
-		insert into ALBUM_1
+		insert into ALBUM_3
 		(album_num, album_cover, album_name, album_into, artistname)
 		values(#{album_num}, #{album_cover}, #{album_name}, #{album_into}, #{artistname})
 	</insert>
 	<insert id="plusSong" parameterType="albumDTO">
-		insert into intoAlbum_1
+		insert into intoAlbum_2
 		(album_num, music_num, music_name, music_link, music_time, album_name)
 		values(#{album_num}, #{music_num}, #{music_name}, #{music_link}, #{music_time}, #{album_name})
 	</insert>
