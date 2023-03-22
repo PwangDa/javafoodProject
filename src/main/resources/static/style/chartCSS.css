@@ -14,16 +14,17 @@ body {
 
 .table {
 	border-collapse: collapse;
+	width : 100%;
 	
 }
 .table2 {
 	color: white;
-	font-size: 20px;
+	font-size: 90%;
 }
 
 .table3 {
 	color: white;
-	font-size: 15px;
+	font-size: 80%;
 }
 
  td {
@@ -31,6 +32,7 @@ body {
 	text-align: center;
 	background-color: black;
 	color: white;
+	width : 100px;
 }
 
 .time {

@@ -42,16 +42,16 @@ window.onload=function() {
 			}else $('#id12').val('')
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//쿠키에 id 값 저장
-	function cookie (id){
-//		$.cookie('id',id,{expires:1, path:'/'});
-	}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //사진 파일 업로드
 	$('#but').on('click',function (){
 		var url = $("#form").attr("action");
 		var form = $('#form')[0];
 		var formData = new FormData(form);
+		
+		console.log(url)
+		console.log(form)
+		console.log(formData)
+		
 		$.ajax({
 			url: url,
 			type: 'POST',
@@ -61,7 +61,7 @@ window.onload=function() {
 			cache: false,
 			success: function () {
 				alert("이미지 저장 성공")
-				location.href='javafood?javafood=4&membership=O';
+				location.href='#';
 			},
 			error: function () {
 				alert("이미지 저장 실패")

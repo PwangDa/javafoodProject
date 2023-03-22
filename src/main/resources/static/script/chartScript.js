@@ -10,7 +10,7 @@ function refresh() {
 }
 ////////////////////////////////////////////////////////////////////////////////////////		
 
-function nowtime() {
+/*function nowtime() {
 	let now = new Date();
 
 	let hour = now.getHours();
@@ -32,14 +32,6 @@ function nowtime() {
 	//console.log(123, document.getElementById("timebox"));
 }
 
-/*function severtime() {
-  var now = new Date();
-  var timeInMillis = now.getTime();
-  return timeInMillis;
-  
-  document.getElementById("timebox").value = year + "-" + month + "-" + day + "-" + hour + ":" + minute
-		+ ":" + second;
-}*/
 
 window.addEventListener("load", function() {
 	//HTML이 다 load가 완료 됐을 때 실행됨
@@ -47,6 +39,34 @@ window.addEventListener("load", function() {
 	setInterval(function() {
 
 		nowtime();
+	}, 1000); //1초 단위
+})*/
+
+		$(function() {
+            setInterval(function() {
+                $.get("/get-current-time", function(time) {
+					/*console.log(time)*/
+                    //$("#current-time").text(time);
+                    $("#server-time-input").val(time);
+                });
+            }, 1000);
+        });
+        
+/*function showServerTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            //document.getElementById("server-time-input").value = timeString;
+        }*/
+        
+window.addEventListener("load", function() {
+	//HTML이 다 load가 완료 됐을 때 실행됨
+	showServerTime();
+	setInterval(function() {
+
+		showServerTime();
 	}, 1000); //1초 단위
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

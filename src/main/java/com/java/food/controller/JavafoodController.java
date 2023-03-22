@@ -1,8 +1,10 @@
 package com.java.food.controller;
 
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,18 +17,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
@@ -235,19 +239,22 @@ public class JavafoodController {
 			
 			int count = javaService.albumplus(dto);
 		
-		return "redirect:/insert_song?page=c";
+		return "redirect:/insert_album";
 	}
 	
 	// 아티스트정보를 추가하는 메소드
 	@RequestMapping(value = "/artistplus")
 	public String artistplus(Model model, 
 			@ModelAttribute AlbumDTO dto) {
-		System.out.println("!!!아티스트 추가!!!!");
-
-		
-		int count = javaService.artistplus(dto);
-		
-		return "redirect:/insert_song?page=b";
+		try {	
+			System.out.println("!!!아티스트 추가!!!!");
+			int count = javaService.artistplus(dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:/insert_artist";
+		}				
+		return "redirect:/insert_artist";
 	}
 
 	@RequestMapping(value = "/plus")
@@ -387,7 +394,13 @@ public class JavafoodController {
 			}
 			return "redirect:/chart";
 		}
-	
+		
+		@GetMapping("/get-current-time")
+	    public @ResponseBody LocalDateTime getCurrentTime() {
+			/* System.out.println(LocalDateTime.now()); */
+	        return LocalDateTime.now();
+	    }
+		
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
@@ -715,7 +728,8 @@ public class JavafoodController {
 	
 	//로그인 페이지 이동
 	@RequestMapping(value = "/login")
-	public String loginpage(Model mo, 
+	public String loginpage(
+			Model mo, 
 			HttpServletRequest re,
 			HttpServletResponse rp,
 			@RequestParam Map<String, Object> map) {
@@ -734,8 +748,14 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginEmail", m.get("email"));
 				re.getSession().setAttribute("loginPn", m.get("pn"));
 				re.getSession().setAttribute("loginImg", m.get("img"));
-				
 				re.getSession().setMaxInactiveInterval(300);
+				
+				
+				//쿠키에 아이디값 저장
+				Cookie cok = new Cookie("id", (String) m.get("id"));
+				cok.setPath("/");			//모든경로
+				cok.setMaxAge(60*60*24);	//60초*60분*24시간
+				rp.addCookie(cok);
 				log.info("로그인 세션 유지시간 : 5분");
 
 			}
@@ -760,8 +780,9 @@ public class JavafoodController {
 
 	// 회원가입 중복체크 아자스로 이동
 	@RequestMapping("/login/ajax")
-	@ResponseBody public int ajax(@RequestParam Map<String, Object> map) {
-		
+	@ResponseBody public int ajax(
+			@RequestParam Map<String, Object> map
+			) {
 		log.info("ajax 실행");
 		
 		try {
@@ -775,7 +796,8 @@ public class JavafoodController {
 	
 	//마이 페이지 이동
 	@RequestMapping("/my_page")
-	public String my_page(Model mo,
+	public String my_page(
+			Model mo,
 			@RequestParam Map<String, Object> map,
 			HttpServletRequest re) {
 		
@@ -826,6 +848,53 @@ public class JavafoodController {
 			e.printStackTrace();
 			return "/main";
 		}
+	}
+	//아자스를 이용한 파일 업로드
+	@RequestMapping("/login/ajax/file")
+	@ResponseBody
+	public int fileup(
+			HttpServletRequest re
+			) {
+		log.info(">>>>>> 파일 업로드 <<<<<<");
+		try {
+			File file = new File("C:\\javafood");
+			if(!file.exists()) {
+				try {
+					file.mkdir();
+					log.info("폴더생성 성공");
+				} catch (Exception e) {
+					log.info("폴더생성 실패");
+					e.printStackTrace();
+				}
+			}else 
+				log.info("이미 생성된 폴더가 있습니다.");
+			
+			log.info(">>>>>> 파일 업로드 시작1 <<<<<<");
+			DiskFileItemFactory disk = new DiskFileItemFactory();
+			log.info(">>>>>> 파일 업로드 시작2 <<<<<<");
+			disk.setRepository(file);
+			log.info(">>>>>> 파일 업로드 시작3 <<<<<<");
+			disk.setSizeThreshold(1024*100);
+			log.info(">>>>>> 파일 업로드 시작4 <<<<<<");
+			
+			log.info(">>>>>> 파일 업로드 시작5 <<<<<<");
+			ServletFileUpload ser = new ServletFileUpload(disk);
+			log.info(">>>>>> 파일 업로드 시작6 <<<<<<");
+			ser.setFileSizeMax(1024*1024*100);
+			log.info(">>>>>> 파일 업로드 시작7 <<<<<<");
+			
+//			List items = ser.parseRequest((RequestContext) re);
+			log.info(">>>>>> 파일 업로드 시작8 <<<<<<");
+//			System.out.println("items size : "+items.size());
+			log.info(">>>>>> 파일 업로드 시작9 <<<<<<");
+			
+			
+		} catch (Exception e) {
+			log.info(">>>>>>파일 업로드 실패<<<<<<");
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 	
 	//아자스를 이용한 좋아요 증가
@@ -884,7 +953,8 @@ public class JavafoodController {
 	
 	//검색기능
 	@RequestMapping("/search")
-	public String search(Model mo,
+	public String search(
+			Model mo,
 			@RequestParam Map<String, Object> map) {
 		
 		try {
@@ -977,46 +1047,16 @@ public class JavafoodController {
 			return "/popular_Music";
 		}
 		
-		// 관리자 페이지
+		// Genre 관리 페이지
 		@RequestMapping ("/insert_song")
 		public String insert_song(Model model,
 				@RequestParam Map<String, Object> map,
+				@ModelAttribute	AlbumDTO dto,
 				HttpServletRequest re) {
-			System.out.println("controller의 insert_song 메인페이지 실행");
+			System.out.println("Genre 관리 페이지 실행");
 			String id = (String)re.getSession().getAttribute("loginId");
 			System.out.println("환영합니다!! 관리자님! : "+id);
-			
-			try {				
-				//페이지 이동
-				if(map.get("page") != null) {
-					
-					log.info("page 이동");
-					model.addAttribute("page",map.get("page"));
-					
-					//장르 테이블 관리 페이지
-					if("a".equals(map.get("a"))) {
-						log.info("Genre 관리페이지 입니다.");
-						model.addAttribute("remove",javaService.idUpdate(map, id));
-					}
-					
-					//아티스트 테이블 관리 페이지
-					if("b".equals(map.get("page"))) {
-						log.info("Artist 관리페이지 입니다.");
-						
-			
-						System.out.println("page가져");
-					}
-					//앨범 테이블 관리 페이지
-					if("c".equals(map.get("page"))) {
-						log.info("Album 관리페이지 입니다.");
-					}
-					//수록곡 테이블 관리 페이지
-					if("d".equals(map.get("page"))) {
-						log.info("Song 관리페이지 입니다.");
-					}
-					
-				}
-				
+			try {					
 				return "/insert_song";
 			} catch (Exception e) {
 				log.info("my_page 오류");
@@ -1025,6 +1065,57 @@ public class JavafoodController {
 			}		
 					
 			
+		}
+		// 아티스트 관리 페이지
+		@RequestMapping ("/insert_artist")
+		public String insert_aritst(Model model,
+				@RequestParam Map<String, Object> map,
+				@ModelAttribute	AlbumDTO dto,
+				HttpServletRequest re) {
+			System.out.println("Artist 관리 페이지 실행");
+			String id = (String)re.getSession().getAttribute("loginId");
+			System.out.println("환영합니다!! 관리자님! : "+id);
+			try {							
+				return "/insert_artist";
+			} catch (Exception e) {
+				log.info("my_page 오류");
+				e.printStackTrace();
+				return "/main";
+			}			
+		}
+		// Album 관리 페이지
+		@RequestMapping ("/insert_album")
+		public String insert_album(Model model,
+				@RequestParam Map<String, Object> map,
+				@ModelAttribute	AlbumDTO dto,
+				HttpServletRequest re) {
+			System.out.println("insert_album 관리 페이지 실행");
+			String id = (String)re.getSession().getAttribute("loginId");
+			System.out.println("환영합니다!! 관리자님! : "+id);
+			try {							
+				return "/insert_album";
+			} catch (Exception e) {
+				log.info("my_page 오류");
+				e.printStackTrace();
+				return "/main";
+			}			
+		}
+		// IntoAlbum 관리 페이지
+		@RequestMapping ("/insert_intoalbum")
+		public String insert_intoalbum(Model model,
+				@RequestParam Map<String, Object> map,
+				@ModelAttribute	AlbumDTO dto,
+				HttpServletRequest re) {
+			System.out.println("insert_intoalbum 메인페이지 실행");
+			String id = (String)re.getSession().getAttribute("loginId");
+			System.out.println("환영합니다!! 관리자님! : "+id);
+			try {							
+				return "/insert_intoalbum";
+			} catch (Exception e) {
+				log.info("my_page 오류");
+				e.printStackTrace();
+				return "/main";
+			}			
 		}
 				
 		// 노래 추가 페이지
@@ -1064,6 +1155,18 @@ public class JavafoodController {
 					return "redirect:/genre";
 				}
 		
+		// genre 테이블 목록 전체 조회
+		@RequestMapping ("/list/genre")
+		public String listGenre(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	GenreDTO dto
+				) {
+			System.out.println("Genre 테이블을 조회합니다.");					
+			List<GenreDTO> listGenre = javaService.listGenre();
+			model.addAttribute("list", listGenre);
+			return "forward:/insert_song";
+		}
+		
 		// 아티스트 정보 목록 전체 조회
 		@RequestMapping ("/list/artist")
 		public String listArtist(Model model,	
@@ -1072,10 +1175,48 @@ public class JavafoodController {
 				) {
 			System.out.println("아티스트 테이블을 조회합니다.");
 			
-			List listArtist = javaService.listArtist();
+			List<AlbumDTO> listArtist = javaService.listArtist();
 			model.addAttribute("list", listArtist);
+			System.out.println("listArtist 0번 인덱스는 : "+listArtist.get(0).getArtistname());
+			return "forward:/insert_artist";
+		}
+		
+		// 앨범 정보 목록 전체 조회
+		@RequestMapping ("/list/album")
+		public String listAlbum(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("Album_3 테이블을 조회합니다.");
 			
-			return "/insert_song";
+			List<AlbumDTO> listAlbum = javaService.listAlbum();
+			model.addAttribute("list", listAlbum);
+			return "forward:/insert_album";
+		}
+		
+		// into수록곡 정보 목록 전체 조회
+		@RequestMapping ("/list/song")
+		public String listIntoAlbum(Model model,	
+				HttpServletRequest request,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("intoAlbum_2 테이블을 조회합니다.");
+			
+			List<AlbumDTO> listIntoAlbum = javaService.listIntoAlbum();
+			model.addAttribute("list", listIntoAlbum);
+			return "forward:/insert_intoalbum";
+		}
+		
+		// 관리자 페이지에서 아티스트 검색조회 했을 때
+		@RequestMapping ("/search/artist")
+		public String searchArtist(Model model,	
+				@RequestParam("artistname") String name
+				) {
+			System.out.println(name+" 아티스트를 조회합니다.");
+			
+			List searchArtist = javaService.searchArtist(name);
+			model.addAttribute("list", searchArtist);
+			return "forward:/insert_artist";
 		}
 		
 

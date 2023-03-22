@@ -58,6 +58,18 @@
       <put-attribute name="title" value="insert" />
       <put-attribute name="body" value="/WEB-INF/views/lyj/insert_song.jsp" />
    </definition>
+   <definition name="/insert_artist" extends="baseLayout">
+      <put-attribute name="title" value="insert" />
+      <put-attribute name="body" value="/WEB-INF/views/hdy/artistplus.jsp" />
+   </definition>
+   <definition name="/insert_album" extends="baseLayout">
+      <put-attribute name="title" value="insert" />
+      <put-attribute name="body" value="/WEB-INF/views/hdy/albumplus.jsp" />
+   </definition>
+   <definition name="/insert_intoalbum" extends="baseLayout">
+      <put-attribute name="title" value="insert" />
+      <put-attribute name="body" value="/WEB-INF/views/hdy/songplus.jsp" />
+   </definition>
    
    <definition name="/search" extends="baseLayout">
       <put-attribute name="title" value="insert" />

@@ -21,13 +21,13 @@ div{
 	color : white;
 	}
 .ddr{
-	border: 1px solid white;
+	/* border: 1px solid white; */
 	display: flex;
 	text-align: center;
 }
 .mume{
 	width: 20%;
-	border: 1px solid white;
+	/* border: 1px solid white; */
 	border-radius: 15px;
 	margin: 10px;
 	background-color: rgb(53, 53, 53);
@@ -49,10 +49,12 @@ hr{
 .h2h2{
 	font-weight: bolder;
 	font-size: 28px;
-	color: rgb(255, 242, 94);
+	color: rgb(118, 130, 255);
+	/* color: rgb(118, 130, 255); */
 }
-.butt_1{
-	display: inline;
+.conn_2{
+	width: 500px;
+	margin: 10px;
 }
 .text_a{
 	color : white;	    
@@ -79,12 +81,12 @@ textarea{
 	height: 30px;
 }
 .conn_1{
-	border: 1px solid rgb(255, 99, 99);
+	/* border: 1px solid rgb(255, 99, 99); */
 	font-size: 20px;
 	
 }
 .conn{
-	border: 1px solid rgb(255, 255, 255);	
+	/* border: 1px solid rgb(255, 255, 255);	 */
 	width: 350px;
 	display: flex;
     width: 350px;
@@ -111,15 +113,32 @@ textarea{
 		background-color: rgb(138, 138, 138);
 	}
 
-table{
-	background-size: contain; 
-	background-color: black;   
-	text-align: right; 
+	.table_1{
+	background-size: contain;   
+	text-align: left; 
 	margin: auto; 
-	border: 1px solid black; 
+	/* border: 1px solid rgb(98, 98, 98);  */
 	border-collapse: collapse;
 	}
+	th{
+		border-bottom: 1px solid rgb(98, 98, 98);
+	}
+	td{
+		border-bottom: 1px solid rgb(98, 98, 98);
+	}
+	.text_b{
+		width: 150px;
+	}
 
+	.text_c{
+		border: 1px solid rgb(98, 98, 98);
+		color : white;	 
+		resize: none;
+		width: 400px;
+		height: 100px;
+		background-color: transparent;
+	
+	}
 
 	/* 로그인 페이지 css  */
 .tt{

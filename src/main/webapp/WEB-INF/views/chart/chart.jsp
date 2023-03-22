@@ -17,7 +17,7 @@
 
 </head>
 <%-- <jsp:include page="/WEB-INF/views/menu.jsp"></jsp:include> --%>
-<body>
+<body onload="showServerTime()">
  		<div>
 			<form name="addPlayList" method="post" action="/playListAdd"">
 				<input type="hidden" name="songNumber" value="${dao.songnumber }">
@@ -30,24 +30,25 @@
 			<a href="/chart?country=대한민국"><input class="tab1 tab1_1" type="button" name="country" value="한국"></a>
 			<a href="/chart?country=일본"><input class="tab1 tab1_2" type="button" name="country" value="일본"></a>
 			<a href="/chart?country=미국"><input class="tab1 tab1_3" type="button" name="country" value="미국"></a>
-			<input type="text" size="10" id="timebox"> 현재시각 기준
+			<p>Current Time: <input type="text" id="server-time-input"></p>
+	<!-- 		<input type="text" size="10" id="timebox"> 현재시각 기준 -->
 		</div>
 	<div class="list">		
 		<table class="table">
 			<tr class="table2">
-				<td style="width: 200px;"><input type="checkbox" id="selectbtn" name="checkall" onclick="selectAll(this); getCheckedValue()" value="checkall; ${dao.songnumber }"></td>
-				<td style="width: 60px;">순위</td>
-				<td style="width: 250px;">인기점수</td>
-				<td style="width: 100px;">앨범</td>
-				<td style="width: 400px;">앨범명</td>
-				<td style="width: 400px;">제목</td>
-				<td style="width: 400px;">가수</td>
-				<td style="width: 100px;">장르</td>
-				<td style="width: 100px;">조회수</td>
-				<td style="width: 120px;">좋아요</td>
-				<td style="width: 120px;">재생 시간</td>
-				<td style="width: 50px;">재생</td>
-				<td style="width: 80px;">담기</td>
+				<td><input type="checkbox" id="selectbtn" name="checkall" onclick="selectAll(this); getCheckedValue()" value="checkall; ${dao.songnumber }"></td>
+				<td>순위</td>
+				<td>인기점수</td>
+				<td>앨범</td>
+				<td>앨범명</td>
+				<td>제목</td>
+				<td>가수</td>
+				<td>장르</td>
+				<td>조회수</td>
+				<td>좋아요</td>
+				<td>재생 시간</td>
+				<td>재생</td>
+				<td>담기</td>
 			</tr>
 			<c:forEach var="dao" items="${ list}">
 				<tr class="table3 table3_${dao.songnumber }">
