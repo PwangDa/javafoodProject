@@ -22,48 +22,43 @@
 		<div class="mume"><h3><a class="at" id="outid" href="/insert_intoalbum"><c:out value="IntoAlbum 관리"/></a></h3></div>
 	</div>
 <hr>
-<div class="page_1">	
-		<span class="h2h2">intoAlbum_2 의 수록곡 등록</span>
-		<form action="/list/song" class="butt_1">
-			<input class="butt" type="submit" value="목록 전체조회"> 
-		</form>
-		 <form>
+<div class="page_1">
+			<span class="h2h2">Album_3 앨범정보등록</span>
+			<form action="/list/album" class="butt_1">
+				<input class="butt" type="submit" value="목록 전체조회"> 
+			</form>
+			<form  id="join" action="/albumplus">
 			<div class="conn_1">
-				<div class="conn">앨범 순서<input class="text_a" type="text" name="album_num" placeholder="album_num(int)"></div>
-				<div class="conn">수록곡 순서<input class="text_a" type="text" name="music_num" placeholder="music_num(int)"></div>
-				<div class="conn">수록곡 이름<input class="text_a" type="text" name="music_name" placeholder="music_name"></div>
-				<div class="conn">수록곡 재생링크<textarea name="music_link" placeholder="music_link"></textarea></div>
-				<div class="conn">수록곡 재생시간<input class="text_a" type="text" name="music_time" placeholder="music_time"></div>
+				<!-- 시퀀스로 자동등록<div class="conn"><input class="text_a" type="text" name="album_num" placeholder="앨범순번"></div> -->
+				<div class="conn">앨범이미지 링크<textarea name="album_cover" placeholder="album_cover"></textarea></div>
 				<div class="conn">앨범명<input class="text_a" type="text" name="album_name" placeholder="album_name"></div>
+				<div class="conn">앨범소개<textarea name="album_into" placeholder="album_into"></textarea></div>
+				<div class="conn">아티스트 이름<textarea name="artistname" placeholder="artistname"></textarea></div>
 				<input class="butt" type="submit" value="추가">
-				<input class="butt" type="reset" value="다시입력">
+				<input class="butt" type="reset" value="다시입력">			
 			</div>
-	 	</form> 
+		</form>
 </div>
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
 
-<table border=1>
+<table class="table_1">
 				<c:if test="${not empty list }">
 					<thead>
 						<tr>
-							<th>Album_num</th>
-							<th>Music_num</th>
-							<th>Music_name</th>
-							<th>Music_link</th>
-							<th>Music_time</th>
+							<th>Album_cover</th>
 							<th>Album_name</th>
+							<th>Album_into</th>
+							<th>Artistname</th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-							<td>${artist.album_num}</td>
-							<td>${artist.music_num}</td>
-							<td>${artist.music_name}</td>
-							<td>${artist.music_link}</td>
-							<td>${artist.music_time}</td>
+							<td>${artist.album_cover}</td>
 							<td>${artist.album_name}</td>
+							<td>${artist.album_into}</td>
+							<td>${artist.artistname}</td>
 						</tr>
 					</c:forEach>
 				</c:if>

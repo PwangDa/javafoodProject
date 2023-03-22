@@ -54,8 +54,21 @@
 	</select>
 	
 	<!-- 관리자페이지에서 아티스트 전체목록 조회 시 -->
-	<select id="listArtist" resultType="albumDTO" parameterType="String">
-		SELECT DISTINCT * FROM artist
+	<select id="listGenre" resultType="genreDTO">
+		SELECT * FROM genre
+		ORDER BY SONGNUMBER
+	</select>
+	<!-- 관리자페이지에서 아티스트 전체목록 조회 시 -->
+	<select id="listArtist" resultType="albumDTO">
+		SELECT * FROM artist
+	</select>
+	<!-- 관리자페이지에서 앨범 전체목록 조회 시 -->
+	<select id="listAlbum" resultType="albumDTO">
+		SELECT DISTINCT * FROM album_3
+	</select>
+	<!-- 관리자페이지에서 intoAlbum 전체목록 조회 시 -->
+	<select id="listIntoAlbum" resultType="albumDTO">
+		SELECT * FROM intoAlbum_2
 	</select>
 	
 	<!-- 댓글등록 할 때 -->

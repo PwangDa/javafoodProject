@@ -586,14 +586,37 @@ public List<GenreDTO> Search(Map<String, Object> map){
 			return insert;
 		}
 		
+		//Genre관리자 페이지에서 목록 전체조회 출력
 		@Autowired
-		public List listArtist() {
-			List list = new ArrayList();
+		public List<GenreDTO> listGenre(){
+			List<GenreDTO> list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.listGenre");
+			logger.info("Album list.size >>>"+list.size()); 
+			return list;			
+		}
+				
+		@Autowired
+		public List<AlbumDTO> listArtist() {
+			List<AlbumDTO> list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.listArtist");
+			logger.info("Artist list.size >>>"+list.size()); 
+			return list;
+		}
+		@Autowired
+		public List<AlbumDTO> listAlbum() {
+			List<AlbumDTO> list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.listAlbum");
 			logger.info("Album list.size >>>"+list.size()); 
 			return list;
 		}
-
+		@Autowired
+		public List<AlbumDTO> listIntoAlbum() {
+			List<AlbumDTO> list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.listIntoAlbum");
+			logger.info("intoAlbum list.size >>>"+list.size()); 
+			return list;
+		}
+		
 	
 
 

@@ -27,7 +27,9 @@ public interface JavafoodService {
 	List randomArtist();
 	int albumplus(AlbumDTO dto);
 	int artistplus(AlbumDTO dto);
-	List listArtist();
+	List<AlbumDTO> listArtist();
+	List<AlbumDTO> listAlbum();
+	List<AlbumDTO> listIntoAlbum();
 ////////////////////////////////////////////////////////////
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);
@@ -97,6 +99,9 @@ public interface JavafoodService {
 	
 	// 음악추가 페이지
 	int insertsong(GenreDTO dto);
+	
+	//Genre관리자 페이지에서 목록 전체조회 출력
+	List<GenreDTO> listGenre();
 ////////////////////////////////////////////////////////////
 	
 }

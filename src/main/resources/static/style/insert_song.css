@@ -111,12 +111,11 @@ textarea{
 		background-color: rgb(138, 138, 138);
 	}
 
-table{
-	background-size: contain; 
-	background-color: black;   
-	text-align: right; 
+	.table_1{
+	background-size: contain;   
+	text-align: left; 
 	margin: auto; 
-	border: 1px solid black; 
+	border: 1px solid white; 
 	border-collapse: collapse;
 	}
 
