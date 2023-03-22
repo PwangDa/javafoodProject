@@ -100,7 +100,7 @@ int countPerPage = (int) request.getAttribute("countPerPage");
 // int / int = int
 // double / int = double
 int lastPage = (int) Math.ceil((double) totalCount / countPerPage);
-int section = 2;
+int section = 5;
 
 int sec_position = (((int) Math.ceil((double) pageNum / section)) - 1);
 int firstSec = (sec_position * section) + 1;
@@ -117,48 +117,73 @@ System.out.println(">> lastPage : "+ lastPage);
 
 		<c:set var="pageNum2" value="<%=pageNum%>" />
 		<div class="paging">
-			${country}<br>
-			${country != null}<br>
-			<hr>
-			
 			<c:if test="<%= firstSec == 1 || firstSec == 2 %>"> 
 				<img class="img" src="https://c11.kr/1ascb" onmouseover="this.src='https://c11.kr/1ascc'" onmouseout="this.src='https://c11.kr/1ascb'"></a> 
 			</c:if>
 			<c:if test="<%=firstSec != 1%>">
-				<a
-					href="/chart?pageNum=<%= firstSec-1 %>"><img
+				<c:if test="${country == null}">
+					<a
+					href="/chart?pageNum=<%= firstSec-1 %>&countPerPage=${countPerPage}"><img
 					class="mouse" src="https://c11.kr/1ascb"
 					onmouseover="this.src='https://c11.kr/1ascc'"
 					onmouseout="this.src='https://c11.kr/1ascb'"></a>
+					</c:if>
+					<c:if test="${country != null}">
+					<a
+					href="/chart?pageNum=<%= firstSec-1 %>&countPerPage=${countPerPage}&country=${country}"><img
+					class="mouse" src="https://c11.kr/1ascb"
+					onmouseover="this.src='https://c11.kr/1ascc'"
+					onmouseout="this.src='https://c11.kr/1ascb'"></a>
+					</c:if>
+				
 			</c:if>
 		
 			<c:forEach var="i" begin="<%=firstSec%>" end="<%=lastSec%>">
+				<!-- i = 1이고 현재 1페이지 일때 -->
 				<c:if test="${ i == pageNum2 }">
-					<c:if test="${country == null}">
-					<a
+					 <c:if test="${country == null}">
+						<a
 						href="/chart?pageNum=${i }&countPerPage=${countPerPage}"
 						class="number"><strong>${i}</strong></a>
 					</c:if>
-					<c:if test="${country} ">
-					<a
+					<c:if test="${country != null}">
+						<a
 						href="/chart?pageNum=${i }&countPerPage=${countPerPage}&country=${country}"
 						class="number"><strong>${i}</strong></a>
 					</c:if>
 				</c:if>
-				<c:if test="${ i != pageNum2 }">
-					<a
+				<!--i = 1이고 현재페이지가 1이 아닐때-->
+				 <c:if test="${ i != pageNum2 }">
+					 <c:if test="${country == null}">
+						<a
 						href="/chart?pageNum=${i }&countPerPage=${countPerPage}"
 						class="number">${i}</a>
+					</c:if>
+					<c:if test="${country != null}">
+						<a
+						href="/chart?pageNum=${i }&countPerPage=${countPerPage}&country=${country}"
+						class="number">${i}</a>
+					</c:if>
 				</c:if>
 			</c:forEach>
 		
 			<c:if test="<%=lastSec != lastPage%>">
-				<a
+				 <c:if test="${country == null}">
+						<a
 					href="/chart?pageNum=${i}<%= lastSec+1 %>&countPerPage=${countPerPage}"><img
 					class="img" src="https://c11.kr/1ascx"
 					onmouseover="this.src='https://c11.kr/1ascy'"
 					onmouseout="this.src='https://c11.kr/1ascx'"></a>
+					</c:if>
+					<c:if test="${country != null}">
+						<a
+					href="/chart?pageNum=${i}<%= lastSec+1 %>&countPerPage=${countPerPage}&country=${country}"><img
+					class="img" src="https://c11.kr/1ascx"
+					onmouseover="this.src='https://c11.kr/1ascy'"
+					onmouseout="this.src='https://c11.kr/1ascx'"></a>
+					</c:if>
 			</c:if>
+				
 			<c:if test="<%= lastSec == lastPage %>">
 				<img class="img" src="https://c11.kr/1ascx" onmouseover="this.src='https://c11.kr/1ascy'" onmouseout="this.src='https://c11.kr/1ascx'"></a>
 			</c:if>
