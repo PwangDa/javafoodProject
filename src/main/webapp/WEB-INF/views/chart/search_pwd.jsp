@@ -99,28 +99,27 @@ rel="stylesheet">
 <div class="col-lg-6">
   <div class="p-5">
       <div class="text-center">
-          <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-          <p class="mb-4">We get it, stuff happens. Just enter your ID, name, phon number below
-              and we'll send you a link to reset your password!</p>
+          <h1 class="h4 text-gray-900 mb-2">비밀번호를 잊으셨습니까?</h1>
+          <p class="mb-4">비밀번호를 찾도록 도와드리겠습니다</p>
       </div>
       <form class="user">
           <div class="form-group">
               <input type="text" class="form-control form-control-user"
                   id="id" name="id"
-                  placeholder="Enter ID...">
+                  placeholder="아이디를 입력해주세요..">
           </div>
           <div class="form-group">
               <input type="text" class="form-control form-control-user"
                   id="nic" name="nic"
-                  placeholder="Enter name...">
+                  placeholder="닉네임을 입력해주세요..">
           </div>
           <div class="form-group">
               <input type="email" class="form-control form-control-user"
                   id="phone" name="phone"
-                  placeholder="Enter phone number...">
+                  placeholder="전화번호를 입력해주세요..">
           </div>
           <a href="javascript:void(0)" onclick="fnSubmit(); return false;" class="userlogin-btn">
-              Reset Password
+              비밀번호 초기화
           </a>
       </form>
       <hr>
