@@ -466,7 +466,6 @@ public class JavafoodController {
 		    login_DTO logindto) {
 		 
 		try {
-		    //ㄴㄴ
 		    logindto.setNIC(nic);
 		    logindto.setPHONE(phone);
 		    logindto.setID(id);
