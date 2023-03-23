@@ -32,8 +32,8 @@
 	<!-- 각 테이블에 정보 넣는 sql -->
 	<insert id="artistplus" parameterType="albumDTO">
 		insert into artist
-		(artistname, artist_info, artist_img)
-		values(#{artistname}, #{artist_info}, #{artist_img})
+		(artistname, artist_info, artist_img, a_num)
+		values(#{artistname}, #{artist_info}, #{artist_img}, #{a_num})
 	</insert>
 	<insert id="plusAlbum" parameterType="albumDTO">
 		insert into ALBUM_3
@@ -123,7 +123,7 @@
 			SELECT * from
 				(SELECT DISTINCT * FROM artist
 				ORDER BY dbms_random.value)
-				WHERE rownum <![CDATA[<=]]> 10
+				WHERE rownum <![CDATA[<=]]> 5
 	</select>
 	<!--<select id="randomArtist" resultType="albumDTO" parameterType="String">
 		SELECT * FROM artist

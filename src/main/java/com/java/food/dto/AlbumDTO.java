@@ -25,6 +25,7 @@ public class AlbumDTO {
 	private String playtime;
 	private String imagelink;
 	
+	private int a_num;
 	
 	
 	
@@ -33,6 +34,13 @@ public class AlbumDTO {
 	
 	
 	
+	
+	public int getA_num() {
+		return a_num;
+	}
+	public void setA_num(int a_num) {
+		this.a_num = a_num;
+	}
 	public String getImagelink() {
 		return imagelink;
 	}
