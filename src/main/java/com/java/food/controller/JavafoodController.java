@@ -205,6 +205,14 @@ public class JavafoodController {
 
 		return "redirect:/artistpage?artist=" + encodeResult;
 	}
+	//관리자 페이지에서 댓글 삭제할 때
+	@RequestMapping(value = "/delete/articleNO", method = { RequestMethod.GET, RequestMethod.DELETE })
+	public String deletComment(Model model, 
+			@RequestParam("articleNO") int no) {
+		System.out.println("관리자페이지에서 댓글 삭제합니다.");
+		int article = javaService.delComment(no);
+		return "forward:/list/comment";
+	}
 
 	// 앨범수록곡 페이지 들어갈 때
 	@RequestMapping(value = "/albumpage", method = RequestMethod.GET)
@@ -1118,7 +1126,7 @@ public class JavafoodController {
 			}			
 		}
 		// 댓글관리 페이지
-		@RequestMapping ("/comment")
+		@RequestMapping ("/del_comment")
 		public String insert_intoalbum(Model model,
 				@RequestParam Map<String, Object> map,
 				@ModelAttribute	CommentDTO dto,
@@ -1127,7 +1135,7 @@ public class JavafoodController {
 			String id = (String)re.getSession().getAttribute("loginId");
 			System.out.println("환영합니다!! 관리자님! : "+id);
 			try {							
-				return "/comment";
+				return "/del_comment";
 			} catch (Exception e) {
 				log.info("my_page 오류");
 				e.printStackTrace();
@@ -1234,7 +1242,7 @@ public class JavafoodController {
 			
 			List<CommentDTO> listComment = javaService.listComment();
 			model.addAttribute("list", listComment);
-			return "forward:/comment";
+			return "forward:/del_comment";
 		}
 		
 		// 관리자 페이지에서 아티스트 검색조회 했을 때
