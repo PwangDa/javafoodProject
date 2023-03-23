@@ -42,13 +42,13 @@ window.onload=function(){
     	console.log('아자스 값 : ',xml.responseText)
         z=xml.responseText;
         console.log('id : ', id)
-        if(z==null){
-            alert('이미지가져옴');
-            console.log(z)
-		}else{
-            console.log(z)
-            alert('이미지 못가져옴');
-        }
+//        if(z==null){
+//            alert('이미지가져옴');
+//            console.log(z)
+//		}else{
+//            console.log(z)
+//            alert('이미지 못가져옴');
+//        }
         callback(z,chak);
     }
 }
