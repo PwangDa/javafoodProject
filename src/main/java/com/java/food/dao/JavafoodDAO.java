@@ -26,6 +26,7 @@ public interface JavafoodDAO {
 	List<CommentDTO> listComment();
 	
 	List searchArtist(String artist);
+	List searchAlbum(AlbumDTO dto);
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
 	

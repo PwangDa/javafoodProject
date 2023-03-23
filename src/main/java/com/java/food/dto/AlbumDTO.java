@@ -26,6 +26,7 @@ public class AlbumDTO {
 	private String imagelink;
 	
 	private int a_num;
+	private String opt;
 	
 	
 	
@@ -34,7 +35,12 @@ public class AlbumDTO {
 	
 	
 	
-	
+	public String getOpt() {
+		return opt;
+	}
+	public void setOpt(String opt) {
+		this.opt = opt;
+	}
 	public int getA_num() {
 		return a_num;
 	}
