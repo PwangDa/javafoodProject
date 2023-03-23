@@ -466,7 +466,7 @@ public class JavafoodController {
 		    login_DTO logindto) {
 		 
 		try {
-		    
+		    //ㄴㄴ
 		    logindto.setNIC(nic);
 		    logindto.setPHONE(phone);
 		    logindto.setID(id);
@@ -1341,7 +1341,7 @@ public class JavafoodController {
 			model.addAttribute("list", listGenre);
 			return "forward:/insert_song";
 		}
-		
+		//왜안됨
 		// 아티스트 정보 목록 전체 조회
 		@RequestMapping ("/list/artist")
 		public String listArtist(Model model,	

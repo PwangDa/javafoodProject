@@ -30,6 +30,7 @@
 			</form>
 			<form id="join" action="/artistplus">
 				<div class="conn_1">
+					<div class="conn">번호<input class="text_a" type="text" name="a_num" placeholder="A_num"></div>
 					<div class="conn">아티스트 이름<input class="text_a" type="text" name="artistname" placeholder="Artistname"></div>
 					<div class="conn">아티스트 소개<textarea name="artist_info" placeholder="artist_info"></textarea></div>
 					<div class="conn">아티스트 사진링크<textarea name="artist_img" placeholder="artist_img"></textarea></div>
@@ -51,6 +52,7 @@
 				<c:if test="${not empty list }">
 					<thead>
 						<tr class="trtr">
+							<th>a_num</th>
 							<th>Artistname</th>
 							<th>Artist_info</th>
 							<th>Artist_img</th>
@@ -61,6 +63,10 @@
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
+								<form action="/modify/artist">
+							<td>
+								<input class="text_a text_d" type="text" name="a_num" placeholder="${artist.a_num}" value="${artist.a_num}">
+							</td>
 							<td>
 								<input class="text_a text_b" type="text" name="artistname" placeholder="${artist.artistname}" value="${artist.artistname}">
 							</td>
@@ -71,7 +77,6 @@
 								<textarea class="text_c" name="artist_img" placeholder="${artist.artist_img}" value="${artist.artist_img}"></textarea>
 							</td>
 							<td>
-								<form action="/modify/artist">
 									<input class="butt" type="submit" value="수정">
 									<input type="hidden" name="artistname" value="${artist.artistname}">
 								</form>
