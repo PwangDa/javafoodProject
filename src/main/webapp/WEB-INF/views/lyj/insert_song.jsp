@@ -87,8 +87,10 @@
 					<tbody id="tbody">
 					<c:forEach var="genre" items= "${list }" >
 						<tr>
-						<form action="">
-							<td>${genre.songnumber}</td>
+						<form action="/update_song_up">
+							<td>
+								<input class="text_a text_b" type="text" name="songnumber" placeholder="${genre.songnumber}" value="${genre.songnumber}" readonly>
+							</td>
 							<td>
 								<input class="text_a text_b" type="text" name="artistname" placeholder="${genre.artistname}" value="${genre.artistname}">
 							</td>
@@ -96,7 +98,7 @@
 								<input class="text_a text_b" type="text" name="songname" placeholder="${genre.songname}" value="${genre.songname}">
 							</td>
 							<td>
-								<textarea class="text_c" name="link" placeholder="${genre.link}" value="${genre.link}"></textarea>
+								<textarea class="text_c" name="link" placeholder="${genre.link}">${genre.link}</textarea>
 							</td>
 							<td>
 								<input class="text_a text_b" type="text" name="album_name" placeholder="${genre.album_name}" value="${genre.album_name}">
@@ -108,10 +110,10 @@
 								<input class="text_a text_b" type="text" name="playtime" placeholder="${genre.playtime}" value="${genre.playtime}">
 							</td>
 							<td>
-								<textarea class="text_c" name="imagelink" placeholder="${genre.imagelink}" value="${genre.imagelink}"></textarea>
+								<textarea class="text_c" name="imagelink" placeholder="${genre.imagelink}" >${genre.imagelink}</textarea>
 							</td>
 							<td>
-								<textarea class="text_c" name="album_add" placeholder="${genre.album_add}" value="${genre.album_add}"></textarea>
+								<textarea class="text_c" name="album_add" placeholder="${genre.album_add}">${genre.album_add}</textarea>
 							</td>
 							<td>
 								<input class="text_a text_b" type="text" name="artist_add" placeholder="${genre.artist_add}" value="${genre.artist_add}">

@@ -1272,7 +1272,19 @@ public class JavafoodController {
 			return "forward:/insert_artist";
 		}
 		
-
+		// 노래 수정 페이지
+				@RequestMapping ("/update_song_up")
+				public String update_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 update_song : " + dto);
+					
+					
+					int update = javaService.update_song(dto);
+		
+					return "redirect:/list/genre?";
+				}
 
 ////////////////////////////////////////////////////////////
 }

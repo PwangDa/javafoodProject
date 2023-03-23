@@ -653,6 +653,12 @@ public void addContent(Map info)
 			System.out.println(artist+" : 조회!!!!!");
 			return list;
 		}
+		// 음악 수정 페이지
+		public int update_song(GenreDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_song", dto);
+			System.out.println("dao에 update : " + update);
+			return update;
+		}
 		
 	
 

@@ -522,4 +522,23 @@
 				 	#{country}
 				 )
 	</insert>
+	
+	<!-- 음악 수정-->
+	<update id="update_song" parameterType="genreDTO">
+		UPDATE 
+			genre 
+		SET 
+			ARTISTNAME = #{artistname},
+			SONGNAME = #{songname},
+			LINK = #{link},
+			ALBUM_NAME = #{album_name},
+			BYGENRE = #{bygenre},
+			PLAYTIME = #{playtime},
+			IMAGELINK = #{imagelink},
+			ALBUM_ADD = #{album_add},
+			ARTIST_ADD = #{artist_add},
+			COUNTRY = #{country}
+		WHERE 
+			SONGNUMBER = #{songnumber}
+	</update>
 </mapper>
