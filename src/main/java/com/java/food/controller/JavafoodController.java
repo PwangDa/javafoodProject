@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
@@ -32,11 +32,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.login_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -401,6 +403,84 @@ public class JavafoodController {
 	        return LocalDateTime.now();
 	    }
 		
+		// 아이디 찾기
+		@RequestMapping(value="/chart/search_id", method=RequestMethod.GET)
+		public String search_id(HttpServletRequest request, Model model, login_DTO logindto) {
+			
+			return "/chart/search_id";
+			
+		}
+		
+		// 비밀번호 찾기
+		@RequestMapping(value="/chart/search_pwd", method=RequestMethod.GET)
+		public String search_pwd(HttpServletRequest request, Model model, login_DTO logindto) {
+			
+			return "/chart/search_pwd";
+			
+		}
+		
+		// id 찾기 결과
+		@RequestMapping(value = "/chart/search_result_id")
+		public String search_result_id(HttpServletRequest request, Model model,
+		    @RequestParam(required = true, value = "nic") String nic, 
+		    @RequestParam(required = true, value = "phone") String phone,
+		    login_DTO logindto) {
+		 
+		 
+		try {
+		    
+			logindto.setNIC(nic);
+			logindto.setPHONE(phone);
+			login_DTO userSerch = javaService.userIdSearch(logindto);
+		    
+		    model.addAttribute("searchUser", userSerch);
+		 
+		} catch (Exception e) {
+		    System.out.println(e.toString());
+		    model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+		 
+		return "/chart/search_result_id";
+		}
+		
+		// pw 찾기 결과
+		@RequestMapping(value = "/chart/search_result_pwd", method = RequestMethod.POST)
+		public String search_result_pwd(HttpServletRequest request, Model model,
+		    @RequestParam(required = true, value = "nic") String nic, 
+		    @RequestParam(required = true, value = "phone") String phone, 
+		    @RequestParam(required = true, value = "id") String id, 
+		    login_DTO logindto) {
+		 
+		try {
+		    
+		    logindto.setNIC(nic);
+		    logindto.setPHONE(phone);
+		    logindto.setID(id);
+		    int userSerch = javaService.userPwdCheck(logindto);
+		    
+		    if(userSerch == 0) {
+		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+		        return "/chart/search_pwd";
+		    }
+		    
+		    String newPwd = RandomStringUtils.randomAlphanumeric(10);
+		    System.out.println(newPwd);
+		    logindto.setPWD(newPwd);
+		    
+		    javaService.passwordUpdate(logindto);
+		    
+		    model.addAttribute("newPwd", newPwd);
+		 
+		} catch (Exception e) {
+		    System.out.println(e.toString());
+		    model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+		 
+		 
+		return "/chart/search_result_pwd";
+		}
+
+
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
