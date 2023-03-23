@@ -454,6 +454,16 @@ public class JavafoodController {
 		String explain = request.getParameter("addList_explain");
 		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 explain 값 : " + explain); // 확인용
 		String listImage = request.getParameter("addList_listImage");
+		if(listImage == null)
+		{
+			System.out.println("listImage의 값이 비었거나 null이어서 기본 URL로 변경합니다.");
+			listImage = "https://cdn.discordapp.com/attachments/931150181540450368/1087547890244792370/img_257076.png";
+		}
+		else if(listImage.equals("") )
+		{
+			System.out.println("listImage의 값이 비었거나 null이어서 기본 URL로 변경합니다.");
+			listImage = "https://cdn.discordapp.com/attachments/931150181540450368/1087547890244792370/img_257076.png";
+		}
 		System.out.println("JavafoodController의 addPlayList 메서드에서 받아온 listImage 값 : " + listImage);
 
 		// 전달 받은 값을 List로 바꾸기
@@ -500,14 +510,19 @@ public class JavafoodController {
 		System.out.println("JavafoodController의 editPlayList 메서드 실행됨."); //확인용
 		
 		//주소에서 받은 값 가져오기
-		String pl_id = request.getParameter("edit_pl_id");
+		String pl_id = request.getParameter("editList_pl_id");
 		System.out.println("JavafoodController의 editPlayList 메서드를 실행하며 얻은 pl_id의 값은 : " + pl_id); //확인용
-		String title = request.getParameter("edit_title");
+		String title = request.getParameter("editList_title");
 		System.out.println("JavafoodController의 editPlayList 메서드를 실행하며 얻은 title의 값은 : " + title); //확인용
-		String explain = request.getParameter("edit_explain");
+		String explain = request.getParameter("editList_explain");
 		System.out.println("JavafoodController의 editPlayList 메서드를 실행하며 얻은 explain의 값은 : " + explain); //확인용
-		String listImage = request.getParameter("edit_listImage");
+		String listImage = request.getParameter("editList_listImage");
 		if(listImage == null)
+		{
+			System.out.println("listImage의 값이 비었거나 null이어서 기본 URL로 변경합니다.");
+			listImage = "https://cdn.discordapp.com/attachments/931150181540450368/1087547890244792370/img_257076.png";
+		}
+		else if(listImage.equals("") )
 		{
 			System.out.println("listImage의 값이 비었거나 null이어서 기본 URL로 변경합니다.");
 			listImage = "https://cdn.discordapp.com/attachments/931150181540450368/1087547890244792370/img_257076.png";
@@ -525,7 +540,7 @@ public class JavafoodController {
 		javaService.editPlayList(info);
 		
 		//수정된 플레이 리스트 내역으로 이동하기
-		return "redirect:playListContent?pl_id="+pl_id;
+		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
 	
     //플레이 리스트 내역(Content)에서 곡 삭제하기
