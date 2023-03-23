@@ -20,28 +20,6 @@ function notlogin(){
     location.href = '/login';
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//사진 업로드
-function but() {
-    var url = $("#form").attr("action");
-    var form = $('#form')[0];
-    var formData = new FormData(form);
-    $.ajax({
-        url: url,
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
-        cache: false,
-        success: function () {
-            alert("이미지 저장 성공")
-            location.href = 'javafood?javafood=5&remove=1';
-        },
-        error: function () {
-            alert("이미지 저장 실패")
-        }
-    })
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //조회수 증가
 function hit(num){
     console.log(num)
@@ -71,6 +49,26 @@ function good(num){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //로딩후 진행
 window.onload = function(){
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//프로필 사진 업로드
+	$('#but').on('click',function () {
+	  $.ajax({
+	    url: "/ajax/fileup",
+	    type: "POST",
+	    data: new FormData($("#form")[0]),
+	    enctype: 'multipart/form-data',
+	    processData: false,
+	    contentType: false,
+	    cache: false,
+	    success: function () {
+	    	alert("이미지 저장 성공")
+			location.href = '/my_page?page=a';
+	    },
+	    error: function () {
+	    	alert("이미지 저장 실패")
+	    }
+	  })
+	})
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//로그아웃
 	$('#outsession').on("click",function(){
