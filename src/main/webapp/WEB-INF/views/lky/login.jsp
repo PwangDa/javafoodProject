@@ -32,18 +32,15 @@
 	</head>
 	<body>
 			<div><img src="https://c11.kr/1asbb" class="logo-img"><h1 style="margin-top:-11px;"><c:out value="Create Account"/></h1></div>
-	        <form id="form" method="post" action="/login/ajax/file" 
-		   		   enctype="multipart/form-data" 
-		  		   accept-charset="utf-8">
+	        <form id="form" action="/login/ajax/file" accept-charset="utf-8" >
 		  		<div class="div_1" style="margin-top:30px;">
 					<div class="upload">
 						<img class="upload_img" src="http://localhost:8080/javafood_team/aj1?fileName=new_javafood.JPG" style="width: 150px;height: 150px;">
-						<input type="file" name="file1">
+						<input type="file" name="uploadfile" accept="*">
 						<input class="butt" type="button" id="but" value="업로드">
 					</div>
 				</div>
 			</form>
-			
 	        <form method="post" action="login">
 	            <div class="head">
 	             	<table class="tdtd">
@@ -180,9 +177,11 @@
 					            	<input type="checkbox" id="idcook">
 					            	Remember me
 				            	</span> 
+			            	 <form action="/Usersearch" method="post">
 				            	<span class ="chec" style= "margin-left :77px;">
-				            		계정 찾기
+				            		<a href="/chart/searchUser">계정 찾기</a>
 			            		</span>
+			            	</form>
 					            <p><a href="/login?membership=0" class="at"><c:out value="아직 JavaMusic을 사용하고 있지 않으신가요? 가입하기"/></a></p>
 					        </div>
 					    </form>

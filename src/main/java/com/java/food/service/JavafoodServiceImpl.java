@@ -177,6 +177,8 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return page;
 	}
 	
+	// id 찾기
+	// pwd 찾기
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기
