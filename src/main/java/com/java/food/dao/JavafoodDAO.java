@@ -31,6 +31,7 @@ public interface JavafoodDAO {
 	int replyComment(CommentDTO dto);
 	
 	int delComment(int articleNO);
+	int delAlbum(int album_num);
 	
 	List randomGenre(String genre);
 	List randomArtist();

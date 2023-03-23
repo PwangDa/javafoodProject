@@ -90,9 +90,9 @@
 							</td>
 							</form>
 							<td>
-								<form action="/delete/artist">
+								<form action="/delete/album">
 									<input class="butt_2" type="submit" value="삭제">
-									<input type="hidden" name="artistname" value="${artist.album_num}">
+									<input type="hidden" name="album_num" value="${artist.album_num}">
 								</form>
 							</td>
 						</tr>

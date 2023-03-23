@@ -680,6 +680,13 @@ public class JavafoodServiceImpl implements JavafoodService {
 					return javaDAO.delete_song(dto);
 				}
 				
+		@Override
+		public int delAlbum(int album_num) {
+					
+			System.out.println("album delete 성공");
+			return javaDAO.delAlbum(album_num);
+		}
+				
 		
 }
 

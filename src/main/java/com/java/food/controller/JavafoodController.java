@@ -218,6 +218,15 @@ public class JavafoodController {
 		int article = javaService.delComment(no);
 		return "forward:/list/comment";
 	}
+	
+	//관리자 페이지에서 앨범테이블 정보 삭제할 때
+	@RequestMapping(value = "/delete/album", method = { RequestMethod.GET, RequestMethod.DELETE })
+	public String deletAlbum(Model model, 
+			@RequestParam("album_num") int num) {
+		System.out.println("앨범관리페이지에서 앨범정보 삭제합니다.");
+		int album_num = javaService.delAlbum(num);
+		return "forward:/list/album";
+	}
 
 	// 앨범수록곡 페이지 들어갈 때
 	@RequestMapping(value = "/albumpage", method = RequestMethod.GET)

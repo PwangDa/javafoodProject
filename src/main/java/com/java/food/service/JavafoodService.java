@@ -23,6 +23,7 @@ public interface JavafoodService {
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
 	int delComment(int articleNO);
+	int delAlbum(int album_num);
 	List randomGenre(String genre);
 	List randomArtist();
 	int albumplus(AlbumDTO dto);
