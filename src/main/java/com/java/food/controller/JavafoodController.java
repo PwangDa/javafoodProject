@@ -1317,7 +1317,7 @@ public class JavafoodController {
 			return "forward:/del_comment";
 		}
 		
-		// 관리자 페이지에서 아티스트 검색조회 했을 때
+		// 관리자 아티스트페이지에서 아티스트 검색조회 했을 때
 		@RequestMapping ("/search/artist")
 		public String searchArtist(Model model,	
 				@RequestParam("artistname") String name
@@ -1327,6 +1327,22 @@ public class JavafoodController {
 			List searchArtist = javaService.searchArtist(name);
 			model.addAttribute("list", searchArtist);
 			return "forward:/insert_artist";
+		}
+		
+		// 관리자 앨범페이지에서 아티스트 검색조회 했을 때
+		@RequestMapping ("/search/album")
+		public String searchAlbum(Model model,
+				@RequestParam("opt") String opt,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			dto.setOpt(opt);
+			System.out.println(dto.getArtistname()+" >>>를 조회합니다.");
+			System.out.println(dto.getAlbum_name()+" >>>를 조회합니다.");
+			System.out.println(dto.getOpt().toString()+" >>>를 선택함!!.");
+			List searchAlbum = javaService.searchAlbum(dto);
+			System.out.println(searchAlbum.get(0));
+			model.addAttribute("list", searchAlbum);
+			return "forward:/insert_album";
 		}
 		
 		// 노래 수정 페이지
@@ -1351,9 +1367,9 @@ public class JavafoodController {
 			System.out.println("앨범을 수정합니다. : " + dto);
 					
 					
-			//int update = javaService;
+			int update = javaService.update_album(dto);
 					
-			return "redirect:/list/album?";
+			return "redirect:/list/album";
 		}
 
 				
@@ -1370,7 +1386,6 @@ public class JavafoodController {
 					
 					return "redirect:/list/genre?";
 				}
-
-
+				
 ////////////////////////////////////////////////////////////
 }

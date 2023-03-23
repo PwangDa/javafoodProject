@@ -44,7 +44,11 @@
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
 <div class="conn_2">
 	<form action="/search/album">
-		<input class="text_a" type="text" name="artistname" placeholder="아티스트 검색">
+	    <select id="opt" name="opt" style="height: 30px;">
+	        <option value="human">가수검색</option>
+            <option value="album">앨범검색</option>
+        </select>
+		<input class="text_a" type="text" name="artistname" placeholder="검색">
 		<input class="butt" type="submit" value="검색">
 	</form>
 </div>
@@ -66,7 +70,7 @@
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-								<form action="/modify/artist">
+							<form action="/update_album">
 							<td>
 								<input class="text_a text_d" type="text" name="album_num" placeholder="${artist.album_num}" value="${artist.album_num}">
 							</td>
@@ -84,7 +88,7 @@
 							<td>
 									<input class="butt_2" type="submit" value="수정">
 							</td>
-								</form>
+							</form>
 							<td>
 								<form action="/delete/artist">
 									<input class="butt_2" type="submit" value="삭제">

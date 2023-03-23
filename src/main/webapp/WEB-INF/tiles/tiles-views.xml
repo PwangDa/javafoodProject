@@ -99,8 +99,14 @@
     </definition> 
     
 
-
-
-   
-
+	<definition name="/searchuser" extends="baseLayout"> 
+       <put-attribute name="title" value="searchuser" /> 
+       <put-attribute name="body" value="/WEB-INF/views/chart/searchuser.jsp" /> 
+    </definition> 
+	
+	<definition name="/searchuserresult" extends="baseLayout"> 
+       <put-attribute name="title" value="searchuserresult" /> 
+       <put-attribute name="body" value="/WEB-INF/views/chart/searchuserresult.jsp" /> 
+    </definition> 
+    
 </tiles-definitions> 
