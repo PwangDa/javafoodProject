@@ -20,14 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +33,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
@@ -241,20 +235,10 @@ public class JavafoodController {
 	// 앨범정보를 추가하는 메소드
 	@RequestMapping(value = "/albumplus", method = RequestMethod.GET)
 	public String albumplus(Model model, 
-			@ModelAttribute AlbumDTO dto,
-			@RequestParam("album_num") String al_num,
-			@RequestParam("album_cover") String cover, 
-			@RequestParam("album_name") String al_name, 
-			@RequestParam("album_into") String al_into,
-			@RequestParam("artistname") String artist_name ) {
+			@ModelAttribute AlbumDTO dto) {
 		System.out.println("새 앨범을 추가합니다");
-			dto.setAlbum_num(al_num);
-			dto.setAlbum_cover(cover);
-			dto.setAlbum_name(al_name);
-			dto.setAlbum_into(al_into);
-			dto.setArtistname(artist_name);
-			
-			int count = javaService.albumplus(dto);
+		
+		int count = javaService.albumplus(dto);
 		
 		return "redirect:/insert_album";
 	}
@@ -899,64 +883,14 @@ public class JavafoodController {
 			return "/main";
 		}
 	}
+	
 	//아자스를 이용한 파일 업로드
-	@RequestMapping("/login/ajax/file")
+	@PostMapping(value = "/login/ajax/file")
 	@ResponseBody
-	public int fileup(
-			HttpServletRequest re
+	public void uploadFile(
+	    @RequestParam("uploadfile") MultipartFile uploadfile ,
+	    HttpServletRequest re
 			) {
-		log.info(">>>>>> 파일 업로드 <<<<<<");
-		try {
-			File file = new File("C:\\javafood");
-			if(!file.exists()) {
-				try {
-					file.mkdir();
-					log.info("폴더생성 성공");
-				} catch (Exception e) {
-					log.info("폴더생성 실패");
-					e.printStackTrace();
-				}
-			}else 
-				log.info("이미 생성된 폴더가 있습니다.");
-			
-			log.info(">>>>>> 파일 업로드 시작1 <<<<<<");
-			DiskFileItemFactory disk = new DiskFileItemFactory();
-			log.info(">>>>>> 파일 업로드 시작2 <<<<<<");
-			disk.setRepository(file);
-			log.info(">>>>>> 파일 업로드 시작3 <<<<<<");
-			disk.setSizeThreshold(1024*100);
-			log.info(">>>>>> 파일 업로드 시작4 <<<<<<");
-			
-			log.info(">>>>>> 파일 업로드 시작5 <<<<<<");
-			ServletFileUpload ser = new ServletFileUpload(disk);
-			log.info(">>>>>> 파일 업로드 시작6 <<<<<<");
-			ser.setFileSizeMax(1024*1024*100);
-			log.info(">>>>>> 파일 업로드 시작7 <<<<<<");
-			
-//			List items = ser.parseRequest((RequestContext) re);
-			log.info(">>>>>> 파일 업로드 시작8 <<<<<<");
-//			System.out.println("items size : "+items.size());
-			log.info(">>>>>> 파일 업로드 시작9 <<<<<<");
-			
-			
-		} catch (Exception e) {
-			log.info(">>>>>>파일 업로드 실패<<<<<<");
-			e.printStackTrace();
-		}
-		
-		return 0;
-	}
-	///////////////////////////
-	
-	@RequestMapping("/test")
-	public String test() {
-		return "/test";
-	}
-	
-	@PostMapping(value = "/uploadFile")
-	@ResponseBody
-	public ResponseEntity<?> uploadFile(
-	    @RequestParam("uploadfile") MultipartFile uploadfile) {
 	  log.info("아자스 파일 업로드 시작");
 	  String directory = "C:\\javafood";
 	  
@@ -974,8 +908,10 @@ public class JavafoodController {
 		
 	  try {
 		  log.info("시작");
+		  String id = (String) re.getSession().getAttribute("loginId")+".";
+		  System.out.println("id : "+id);
 		  
-		  String filename = "아이디."+uploadfile.getOriginalFilename().split("[.]")[1];
+		  String filename = id+uploadfile.getOriginalFilename().split("[.]")[1];
 		  System.out.println("filename : "+filename);
 		  
 		  String filepath = Paths.get(directory, filename).toString();
@@ -988,11 +924,15 @@ public class JavafoodController {
 	  }
 	  catch (Exception e) {
 	    log.info(e.getMessage());
-	    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	  }
-	  
-	  return new ResponseEntity<>(HttpStatus.OK);
-	} // method uploadFile
+	} 
+	//test
+	@RequestMapping("/test")
+	public String test(
+			HttpServletRequest re
+			) {
+		return "/test";
+	}
 	///////////////////////////
 	
 	
@@ -1348,6 +1288,47 @@ public class JavafoodController {
 			return "forward:/insert_artist";
 		}
 		
+		// 노래 수정 페이지
+				@RequestMapping ("/update_song_up")
+				public String update_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 update_song : " + dto);
+					
+					
+					int update = javaService.update_song(dto);
+		
+					return "redirect:/list/genre?";
+				}
+
+		// 앨범 테이블 수정 페이지
+		@RequestMapping ("/update_album")
+		public String update_song(Model model,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("앨범을 수정합니다. : " + dto);
+					
+					
+			//int update = javaService;
+					
+			return "redirect:/list/album?";
+		}
+
+				
+		// 노래 수정 페이지
+				@RequestMapping ("/delete_song")
+				public String delete_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 delete_song : " + dto);
+					
+					
+					int delete = javaService.delete_song(dto);
+					
+					return "redirect:/list/genre?";
+				}
 
 
 ////////////////////////////////////////////////////////////

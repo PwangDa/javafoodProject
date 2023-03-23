@@ -656,6 +656,27 @@ public void addContent(Map info)
 			System.out.println(artist+" : 조회!!!!!");
 			return list;
 		}
+		// 음악 수정 페이지
+		public int update_song(GenreDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_song", dto);
+			System.out.println("dao에 update : " + update);
+			return update;
+		}
+		
+
+		// 앨범테이블 수정 페이지
+		public int update_album(AlbumDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_album", dto);
+			System.out.println("album_3에 업데이트! : " + update);
+			return update;
+		}
+		// 음악 삭제 페이지
+		public int delete_song(GenreDTO dto) {
+			int delete = sqlSession.delete("mapper.javafood.delete_song", dto);
+			System.out.println("dao에 delete : " + delete);
+			return delete;
+
+		}
 		
 	
 

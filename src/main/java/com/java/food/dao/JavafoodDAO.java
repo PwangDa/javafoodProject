@@ -37,6 +37,8 @@ public interface JavafoodDAO {
 	int artistplus(AlbumDTO dto);
 	int albumplus(AlbumDTO dto);
 	
+	int update_album(AlbumDTO dto);
+	
 ////////////////////////////////////////////////////////////
 //귀범
 //	// 차트용
@@ -120,6 +122,12 @@ public interface JavafoodDAO {
 	
 	//Genre관리자 페이지에서 목록 전체조회 출력
 	List<GenreDTO> listGenre();
+	
+	// 음악 수정
+	int update_song(GenreDTO dto);
+
+	// 음악 삭제 
+	int delete_song(GenreDTO dto);
 ////////////////////////////////////////////////////////////
 
 
