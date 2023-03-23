@@ -97,9 +97,9 @@
        <put-attribute name="title" value="playListContent" /> 
        <put-attribute name="body" value="/WEB-INF/views/playList/playListContent.jsp" /> 
     </definition> 
-   
+    
 
-   
+
 
    
 

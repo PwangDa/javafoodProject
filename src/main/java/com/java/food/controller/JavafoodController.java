@@ -454,7 +454,7 @@ public class JavafoodController {
 		    model.addAttribute("msg", "오류가 발생되었습니다.");
 		}
 		 
-		return "/chart/search_result_id";
+		return "/search_result_id";
 		}
 		
 		// pw 찾기 결과
