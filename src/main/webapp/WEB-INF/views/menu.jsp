@@ -30,7 +30,13 @@
             </div>
         </div>
         
-        
+        <h1>${a }</h1>
+        <h1>${a }</h1>
+        <h1>${a }</h1>
+        <h1>${a }</h1>
+        <h1>${a }</h1>
+        <h1>${a }</h1>
+        <h1>${a }</h1>
         <span id="spa" class="abc">
 	        <c:if test="${loginImg!=null}">
 		        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>

@@ -32,24 +32,22 @@ $('#outId').on('click',function (){
     })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //화면 로딩후 진행
-window.onload=function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 프로필 사진 유무 확인
-	let xml = new XMLHttpRequest();
-    xml.open('get','/ajax/filedo?fileName='+id+'.JPG');
-    xml.send();
-    xml.onload=function(){
-    	console.log('아자스 값 : ',xml.responseText)
-        z=xml.responseText;
-        console.log('id : ', id)
-//        if(z==null){
-//            alert('이미지가져옴');
-//            console.log(z)
-//		}else{
-//            console.log(z)
-//            alert('이미지 못가져옴');
-//        }
-        callback(z,chak);
-    }
+let xml = new XMLHttpRequest();
+xml.open('get','/ajax/filedo?fileName='+id+'.JPG');
+xml.send();
+xml.onload=function(){
+	console.log('아자스 값 : ',xml.responseText)
+    z=xml.responseText;
+    console.log('id : ', id)
+//    if(z!=''){
+//        alert('이미지가져옴');
+//        console.log(z)
+//	}else{
+//        console.log(z)
+//        let a='asd'
+//        alert('이미지 못가져옴');
+//    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
