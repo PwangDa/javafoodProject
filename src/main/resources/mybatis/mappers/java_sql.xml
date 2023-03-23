@@ -548,7 +548,7 @@
 			SONGNUMBER = #{songnumber}
 	</update>
 	
-<<<<<<< HEAD
+
 	<!-- 앨범테이블 수정-->
 	<update id="update_album" parameterType="AlbumDTO">
 		UPDATE 
@@ -562,7 +562,7 @@
 		WHERE 
 			album_num = #{album_num}
 	</update>
-=======
+
 	<!-- 음악 삭제-->
 	<delete id="delete_song" parameterType="genreDTO">
 		delete 
@@ -570,5 +570,6 @@
 		WHERE 
 			SONGNUMBER = #{songnumber}
 	</delete>
->>>>>>> b28f75d585fc2a4e4c7c73494c4be7838904963f
+	
+	
 </mapper>

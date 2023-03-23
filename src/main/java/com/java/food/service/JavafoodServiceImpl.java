@@ -651,6 +651,14 @@ public class JavafoodServiceImpl implements JavafoodService {
 					}
 					return 0;
 				}
+				
+				
+				
+	//앨범 수정
+		@Override
+		public int update_album(AlbumDTO dto) {
+			return javaDAO.update_album(dto);
+		}
 		
 		// 음악 삭제
 				
