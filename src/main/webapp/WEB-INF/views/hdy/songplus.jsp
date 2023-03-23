@@ -43,28 +43,59 @@
 </div>
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
-
+<div class="conn_2">
+	<form action="/search/album">
+		<input class="text_a" type="text" name="artistname" placeholder="검색">
+		<input class="butt" type="submit" value="검색">
+	</form>
+</div>
+<hr>
 <table class="table_1">
 				<c:if test="${not empty list }">
 					<thead>
 						<tr>
 							<th>Album_num</th>
+							<th>Album_name</th>
 							<th>Music_num</th>
 							<th>Music_name</th>
 							<th>Music_link</th>
 							<th>Music_time</th>
-							<th>Album_name</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-							<td>${artist.album_num}</td>
-							<td>${artist.music_num}</td>
-							<td>${artist.music_name}</td>
-							<td>${artist.music_link}</td>
-							<td>${artist.music_time}</td>
-							<td>${artist.album_name}</td>
+							<form action="">
+							<td>
+								<input class="text_a text_d" type="text" name="album_num" placeholder="${artist.album_num}" value="${artist.album_num}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="album_name" placeholder="${artist.album_name}" value="${artist.album_name}">
+							</td>
+							<td>
+								<input class="text_a text_d" type="text" name="music_num" placeholder="${artist.music_num}" value="${artist.music_num}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="music_name" placeholder="${artist.music_name}" value="${artist.music_name}">
+							</td>
+							<td>
+								<textarea class="text_c text_e" name="music_link" placeholder="${artist.music_link}" value="${artist.music_link}">${artist.music_link}</textarea>
+							</td>
+							<td>
+								<input class="text_a text_d" type="text" name="music_time" placeholder="${artist.music_time}" value="${artist.music_time}">
+							</td>
+							<td>
+								<input class="butt_2" type="submit" value="수정">
+							</td>
+							</form>
+							<td>
+								<form action="">
+									<input class="butt_2" type="submit" value="삭제">
+									<input type="hidden" name="artistname" value="${artist.album_num}">
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>
