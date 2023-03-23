@@ -26,10 +26,13 @@ public interface JavafoodDAO {
 	List<CommentDTO> listComment();
 	
 	List searchArtist(String artist);
+	List searchInto(String album);
+	List searchAlbum(AlbumDTO dto);
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
 	
 	int delComment(int articleNO);
+	int delAlbum(int album_num);
 	
 	List randomGenre(String genre);
 	List randomArtist();

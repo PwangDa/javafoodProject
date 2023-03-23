@@ -86,12 +86,25 @@
 	<!-- 관리자 아티스트페이지에서 아티스트이름으로 검색할 때 -->
  	<select id="searchArtist" resultType="albumDTO" parameterType="String">
 		SELECT * FROM ARTIST
-		WHERE ARTISTNAME LIKE #{artistname} || '%'
+		WHERE LOWER(ARTISTNAME) LIKE #{artistname} || '%'
 	</select>
-	<!-- 관리자 앨범페이지에서 아티스트이름으로 검색할 때 -->
- 	<select id="searchAlbum" resultType="albumDTO" parameterType="String">
+	<!-- 관리자 intoAlbum페이지에서 앨범이름으로 검색할 때 -->
+ 	<select id="searchInto" resultType="albumDTO" parameterType="String">
+		SELECT * FROM intoAlbum_2
+		WHERE LOWER(ALBUM_NAME) LIKE '%' || #{album_name} || '%'
+	</select>
+	
+	<!-- 관리자 앨범페이지에서 아티스트/앨범 이름으로 검색할 때 -->
+ 	<select id="searchAlbum" resultType="albumDTO" parameterType="albumDTO">
 		SELECT * FROM album_3
-		WHERE ARTISTNAME LIKE #{artistname} || '%'
+		<if test="opt=='human'">
+			WHERE 
+				LOWER(ARTISTNAME) LIKE #{artistname} || '%'
+		</if>
+		<if test="opt=='album'">
+			WHERE 
+				LOWER(ALBUM_NAME) LIKE '%' || #{artistname} || '%'
+		</if>
 	</select>
 	
 	<!-- 댓글등록 할 때 -->
@@ -131,10 +144,6 @@
 				ORDER BY dbms_random.value)
 				WHERE rownum <![CDATA[<=]]> 5
 	</select>
-	<!--<select id="randomArtist" resultType="albumDTO" parameterType="String">
-		SELECT * FROM artist
-	</select>-->
-	
 	
 	<!-- 인기차트 귀범-->
 	<select id="chart" resultType="chartDTO" parameterType="java.util.HashMap">
@@ -554,11 +563,11 @@
 		UPDATE 
 			album_3 
 		SET 
-			ALBUM_NUM = #{album_num}
+			ALBUM_NUM = #{album_num},
 			ARTISTNAME = #{artistname},
 			ALBUM_NAME = #{album_name},
 			ALBUM_INTO = #{album_into},
-			ALBUM_COVER = #{album_cover},
+			ALBUM_COVER = #{album_cover}
 		WHERE 
 			album_num = #{album_num}
 	</update>
@@ -569,6 +578,14 @@
 			genre 
 		WHERE 
 			SONGNUMBER = #{songnumber}
+	</delete>
+	
+	<!-- 앨범테이블 삭제-->
+	<delete id="delete_album" parameterType="int">
+		delete 
+			album_3 
+		WHERE 
+			album_num = #{album_num}
 	</delete>
 	
 	

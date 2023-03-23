@@ -642,6 +642,22 @@ public class JavafoodServiceImpl implements JavafoodService {
 			List searchArtist= javaDAO.searchArtist(artist);
 			return searchArtist;
 		}
+		//intoAlbum 관리페이지에서 앨범 이름 검색했을 때
+		@Override	
+		public List searchInto(String album) {
+			System.out.println("searchAlbum 앨범조회 접속!!");
+			List searchAlbum= javaDAO.searchInto(album);
+			return searchAlbum;
+		}
+		//앨범관리페이지에서 각각 이름 검색했을 때
+		@Override	
+		public List searchAlbum(AlbumDTO dto) {
+			System.out.println("searchAlbum 앨범검색메소드 접속!!");
+			System.out.println("opt >>>>>>"+dto.getOpt());
+			System.out.println("album_name >>>>>>"+dto.getAlbum_name());
+			List searchAlbum= javaDAO.searchAlbum(dto);
+			return searchAlbum;
+		}
 		
 		// 음악추가 페이지
 		
@@ -686,6 +702,13 @@ public class JavafoodServiceImpl implements JavafoodService {
 					System.out.println("server delete 성공");
 					return javaDAO.delete_song(dto);
 				}
+				
+		@Override
+		public int delAlbum(int album_num) {
+					
+			System.out.println("album delete 성공");
+			return javaDAO.delAlbum(album_num);
+		}
 				
 		
 }

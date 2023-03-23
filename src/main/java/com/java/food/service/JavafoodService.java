@@ -23,6 +23,7 @@ public interface JavafoodService {
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
 	int delComment(int articleNO);
+	int delAlbum(int album_num);
 	List randomGenre(String genre);
 	List randomArtist();
 	int albumplus(AlbumDTO dto);
@@ -32,6 +33,8 @@ public interface JavafoodService {
 	List<AlbumDTO> listIntoAlbum();
 	List<CommentDTO> listComment();
 	List searchArtist(String artist); //아티스트 검색조회
+	List searchInto(String album);
+	List searchAlbum(AlbumDTO dto);
 	int update_album(AlbumDTO dto);
 ////////////////////////////////////////////////////////////
 //귀범

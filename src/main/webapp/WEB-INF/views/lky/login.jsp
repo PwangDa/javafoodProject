@@ -32,15 +32,15 @@
 	</head>
 	<body>
 			<div><img src="https://c11.kr/1asbb" class="logo-img"><h1 style="margin-top:-11px;"><c:out value="Create Account"/></h1></div>
-	        <form id="form" action="/login/ajax/file" accept-charset="utf-8" >
-		  		<div class="div_1" style="margin-top:30px;">
-					<div class="upload">
-						<img class="upload_img" src="http://localhost:8080/javafood_team/aj1?fileName=new_javafood.JPG" style="width: 150px;height: 150px;">
+	  		<div class="div_1" style="margin-top:30px;">
+				<div class="upload">
+					<img class="upload_img" src="/ajax/filedo?fileName=${loginId}.JPG" style="width: 150px;height: 150px;">
+			        <form id="form" accept-charset="utf-8" >
 						<input type="file" name="uploadfile" accept="*">
 						<input class="butt" type="button" id="but" value="업로드">
-					</div>
+					</form>
 				</div>
-			</form>
+			</div>
 	        <form method="post" action="login">
 	            <div class="head">
 	             	<table class="tdtd">

@@ -655,12 +655,29 @@ public void addContent(Map info)
 			logger.info("listComment list.size >>>"+list.size()); 
 			return list;
 		}
-		
+		//아티스트관리페이지에서 검색조회
 		@Override
 		public List searchArtist(String artist) {
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.searchArtist", artist);
 			System.out.println(artist+" : 조회!!!!!");
+			return list;
+		}
+		
+		//intoAlbum관리페이지에서 앨범검색조회
+		@Override
+		public List searchInto(String album) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchInto", album);
+			System.out.println(album+" : 앨범조회!!!!!");
+			return list;
+		}
+		//앨범관리페이지에서 검색조회
+		@Override
+		public List searchAlbum(AlbumDTO dto) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchAlbum", dto);
+			System.out.println(dto+" : !!!search조회!!!!!");
 			return list;
 		}
 		// 음악 수정 페이지
@@ -684,8 +701,14 @@ public void addContent(Map info)
 			return delete;
 
 		}
-		
-	
+		//앨범관리페이지에서 앨범 삭제
+		@Override
+		public int delAlbum(int album_num) {
+			int delete = sqlSession.delete("mapper.javafood.delete_album", album_num);
+			System.out.println("album delete : " + delete);
+			return delete;
+
+		}
 
 
 ////////////////////////////////////////////////////////////
