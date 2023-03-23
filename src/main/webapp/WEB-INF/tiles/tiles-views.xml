@@ -70,7 +70,7 @@
       <put-attribute name="title" value="insert" />
       <put-attribute name="body" value="/WEB-INF/views/hdy/songplus.jsp" />
    </definition>
-   <definition name="/comment" extends="baseLayout">
+   <definition name="/del_comment" extends="baseLayout">
       <put-attribute name="title" value="insert" />
       <put-attribute name="body" value="/WEB-INF/views/hdy/comment.jsp" />
    </definition>
