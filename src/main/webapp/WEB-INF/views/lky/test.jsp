@@ -26,12 +26,10 @@ $('#upload').on('click',function () {
 	    contentType: false,
 	    cache: false,
 	    success: function () {
-	      // Handle upload success
-	      // ...
+	    	alert("이미지 저장 성공")
 	    },
 	    error: function () {
-	      // Handle upload error
-	      // ...
+	    	alert("이미지 저장 실패")
 	    }
 	  });
 	})
