@@ -660,6 +660,13 @@ public void addContent(Map info)
 			return update;
 		}
 		
+		// 앨범테이블 수정 페이지
+		public int update_album(AlbumDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_album", dto);
+			System.out.println("album_3에 업데이트! : " + update);
+			return update;
+		}
+		
 	
 
 

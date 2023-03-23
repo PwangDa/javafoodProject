@@ -37,6 +37,8 @@ public interface JavafoodDAO {
 	int artistplus(AlbumDTO dto);
 	int albumplus(AlbumDTO dto);
 	
+	int update_album(AlbumDTO dto);
+	
 ////////////////////////////////////////////////////////////
 //귀범
 //	// 차트용

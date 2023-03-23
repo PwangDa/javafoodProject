@@ -1360,6 +1360,18 @@ public class JavafoodController {
 		
 					return "redirect:/list/genre?";
 				}
+		// 앨범 테이블 수정 페이지
+		@RequestMapping ("/update_album")
+		public String update_song(Model model,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("앨범을 수정합니다. : " + dto);
+					
+					
+			int update = javaService;
+					
+			return "redirect:/list/album?";
+		}
 
 ////////////////////////////////////////////////////////////
 }

@@ -547,4 +547,18 @@
 		WHERE 
 			SONGNUMBER = #{songnumber}
 	</update>
+	
+	<!-- 앨범테이블 수정-->
+	<update id="update_album" parameterType="AlbumDTO">
+		UPDATE 
+			album_3 
+		SET 
+			ALBUM_NUM = #{album_num}
+			ARTISTNAME = #{artistname},
+			ALBUM_NAME = #{album_name},
+			ALBUM_INTO = #{album_into},
+			ALBUM_COVER = #{album_cover},
+		WHERE 
+			album_num = #{album_num}
+	</update>
 </mapper>

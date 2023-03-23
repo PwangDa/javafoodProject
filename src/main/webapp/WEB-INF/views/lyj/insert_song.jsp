@@ -122,7 +122,7 @@
 								<input class="text_a text_b" type="text" name="country" placeholder="${genre.country}" value="${genre.country}">
 							</td>
 							<td>
-									<input class="butt_2" type="submit" value="수정">
+								<input class="butt_2" type="submit" value="수정">
 							</td>
 						</form>
 							<td>
