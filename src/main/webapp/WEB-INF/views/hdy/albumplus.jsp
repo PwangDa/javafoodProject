@@ -52,6 +52,8 @@
 							<th>Album_name</th>
 							<th>Album_into</th>
 							<th>Album_cover</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
@@ -74,7 +76,6 @@
 							</td>
 							<td>
 									<input class="butt" type="submit" value="수정">
-									<input type="hidden" name="artistname" value="${artist.album_num}">
 							</td>
 								</form>
 							<td>

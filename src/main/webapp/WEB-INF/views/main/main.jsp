@@ -605,15 +605,11 @@
 		<div class="hitList">
 	    	<div class="subtitle">
 	    		오늘의 추천 아티스트
-	    		<div class="hitListController">
-	    			<p class="point artistPrev"><</p>
-	    			<p class="point artistNext">></p>
-	    		</div>
 	    	</div>
 	    </div>		
 		<div id = "cont3" >
             <div id="cont3_1">
-                <ul id = "slds" class="clides artistPage0">
+                <ul id = "slds" class="clides">
 				<%-- 아티스트 부분 forEach --%>
                 <c:forEach var ="artist" items="${random_artist}" varStatus="loop">
                     <li>
