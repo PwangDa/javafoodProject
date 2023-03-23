@@ -76,10 +76,10 @@
 							<td>
 								<input class="text_a text_b" type="text" name="album_name" placeholder="${artist.album_name}" value="${artist.album_name}">
 							<td>
-								<textarea class="text_c text_e" name="album_into" placeholder="${artist.album_into}" value="${artist.album_into}"></textarea>
+								<textarea class="text_c text_e" name="album_into" placeholder="${artist.album_into}" value="${artist.album_into}">${artist.album_into}</textarea>
 							</td>
 							<td>
-								<textarea class="text_c text_e" name="album_cover" placeholder="${artist.album_cover}" value="${artist.album_cover}"></textarea>
+								<textarea class="text_c text_e" name="album_cover" placeholder="${artist.album_cover}" value="${artist.album_cover}">${artist.album_cover}</textarea>
 							</td>
 							<td>
 									<input class="butt_2" type="submit" value="수정">

@@ -235,20 +235,10 @@ public class JavafoodController {
 	// 앨범정보를 추가하는 메소드
 	@RequestMapping(value = "/albumplus", method = RequestMethod.GET)
 	public String albumplus(Model model, 
-			@ModelAttribute AlbumDTO dto,
-			@RequestParam("album_num") String al_num,
-			@RequestParam("album_cover") String cover, 
-			@RequestParam("album_name") String al_name, 
-			@RequestParam("album_into") String al_into,
-			@RequestParam("artistname") String artist_name ) {
+			@ModelAttribute AlbumDTO dto) {
 		System.out.println("새 앨범을 추가합니다");
-			dto.setAlbum_num(al_num);
-			dto.setAlbum_cover(cover);
-			dto.setAlbum_name(al_name);
-			dto.setAlbum_into(al_into);
-			dto.setArtistname(artist_name);
-			
-			int count = javaService.albumplus(dto);
+		
+		int count = javaService.albumplus(dto);
 		
 		return "redirect:/insert_album";
 	}
@@ -1357,6 +1347,47 @@ public class JavafoodController {
 			return "forward:/insert_artist";
 		}
 		
+		// 노래 수정 페이지
+				@RequestMapping ("/update_song_up")
+				public String update_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 update_song : " + dto);
+					
+					
+					int update = javaService.update_song(dto);
+		
+					return "redirect:/list/genre?";
+				}
+
+		// 앨범 테이블 수정 페이지
+		@RequestMapping ("/update_album")
+		public String update_song(Model model,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("앨범을 수정합니다. : " + dto);
+					
+					
+			//int update = javaService;
+					
+			return "redirect:/list/album?";
+		}
+
+				
+		// 노래 수정 페이지
+				@RequestMapping ("/delete_song")
+				public String delete_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 delete_song : " + dto);
+					
+					
+					int delete = javaService.delete_song(dto);
+					
+					return "redirect:/list/genre?";
+				}
 
 
 ////////////////////////////////////////////////////////////

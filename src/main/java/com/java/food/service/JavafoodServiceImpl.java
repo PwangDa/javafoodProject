@@ -625,6 +625,50 @@ public class JavafoodServiceImpl implements JavafoodService {
 			return searchArtist;
 		}
 		
+		// 음악추가 페이지
+		
+				@Override
+				public int update_song(GenreDTO dto) {
+					
+					if(
+							dto.getArtistname() != null && dto.getArtistname() != "" && 
+							dto.getSongname() != null && dto.getSongname() != "" && 
+							dto.getLink() != null && dto.getLink() != "" &&
+							dto.getAlbum_name() != null && dto.getAlbum_name() != "" &&
+							dto.getBygenre() != null && dto.getBygenre() != "" &&
+							dto.getPlaytime() != null && dto.getPlaytime() != "" &&
+							dto.getImagelink() != null && dto.getImagelink() != "" &&
+							dto.getAlbum_add() != null && dto.getAlbum_add() != "" &&
+							dto.getArtist_add() != null && dto.getArtist_add() != "" &&
+							dto.getCountry() != null && dto.getCountry() != ""
+							
+						) {
+						System.out.println("server update 성공");
+						return javaDAO.update_song(dto);
+						
+					} else {
+						System.out.println("server update 모든 값을 입력하시오. ");
+					}
+					return 0;
+				}
+				
+				
+				
+	//앨범 수정
+		@Override
+		public int update_album(AlbumDTO dto) {
+			return javaDAO.update_album(dto);
+		}
+		
+		// 음악 삭제
+				
+				@Override
+				public int delete_song(GenreDTO dto) {
+					
+					System.out.println("server delete 성공");
+					return javaDAO.delete_song(dto);
+				}
+				
 		
 }
 

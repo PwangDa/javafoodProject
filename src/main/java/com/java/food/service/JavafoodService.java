@@ -32,6 +32,7 @@ public interface JavafoodService {
 	List<AlbumDTO> listIntoAlbum();
 	List<CommentDTO> listComment();
 	List searchArtist(String artist); //아티스트 검색조회
+	int update_album(AlbumDTO dto);
 ////////////////////////////////////////////////////////////
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);
@@ -107,6 +108,12 @@ public interface JavafoodService {
 	
 	//Genre관리자 페이지에서 목록 전체조회 출력
 	List<GenreDTO> listGenre();
+	
+	// 음악추가 
+	int update_song(GenreDTO dto);
+	
+	// 음악삭제 
+	int delete_song(GenreDTO dto);
 ////////////////////////////////////////////////////////////
 	
 	
