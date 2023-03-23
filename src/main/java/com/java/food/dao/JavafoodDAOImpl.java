@@ -656,6 +656,15 @@ public void addContent(Map info)
 			System.out.println(artist+" : 조회!!!!!");
 			return list;
 		}
+		
+		//intoAlbum관리페이지에서 앨범검색조회
+		@Override
+		public List searchInto(String album) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchInto", album);
+			System.out.println(album+" : 앨범조회!!!!!");
+			return list;
+		}
 		//앨범관리페이지에서 검색조회
 		@Override
 		public List searchAlbum(AlbumDTO dto) {

@@ -626,6 +626,13 @@ public class JavafoodServiceImpl implements JavafoodService {
 			List searchArtist= javaDAO.searchArtist(artist);
 			return searchArtist;
 		}
+		//intoAlbum 관리페이지에서 앨범 이름 검색했을 때
+		@Override	
+		public List searchInto(String album) {
+			System.out.println("searchAlbum 앨범조회 접속!!");
+			List searchAlbum= javaDAO.searchInto(album);
+			return searchAlbum;
+		}
 		//앨범관리페이지에서 각각 이름 검색했을 때
 		@Override	
 		public List searchAlbum(AlbumDTO dto) {

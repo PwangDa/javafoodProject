@@ -88,8 +88,13 @@
 		SELECT * FROM ARTIST
 		WHERE LOWER(ARTISTNAME) LIKE #{artistname} || '%'
 	</select>
+	<!-- 관리자 intoAlbum페이지에서 앨범이름으로 검색할 때 -->
+ 	<select id="searchInto" resultType="albumDTO" parameterType="String">
+		SELECT * FROM intoAlbum_2
+		WHERE LOWER(ALBUM_NAME) LIKE '%' || #{album_name} || '%'
+	</select>
 	
-	<!-- 관리자 앨범페이지에서 아티스트이름으로 검색할 때 -->
+	<!-- 관리자 앨범페이지에서 아티스트/앨범 이름으로 검색할 때 -->
  	<select id="searchAlbum" resultType="albumDTO" parameterType="albumDTO">
 		SELECT * FROM album_3
 		<if test="opt=='human'">
