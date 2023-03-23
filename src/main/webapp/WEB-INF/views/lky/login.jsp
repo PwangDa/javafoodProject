@@ -180,9 +180,11 @@
 					            	<input type="checkbox" id="idcook">
 					            	Remember me
 				            	</span> 
+			            	 <form action="/Usersearch" method="post">
 				            	<span class ="chec" style= "margin-left :77px;">
-				            		계정 찾기
+				            		<a href="/chart/searchUser">계정 찾기</a>
 			            		</span>
+			            	</form>
 					            <p><a href="/login?membership=0" class="at"><c:out value="아직 JavaMusic을 사용하고 있지 않으신가요? 가입하기"/></a></p>
 					        </div>
 					    </form>
