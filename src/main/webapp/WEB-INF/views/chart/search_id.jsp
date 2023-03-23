@@ -101,7 +101,7 @@ rel="stylesheet">
               id="phone" name="phone"
               placeholder="전화번호를 입력해주세요..">
       </div>
-      <a href="javascript:void(0)" onclick="fnSubmit(); return false;" class="userlogin-btn">
+      <a href="/chart/search_result_id" onclick="fnSubmit(); return false;" class="userlogin-btn">
           아이디 찾기
       </a>
   <hr>
