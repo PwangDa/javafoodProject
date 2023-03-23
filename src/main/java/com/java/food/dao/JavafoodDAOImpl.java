@@ -685,8 +685,14 @@ public void addContent(Map info)
 			return delete;
 
 		}
-		
-	
+		//앨범관리페이지에서 앨범 삭제
+		@Override
+		public int delAlbum(int album_num) {
+			int delete = sqlSession.delete("mapper.javafood.delete_album", album_num);
+			System.out.println("album delete : " + delete);
+			return delete;
+
+		}
 
 
 ////////////////////////////////////////////////////////////

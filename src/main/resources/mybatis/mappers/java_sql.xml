@@ -576,7 +576,7 @@
 	</delete>
 	
 	<!-- 앨범테이블 삭제-->
-	<delete id="delete_album" parameterType="AlbumDTO">
+	<delete id="delete_album" parameterType="int">
 		delete 
 			album_3 
 		WHERE 
