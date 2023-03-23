@@ -17,32 +17,23 @@
 <body>
 	<div class="ddr">
 		<div class="mume"><h3><a class="at" href="/insert_song"><c:out value="Genre 관리"/></a></h3></div>
-		<div class="mume" style="background-color:rgb(105, 116, 239)"><h3><a class="at" href="/insert_artist"><c:out value="Artist 관리"/></a></h3></div>
+		<div class="mume"><h3><a class="at" href="/insert_artist"><c:out value="Artist 관리"/></a></h3></div>
 		<div class="mume"><h3><a class="at" href="/insert_album"><c:out value="Album 관리"/></a></h3></div>
 		<div class="mume"><h3><a class="at" id="outid" href="/insert_intoalbum"><c:out value="IntoAlbum 관리"/></a></h3></div>
-		<div class="mume"><h3><a class="at" id="outid" href="/del_comment"><c:out value="댓글 관리"/></a></h3></div>
+		<div class="mume" style="background-color:rgb(105, 116, 239)"><h3><a class="at" id="outid" href="/del_comment"><c:out value="댓글 관리"/></a></h3></div>
 	</div>
 <hr>
 <div class="page_1">
-			<form action="/list/artist" class="butt_1">
-			<span class="h2h2">아티스트 정보등록</span>
-				<input class="butt" type="submit" value="목록 전체조회"> 
-			</form>
-			<form id="join" action="/artistplus">
-				<div class="conn_1">
-					<div class="conn">아티스트 이름<input class="text_a" type="text" name="artistname" placeholder="Artistname"></div>
-					<div class="conn">아티스트 소개<textarea name="artist_info" placeholder="artist_info"></textarea></div>
-					<div class="conn">아티스트 사진링크<textarea name="artist_img" placeholder="artist_img"></textarea></div>
-					<input class="butt" type="submit" value="추가">
-					<input class="butt" type="reset" value="다시입력">
-				</div>
+			<form action="/list/comment" class="butt_1">
+			<span class="h2h2">댓글 전체 조회</span>
+				<input class="butt" type="submit" value="댓글 전체조회"> 
 			</form>
 </div>
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
 <div class="conn_2">
-	<form action="/search/artist">
-		<input class="text_a" type="text" name="artistname" placeholder="아티스트 검색">
+	<form action="/search/id">
+		<input class="text_a" type="text" name="id" placeholder="아이디 검색">
 		<input class="butt" type="submit" value="검색">
 	</form>
 </div>

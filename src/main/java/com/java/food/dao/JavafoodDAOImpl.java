@@ -638,6 +638,13 @@ public void addContent(Map info)
 			logger.info("intoAlbum list.size >>>"+list.size()); 
 			return list;
 		}
+		@Override
+		public List<CommentDTO> listComment() {
+			List<CommentDTO> list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.listComment");
+			logger.info("listComment list.size >>>"+list.size()); 
+			return list;
+		}
 		
 		@Override
 		public List searchArtist(String artist) {
