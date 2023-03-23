@@ -52,7 +52,15 @@
     </div>
     
     <br>
-    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1085371872557932606/giphy_1.gif">
+    <div class="esterEgg hidden" style="margin-left:3%;">
+	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295244241575976/i015935838700.gif" width="100">
+		<img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295057838313472/25B8FC93095FA77A9919D94F95C09C61_1483409562.gif" width="150">
+	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295030990573661/i12218711522.gif" width="200">
+	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1085371872557932606/giphy_1.gif" width="250">
+	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295030990573661/i12218711522.gif" width="200">    
+	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295057838313472/25B8FC93095FA77A9919D94F95C09C61_1483409562.gif" width="150">
+	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295244241575976/i015935838700.gif" width="100">
+    </div>
     <br>
    
     <%-- 인기곡 리스트 컨트롤러 --%>
@@ -605,15 +613,11 @@
 		<div class="hitList">
 	    	<div class="subtitle">
 	    		오늘의 추천 아티스트
-	    		<div class="hitListController">
-	    			<p class="point artistPrev"><</p>
-	    			<p class="point artistNext">></p>
-	    		</div>
 	    	</div>
 	    </div>		
 		<div id = "cont3" >
             <div id="cont3_1">
-                <ul id = "slds" class="clides artistPage0">
+                <ul id = "slds" class="clides">
 				<%-- 아티스트 부분 forEach --%>
                 <c:forEach var ="artist" items="${random_artist}" varStatus="loop">
                     <li>
@@ -670,8 +674,11 @@
 		
 		if(konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba" || konamiCommand == "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightBA")
 		{
-			document.querySelector("img.esterEgg").classList.remove("hidden");
-			cursor = "https://cdn.discordapp.com/attachments/931150181540450368/1085371872557932606/giphy_1.gif";
+			let imgEsterEgg = document.querySelectorAll(".esterEgg");
+			for(let i=0; i<imgEsterEgg.length; i++)
+			{
+				imgEsterEgg[i].classList.remove("hidden");
+			}
 			konamiCommand = "";
 		}
 		if

@@ -107,7 +107,7 @@
 			<div class="list_parent">
 			<c:forEach var="list" items="${ playListContent }">
 				<div class="list_child">
-					<input style="vertical-align:top;" type="checkbox" name="songNumber" value="${ list.songNumber }">
+					<input style="vertical-align:top;" class="checkListNumber" type="checkbox" name="listNumber" value="${ list.listNumber }">
 					<a href="albumpage?album=${ list.album_name }"><img class="album" src="${ list.imageLink }"></a>
 					<div class="list_info">
 						<a href="${ list.link }" target="_blank"><span class="song_title">${ list.songName }</span></a>
