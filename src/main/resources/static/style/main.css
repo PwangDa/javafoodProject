@@ -1,4 +1,19 @@
 @charset "UTF-8";
+
+ body::-webkit-scrollbar {
+            width: 15px; /*스크롤바의 너비*/
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: rgb(92, 92, 92); /*스크롤바의 색상*/
+            border: none;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: rgb(39, 39, 39); /*스크롤바 트랙 색상*/ 
+            border: none;
+        }
+        
     body
     {
         background-color: black;
@@ -328,11 +343,10 @@
         }
         #cont3_1{
             
-            /* width: 1035px; */
+            width: 1035px;
             height: 250px;
             position: relative;
-            margin: 15px 110px;
-            overflow: hidden;
+            margin: 15px 66px;
         }
         
         /*슬라이드 애니메이션*/
@@ -351,7 +365,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 5000px; /* 슬라이드할 사진과 마진 총 넓이 */
+            width: 1100px; /* 슬라이드할 사진과 마진 총 넓이 */
             transition: left 0.6s;
          }
          
@@ -401,7 +415,7 @@
         img.esterEgg
         {
         	margin:auto;
-        	display:block;
+        	display:inline;
         }
         img.hidden
         {

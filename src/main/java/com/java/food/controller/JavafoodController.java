@@ -1,9 +1,12 @@
 package com.java.food.controller;
 
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,9 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.RequestContext;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +27,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.login_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -409,6 +412,83 @@ public class JavafoodController {
 	        return LocalDateTime.now();
 	    }
 		
+		// 아이디 찾기
+		@RequestMapping(value="/chart/search_id", method=RequestMethod.GET)
+		public String search_id(HttpServletRequest request, Model model, login_DTO logindto) {
+			
+			return "/chart/search_id";
+			
+		}
+		
+		// 비밀번호 찾기
+		@RequestMapping(value="/chart/search_pwd", method=RequestMethod.GET)
+		public String search_pwd(HttpServletRequest request, Model model, login_DTO logindto) {
+			
+			return "/chart/search_pwd";
+			
+		}
+		
+		// id 찾기 결과
+//		@RequestMapping(value = "/chart/search_result_id")
+//		public String search_result_id(HttpServletRequest request, Model model,
+//		    @RequestParam(required = true, value = "nic") String nic, 
+//		    @RequestParam(required = true, value = "phone") String phone,
+//		    login_DTO logindto) {
+//		 
+//		 
+//		try {
+//		    
+//			logindto.setNIC(nic);
+//			logindto.setPHONE(phone);
+//			login_DTO userSerch = javaService.userIdSearch(logindto);
+//		    
+//		    model.addAttribute("searchUser", userSerch);
+//		 
+//		} catch (Exception e) {
+//		    System.out.println(e.toString());
+//		    model.addAttribute("msg", "오류가 발생되었습니다.");
+//		}
+//		 
+//		return "/search_result_id";
+//		}
+//		
+//		// pw 찾기 결과
+//		@RequestMapping(value = "/chart/search_result_pwd", method = RequestMethod.POST)
+//		public String search_result_pwd(HttpServletRequest request, Model model,
+//		    @RequestParam(required = true, value = "nic") String nic, 
+//		    @RequestParam(required = true, value = "phone") String phone, 
+//		    @RequestParam(required = true, value = "id") String id, 
+//		    login_DTO logindto) {
+//		 
+//		try {
+//		    logindto.setNIC(nic);
+//		    logindto.setPHONE(phone);
+//		    logindto.setID(id);
+//		    int userSerch = javaService.userPwdCheck(logindto);
+//		    
+//		    if(userSerch == 0) {
+//		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+//		        return "/chart/search_pwd";
+//		    }
+//		    
+//		    String newPwd = RandomStringUtils.randomAlphanumeric(10);
+//		    System.out.println(newPwd);
+//		    logindto.setPWD(newPwd);
+//		    
+//		    javaService.passwordUpdate(logindto);
+//		    
+//		    model.addAttribute("newPwd", newPwd);
+//		 
+//		} catch (Exception e) {
+//		    System.out.println(e.toString());
+//		    model.addAttribute("msg", "오류가 발생되었습니다.");
+//		}
+//		 
+//		 
+//		return "/chart/search_result_pwd";
+//		}
+
+
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
@@ -872,53 +952,58 @@ public class JavafoodController {
 			return "/main";
 		}
 	}
+	
 	//아자스를 이용한 파일 업로드
-	@RequestMapping("/login/ajax/file")
+	@PostMapping(value = "/login/ajax/file")
 	@ResponseBody
-	public int fileup(
+	public void uploadFile(
+	    @RequestParam("uploadfile") MultipartFile uploadfile ,
+	    HttpServletRequest re
+			) {
+	  log.info("아자스 파일 업로드 시작");
+	  String directory = "C:\\javafood";
+	  
+	  File file = new File(directory);
+		if(!file.exists()) {
+			try {
+				file.mkdir();
+				log.info("폴더생성 성공");
+			} catch (Exception e) {
+				log.info("폴더생성 실패");
+				e.getMessage();
+			}
+		}else 
+			log.info("이미 생성된 폴더가 있습니다.");
+		
+	  try {
+		  log.info("시작");
+		  String id = (String) re.getSession().getAttribute("loginId")+".";
+		  System.out.println("id : "+id);
+		  
+		  String filename = id+uploadfile.getOriginalFilename().split("[.]")[1];
+		  System.out.println("filename : "+filename);
+		  
+		  String filepath = Paths.get(directory, filename).toString();
+		    
+		  BufferedOutputStream stream =
+		      new BufferedOutputStream(new FileOutputStream(new File(filepath)));
+		    
+		  stream.write(uploadfile.getBytes());
+		  stream.close();
+	  }
+	  catch (Exception e) {
+	    log.info(e.getMessage());
+	  }
+	} 
+	//test
+	@RequestMapping("/test")
+	public String test(
 			HttpServletRequest re
 			) {
-		log.info(">>>>>> 파일 업로드 <<<<<<");
-		try {
-			File file = new File("C:\\javafood");
-			if(!file.exists()) {
-				try {
-					file.mkdir();
-					log.info("폴더생성 성공");
-				} catch (Exception e) {
-					log.info("폴더생성 실패");
-					e.printStackTrace();
-				}
-			}else 
-				log.info("이미 생성된 폴더가 있습니다.");
-			
-			log.info(">>>>>> 파일 업로드 시작1 <<<<<<");
-			DiskFileItemFactory disk = new DiskFileItemFactory();
-			log.info(">>>>>> 파일 업로드 시작2 <<<<<<");
-			disk.setRepository(file);
-			log.info(">>>>>> 파일 업로드 시작3 <<<<<<");
-			disk.setSizeThreshold(1024*100);
-			log.info(">>>>>> 파일 업로드 시작4 <<<<<<");
-			
-			log.info(">>>>>> 파일 업로드 시작5 <<<<<<");
-			ServletFileUpload ser = new ServletFileUpload(disk);
-			log.info(">>>>>> 파일 업로드 시작6 <<<<<<");
-			ser.setFileSizeMax(1024*1024*100);
-			log.info(">>>>>> 파일 업로드 시작7 <<<<<<");
-			
-//			List items = ser.parseRequest((RequestContext) re);
-			log.info(">>>>>> 파일 업로드 시작8 <<<<<<");
-//			System.out.println("items size : "+items.size());
-			log.info(">>>>>> 파일 업로드 시작9 <<<<<<");
-			
-			
-		} catch (Exception e) {
-			log.info(">>>>>>파일 업로드 실패<<<<<<");
-			e.printStackTrace();
-		}
-		
-		return 0;
+		return "/test";
 	}
+	///////////////////////////
+	
 	
 	//아자스를 이용한 좋아요 증가
 	@RequestMapping("/my_page/good")
@@ -1206,7 +1291,7 @@ public class JavafoodController {
 			model.addAttribute("list", listGenre);
 			return "forward:/insert_song";
 		}
-		
+		//왜안됨
 		// 아티스트 정보 목록 전체 조회
 		@RequestMapping ("/list/artist")
 		public String listArtist(Model model,	

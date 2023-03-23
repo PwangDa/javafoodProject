@@ -9,6 +9,19 @@
       <put-attribute name="body" value="" />
    </definition>
    
+<!-- test -->
+   <definition name="test"  template="/WEB-INF/views/lky/test.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="" />
+      <put-attribute name="body" value="" />
+   </definition>
+   
+   <definition name="/test" extends="test">
+      <put-attribute name="title" value="MAIN" />
+      <put-attribute name="body" value="/WEB-INF/views/lky/test.jsp" />
+   </definition>
+<!-- test -->
+   
    <definition name="/main" extends="baseLayout">
       <put-attribute name="title" value="MAIN" />
       <put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
@@ -84,9 +97,9 @@
        <put-attribute name="title" value="playListContent" /> 
        <put-attribute name="body" value="/WEB-INF/views/playList/playListContent.jsp" /> 
     </definition> 
-   
+    
 
-   
+
 
    
 

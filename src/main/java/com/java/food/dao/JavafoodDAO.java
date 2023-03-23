@@ -53,8 +53,8 @@ public interface JavafoodDAO {
 	
 	// 댄스 장르 출력
 	List<FamousChartDTO> selectDance(String genre);
-	
-	
+
+
 ////////////////////////////////////////////////////////////
 //범주
 	//플레이 리스트 불러오기
@@ -123,6 +123,11 @@ public interface JavafoodDAO {
 	int update_song(GenreDTO dto);
 ////////////////////////////////////////////////////////////
 
+
+
+	
+
+	
 
 
 	
