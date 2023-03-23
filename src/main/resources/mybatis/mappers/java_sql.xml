@@ -172,7 +172,7 @@
 			from
 				login
 			where
-				id = #{id}
+				nic = #{nic}
 			and
 				phone = #{phone}
 		]]>
@@ -182,7 +182,7 @@
 	<select id="userPwdCheck" parameterType="com.java.food.dto.login_DTO" resultType="java.lang.Integer">
 		<![CDATA[
 			select
-				count(*)
+				*
 			from
 				login
 			where
