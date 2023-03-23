@@ -42,6 +42,13 @@
 </div>
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
+<div class="conn_2">
+	<form action="/search/album">
+		<input class="text_a" type="text" name="artistname" placeholder="아티스트 검색">
+		<input class="butt" type="submit" value="검색">
+	</form>
+</div>
+<hr>
 
 <table class="table_1">
 				<c:if test="${not empty list }">
@@ -69,18 +76,18 @@
 							<td>
 								<input class="text_a text_b" type="text" name="album_name" placeholder="${artist.album_name}" value="${artist.album_name}">
 							<td>
-								<textarea class="text_c" name="album_into" placeholder="${artist.album_into}" value="${artist.album_into}"></textarea>
+								<textarea class="text_c text_e" name="album_into" placeholder="${artist.album_into}" value="${artist.album_into}"></textarea>
 							</td>
 							<td>
-								<textarea class="text_c" name="album_cover" placeholder="${artist.album_cover}" value="${artist.album_cover}"></textarea>
+								<textarea class="text_c text_e" name="album_cover" placeholder="${artist.album_cover}" value="${artist.album_cover}"></textarea>
 							</td>
 							<td>
-									<input class="butt" type="submit" value="수정">
+									<input class="butt_2" type="submit" value="수정">
 							</td>
 								</form>
 							<td>
 								<form action="/delete/artist">
-									<input class="butt" type="submit" value="삭제">
+									<input class="butt_2" type="submit" value="삭제">
 									<input type="hidden" name="artistname" value="${artist.album_num}">
 								</form>
 							</td>

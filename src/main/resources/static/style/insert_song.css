@@ -17,6 +17,22 @@ body{
             background-color: rgb(39, 39, 39); /*스크롤바 트랙 색상*/ 
             border: none;
         }
+        
+        .text_c::-webkit-scrollbar {
+            width: 7px; /*스크롤바의 너비*/
+        }
+        
+        .text_c::-webkit-scrollbar-thumb {
+            background-color: rgb(123, 123, 123); /*스크롤바의 색상*/
+            border-radius: 15px;
+            border: none;
+        }
+
+        .text_c::-webkit-scrollbar-track {
+            background-color: rgb(53, 53, 53); /*스크롤바 트랙 색상*/
+            border-radius: 15px;
+            border: none;
+        }
 div{
 	color : white;
 	}
@@ -113,6 +129,23 @@ textarea{
 		background-color: rgb(138, 138, 138);
 	}
 
+	.butt_2{
+		color: rgba(255, 255, 255, 0.747);
+		background-color: rgb(80, 80, 80);
+		width: 50px;
+		height: 30px;
+		padding: 3px;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		border-radius: 7px;
+		margin: 5px;
+	}
+	
+	.butt_2:hover{
+		background-color: rgb(138, 138, 138);
+	}
+
 	.table_1{
 	background-size: contain;   
 	text-align: left; 
@@ -141,6 +174,9 @@ textarea{
 	}
 	.text_d{
 		width: 50px;
+	}
+	.text_e{
+		width: 300px;
 	}
 
 	/* 로그인 페이지 css  */
