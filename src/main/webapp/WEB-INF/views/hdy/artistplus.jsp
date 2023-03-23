@@ -79,8 +79,8 @@
 							<td>
 									<input class="butt" type="submit" value="수정">
 									<input type="hidden" name="artistname" value="${artist.artistname}">
-								</form>
 							</td>
+								</form>
 							<td>
 								<form action="/delete/artist">
 									<input class="butt" type="submit" value="삭제">
