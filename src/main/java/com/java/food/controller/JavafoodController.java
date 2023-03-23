@@ -1329,7 +1329,6 @@ public class JavafoodController {
 					
 					return "redirect:/list/genre?";
 				}
-
-
+				
 ////////////////////////////////////////////////////////////
 }
