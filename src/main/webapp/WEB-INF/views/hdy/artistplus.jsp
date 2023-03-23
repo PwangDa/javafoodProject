@@ -77,13 +77,13 @@
 								<textarea class="text_c" name="artist_img" placeholder="${artist.artist_img}" value="${artist.artist_img}"></textarea>
 							</td>
 							<td>
-									<input class="butt" type="submit" value="수정">
+									<input class="butt_2" type="submit" value="수정">
 									<input type="hidden" name="artistname" value="${artist.artistname}">
 							</td>
 								</form>
 							<td>
 								<form action="/delete/artist">
-									<input class="butt" type="submit" value="삭제">
+									<input class="butt_2" type="submit" value="삭제">
 									<input type="hidden" name="artistname" value="${artist.artistname}">
 								</form>
 							</td>
