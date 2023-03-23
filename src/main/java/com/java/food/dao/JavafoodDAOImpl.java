@@ -219,29 +219,6 @@ public List<FamousChartDTO> selectDance(String genre){
 	return page;
 }
 
-// id 찾기
-@Override
-public login_DTO userIdSearch(login_DTO logindto) {
-	
-	return userIdSearch(logindto);
-	
-}
-
-// pwd 찾기
-@Override
-public int userPwdCheck(login_DTO logindto) {
-	
-	return userPwdCheck(logindto);
-	
-}
-
-// pwd 업데이트
-@Override
-public void passwordUpdate(login_DTO logindto) {
-	
-	passwordUpdate(logindto);
-}
-
 ////////////////////////////////////////////////////////////
 //범주
 @Override

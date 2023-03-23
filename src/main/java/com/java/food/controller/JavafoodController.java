@@ -416,6 +416,7 @@ public class JavafoodController {
 			/* System.out.println(LocalDateTime.now()); */
 	        return LocalDateTime.now();
 	    }
+<<<<<<< HEAD
 		
 		// 아이디 찾기
 		@RequestMapping(value="/chart/search_id", method=RequestMethod.GET)
@@ -493,6 +494,8 @@ public class JavafoodController {
 		return "/chart/search_result_pwd";
 		}
 
+=======
+>>>>>>> 4bc79846ab75aae35d2476368e77ef2ae5124499
 
 ////////////////////////////////////////////////////////////
 //	// 범주

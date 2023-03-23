@@ -192,9 +192,6 @@
 		    </div>
 		</c:if>
 		
-				<a href="#" class="userlogin-btn" onclick="return frmCheck();">로그인</a>
-				<a href="/chart/search_id" class="userid-btn">아이디 찾기</a>
-				<a href="/chart/search_pwd" class="userpwd-btn">비밀번호 찾기</a>
 		</body>
 	</html>
 	<br>
