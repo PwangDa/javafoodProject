@@ -219,6 +219,9 @@ public List<FamousChartDTO> selectDance(String genre){
 	return page;
 }
 
+// id 찾기
+
+// pwd 찾기
 ////////////////////////////////////////////////////////////
 //범주
 @Override

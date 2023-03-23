@@ -55,7 +55,9 @@ public interface JavafoodDAO {
 	
 	// 댄스 장르 출력
 	List<FamousChartDTO> selectDance(String genre);
-
+	
+	// id 찾기
+	// pwd 찾기
 
 ////////////////////////////////////////////////////////////
 //범주

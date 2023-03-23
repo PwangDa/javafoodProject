@@ -418,65 +418,6 @@ public class JavafoodController {
 			
 		}
 		
-		// id 찾기 결과
-//		@RequestMapping(value = "/chart/search_result_id")
-//		public String search_result_id(HttpServletRequest request, Model model,
-//		    @RequestParam(required = true, value = "nic") String nic, 
-//		    @RequestParam(required = true, value = "phone") String phone,
-//		    login_DTO logindto) {
-//		 
-//		 
-//		try {
-//		    
-//			logindto.setNIC(nic);
-//			logindto.setPHONE(phone);
-//			login_DTO userSerch = javaService.userIdSearch(logindto);
-//		    
-//		    model.addAttribute("searchUser", userSerch);
-//		 
-//		} catch (Exception e) {
-//		    System.out.println(e.toString());
-//		    model.addAttribute("msg", "오류가 발생되었습니다.");
-//		}
-//		 
-//		return "/search_result_id";
-//		}
-//		
-//		// pw 찾기 결과
-//		@RequestMapping(value = "/chart/search_result_pwd", method = RequestMethod.POST)
-//		public String search_result_pwd(HttpServletRequest request, Model model,
-//		    @RequestParam(required = true, value = "nic") String nic, 
-//		    @RequestParam(required = true, value = "phone") String phone, 
-//		    @RequestParam(required = true, value = "id") String id, 
-//		    login_DTO logindto) {
-//		 
-//		try {
-//		    logindto.setNIC(nic);
-//		    logindto.setPHONE(phone);
-//		    logindto.setID(id);
-//		    int userSerch = javaService.userPwdCheck(logindto);
-//		    
-//		    if(userSerch == 0) {
-//		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
-//		        return "/chart/search_pwd";
-//		    }
-//		    
-//		    String newPwd = RandomStringUtils.randomAlphanumeric(10);
-//		    System.out.println(newPwd);
-//		    logindto.setPWD(newPwd);
-//		    
-//		    javaService.passwordUpdate(logindto);
-//		    
-//		    model.addAttribute("newPwd", newPwd);
-//		 
-//		} catch (Exception e) {
-//		    System.out.println(e.toString());
-//		    model.addAttribute("msg", "오류가 발생되었습니다.");
-//		}
-//		 
-//		 
-//		return "/chart/search_result_pwd";
-//		}
 
 
 ////////////////////////////////////////////////////////////
