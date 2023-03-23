@@ -9,10 +9,9 @@
 
 <link rel="stylesheet" href="/style/menuCSS.css?css=css">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-
+<script> let id = '${loginId}'</script>
 </head>
 <body>
-	
     <header id ="menu" style="display: inline-block;" >
         <span style="font-size: 34px; font-weight: 600; cursor: pointer;">
         <a href="/main" class="a1"><img src="https://c11.kr/1asbb" class="logo-img">Music</a>

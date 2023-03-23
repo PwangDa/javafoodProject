@@ -36,21 +36,18 @@ window.onload=function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 프로필 사진 유무 확인
 	let xml = new XMLHttpRequest();
-    xml.open('get','/ajax/filedo?fileName=${loginId}.JPG');
+    xml.open('get','/ajax/filedo?fileName='+id+'.JPG');
     xml.send();
     xml.onload=function(){
     	console.log('아자스 값 : ',xml.responseText)
         z=xml.responseText;
-        if(z==1){
-            alert('사용가능.');
+        console.log('id : ', id)
+        if(z==null){
+            alert('이미지가져옴');
             console.log(z)
-        }else if(z==2) {
-            alert('값을 입력해주세요.');
-			console.log(z)
-			
 		}else{
             console.log(z)
-            alert('사용불가.');
+            alert('이미지 못가져옴');
         }
         callback(z,chak);
     }
