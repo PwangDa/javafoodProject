@@ -57,6 +57,7 @@
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
+								<form action="/modify/artist">
 							<td>
 								<input class="text_a text_d" type="text" name="album_num" placeholder="${artist.album_num}" value="${artist.album_num}">
 							</td>
@@ -72,11 +73,10 @@
 								<textarea class="text_c" name="album_cover" placeholder="${artist.album_cover}" value="${artist.album_cover}"></textarea>
 							</td>
 							<td>
-								<form action="/modify/artist">
 									<input class="butt" type="submit" value="수정">
 									<input type="hidden" name="artistname" value="${artist.album_num}">
-								</form>
 							</td>
+								</form>
 							<td>
 								<form action="/delete/artist">
 									<input class="butt" type="submit" value="삭제">
