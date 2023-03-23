@@ -42,35 +42,36 @@
 				<c:if test="${not empty list }">
 					<thead>
 						<tr class="trtr">
-							<th>Artistname</th>
-							<th>Artist_info</th>
-							<th>Artist_img</th>
-							<th></th>
-							<th></th>
+							<th>articleNO</th>
+							<th>parentNO</th>
+							<th>comment_num</th>
+							<th>comment_id</th>
+							<th>comment_cont</th>
+							<th>comment_date</th>
+							<th>artistname</th>
+							<th>id</th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
 							<td>
-								<input class="text_a text_b" type="text" name="artistname" placeholder="${artist.artistname}" value="${artist.artistname}">
+								<input class="text_a text_b" type="text" name="artistname" placeholder="${artist.articleNO}" value="${artist.articleNO}">
 							</td>
 							<td>
-								<textarea class="text_c" name="artist_info" placeholder="${artist.artist_info}" value="${artist.artist_info}"></textarea>
+								${artist.parentNO}
 							</td>
+							<td>${artist.comment_num}</td>
+							<td>${artist.comment_id}</td>
+							<td>${artist.comment_cont}</td>
+							<td>${artist.comment_Date}</td>
+							<td>${artist.artistname}</td>
+							<td>${artist.id}</td>
+
 							<td>
-								<textarea class="text_c" name="artist_img" placeholder="${artist.artist_img}" value="${artist.artist_img}"></textarea>
-							</td>
-							<td>
-								<form action="/modify/artist">
-									<input class="butt" type="submit" value="수정">
-									<input type="hidden" name="artistname" value="${artist.artistname}">
-								</form>
-							</td>
-							<td>
-								<form action="/delete/artist">
+								<form action="/delete/articleNO">
 									<input class="butt" type="submit" value="삭제">
-									<input type="hidden" name="artistname" value="${artist.artistname}">
+									<input type="hidden" name="articleNO" value="${artist.articleNO}">
 								</form>
 							</td>
 						</tr>

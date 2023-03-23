@@ -1,9 +1,12 @@
 package com.java.food.controller;
 
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,26 +20,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
 import com.java.food.dto.GenreDTO;
 import com.java.food.dto.PlayListDTO;
+import com.java.food.dto.login_DTO;
 import com.java.food.service.JavafoodService;
 
 @Controller
@@ -204,6 +213,14 @@ public class JavafoodController {
 		}
 
 		return "redirect:/artistpage?artist=" + encodeResult;
+	}
+	//관리자 페이지에서 댓글 삭제할 때
+	@RequestMapping(value = "/delete/articleNO", method = { RequestMethod.GET, RequestMethod.DELETE })
+	public String deletComment(Model model, 
+			@RequestParam("articleNO") int no) {
+		System.out.println("관리자페이지에서 댓글 삭제합니다.");
+		int article = javaService.delComment(no);
+		return "forward:/list/comment";
 	}
 
 	// 앨범수록곡 페이지 들어갈 때
@@ -401,6 +418,83 @@ public class JavafoodController {
 	        return LocalDateTime.now();
 	    }
 		
+		// 아이디 찾기
+		@RequestMapping(value="/chart/search_id", method=RequestMethod.GET)
+		public String search_id(HttpServletRequest request, Model model, login_DTO logindto) {
+			
+			return "/chart/search_id";
+			
+		}
+		
+		// 비밀번호 찾기
+		@RequestMapping(value="/chart/search_pwd", method=RequestMethod.GET)
+		public String search_pwd(HttpServletRequest request, Model model, login_DTO logindto) {
+			
+			return "/chart/search_pwd";
+			
+		}
+		
+		// id 찾기 결과
+//		@RequestMapping(value = "/chart/search_result_id")
+//		public String search_result_id(HttpServletRequest request, Model model,
+//		    @RequestParam(required = true, value = "nic") String nic, 
+//		    @RequestParam(required = true, value = "phone") String phone,
+//		    login_DTO logindto) {
+//		 
+//		 
+//		try {
+//		    
+//			logindto.setNIC(nic);
+//			logindto.setPHONE(phone);
+//			login_DTO userSerch = javaService.userIdSearch(logindto);
+//		    
+//		    model.addAttribute("searchUser", userSerch);
+//		 
+//		} catch (Exception e) {
+//		    System.out.println(e.toString());
+//		    model.addAttribute("msg", "오류가 발생되었습니다.");
+//		}
+//		 
+//		return "/search_result_id";
+//		}
+//		
+//		// pw 찾기 결과
+//		@RequestMapping(value = "/chart/search_result_pwd", method = RequestMethod.POST)
+//		public String search_result_pwd(HttpServletRequest request, Model model,
+//		    @RequestParam(required = true, value = "nic") String nic, 
+//		    @RequestParam(required = true, value = "phone") String phone, 
+//		    @RequestParam(required = true, value = "id") String id, 
+//		    login_DTO logindto) {
+//		 
+//		try {
+//		    logindto.setNIC(nic);
+//		    logindto.setPHONE(phone);
+//		    logindto.setID(id);
+//		    int userSerch = javaService.userPwdCheck(logindto);
+//		    
+//		    if(userSerch == 0) {
+//		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+//		        return "/chart/search_pwd";
+//		    }
+//		    
+//		    String newPwd = RandomStringUtils.randomAlphanumeric(10);
+//		    System.out.println(newPwd);
+//		    logindto.setPWD(newPwd);
+//		    
+//		    javaService.passwordUpdate(logindto);
+//		    
+//		    model.addAttribute("newPwd", newPwd);
+//		 
+//		} catch (Exception e) {
+//		    System.out.println(e.toString());
+//		    model.addAttribute("msg", "오류가 발생되었습니다.");
+//		}
+//		 
+//		 
+//		return "/chart/search_result_pwd";
+//		}
+
+
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기
@@ -911,6 +1005,55 @@ public class JavafoodController {
 		
 		return 0;
 	}
+	///////////////////////////
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "/test";
+	}
+	
+	@PostMapping(value = "/uploadFile")
+	@ResponseBody
+	public ResponseEntity<?> uploadFile(
+	    @RequestParam("uploadfile") MultipartFile uploadfile) {
+	  log.info("아자스 파일 업로드 시작");
+	  String directory = "C:\\javafood";
+	  
+	  File file = new File(directory);
+		if(!file.exists()) {
+			try {
+				file.mkdir();
+				log.info("폴더생성 성공");
+			} catch (Exception e) {
+				log.info("폴더생성 실패");
+				e.getMessage();
+			}
+		}else 
+			log.info("이미 생성된 폴더가 있습니다.");
+		
+	  try {
+		  log.info("시작");
+		  
+		  String filename = "아이디."+uploadfile.getOriginalFilename().split("[.]")[1];
+		  System.out.println("filename : "+filename);
+		  
+		  String filepath = Paths.get(directory, filename).toString();
+		    
+		  BufferedOutputStream stream =
+		      new BufferedOutputStream(new FileOutputStream(new File(filepath)));
+		    
+		  stream.write(uploadfile.getBytes());
+		  stream.close();
+	  }
+	  catch (Exception e) {
+	    log.info(e.getMessage());
+	    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	  }
+	  
+	  return new ResponseEntity<>(HttpStatus.OK);
+	} // method uploadFile
+	///////////////////////////
+	
 	
 	//아자스를 이용한 좋아요 증가
 	@RequestMapping("/my_page/good")
@@ -1133,7 +1276,7 @@ public class JavafoodController {
 			}			
 		}
 		// 댓글관리 페이지
-		@RequestMapping ("/comment")
+		@RequestMapping ("/del_comment")
 		public String insert_intoalbum(Model model,
 				@RequestParam Map<String, Object> map,
 				@ModelAttribute	CommentDTO dto,
@@ -1142,7 +1285,7 @@ public class JavafoodController {
 			String id = (String)re.getSession().getAttribute("loginId");
 			System.out.println("환영합니다!! 관리자님! : "+id);
 			try {							
-				return "/comment";
+				return "/del_comment";
 			} catch (Exception e) {
 				log.info("my_page 오류");
 				e.printStackTrace();
@@ -1198,7 +1341,7 @@ public class JavafoodController {
 			model.addAttribute("list", listGenre);
 			return "forward:/insert_song";
 		}
-		
+		//왜안됨
 		// 아티스트 정보 목록 전체 조회
 		@RequestMapping ("/list/artist")
 		public String listArtist(Model model,	
@@ -1249,7 +1392,7 @@ public class JavafoodController {
 			
 			List<CommentDTO> listComment = javaService.listComment();
 			model.addAttribute("list", listComment);
-			return "forward:/comment";
+			return "forward:/del_comment";
 		}
 		
 		// 관리자 페이지에서 아티스트 검색조회 했을 때

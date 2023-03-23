@@ -30,7 +30,7 @@
 			</form>
 			<form  id="join" action="/albumplus">
 			<div class="conn_1">
-				<!-- 시퀀스로 자동등록<div class="conn"><input class="text_a" type="text" name="album_num" placeholder="앨범순번"></div> -->
+				<div class="conn">앨범 순서<input class="text_a" type="text" name="album_num" placeholder="album_num"></div>
 				<div class="conn">앨범이미지 링크<textarea name="album_cover" placeholder="album_cover"></textarea></div>
 				<div class="conn">앨범명<input class="text_a" type="text" name="album_name" placeholder="album_name"></div>
 				<div class="conn">앨범소개<textarea name="album_into" placeholder="album_into"></textarea></div>
@@ -47,19 +47,43 @@
 				<c:if test="${not empty list }">
 					<thead>
 						<tr>
-							<th>Album_cover</th>
+							<th>Album_num</th>
+							<th>Artistname</th>
 							<th>Album_name</th>
 							<th>Album_into</th>
-							<th>Artistname</th>
+							<th>Album_cover</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-							<td>${artist.album_cover}</td>
-							<td>${artist.album_name}</td>
-							<td>${artist.album_into}</td>
-							<td>${artist.artistname}</td>
+								<form action="/modify/artist">
+							<td>
+								<input class="text_a text_d" type="text" name="album_num" placeholder="${artist.album_num}" value="${artist.album_num}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="artistname" placeholder="${artist.artistname}" value="${artist.artistname}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="album_name" placeholder="${artist.album_name}" value="${artist.album_name}">
+							<td>
+								<textarea class="text_c" name="album_into" placeholder="${artist.album_into}" value="${artist.album_into}"></textarea>
+							</td>
+							<td>
+								<textarea class="text_c" name="album_cover" placeholder="${artist.album_cover}" value="${artist.album_cover}"></textarea>
+							</td>
+							<td>
+									<input class="butt" type="submit" value="수정">
+							</td>
+								</form>
+							<td>
+								<form action="/delete/artist">
+									<input class="butt" type="submit" value="삭제">
+									<input type="hidden" name="artistname" value="${artist.album_num}">
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>
