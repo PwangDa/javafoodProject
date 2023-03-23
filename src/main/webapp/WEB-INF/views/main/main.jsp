@@ -52,7 +52,7 @@
     </div>
     
     <br>
-    <div class="esterEgg hidden" style="margin-left:1%;">
+    <div class="esterEgg hidden" style="margin-left:3%;">
 	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295244241575976/i015935838700.gif" width="100">
 		<img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295057838313472/25B8FC93095FA77A9919D94F95C09C61_1483409562.gif" width="150">
 	    <img class="esterEgg hidden" src="https://cdn.discordapp.com/attachments/931150181540450368/1088295030990573661/i12218711522.gif" width="200">
