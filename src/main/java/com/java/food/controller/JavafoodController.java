@@ -1370,6 +1370,20 @@ public class JavafoodController {
 		
 					return "redirect:/list/genre?";
 				}
+				
+		// 노래 수정 페이지
+				@RequestMapping ("/delete_song")
+				public String delete_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 delete_song : " + dto);
+					
+					
+					int delete = javaService.delete_song(dto);
+					
+					return "redirect:/list/genre?";
+				}
 
 ////////////////////////////////////////////////////////////
 }

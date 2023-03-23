@@ -547,4 +547,12 @@
 		WHERE 
 			SONGNUMBER = #{songnumber}
 	</update>
+	
+	<!-- 음악 삭제-->
+	<delete id="delete_song" parameterType="genreDTO">
+		delete 
+			genre 
+		WHERE 
+			SONGNUMBER = #{songnumber}
+	</delete>
 </mapper>

@@ -660,6 +660,13 @@ public void addContent(Map info)
 			return update;
 		}
 		
+		// 음악 삭제 페이지
+		public int delete_song(GenreDTO dto) {
+			int delete = sqlSession.delete("mapper.javafood.delete_song", dto);
+			System.out.println("dao에 delete : " + delete);
+			return delete;
+		}
+		
 	
 
 

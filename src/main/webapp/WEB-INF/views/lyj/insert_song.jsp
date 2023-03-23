@@ -126,7 +126,7 @@
 							</td>
 						</form>
 							<td>
-								<form action="">
+								<form action="/delete_song">
 									<input class="butt_2" type="submit" value="삭제">
 									<input type="hidden" name="songnumber" value="${genre.songnumber}">
 								</form>

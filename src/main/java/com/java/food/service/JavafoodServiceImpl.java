@@ -652,6 +652,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 					return 0;
 				}
 		
+		// 음악 삭제
+				
+				@Override
+				public int delete_song(GenreDTO dto) {
+					
+					System.out.println("server delete 성공");
+					return javaDAO.delete_song(dto);
+				}
+				
 		
 }
 
