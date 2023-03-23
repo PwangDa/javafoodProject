@@ -660,11 +660,19 @@ public void addContent(Map info)
 			return update;
 		}
 		
+<<<<<<< HEAD
 		// 앨범테이블 수정 페이지
 		public int update_album(AlbumDTO dto) {
 			int update = sqlSession.update("mapper.javafood.update_album", dto);
 			System.out.println("album_3에 업데이트! : " + update);
 			return update;
+=======
+		// 음악 삭제 페이지
+		public int delete_song(GenreDTO dto) {
+			int delete = sqlSession.delete("mapper.javafood.delete_song", dto);
+			System.out.println("dao에 delete : " + delete);
+			return delete;
+>>>>>>> b28f75d585fc2a4e4c7c73494c4be7838904963f
 		}
 		
 	

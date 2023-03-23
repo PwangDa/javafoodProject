@@ -1360,6 +1360,7 @@ public class JavafoodController {
 		
 					return "redirect:/list/genre?";
 				}
+<<<<<<< HEAD
 		// 앨범 테이블 수정 페이지
 		@RequestMapping ("/update_album")
 		public String update_song(Model model,
@@ -1372,6 +1373,22 @@ public class JavafoodController {
 					
 			return "redirect:/list/album?";
 		}
+=======
+				
+		// 노래 수정 페이지
+				@RequestMapping ("/delete_song")
+				public String delete_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 delete_song : " + dto);
+					
+					
+					int delete = javaService.delete_song(dto);
+					
+					return "redirect:/list/genre?";
+				}
+>>>>>>> b28f75d585fc2a4e4c7c73494c4be7838904963f
 
 ////////////////////////////////////////////////////////////
 }
