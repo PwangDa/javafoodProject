@@ -82,7 +82,7 @@
 						</div>
 						<input type="text" placeholder="설명 변경하기" class="hidden edit editList_ex_textbar" name="editList_explain">
 						<br>
-						<input type="hidden" name="edit_pl_id" value="${ list.pl_id }">
+						<input type="hidden" name="editList_pl_id" value="${ playListContent[0].pl_id }">
 						<br>
 						<input type="button" class="hidden edit editList_btn" value="수정">
 					</form>

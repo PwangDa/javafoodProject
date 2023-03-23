@@ -385,7 +385,7 @@
 			pl.pl_explain = #{explain},
 			pl.listImage = #{listImage}
 		WHERE
-			pl.pl_id = #{pl_id};
+			pl.pl_id = #{pl_id}
 	</update>
 	
 	<!-- 범주 플레이 리스트 내역(Content) 불러오기 -->
