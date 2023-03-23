@@ -32,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -1011,7 +1012,7 @@ public class JavafoodController {
 		return "/test";
 	}
 	
-	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	@PostMapping(value = "/uploadFile")
 	@ResponseBody
 	public ResponseEntity<?> uploadFile(
 	    @RequestParam("uploadfile") MultipartFile uploadfile) {
