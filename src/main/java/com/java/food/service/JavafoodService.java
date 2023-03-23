@@ -107,6 +107,9 @@ public interface JavafoodService {
 	
 	//Genre관리자 페이지에서 목록 전체조회 출력
 	List<GenreDTO> listGenre();
+	
+	// 음악추가 페이지
+		int update_song(GenreDTO dto);
 ////////////////////////////////////////////////////////////
 	
 	
