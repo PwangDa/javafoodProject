@@ -46,7 +46,7 @@ window.onload=function() {
 // 프로필 파일 업로드
 	$('#but').on('click',function () {
 	  $.ajax({
-	    url: "/login/ajax/file",
+	    url: "/ajax/fileup",
 	    type: "POST",
 	    data: new FormData($("#form")[0]),
 	    enctype: 'multipart/form-data',
@@ -55,11 +55,12 @@ window.onload=function() {
 	    cache: false,
 	    success: function () {
 	    	alert("이미지 저장 성공")
+	    	location.href = '/my_page?page=a';
 	    },
 	    error: function () {
 	    	alert("이미지 저장 실패")
 	    }
-	  });
+	  })
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //호그인 화면의 아이디/비밀번호 텍스트 비우기

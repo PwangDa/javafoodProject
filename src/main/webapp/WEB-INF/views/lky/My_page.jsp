@@ -37,31 +37,26 @@
 	    
 	        <h1 class="ddr"><c:out value="회원정보 수정"/></h1>
 		<!-- 	        파일 업로드 -->
-	        <form
-	        	id="form"
-	            method="post"
-	            action="http://localhost:8080/javafood_team/aj"
-	            enctype="multipart/form-data"
-	            accept-charset="utf-8">
+	        <form id="form" accept-charset="utf-8">
 	            <div class="ddr div">
 	                <div class="div" style="width: 200px; height: 250px">
 	                    <div class="div">
-	                        <input type="file" name="file1">
+							<input type="file" name="uploadfile" accept="*">
 	                        <p><strong>사진</strong></p>
-	                        <img src="http://localhost:8080/javafood_team/aj1?fileName=new_javafood.JPG"
+	                        <img src="/ajax/filedo?fileName=${loginId}.JPG"
 	                            style="width: 150px;height: 150px;">
 	                    </div>
-	                    <div class="div"><input type="button" onclick="but()" value="업로드"></div>
+						<input class="butt" type="button" id="but" value="업로드">
 	                </div>
 	            </div>
 	        </form>
 	        
+			
 	        <form method="post" action="/my_page">
 	            <div class="head div">
 	                <table>
 	                    <tr class="tr">
 	                        <th><c:out value="이미지url : "/></th>
-	                        <th><c:out value="서버없어서 이미지url만 적용됩니다."/></th>
 	                        <td><input type="text" id="img" name="img" placeholder="${loginImg}"></td>
 	                        <td><input type="hidden" value="1" name="remove"></td>
 	                    </tr>

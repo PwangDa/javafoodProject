@@ -30,6 +30,8 @@
                 <button class="search-btn" type="button" id="cli">검색</button>
             </div>
         </div>
+        
+        
         <span id="spa" class="abc">
 	        <c:if test="${loginImg!=null}">
 		        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
@@ -38,6 +40,8 @@
 				<a href="/my_page"><img class="menu-img" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png"></a>
 	        </c:if>
     	</span>
+        
+        
         
     </header>
     <div id="di">
