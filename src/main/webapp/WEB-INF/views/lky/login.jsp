@@ -192,40 +192,9 @@
 		    </div>
 		</c:if>
 		
-		<%-- 
-		<c:if test="${llll!=null }">
-			<div class="search hidden">
-		   	<h1>찾는 방법을 선택해 주세요.</h1>
-		    <table>
-    	    <tr>주민등록번호로 찾기</tr>
-		    	<form method="post" action="javafood?javafood=4">
-		            <td>
-		            	이름 <input class="name" type="text" name="NAME">
-		            </td>
-		            <td>
-		            	주민등록번호 
-		            	<input class="pn" type="text" name="PN" placeholder="주민등록번호">
-		            </td>
-		         </form>
-		         
-		         <form>
-		         	<tr>
-		         		전화번호로 찾기
-		         	</tr>
-			         <td>
-			         	이름 
-			         	<input class="name" type="text" name="NAME">
-			         </td>
-			         <td>
-			         	전화번호 
-			         	<input class="phone" type="text" name="PHONE" placeholder="전화번호">
-			         </td>
-		         </form>
-		      </table>
-		      <input class="searchsubmit" type="submit" value="확인">
-		   </div>
-		</c:if>
-		--%>
+				<a href="#" class="userlogin-btn" onclick="return frmCheck();">로그인</a>
+				<a href="/chart/search_id" class="userid-btn">아이디 찾기</a>
+				<a href="/chart/search_pwd" class="userpwd-btn">비밀번호 찾기</a>
 		</body>
 	</html>
 	<br>

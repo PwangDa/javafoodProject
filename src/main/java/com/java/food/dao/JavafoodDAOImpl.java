@@ -219,6 +219,29 @@ public List<FamousChartDTO> selectDance(String genre){
 	return page;
 }
 
+// id 찾기
+@Override
+public login_DTO userIdSearch(login_DTO logindto) {
+	
+	return userIdSearch(logindto);
+	
+}
+
+// pwd 찾기
+@Override
+public int userPwdCheck(login_DTO logindto) {
+	
+	return userPwdCheck(logindto);
+	
+}
+
+// pwd 업데이트
+@Override
+public void passwordUpdate(login_DTO logindto) {
+	
+	passwordUpdate(logindto);
+}
+
 ////////////////////////////////////////////////////////////
 //범주
 @Override
@@ -284,7 +307,7 @@ public void editPlayList(Map info)
 	System.out.println("JavafoodDAOImpl의 editPlayList 메서드 실행됨."); //확인용
 	
 	//sql을 이용하여 DB에 접속 후 플레이 리스트 수정하기
-	int result = sqlSession.update("mappger.javafood.editPlayList", info);
+	int result = sqlSession.update("mapper.javafood.editPlayList", info);
 	if(result >= 1) //확인용
 	{
 		System.out.println("editPlayList 성공!!");

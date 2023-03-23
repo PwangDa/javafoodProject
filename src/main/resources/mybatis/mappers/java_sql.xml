@@ -72,14 +72,14 @@
 	</select>
 	<!-- 관리자페이지에서 댓글리스트 출력 -->
 	<select id="listComment" resultType="commentDTO">
-		SELECT LEVEL, articleno, parentno, 
-		comment_num, comment_id, 
-		LPAD(' ', 4*(LEVEL-1)) || comment_cont,  
-		comment_date, artistname, MYIMG, id
-		FROM comment_com
-		START WITH parentno = 0
-		CONNECT BY PRIOR articleno = parentno 
-		ORDER siblings BY articleno DESC;
+		<![CDATA[SELECT LEVEL, articleno, parentno, 
+			comment_num, comment_id, 
+			LPAD(' ', 4*(LEVEL-1)) || comment_cont as comment_cont,  
+			comment_date, artistname, MYIMG, id
+			FROM comment_com
+			START WITH parentno = 0
+			CONNECT BY PRIOR articleno = parentno 
+			ORDER siblings BY articleno DESC]]>
 	</select>
 	
 	<!-- 관리자페이지에서 아티스트이름으로 검색할 때 -->
@@ -163,6 +163,51 @@
 			</if>
 		</where>
 	</select>
+	
+	<!-- id 찾기 -->
+	<select id="userIdSearch" parameterType="com.java.food.dto.login_DTO" resultType="com.java.food.dto.login_DTO">
+		<![CDATA[
+			select
+				*
+			from
+				login
+			where
+				id = #{id}
+			and
+				phone = #{phone}
+		]]>
+	</select>
+	
+	<!-- pwd 찾기 -->
+	<select id="userPwdCheck" parameterType="com.java.food.dto.login_DTO" resultType="java.lang.Integer">
+		<![CDATA[
+			select
+				count(*)
+			from
+				login
+			where
+				nic = #{nic}
+			and
+				phone = #{phone}
+			and
+				id = #{id}
+		]]>
+	</select>
+	
+	<!-- pwd update -->
+	<update id="passwordUpdate" parameterType="com.java.food.dto.login_DTO">
+		UPDATE
+			login
+		SET
+			pwd = #{pwd}
+		where
+			nic = #{nic}
+		and
+			phone = #{phone}
+		and
+			id = #{id}
+			
+	</update>
 	
 	<!-- 댄스 장르 출력 -->
 	<select id="selectDance" resultType="chartDTO" parameterType="list">
@@ -385,7 +430,7 @@
 			pl.pl_explain = #{explain},
 			pl.listImage = #{listImage}
 		WHERE
-			pl.pl_id = #{pl_id};
+			pl.pl_id = #{pl_id}
 	</update>
 	
 	<!-- 범주 플레이 리스트 내역(Content) 불러오기 -->
