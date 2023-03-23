@@ -87,17 +87,48 @@
 					<tbody id="tbody">
 					<c:forEach var="genre" items= "${list }" >
 						<tr>
+						<form action="">
 							<td>${genre.songnumber}</td>
-							<td>${genre.artistname}</td>
-							<td>${genre.songname}</td>
-							<td>${genre.link}</td>
-							<td>${genre.album_name}</td>
-							<td>${genre.bygenre}</td>
-							<td>${genre.playtime}</td>
-							<td>${genre.imagelink}</td>
-							<td>${genre.album_add}</td>
-							<td>${genre.artist_add}</td>
-							<td>${genre.country}</td>
+							<td>
+								<input class="text_a text_b" type="text" name="artistname" placeholder="${genre.artistname}" value="${genre.artistname}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="songname" placeholder="${genre.songname}" value="${genre.songname}">
+							</td>
+							<td>
+								<textarea class="text_c" name="link" placeholder="${genre.link}" value="${genre.link}"></textarea>
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="album_name" placeholder="${genre.album_name}" value="${genre.album_name}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="bygenre" placeholder="${genre.bygenre}" value="${genre.bygenre}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="playtime" placeholder="${genre.playtime}" value="${genre.playtime}">
+							</td>
+							<td>
+								<textarea class="text_c" name="imagelink" placeholder="${genre.imagelink}" value="${genre.imagelink}"></textarea>
+							</td>
+							<td>
+								<textarea class="text_c" name="album_add" placeholder="${genre.album_add}" value="${genre.album_add}"></textarea>
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="artist_add" placeholder="${genre.artist_add}" value="${genre.artist_add}">
+							</td>
+							<td>
+								<input class="text_a text_b" type="text" name="country" placeholder="${genre.country}" value="${genre.country}">
+							</td>
+							<td>
+									<input class="butt" type="submit" value="수정">
+							</td>
+						</form>
+							<td>
+								<form action="">
+									<input class="butt" type="submit" value="삭제">
+									<input type="hidden" name="songnumber" value="${genre.songnumber}">
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:if>
