@@ -1,9 +1,12 @@
 package com.java.food.controller;
 
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,12 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
@@ -896,6 +901,55 @@ public class JavafoodController {
 		
 		return 0;
 	}
+	///////////////////////////
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "/test";
+	}
+	
+	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> uploadFile(
+	    @RequestParam("uploadfile") MultipartFile uploadfile) {
+	  log.info("아자스 파일 업로드 시작");
+	  String directory = "C:\\javafood";
+	  
+	  File file = new File(directory);
+		if(!file.exists()) {
+			try {
+				file.mkdir();
+				log.info("폴더생성 성공");
+			} catch (Exception e) {
+				log.info("폴더생성 실패");
+				e.getMessage();
+			}
+		}else 
+			log.info("이미 생성된 폴더가 있습니다.");
+		
+	  try {
+		  log.info("시작");
+		  
+		  String filename = "아이디."+uploadfile.getOriginalFilename().split("[.]")[1];
+		  System.out.println("filename : "+filename);
+		  
+		  String filepath = Paths.get(directory, filename).toString();
+		    
+		  BufferedOutputStream stream =
+		      new BufferedOutputStream(new FileOutputStream(new File(filepath)));
+		    
+		  stream.write(uploadfile.getBytes());
+		  stream.close();
+	  }
+	  catch (Exception e) {
+	    log.info(e.getMessage());
+	    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	  }
+	  
+	  return new ResponseEntity<>(HttpStatus.OK);
+	} // method uploadFile
+	///////////////////////////
+	
 	
 	//아자스를 이용한 좋아요 증가
 	@RequestMapping("/my_page/good")
