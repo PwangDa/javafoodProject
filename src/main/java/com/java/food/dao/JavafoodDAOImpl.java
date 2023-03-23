@@ -220,8 +220,15 @@ public List<FamousChartDTO> selectDance(String genre){
 }
 
 // id 찾기
+public List<login_DTO> searchuser(String nic){
+	
+	List<login_DTO> page = null;
+	page = sqlSession.selectList("mapper.javafood.login", nic);
+	
+	return page;
+	
+}
 
-// pwd 찾기
 ////////////////////////////////////////////////////////////
 //범주
 @Override

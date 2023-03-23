@@ -7,9 +7,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<title>test</title>
 <body>
-	hello world
+	<table border=1>
+		<thead>
+			<tr>
+				<th>닉네임</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form action="searchuser" method="post">
+				<input type="submit" value="${loginNic }" name="nic">
+			</form>
+		</tbody>
+			
+	</table>
+	
 </body>
 </html>

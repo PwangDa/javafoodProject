@@ -178,7 +178,23 @@ public class JavafoodServiceImpl implements JavafoodService {
 	}
 	
 	// id 찾기
-	// pwd 찾기
+	public Map<String, Object> searchuser(Map<String, Object> user) {
+		
+		Map<String, Object> searchuser = new HashMap<String, Object>();
+		List<login_DTO> list = javaDAO.searchuser("nic");
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getNIC().equals(user.get("nic"))) {
+				System.out.println(user.get("nic"));
+			
+				user.put("nic", list.get(i).getNIC());
+				}
+			}
+		
+			return searchuser;
+		}
+		
+	
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기

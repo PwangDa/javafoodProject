@@ -402,19 +402,20 @@ public class JavafoodController {
 	        return LocalDateTime.now();
 	    }
 		
-		// 아이디 찾기
-		@RequestMapping(value="/chart/search_id", method=RequestMethod.GET)
-		public String search_id(HttpServletRequest request, Model model, login_DTO logindto) {
+		// 계정 찾기
+		@RequestMapping(value="/searchuser", method=RequestMethod.GET)
+		public String searchuser(HttpServletRequest request, Model model, login_DTO logindto) {
+			model.addAttribute("nic", logindto.getNIC());
 			
-			return "/chart/search_id";
+			return "/chart/searchuser";
 			
 		}
 		
-		// 비밀번호 찾기
-		@RequestMapping(value="/chart/search_pwd", method=RequestMethod.GET)
-		public String search_pwd(HttpServletRequest request, Model model, login_DTO logindto) {
+		// 계정 찾기 결과
+		@RequestMapping(value="/searchuserresult", method=RequestMethod.GET)
+		public String searchuserresult(HttpServletRequest request, Model model, login_DTO logindto) {
 			
-			return "/chart/search_pwd";
+			return "/chart/searchuserresult";
 			
 		}
 		
