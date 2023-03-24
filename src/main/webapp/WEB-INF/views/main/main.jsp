@@ -361,7 +361,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -387,7 +387,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -412,7 +412,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -437,7 +437,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -462,7 +462,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -487,7 +487,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -512,7 +512,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -537,7 +537,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -562,7 +562,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -587,7 +587,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
