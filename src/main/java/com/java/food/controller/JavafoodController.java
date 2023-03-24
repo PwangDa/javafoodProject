@@ -464,7 +464,7 @@ public class JavafoodController {
 		}
 		
 		
-		  @RequestMapping(value="/searchuser", method=RequestMethod.GET) public String
+		  @RequestMapping(value="/searchuser2", method=RequestMethod.GET) public String
 		  searchuser(HttpSession session, Model model) {
 		  
 		  // 비로그인 : 로그인페이지로 연결 
