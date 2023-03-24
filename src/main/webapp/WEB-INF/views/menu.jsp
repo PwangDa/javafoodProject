@@ -13,6 +13,7 @@
 	let id = '${loginId}'
 	let imgjpg ='${param.imgjpg}'	
 	console.log('imgjpg : ',imgjpg)
+	console.log('id : ',${loginId})
 </script>
 </head>
 <body>
@@ -35,10 +36,10 @@
         </div>
 
         <span id="spa" class="abc">
-        	<c:if test="${param.imgjpg == loginId}">
+        	<c:if test="${param.imgjpg != null}">
 		        <a href="/my_page"><img class="menu-img" src="/ajax/filedo?fileName=${loginId}.JPG"></a>
         	</c:if>
-	        <c:if test="${param.imgjpg != loginId}">
+	        <c:if test="${param.imgjpg == null}">
 		        <c:if test="${loginImg!=null}">
 			        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
 		        </c:if>
