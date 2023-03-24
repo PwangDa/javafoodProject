@@ -428,6 +428,43 @@ public void addContent(Map info)
 	System.out.println("추가 된 곡의 수 : " + insert); //확인용
 	
 }
+
+@Override
+/**
+ * 	플레이 리스트 내역의 선택된 곡을 삭제합니다.
+ *  전달인자 : 삭제할 곡들의 listNumber가 담긴 리스트와, 추가할 플레이 리스트의 id(pl_id)가 들어가야 합니다.
+ */
+public void deleteCheckedSongs(Map info)
+{
+	System.out.println("JavafoodDAOImpl의 deleteCheckedSongs 메서드 실행됨."); //확인용
+	
+	int delete = 0;
+	
+	//for문을 이용하여 insert를 songNumber 갯수 만큼 시도하기
+	for(int i=0; i<( (String[])info.get("listNumber") ).length; i++)
+	{
+		//HashMap에 담긴 songNumber 리스트 요소를 불러오기
+		//불러온 요소를 필드에 담기
+		String tempListNumber = ( (String[])info.get("listNumber") )[i];
+		System.out.println("deleteCheckedSongs의 tempListNumber는 : " + tempListNumber); //확인용
+		System.out.println("deleteCheckedSongs의 pl_id는 : " + (String)info.get("pl_id") ); //확인용
+		
+		//HashMap에 tempSongNumber와 pl_id를 담기
+		Map tempInfo = new HashMap();
+		tempInfo.put("listNumber", tempListNumber);
+		tempInfo.put("pl_id", info.get("pl_id") );
+		
+		int result = sqlSession.insert("mapper.javafood.deletePlayListContent", tempInfo);
+		if(result > 0)
+		{
+			delete++;
+		}
+	}
+	
+	System.out.println("삭제 할 곡의 수 : " + ( (String[])info.get("listNumber") ).length); //확인용
+	System.out.println("삭제 된 곡의 수 : " + delete); //확인용
+	
+}
 ////////////////////////////////////////////////////////////
 
 	//경용

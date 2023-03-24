@@ -61,8 +61,7 @@ public interface JavafoodService {
 	
 	//플레이 리스트 추가하기
 	void addPlayList(Map<String, String> info);
-	
-	
+
 	//플레이 리스트 내역(Content) 삭제하기
 	void deletePlayListContent(Map<String, String> info);
 	
@@ -74,6 +73,9 @@ public interface JavafoodService {
 	
 	//플레이 리스트에 노래 추가하기
 	void addContent(Map info);
+	
+	//플레이 리스트 내역의 선택된 곡 삭제하기
+	void deleteCheckedSongs(Map info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인

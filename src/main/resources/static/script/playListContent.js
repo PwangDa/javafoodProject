@@ -5,6 +5,8 @@
     let editBtn = document.querySelector("span#editList");
     let editInputs = document.querySelectorAll(".edit");
 	let inputEditListBtn = document.querySelector("input.editList_btn");
+	
+	let inputCheck = document.querySelectorAll("input.checkListNumber");
     
 
     
@@ -89,8 +91,26 @@
 		});
 		console.log("체크된 노래의 listNumber : " + checkedListNumber);
 		
+		if(checkedListNumber.length > 0)
+		{
+			document.querySelector("span.deleteChecked").classList.remove("hidden");
+		}
+		else
+		{
+			document.querySelector("span.deleteChecked").classList.add("hidden");
+		}
+		
 		return checkedListNumber;
 	}
+	
+	//getCheckedSong()은 체크박스에 onclick으로 걸어둠.
+	
+
+    
+    
+    
+    
+    
     
     (function (){  
         document.onmousemove=function (e){ var ob=document.getElementById("foo").style; ob.left=e.pageX+15+"px"; ob.top=e.pageY+15+"px";}

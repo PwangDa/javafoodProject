@@ -288,6 +288,16 @@ public class JavafoodServiceImpl implements JavafoodService {
 		//dao의 addContent 메서드 실행하기.
 		javaDAO.addContent(info);
 	}
+	
+	//범주 플레이 리스트 내역의 선택된 곡 삭제하기
+	@Override
+	public void deleteCheckedSongs(Map info)
+	{
+		System.out.println("JavafoodServiceImpl의 deleteCheckedSongs 메서드 실행됨."); //확인용
+		
+		//dao의 deleteCheckedSongs 메서드 실행하기.
+		javaDAO.deleteCheckedSongs(info);
+	}
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
