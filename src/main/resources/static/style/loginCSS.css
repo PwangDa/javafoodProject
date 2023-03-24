@@ -29,6 +29,12 @@ hr{
     border: 0;
     border-top: 1px solid rgb(98, 98, 98);
    }
+   
+a{
+	text-decoration: none;
+	color: white;
+}
+
 .sub{
 	margin-top: 10px;
 	width: 100px; 
