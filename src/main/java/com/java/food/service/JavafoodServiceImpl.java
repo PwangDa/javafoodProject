@@ -310,6 +310,16 @@ public List<login_DTO> userfind_pw(login_DTO dto) {
 		//dao의 addContent 메서드 실행하기.
 		javaDAO.addContent(info);
 	}
+	
+	//범주 플레이 리스트 내역의 선택된 곡 삭제하기
+	@Override
+	public void deleteCheckedSongs(Map info)
+	{
+		System.out.println("JavafoodServiceImpl의 deleteCheckedSongs 메서드 실행됨."); //확인용
+		
+		//dao의 deleteCheckedSongs 메서드 실행하기.
+		javaDAO.deleteCheckedSongs(info);
+	}
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인
@@ -696,6 +706,11 @@ public List<login_DTO> userfind_pw(login_DTO dto) {
 		@Override
 		public int update_album(AlbumDTO dto) {
 			return javaDAO.update_album(dto);
+		}
+	//아티스트 수정
+		@Override
+		public int update_artist(AlbumDTO dto) {
+			return javaDAO.update_artist(dto);
 		}
 		
 		// 음악 삭제

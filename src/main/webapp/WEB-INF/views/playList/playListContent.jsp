@@ -92,22 +92,26 @@
 				<form name="deleteList">
 					<input type="hidden" name="pl_id" value="${ playListContent[0].pl_id }">
 					<input type="hidden" name="id" value="<%=id %>">
-					<input type="hidden" name="javafood" value="3_5">
+<!-- 					<input type="hidden" name="javafood" value="3_5"> -->
 					<span id="delete">
-						<img class="delete_icon" src="https://cdn.discordapp.com/attachments/931150181540450368/1075584965003182150/x_before.JPG" width="50">
+						<img class="delete_icon" src="https://cdn.discordapp.com/attachments/931150181540450368/1088648505633022022/1201.png" width="35">
 						<div style="font-size:12px; text-align:center;">삭제하기</div>
 					</span>
+				</form>
 					<span id="editList">
 						<img id="editList" class="editList" src="https://cdn.discordapp.com/attachments/931150181540450368/1087936598156525578/edit-icon.png">
 		 				<div style="font-size:12px; text-align:center; width:50px; height:50px;" id="editList" class="editList">리스트<br>수정</div>
 					</span>
-				</form>
+					<span id="deleteChecked" class="deleteChecked hidden">
+						<img class="deleteChecked" src="https://cdn.discordapp.com/attachments/931150181540450368/1088650921006862347/x-square-close-delete.256x256.png" width="35">
+						<div style="font-size:12px; text-align:center; width:50px; height:50px;" class="deleteChecked">선택곡<br>삭제</div>
+					</span>
  			</span>
  				
 			<div class="list_parent">
 			<c:forEach var="list" items="${ playListContent }">
 				<div class="list_child">
-					<input style="vertical-align:top;" class="checkListNumber" type="checkbox" name="listNumber" value="${ list.listNumber }">
+					<input style="vertical-align:top;" class="checkListNumber" type="checkbox" name="listNumber" value="${ list.listNumber }" onclick="getCheckedSong()">
 					<a href="albumpage?album=${ list.album_name }"><img class="album" src="${ list.imageLink }"></a>
 					<div class="list_info">
 						<a href="${ list.link }" target="_blank"><span class="song_title">${ list.songName }</span></a>
@@ -137,6 +141,31 @@
    	
    	<!-- js파일 불러오기 -->
    	<script src="/script/playListContent.js"></script>
+   	<!-- js파일에서 사용하지 못하는 스크립트 -->
+   	<script>
+		document.querySelector("span.deleteChecked").addEventListener("click", ()=>
+		{
+			let checkedListNumber = getCheckedSong();
+			
+			if(checkedListNumber.length > 0)
+			{
+				if(confirm("정말로 선택된 곡을 삭제하시겠습니까?") )
+				{
+					let string = "";
+					for(let i=0; i<checkedListNumber.length; i++)
+					{
+						string += "listNumber=";
+						string += checkedListNumber[i];
+						if(checkedListNumber.length-1 != i)
+						{
+							string += "&";
+						}
+					}
+					location.href = "/deleteCheckedSongs?pl_id="+<%= pl_id %>+"&listImage=<%= listImage %>&"+string;
+				}
+			}
+		});
+   	</script>
    	
    	
 </body>

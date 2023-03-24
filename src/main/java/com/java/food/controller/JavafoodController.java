@@ -796,6 +796,7 @@ public class JavafoodController {
 		//플레이 리스트 내역으로 리다이렉트 하기
 		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
+	
 	@RequestMapping("/addContentInNew")
 	public String addContentInNew(HttpServletRequest request, HttpSession session)
 	{
@@ -819,6 +820,30 @@ public class JavafoodController {
 		javaService.addContent(info);
 		
 		//플레이 리스트 내역으로 리다이렉트 하기
+		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
+	}
+	
+	@RequestMapping("/deleteCheckedSongs")
+	public String deleteCheckedSongs(HttpServletRequest request, Model model)
+	{
+		System.out.println("JavafoodController의 deleteCheckedSongs 메서드 실행됨."); //확인용
+		
+		//주소에서 전달된 값 받기
+		String pl_id = request.getParameter("pl_id");
+		System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 pl_id의 값 : " + pl_id); //확인용
+    	String listImage = request.getParameter("listImage");
+    	System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 listImage의 값 : " + listImage); //확인용
+    	String[] listNumber = request.getParameterValues("listNumber");
+    	
+    	//받은 값들을 HashMap에 저장하기
+    	Map info = new HashMap();
+    	info.put("listNumber", listNumber);
+    	info.put("pl_id", pl_id);
+    	
+    	//service에서 deleteCheckedSongs 메서드 실행하기
+    	javaService.deleteCheckedSongs(info);
+    	
+    	//플레이 리스트 내역으로 리다이렉트 하기
 		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
 ////////////////////////////////////////////////////////////
@@ -947,6 +972,22 @@ public class JavafoodController {
 		}
 	}
 	
+	//프로필 사진 유무 확인
+	@PostMapping("ajax/file")
+	@ResponseBody
+	public int file(
+			HttpServletRequest re
+			) {
+		File file = new File("C:\\javafood\\"+re.getSession().getAttribute("loginId")+".JPG");
+		int i=0;
+		if(file.exists()) {
+			log.info("프로필 사진이 있내요");
+			i++;
+			System.out.println(file);
+		}else log.info("프로필 사진이 없내요");
+		return i;
+	}
+	
 	//아자스를 이용한 파일 업로드
 	@PostMapping("/ajax/fileup")
 	@ResponseBody
@@ -992,49 +1033,46 @@ public class JavafoodController {
 	
 	//이미지 파일 불러오기
 	@RequestMapping("ajax/filedo")
-	@ResponseBody
 	public void dd(
 			HttpServletRequest request,
 			HttpServletResponse response
 			) {
 		log.info("이미지 불러오기");
-		if(request.getParameter("fileName")!=null && "".equals(request.getParameter("fileName"))) {
-			System.out.println("fileName : "+request.getParameter("fileName"));
-			String file_repo = "C:\\javafood";
-			String fileName = (String) request.getParameter("fileName");
-			String downFile = file_repo + System.getProperty("file.separator") + fileName;
-			System.out.println("폴더 구분자 1 : "+ System.getProperty("file.separator"));
-			System.out.println("폴더 구분자 2 : "+ File.separator);
-			//	지정한 파일 그 자체
-			File f = new File(downFile);
-			//	파일을 읽을 흐름을 열어서 준비
-			//	java가 해당 파일을 사용 중
-			try {
-				System.out.println("이미지를 불러옵니다.");
-				FileInputStream in = new FileInputStream( f );
-				//	브라우저가 cache를 사용하지 않도록
-				response.setHeader("Cache-Control", "no-cache");
-				//	전달 받은 내용을 파일로 인식하도록
-				response.addHeader("Content-disposition", "attachment; fileName="+fileName);
-				//	파일을 내보낼 수 있는 흐름을 열어서 준비
-				OutputStream out = response.getOutputStream();
-				byte[] buf = new byte[1024 * 8];		//byte 배열; 8kB
-				while(true) {
-					//배열의 크기만큼 읽기
-					int count = in.read(buf);
-					System.out.println("읽은 크기 : count : "+ count);
-					//읽은 내용이 더이상 없으면 -1을 반환
-					if(count == -1) {
-						break;
-					}
-					//응답의 흐름에 읽은 만큼 보내기
-					out.write(buf, 0, count);
+		System.out.println("fileName : "+request.getParameter("fileName"));
+		String file_repo = "C:\\javafood";
+		String fileName = (String) request.getParameter("fileName");
+		String downFile = file_repo + System.getProperty("file.separator") + fileName;
+		System.out.println("폴더 구분자 1 : "+ System.getProperty("file.separator"));
+		System.out.println("폴더 구분자 2 : "+ File.separator);
+		//	지정한 파일 그 자체
+		File f = new File(downFile);
+		//	파일을 읽을 흐름을 열어서 준비
+		//	java가 해당 파일을 사용 중
+		try {
+			System.out.println("이미지를 불러옵니다.");
+			FileInputStream in = new FileInputStream( f );
+			//	브라우저가 cache를 사용하지 않도록
+			response.setHeader("Cache-Control", "no-cache");
+			//	전달 받은 내용을 파일로 인식하도록
+			response.addHeader("Content-disposition", "attachment; fileName="+fileName);
+			//	파일을 내보낼 수 있는 흐름을 열어서 준비
+			OutputStream out = response.getOutputStream();
+			byte[] buf = new byte[1024 * 8];		//byte 배열; 8kB
+			while(true) {
+				//배열의 크기만큼 읽기
+				int count = in.read(buf);
+				System.out.println("읽은 크기 : count : "+ count);
+				//읽은 내용이 더이상 없으면 -1을 반환
+				if(count == -1) {
+					break;
 				}
-				in.close();
-				out.close();
-			} catch (Exception e) {
-				System.out.println("이미지 가 비어있습니다.");
+				//응답의 흐름에 읽은 만큼 보내기
+				out.write(buf, 0, count);
 			}
+			in.close();
+			out.close();
+		} catch (Exception e) {
+			System.out.println("이미지 가 비어있습니다.");
 		}
 	}
 	

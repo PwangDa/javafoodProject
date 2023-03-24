@@ -41,6 +41,7 @@ public interface JavafoodDAO {
 	int albumplus(AlbumDTO dto);
 	
 	int update_album(AlbumDTO dto);
+	int update_artist(AlbumDTO dto);
 	
 ////////////////////////////////////////////////////////////
 //귀범
@@ -93,6 +94,9 @@ public interface JavafoodDAO {
 	
 	//플레이 리스트에 곡 추가하기
 	void addContent(Map info);
+	
+//플레이 리스트 내역의 선택된 곡 삭제하기
+	void deleteCheckedSongs(Map info);
 ////////////////////////////////////////////////////////////
 //경용
 	//로그인 정보 확인

@@ -645,7 +645,13 @@
                 <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">부탁드립니다.</span></p>
                 <p style="text-align: center; line-height: 1.5;"><br /></p>
                 <p><br /></p>
-            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
+            <div>
+        		<input type="checkbox" name="layer_close"> 
+                <span style="color: black">
+                	10분동안 보지 않기
+                </span>
+            </div>    
+            <div style="cursor:pointer;background-color:#989898;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
                 <span class="pop_bt" style="font-size: 13pt;" >
                      닫기
                 </span>

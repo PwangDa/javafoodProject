@@ -570,6 +570,19 @@
 	</update>
 	
 
+	<!-- 아티스트테이블 수정-->
+	<update id="update_artist" parameterType="AlbumDTO">
+		UPDATE 
+			artist 
+		SET 
+			A_NUM = #{a_num},
+			ARTISTNAME = #{artistname},
+			ARTIST_INFO = #{artist_info},
+			ARTIST_IMG = #{artist_img}
+		WHERE 
+			ARTISTNAME = #{artistname}
+	</update>
+	
 	<!-- 앨범테이블 수정-->
 	<update id="update_album" parameterType="AlbumDTO">
 		UPDATE 
