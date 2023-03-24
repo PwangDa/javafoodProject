@@ -41,14 +41,18 @@ xml.onload=function(){
 	console.log('아자스 값 : ',xml.responseText)
     z=xml.responseText;
     console.log('id : ', id)
-//    if(z==1){
-//        alert('이미지가져옴');
-//        if(abc==null)
-//        	location.href='?abc=1'
-//	}else{
-//        console.log(z)
-//        let a='asd'
-//        alert('이미지 못가져옴');
-//    }
+    if(z==1){
+        console.log('이미지가져옴');
+        if(imgjpg != id){
+        	if(location.href.indexOf("?")==-1)
+        		location.href=location.href+'?imgjpg='+id
+			else
+        		location.href=location.href+'&imgjpg='+id
+		}
+	}else{
+        console.log('z : ',z)
+        console.log('이미지 못가져옴');
+    }
 }
+	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

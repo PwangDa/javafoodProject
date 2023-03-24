@@ -11,7 +11,8 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <script> 
 	let id = '${loginId}'
-	let abc = '${abc}'	
+	let imgjpg ='${param.imgjpg}'	
+	console.log('imgjpg : ',imgjpg)
 </script>
 </head>
 <body>
@@ -32,12 +33,12 @@
                 <button class="search-btn" type="button" id="cli">검색</button>
             </div>
         </div>
-        
+
         <span id="spa" class="abc">
-        	<c:if test="${abc!=null}">
-      	  		<a href="/my_page"><img class="menu-img" src="/ajax/filedo?fileName=${loginId}.JPG"></a>
+        	<c:if test="${param.imgjpg == loginId}">
+		        <a href="/my_page"><img class="menu-img" src="/ajax/filedo?fileName=${loginId}.JPG"></a>
         	</c:if>
-	        <c:if test="${abc==null }">
+	        <c:if test="${param.imgjpg != loginId}">
 		        <c:if test="${loginImg!=null}">
 			        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
 		        </c:if>
@@ -59,6 +60,9 @@
 		</c:if>
 		<c:if test="${loginId!=null }">
 			<a class="at" id="outId">로그아웃</a><br>
+		</c:if>
+		<c:if test="">
+			
 		</c:if>
 	</div>
 	
