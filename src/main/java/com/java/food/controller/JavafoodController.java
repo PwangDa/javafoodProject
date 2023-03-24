@@ -407,31 +407,83 @@ public class JavafoodController {
 			return "redirect:/chart";
 		}
 		
+		// 서버 시간
 		@GetMapping("/get-current-time")
 	    public @ResponseBody LocalDateTime getCurrentTime() {
 			/* System.out.println(LocalDateTime.now()); */
 	        return LocalDateTime.now();
 	    }
 		
-		// 계정 찾기
-		@RequestMapping(value="/searchuser", method=RequestMethod.GET)
-		public String searchuser(HttpServletRequest request, Model model, login_DTO logindto) {
-			model.addAttribute("nic", logindto.getNIC());
+		//아이디, 비밀번호 찾기
+		@RequestMapping(value="/searchuser", method= RequestMethod.GET)
+		public String userfind() {
 			
 			return "/chart/searchuser";
 			
 		}
 		
-		// 계정 찾기 결과
-		@RequestMapping(value="/searchuserresult", method=RequestMethod.GET)
-		public String searchuserresult(HttpServletRequest request, Model model, login_DTO logindto) {
+		//아이디 찾기 상세
+		@RequestMapping(value="/userfind_id", method=RequestMethod.POST)
+		public String userfind_id(String findid_nic, String findid_totalphone, login_DTO dto, Model model) {
 			
-			return "/chart/searchuserresult";
+			String nic = findid_nic;	// 닉네임
+			String phone = findid_totalphone;	//전화번호
+			dto.setNIC(nic);	//dto에 nic 세팅
+			dto.setPHONE(phone);	//dto에 phone 세팅
+			login_DTO findid = (login_DTO) javaService.userfind_id(dto);	// service 아이디찾기 메소드 호출
+			//아이디 찾기 값이 null=값이 없으면?
+			if( findid == null) {
+				model.addAttribute("check",1);
+			} else {
+				model.addAttribute("check",0);
+				model.addAttribute("findid",findid);
+			}
+			return "/lky/login";
 			
 		}
 		
-
-
+		//비밀번호 찾기 상세
+		@RequestMapping(value="/userfind_pw", method=RequestMethod.POST)
+		public String userfind_pw(String findpw_id, String findpw_nic, String findpw_totalphone, login_DTO dto, Model model) {
+			
+			String id = findpw_id;	//아이디
+			String nic = findpw_nic;	//닉네임
+			String phone = findpw_totalphone;	//전화번호
+			dto.setID(id);	// dto에 id 세팅
+			dto.setNIC(nic);	//dto에 nic 세팅
+			dto.setPHONE(phone);	//dto에 phone 세팅
+			login_DTO findpw = (login_DTO) javaService.userfind_pw(dto);	//service 비밀번호찾기 메소드 호출
+			//일치하는 정보가 없다면?
+			if( findpw == null ) {
+				model.addAttribute("check2",1);
+			}else {
+				model.addAttribute("check2",0);
+				model.addAttribute("findpw", findpw);
+			}
+			return "/lky/login";
+		}
+		
+		
+		  @RequestMapping(value="/searchuser", method=RequestMethod.GET) public String
+		  searchuser(HttpSession session, Model model) {
+		  
+		  // 비로그인 : 로그인페이지로 연결 
+			  if(session.getAttribute("id")== null) {
+				  model.addAttribute("msg", "로그인 해주세요."); 
+				  model.addAttribute("url","/lky/login"); 
+				  
+				  return "/lky/login"; 
+			  } 
+		//로그인된 상태 : 바로 연결
+			  return "/lky/My_page";
+		  }
+		 
+		  
+		  
+		  
+		  
+		  
+		 
 ////////////////////////////////////////////////////////////
 //	// 범주
 	// 플레이 리스트 불러오기

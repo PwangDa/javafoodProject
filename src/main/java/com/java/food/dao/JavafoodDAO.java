@@ -60,7 +60,10 @@ public interface JavafoodDAO {
 	List<FamousChartDTO> selectDance(String genre);
 	
 	// id 찾기
-	List<login_DTO> searchuser(String nic);
+	List<login_DTO> userfind_id(login_DTO dto);
+	
+	// pw 찾기
+	List<login_DTO> userfind_pw(login_DTO dto);
 
 ////////////////////////////////////////////////////////////
 //범주
@@ -132,6 +135,10 @@ public interface JavafoodDAO {
 	// 음악 삭제 
 	int delete_song(GenreDTO dto);
 ////////////////////////////////////////////////////////////
+
+	
+
+	
 
 
 

@@ -177,23 +177,27 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return page;
 	}
 	
-	// id 찾기
-	public Map<String, Object> searchuser(Map<String, Object> user) {
+	// 아이디 찾기
+	public List<login_DTO> userfind_id(login_DTO dto) {
 		
-		Map<String, Object> searchuser = new HashMap<String, Object>();
-		List<login_DTO> list = javaDAO.searchuser("nic");
-		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getNIC().equals(user.get("nic"))) {
-				System.out.println(user.get("nic"));
-			
-				user.put("nic", list.get(i).getNIC());
-				}
-			}
+		List<login_DTO> page = null;
 		
-			return searchuser;
-		}
+		page = javaDAO.userfind_id(dto);
 		
-	
+		
+		return page;
+	}
+		
+	// 비밀번호 찾기
+public List<login_DTO> userfind_pw(login_DTO dto) {
+		
+		List<login_DTO> page = null;
+		
+		page = javaDAO.userfind_pw(dto);
+		
+		
+		return page;
+	}
 	
 ////////////////////////////////////////////////////////////
 //범주

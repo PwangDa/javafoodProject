@@ -220,13 +220,21 @@ public List<FamousChartDTO> selectDance(String genre){
 }
 
 // id 찾기
-public List<login_DTO> searchuser(String nic){
+@Override
+public List<login_DTO> userfind_id(login_DTO dto) {
+	List<login_DTO> userfind_id = sqlSession.selectList("mapper.javafood.userfind_id");
 	
-	List<login_DTO> page = null;
-	page = sqlSession.selectList("mapper.javafood.login", nic);
+	return userfind_id;
 	
-	return page;
 	
+}
+
+// pw 찾기
+@Override
+public List<login_DTO> userfind_pw(login_DTO dto){
+	List<login_DTO> userfind_pw = sqlSession.selectList("mapper.javafood.userfind_pw");
+	
+	return userfind_pw;
 }
 
 ////////////////////////////////////////////////////////////

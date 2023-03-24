@@ -49,6 +49,12 @@ public interface JavafoodService {
 	// 댄스 장르 출력 메소드
 	List<FamousChartDTO> selectDance(String genre);
 	
+	// id 찾기
+	List<login_DTO> userfind_id(login_DTO dto);
+	
+	// pw 찾기
+	List<login_DTO> userfind_pw(login_DTO dto);
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//플레이 리스트 불러오기
