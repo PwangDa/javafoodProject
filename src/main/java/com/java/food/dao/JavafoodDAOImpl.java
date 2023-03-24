@@ -222,19 +222,22 @@ public List<FamousChartDTO> selectDance(String genre){
 
 //회원 있는지 여부 확인
 public String pwFind_Lookup( login_DTO dto) {
-	String result = sqlSession.selectOne("pwFind_lookup", dto);
+	System.out.println("JavafoodDAOImpl > pwFind_Lookup > dto.getID() : "+ dto.getID());
+	String result = sqlSession.selectOne("mapper.javafood.pwFind_lookup", dto);
 	return result;
 }
 //회원 메일 있는지 확인
 	public String pwFind_ok( login_DTO dto ) {
-		String result = sqlSession.selectOne( "pwFind_ok", dto );
+		String result = sqlSession.selectOne( "mapper.javafood.pwFind_ok", dto );
+		System.out.println(result);
 		return result;
 	}
 	
 	//회원 비밀번호 가져오기
 	public login_DTO pwFind_select( login_DTO dto ) {
-		login_DTO to = sqlSession.selectOne("pwFind_select", dto);
-		return dto;
+		login_DTO to = sqlSession.selectOne("mapper.javafood.pwFind_select", dto);
+		System.out.println(to);
+		return to;
 	}
 
 

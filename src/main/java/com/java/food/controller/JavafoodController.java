@@ -416,13 +416,15 @@ public class JavafoodController {
 			/* System.out.println(LocalDateTime.now()); */
 	        return LocalDateTime.now();
 	    }
-		
+		// id 찾는 곳이 되어야함 
 		// 비밀번호 찾기
 		@RequestMapping(value="/pwFindForm_ok")
 		public String pwFindForm_ok(HttpServletRequest request, HttpServletResponse response, @ModelAttribute login_DTO dto) {
 			int flag = 2;
 			
 			String id = request.getParameter("id");
+			System.out.println("/pwFindForm_ok > id : "+ id);
+			
 			String email = request.getParameter("email");
 			
 			dto.setID(id);

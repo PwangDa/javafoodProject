@@ -66,6 +66,7 @@ public interface JavafoodDAO {
 	//회원 메일 있는지 확인
 	String pwFind_ok( login_DTO dto );
 	
+	
 	//회원 비밀번호 가져오기
 	login_DTO pwFind_select( login_DTO dto );
 	
