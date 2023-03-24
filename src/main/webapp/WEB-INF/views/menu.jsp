@@ -62,12 +62,12 @@
 		<c:if test="${loginId!=null }">
 			<a class="at" id="outId">로그아웃</a><br>
 		</c:if>
-		<c:if test="">
-			
+		<c:if test="${loginId=='master' }">
+			<a class="at" href="/insert_song">관리자 페이지</a>
 		</c:if>
 	</div>
 	
-
+	
 </body>
 <script link src ="/script/menuScript.js"></script>
 </html>
