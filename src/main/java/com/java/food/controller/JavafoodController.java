@@ -744,6 +744,7 @@ public class JavafoodController {
 		//플레이 리스트 내역으로 리다이렉트 하기
 		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
+	
 	@RequestMapping("/addContentInNew")
 	public String addContentInNew(HttpServletRequest request, HttpSession session)
 	{
@@ -767,6 +768,30 @@ public class JavafoodController {
 		javaService.addContent(info);
 		
 		//플레이 리스트 내역으로 리다이렉트 하기
+		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
+	}
+	
+	@RequestMapping("/deleteCheckedSongs")
+	public String deleteCheckedSongs(HttpServletRequest request, Model model)
+	{
+		System.out.println("JavafoodController의 deleteCheckedSongs 메서드 실행됨."); //확인용
+		
+		//주소에서 전달된 값 받기
+		String pl_id = request.getParameter("pl_id");
+		System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 pl_id의 값 : " + pl_id); //확인용
+    	String listImage = request.getParameter("listImage");
+    	System.out.println("JavafoodController에서 addContentInNew를 실행하며 주소에서 받은 listImage의 값 : " + listImage); //확인용
+    	String[] listNumber = request.getParameterValues("listNumber");
+    	
+    	//받은 값들을 HashMap에 저장하기
+    	Map info = new HashMap();
+    	info.put("listNumber", listNumber);
+    	info.put("pl_id", pl_id);
+    	
+    	//service에서 deleteCheckedSongs 메서드 실행하기
+    	javaService.deleteCheckedSongs(info);
+    	
+    	//플레이 리스트 내역으로 리다이렉트 하기
 		return "redirect:playListContent?pl_id="+pl_id+"&listImage="+listImage;
 	}
 ////////////////////////////////////////////////////////////

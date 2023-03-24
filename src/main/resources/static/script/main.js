@@ -166,7 +166,8 @@
        //쿠키 시간 설정 
     function setCookie(cname, cvalue, exdays) { 
     	var d = new Date(); 
-        d.setTime(d.getTime() + (exdays*24*60*60*1000)); //시간설정 
+        d.setTime(d.getTime() + (exdays*10*60*1000)); //시간설정 
+ //       d.setTime(d.getTime() + (exdays*24*60*60*1000)); //시간설정 
         var expires = "expires="+d.toUTCString(); 
         var temp = cname + "=" + cvalue + "; " + expires; 
         console.log('temp >> '+temp);

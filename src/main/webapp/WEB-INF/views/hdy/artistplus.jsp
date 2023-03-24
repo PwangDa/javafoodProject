@@ -63,26 +63,25 @@
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-								<form action="/modify/artist">
-							<td>
-								<input class="text_a text_d" type="text" name="a_num" placeholder="${artist.a_num}" value="${artist.a_num}">
-							</td>
-							<td>
-								<input class="text_a text_b" type="text" name="artistname" placeholder="${artist.artistname}" value="${artist.artistname}">
-							</td>
-							<td>
-								<textarea class="text_c" name="artist_info" placeholder="${artist.artist_info}" value="${artist.artist_info}"></textarea>
-							</td>
-							<td>
-								<textarea class="text_c" name="artist_img" placeholder="${artist.artist_img}" value="${artist.artist_img}"></textarea>
-							</td>
-							<td>
+							<form id="join_1" action="/update_artist">
+								<td>
+									<input class="text_a text_d" type="text" name="a_num" placeholder="${artist.a_num}" value="${artist.a_num}">
+								</td>
+								<td>
+									<input class="text_a text_b" type="text" name="artistname" placeholder="${artist.artistname}" value="${artist.artistname}">
+								</td>
+								<td>
+									<textarea class="text_c" name="artist_info" placeholder="${artist.artist_info}" value="${artist.artist_info}">${artist.artist_info}</textarea>
+								</td>
+								<td>
+									<textarea class="text_c" name="artist_img" placeholder="${artist.artist_img}" value="${artist.artist_img}">${artist.artist_img}</textarea>
+								</td>
+								<td>
 									<input class="butt_2" type="submit" value="수정">
-									<input type="hidden" name="artistname" value="${artist.artistname}">
-							</td>
-								</form>
+								</td>
+							</form>
 							<td>
-								<form action="/delete/artist">
+								<form id="join_2" action="/delete/artist">
 									<input class="butt_2" type="submit" value="삭제">
 									<input type="hidden" name="artistname" value="${artist.artistname}">
 								</form>

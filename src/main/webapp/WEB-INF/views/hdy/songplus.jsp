@@ -67,7 +67,7 @@
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-							<form action="">
+							<form id="join_1" action="">
 							<td>
 								<input class="text_a text_d" type="text" name="album_num" placeholder="${artist.album_num}" value="${artist.album_num}">
 							</td>

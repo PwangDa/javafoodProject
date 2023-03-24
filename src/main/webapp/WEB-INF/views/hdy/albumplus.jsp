@@ -70,7 +70,7 @@
 					<tbody id="tbody">
 					<c:forEach var="artist" items= "${list }" >
 						<tr>
-							<form action="/update_album">
+							<form id="join_1" action="/update_album">
 							<td>
 								<input class="text_a text_d" type="text" name="album_num" placeholder="${artist.album_num}" value="${artist.album_num}">
 							</td>
@@ -90,7 +90,7 @@
 							</td>
 							</form>
 							<td>
-								<form action="/delete/album">
+								<form id="join_2" action="/delete/album">
 									<input class="butt_2" type="submit" value="삭제">
 									<input type="hidden" name="album_num" value="${artist.album_num}">
 								</form>

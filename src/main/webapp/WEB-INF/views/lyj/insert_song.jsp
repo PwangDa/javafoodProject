@@ -87,7 +87,7 @@
 					<tbody id="tbody">
 					<c:forEach var="genre" items= "${list }" >
 						<tr>
-						<form action="/update_song_up">
+						<form id="join_1" action="/update_song_up">
 							<td>
 								<input class="text_a text_b" type="text" name="songnumber" placeholder="${genre.songnumber}" value="${genre.songnumber}" readonly>
 							</td>
@@ -126,7 +126,7 @@
 							</td>
 						</form>
 							<td>
-								<form action="/delete_song">
+								<form id="join_2" action="/delete_song">
 									<input class="butt_2" type="submit" value="삭제">
 									<input type="hidden" name="songnumber" value="${genre.songnumber}">
 								</form>
