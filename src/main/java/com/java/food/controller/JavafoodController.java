@@ -1391,17 +1391,6 @@ public class JavafoodController {
 					return "redirect:/list/genre?";
 				}
 
-		// 아티스트 테이블 수정 페이지
-		@RequestMapping ("/update_artist")
-		public String update_artist(Model model,
-				@ModelAttribute	AlbumDTO dto
-				) {
-			System.out.println("아티스트 정보를 수정합니다. : " + dto);
-			System.out.println(dto.getArtistname());			
-			int update = javaService.update_artist(dto);
-					
-			return "redirect:/list/artist";
-		}
 		// 앨범 테이블 수정 페이지
 		@RequestMapping ("/update_album")
 		public String update_song(Model model,
@@ -1416,7 +1405,7 @@ public class JavafoodController {
 		}
 
 				
-		// 관리자 genre에서 노래 삭제 페이지
+		// 노래 수정 페이지
 				@RequestMapping ("/delete_song")
 				public String delete_song(Model model,	
 						HttpServletRequest request,
