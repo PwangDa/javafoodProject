@@ -187,17 +187,30 @@
 	
 	</select>
 	
-	<!-- id 찾기 귀범 -->
-		<select id="userfind_id" resultType="com.java.food.dto.login_DTO">
-			select id from login
-			where nic=#{nic} and phone=#{phone}
-		</select>
-		
-	<!-- pw 찾기 귀범 -->
-		<select id="userfind_pw" resultType="com.java.food.dto.login_DTO">
-			select pw from login
-			where id=#{id} and nic=#{nic} and phone=#{phone}
-		</select>
+	<!-- 회원여부 귀범  -->
+	<select id="pwFind_lookup"
+		parameterType="com.java.food.dto.login_DTO" resultType="String">
+		SELECT COUNT( ID )
+		FROM LOGIN
+		WHERE ID = #{ ID };
+	</select>
+	
+	<!-- 메일 확인 귀범 -->
+	<select id="pwFind_ok" parameterType="com.java.food.dto.login_DTO"
+		resultType="Int">
+		SELECT COUNT(ID)
+		FROM LOGIN
+		WHERE ID = #{ID} AND EMAIL = #{EMAIL}
+	</select>
+	
+	<!-- 비밀번호 확인 귀범-->
+	<select id="pwFind_select"
+		parameterType="com.java.food.dto.login_DTO"
+		resultType="com.java.food.dto.login_DTO">
+		SELECT PWD
+		FROM LOGIN
+		WHERE ID = #{ID} AND EMAIL = #{EMAIL}
+	</select>
 	
 	<!-- 장르별-->
 	<select id="genre" resultType="genreDTO" parameterType="java.util.HashMap">

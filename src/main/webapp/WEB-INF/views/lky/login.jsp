@@ -178,7 +178,7 @@
 					            	Remember me
 				            	</span>
 				            	<span class ="chec" style= "margin-left :77px;">
-				            		<a href="/searchuser">계정 찾기</a>
+				            		<a href="/pwFindForm_ok">비밀번호 찾기</a>
 			            		</span>
 					            <p><a href="/login?membership=0" class="at"><c:out value="아직 JavaMusic을 사용하고 있지 않으신가요? 가입하기"/></a></p>
 					        </div>

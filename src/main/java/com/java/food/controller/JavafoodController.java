@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.java.food.dao.JavafoodDAO;
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
 import com.java.food.dto.FamousChartDTO;
@@ -50,7 +51,9 @@ public class JavafoodController {
 
 	@Autowired
 	JavafoodService javaService;
-
+	
+	@Autowired
+	JavafoodDAO javaDAO;
 ////////////////////////////////////////////////////////////
 	// 다영
 	@RequestMapping(value = "/artistpage", method = RequestMethod.GET)
@@ -414,71 +417,72 @@ public class JavafoodController {
 	        return LocalDateTime.now();
 	    }
 		
-		//아이디, 비밀번호 찾기
-		@RequestMapping(value="/searchuser", method= RequestMethod.GET)
-		public String userfind() {
+		// 비밀번호 찾기
+		@RequestMapping(value="/pwFindForm_ok")
+		public String pwFindForm_ok(HttpServletRequest request, HttpServletResponse response, @ModelAttribute login_DTO dto) {
+			int flag = 2;
 			
-			return "/chart/searchuser";
+			String id = request.getParameter("id");
+			String email = request.getParameter("email");
 			
-		}
-		
-		//아이디 찾기 상세
-		@RequestMapping(value="/userfind_id", method=RequestMethod.POST)
-		public String userfind_id(String findid_nic, String findid_totalphone, login_DTO dto, Model model) {
+			dto.setID(id);
+			dto.setEMAIL(email);
 			
-			String nic = findid_nic;	// 닉네임
-			String phone = findid_totalphone;	//전화번호
-			dto.setNIC(nic);	//dto에 nic 세팅
-			dto.setPHONE(phone);	//dto에 phone 세팅
-			login_DTO findid = (login_DTO) javaService.userfind_id(dto);	// service 아이디찾기 메소드 호출
-			//아이디 찾기 값이 null=값이 없으면?
-			if( findid == null) {
-				model.addAttribute("check",1);
-			} else {
-				model.addAttribute("check",0);
-				model.addAttribute("findid",findid);
+			String result_lookup = javaDAO.pwFind_Lookup(dto);
+			if (result_lookup.equals("1")) {	//회원있음
+				
+				// 메일확인
+				String pwFind_ok = javaDAO.pwFind_ok(dto);
+				
+				if(pwFind_ok.equals("1")) {	//메일 일치
+					dto = javaDAO.pwFind_select(dto);
+					
+					// 암호회 된 비밀번호 풀어주는 작업
+					String key = "secret Key";
+					String realPwd = javaDAO.pwFind_select(dto).getPWD();
+					String decryPwd = javaDAO.decryptAES(realPwd, key);
+					
+					// 비밀번호 길이를 2로 나누어서
+					int pwdSize = decryPwd.length()/2;
+					
+					String resultPwd_1 = decryPwd.substring(0, pwdSize);
+					
+					// 뒤의 절반은 *로 표시
+					String tmp = "";
+					if (pwdSize%2 == 1) {	// 홀수인 경우 * 한개 더 추가
+						for( int i=0; i<pwdSize+1; i++ ) {
+							tmp += "*";
+						}
+						
+					}else {
+						for (int i=0; i<pwdSize; i++) {
+							tmp += "*";
+						}
+					}
+					String resultPwd = resultPwd_1 + tmp;
+					
+					flag = 0;
+					
+					// 표시될 비밀번호를 pwd에 담음
+					dto.setPWD(resultPwd);
+					
+					request.setAttribute("pwd", dto.getPWD());
+					request.setAttribute("id", id);
+				} else if(pwFind_ok.equals("0")) {		//메일 x
+					flag = 1;
+				} else {		//기타 오류
+					flag = 3;
+				}
+			} else if (result_lookup.equals("0")) {	// 회원없음
+				flag = 2;
+			} else {	// 기타오류
+				flag = 3;
 			}
-			return "/lky/login";
+			request.setAttribute("flag", flag);
 			
+			return "chart/pwFindForm_ok";
 		}
-		
-		//비밀번호 찾기 상세
-		@RequestMapping(value="/userfind_pw", method=RequestMethod.POST)
-		public String userfind_pw(String findpw_id, String findpw_nic, String findpw_totalphone, login_DTO dto, Model model) {
-			
-			String id = findpw_id;	//아이디
-			String nic = findpw_nic;	//닉네임
-			String phone = findpw_totalphone;	//전화번호
-			dto.setID(id);	// dto에 id 세팅
-			dto.setNIC(nic);	//dto에 nic 세팅
-			dto.setPHONE(phone);	//dto에 phone 세팅
-			login_DTO findpw = (login_DTO) javaService.userfind_pw(dto);	//service 비밀번호찾기 메소드 호출
-			//일치하는 정보가 없다면?
-			if( findpw == null ) {
-				model.addAttribute("check2",1);
-			}else {
-				model.addAttribute("check2",0);
-				model.addAttribute("findpw", findpw);
-			}
-			return "/lky/login";
-		}
-		
-		
-		  @RequestMapping(value="/searchuser2", method=RequestMethod.GET) public String
-		  searchuser(HttpSession session, Model model) {
-		  
-		  // 비로그인 : 로그인페이지로 연결 
-			  if(session.getAttribute("id")== null) {
-				  model.addAttribute("msg", "로그인 해주세요."); 
-				  model.addAttribute("url","/lky/login"); 
-				  
-				  return "/lky/login"; 
-			  } 
-		//로그인된 상태 : 바로 연결
-			  return "/lky/My_page";
-		  }
 		 
-		  
 		  
 		  
 		  
