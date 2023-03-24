@@ -19,8 +19,11 @@
 <body>
     <header id ="menu" style="display: inline-block;" >
         <span style="font-size: 34px; font-weight: 600; cursor: pointer;">
-        <a href="/main" class="a1"><img src="https://c11.kr/1asbb" class="logo-img">Music</a>
+        	<a href="/main" class="a1"><img src="https://c11.kr/1asbb" class="logo-img"></a>
         </span>
+        <span style="vertical-align: top; font-size: 34px; font-weight: 600; cursor: pointer;">
+			<a href="/main" class="a1">Music</a>     
+		</span>
         <div class="menu-box">
             <a href="/main" class="a1"><span class="main main_1" >홈</span></a>
             <a href="/genre" class="a1"><span class="main main_2" >장르별</span></a>
@@ -34,20 +37,20 @@
                 <button class="search-btn" type="button" id="cli">검색</button>
             </div>
         </div>
+	        <div id="spa" class="abc">
+	        	<c:if test="${param.imgjpg != null}">
+			        <a href="/my_page"><img class="menu-img" src="/ajax/filedo?fileName=${loginId}.JPG"></a>
+	        	</c:if>
+		        <c:if test="${param.imgjpg == null}">
+			        <c:if test="${loginImg!=null}">
+				        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
+			        </c:if>
+			        <c:if test="${loginImg==null}">
+						<a href="/my_page"><img class="menu-img" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png"></a>
+			        </c:if>
+		        </c:if>
+	    	</div>
 
-        <span id="spa" class="abc">
-        	<c:if test="${param.imgjpg != null}">
-		        <a href="/my_page"><img class="menu-img" src="/ajax/filedo?fileName=${loginId}.JPG"></a>
-        	</c:if>
-	        <c:if test="${param.imgjpg == null}">
-		        <c:if test="${loginImg!=null}">
-			        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
-		        </c:if>
-		        <c:if test="${loginImg==null}">
-					<a href="/my_page"><img class="menu-img" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png"></a>
-		        </c:if>
-	        </c:if>
-    	</span>
         
         
         
@@ -62,12 +65,12 @@
 		<c:if test="${loginId!=null }">
 			<a class="at" id="outId">로그아웃</a><br>
 		</c:if>
-		<c:if test="">
-			
+		<c:if test="${loginId=='master' }">
+			<a class="at" href="/insert_song">관리자 페이지</a>
 		</c:if>
 	</div>
 	
-
+	
 </body>
 <script link src ="/script/menuScript.js"></script>
 </html>

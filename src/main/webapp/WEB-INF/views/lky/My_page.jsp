@@ -46,7 +46,7 @@
 	                        <img src="/ajax/filedo?fileName=${loginId}.JPG"
 	                            style="width: 150px;height: 150px;">
 	                    </div>
-						<input class="butt" type="button" id="but" value="업로드">
+						<input class="butt" type="button" id="but" value="JPG사진업로드">
 	                </div>
 	            </div>
 	        </form>

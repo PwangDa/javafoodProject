@@ -60,8 +60,9 @@ header{
 .menu-box{
     display: inline-block;
     position:absolute;
-    left: 50%;
+    left: 30%;
     top: 10px;
+    width: 565px;
 }
 .main{
     color: rgb(159, 159, 159);
@@ -139,7 +140,6 @@ header{
 /*프로필사진*/
 .menu-img{
     width: 38px;
-    float: right;
     border-radius: 70%;
     margin: 6px 14px;
 }
@@ -154,4 +154,9 @@ header{
 .at:hover{
     color: white;
     cursor: pointer;
+}
+
+#spa{
+	display: inline-block;
+	float: right;
 }

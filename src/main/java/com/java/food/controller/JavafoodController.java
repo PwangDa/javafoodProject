@@ -196,7 +196,7 @@ public class JavafoodController {
 //		if(nic_o.equals(nic)) {
 //			int article = javaService.delComment(no);
 //		}
-		if(login_id.equals(id)) {
+		if(login_id.equals(id) || login_id.equals("master")) {
 			int article = javaService.delComment(no);
 		}
 		

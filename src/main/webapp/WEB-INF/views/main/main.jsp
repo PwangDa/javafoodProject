@@ -46,9 +46,35 @@
 	<br>
 <%-- 상단 버튼 3개 --%>
 	<div class="topArea">
-        <a class="topButton" href="popular_Music"><span>최신 음악</span></a>
-        <a class="topButton" href="chart"><span>차트</span></a>
-        <a class="topButton" href="genre"><span>장르</span></a>
+        <a class="topButton" href="popular_Music">
+        	<span>
+        		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-beamed" viewBox="0 0 16 16">
+  					<path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z"/>
+  					<path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z"/>
+  					<path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z"/>
+				</svg>
+        		최신 음악
+        	</span>
+        </a>
+        <a class="topButton" href="chart">
+        	<span>
+        		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+  					<path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+				</svg>
+        		차트
+        	</span>
+        </a>
+        <a class="topButton" href="genre">
+        	<span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-boombox" viewBox="0 0 16 16">
+  					<path d="M2.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm7.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm1.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm-7-1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm5.5 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/>
+				  	<path d="M11.5 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm0-1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3ZM5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/>
+				  	<path d="M7 10.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-1 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z"/>
+				  	<path d="M14 0a.5.5 0 0 1 .5.5V2h.5a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12.5V.5A.5.5 0 0 1 14 0ZM1 3v3h14V3H1Zm14 4H1v7h14V7Z"/>
+				</svg>
+        		장르
+        	</span>
+        </a>
     </div>
     
     <br>
@@ -361,7 +387,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -387,7 +413,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -412,7 +438,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -437,7 +463,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -462,7 +488,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -487,7 +513,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -512,7 +538,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -537,7 +563,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -562,7 +588,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
@@ -587,7 +613,7 @@
 			                    <a href="/albumpage?album=${hitList.album_name}"><img class="thumnail" src="${hitList.imagelink }"></a>
 			                </div>
 			    
-			                <div class="hitListRank">${hitList.songnumber }</div>
+			                <div class="hitListRank"></div>
 			    
 			                <div class="songContentInfo">
 			    
