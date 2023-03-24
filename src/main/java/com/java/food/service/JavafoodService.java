@@ -36,6 +36,7 @@ public interface JavafoodService {
 	List searchInto(String album);
 	List searchAlbum(AlbumDTO dto);
 	int update_album(AlbumDTO dto);
+	int update_artist(AlbumDTO dto);
 ////////////////////////////////////////////////////////////
 //귀범
 //	List<FamousChartDTO> getChart(String songnumber);

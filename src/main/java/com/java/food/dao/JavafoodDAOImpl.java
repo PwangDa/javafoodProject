@@ -688,6 +688,12 @@ public void addContent(Map info)
 		}
 		
 
+		// 아티스트테이블 수정 페이지
+		public int update_artist(AlbumDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_artist", dto);
+			System.out.println("artist DB에 업데이트! : " + update);
+			return update;
+		}
 		// 앨범테이블 수정 페이지
 		public int update_album(AlbumDTO dto) {
 			int update = sqlSession.update("mapper.javafood.update_album", dto);
