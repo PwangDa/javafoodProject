@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+</head>
+
+<body>
+    <input type="button" id="pay" value="카카오 페이">
+
+    <script>
+
+        document.querySelector("#pay").addEventListener("click", function () {
+            send2();
+        })
+
+        function send() {
+            // CORS 발생
+            let xhr = new XMLHttpRequest();
+            xhr.open('post', "https://kapi.kakao.com/v1/payment/ready");
+            xhr.setRequestHeader('Authorization', auth);
+            xhr.setRequestHeader('Content-type', "application/x-www-form-urlencoded;charset=utf-8");
+            xhr.send(JSON.stringify(data));
+            xhr.onload = function () {
+                console.log(xhr.responseText);
+            }
+        }
+
+        function send2() {
+            let admin_key = "f50c7b40fe69d3b0e2f9f0cf1c9b365d";
+            let auth = "KakaoAK " + admin_key;
+            let _data = {
+                cid: "TC0ONETIME", // 가맹점 코드
+                partner_order_id: "partner_order_id", // 가맹점 주문번호
+                partner_user_id: "partner_user_id", // 가맹점 회원 id
+                item_name: "자바뮤직 1개월 이용권",
+                item_code: "HP1234", // 상품 코드-내부관리용; 필수 아님
+                quantity: 2,
+                total_amount: 10000,
+                tax_free_amount: 0,
+                approval_url: "http://localhost:8080/succ.html", // 성공 url
+                cancel_url: "http://localhost:8080/2.html", // 취소 url
+                fail_url: "http://localhost:8080/3.html", // 실패 url
+                install_month: "3" // 할부개월; 필수 아님
+            }
+            
+            $.ajax({
+                url: "https://kapi.kakao.com/v1/payment/ready",
+                type: "post",
+                headers: {
+                    "Authorization": auth,
+                    'Content-type': "application/x-www-form-urlencoded;charset=utf-8"
+                },
+                data: _data,
+                success: function (data) {
+                    console.log(data)
+                    location.href = data.next_redirect_pc_url;
+                },
+                error: function (xhr) {
+                    console.log(xhr)
+                }
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
