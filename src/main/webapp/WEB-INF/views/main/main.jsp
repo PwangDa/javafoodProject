@@ -648,7 +648,7 @@
             <div>
         		<input type="checkbox" name="layer_close"> 
                 <span style="color: black">
-                	하루동안 보지 않기
+                	10분동안 보지 않기
                 </span>
             </div>    
             <div style="cursor:pointer;background-color:#989898;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
