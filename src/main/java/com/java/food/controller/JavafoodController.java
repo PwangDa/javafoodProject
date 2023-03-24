@@ -894,9 +894,24 @@ public class JavafoodController {
 		}
 	}
 	
+	//프로필 사진 유무 확인
+	@PostMapping("ajax/file")
+	@ResponseBody
+	public int file(
+			HttpServletRequest re
+			) {
+		File file = new File("C:\\javafood\\"+re.getSession().getAttribute("loginId")+".JPG");
+		int i=0;
+		if(file.exists()) {
+			log.info("프로필 사진이 있내요");
+			i++;
+			System.out.println(file);
+		}else log.info("프로필 사진이 없내요");
+		return i;
+	}
+	
 	//아자스를 이용한 파일 업로드
 	@PostMapping("/ajax/fileup")
-	@ResponseBody
 	public void uploadFile(
 	    @RequestParam("uploadfile") MultipartFile uploadfile ,
 	    HttpServletRequest re

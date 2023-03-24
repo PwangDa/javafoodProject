@@ -9,7 +9,10 @@
 
 <link rel="stylesheet" href="/style/menuCSS.css?css=css">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-<script> let id = '${loginId}'</script>
+<script> 
+	let id = '${loginId}'
+	let abc = '${abc}'	
+</script>
 </head>
 <body>
     <header id ="menu" style="display: inline-block;" >
@@ -30,19 +33,17 @@
             </div>
         </div>
         
-        <h1>${a }</h1>
-        <h1>${a }</h1>
-        <h1>${a }</h1>
-        <h1>${a }</h1>
-        <h1>${a }</h1>
-        <h1>${a }</h1>
-        <h1>${a }</h1>
         <span id="spa" class="abc">
-	        <c:if test="${loginImg!=null}">
-		        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
-	        </c:if>
-	        <c:if test="${loginImg==null}">
-				<a href="/my_page"><img class="menu-img" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png"></a>
+        	<c:if test="${abc!=null}">
+      	  		<a href="/my_page"><img class="menu-img" src="/ajax/filedo?fileName=${loginId}.JPG"></a>
+        	</c:if>
+	        <c:if test="${abc==null }">
+		        <c:if test="${loginImg!=null}">
+			        <a href="/my_page"><img class="menu-img" src=" ${loginImg}"></a>
+		        </c:if>
+		        <c:if test="${loginImg==null}">
+					<a href="/my_page"><img class="menu-img" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png"></a>
+		        </c:if>
 	        </c:if>
     	</span>
         
