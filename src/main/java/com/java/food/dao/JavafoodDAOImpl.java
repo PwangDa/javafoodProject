@@ -219,6 +219,16 @@ public List<FamousChartDTO> selectDance(String genre){
 	return page;
 }
 
+// id 찾기
+public List<login_DTO> searchuser(String nic){
+	
+	List<login_DTO> page = null;
+	page = sqlSession.selectList("mapper.javafood.login", nic);
+	
+	return page;
+	
+}
+
 ////////////////////////////////////////////////////////////
 //범주
 @Override
@@ -682,7 +692,7 @@ public void deleteCheckedSongs(Map info)
 			logger.info("listComment list.size >>>"+list.size()); 
 			return list;
 		}
-		
+		//아티스트관리페이지에서 검색조회
 		@Override
 		public List searchArtist(String artist) {
 			List list = new ArrayList();
@@ -691,7 +701,57 @@ public void deleteCheckedSongs(Map info)
 			return list;
 		}
 		
-	
+		//intoAlbum관리페이지에서 앨범검색조회
+		@Override
+		public List searchInto(String album) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchInto", album);
+			System.out.println(album+" : 앨범조회!!!!!");
+			return list;
+		}
+		//앨범관리페이지에서 검색조회
+		@Override
+		public List searchAlbum(AlbumDTO dto) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchAlbum", dto);
+			System.out.println(dto+" : !!!search조회!!!!!");
+			return list;
+		}
+		// 음악 수정 페이지
+		public int update_song(GenreDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_song", dto);
+			System.out.println("dao에 update : " + update);
+			return update;
+		}
+		
+
+		// 아티스트테이블 수정 페이지
+		public int update_artist(AlbumDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_artist", dto);
+			System.out.println("artist DB에 업데이트! : " + update);
+			return update;
+		}
+		// 앨범테이블 수정 페이지
+		public int update_album(AlbumDTO dto) {
+			int update = sqlSession.update("mapper.javafood.update_album", dto);
+			System.out.println("album_3에 업데이트! : " + update);
+			return update;
+		}
+		// 음악 삭제 페이지
+		public int delete_song(GenreDTO dto) {
+			int delete = sqlSession.delete("mapper.javafood.delete_song", dto);
+			System.out.println("dao에 delete : " + delete);
+			return delete;
+
+		}
+		//앨범관리페이지에서 앨범 삭제
+		@Override
+		public int delAlbum(int album_num) {
+			int delete = sqlSession.delete("mapper.javafood.delete_album", album_num);
+			System.out.println("album delete : " + delete);
+			return delete;
+
+		}
 
 
 ////////////////////////////////////////////////////////////

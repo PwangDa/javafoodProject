@@ -26,6 +26,7 @@ function loging(){
 //화면 로딩후 진행
 window.onload=function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//저장된 아이디 쿠키값 가져오기
 	$('#idcook').on('click',function(){
 		console.log('쿠키값 가져오기')
 		let cookie = 'id';
@@ -42,31 +43,24 @@ window.onload=function() {
 			}else $('#id12').val('')
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//사진 파일 업로드
-	$('#but').on('click',function (){
-		var url = $("#form").attr("action");
-		var form = $('#form')[0];
-		var formData = new FormData(form);
-		
-		console.log(url)
-		console.log(form)
-		console.log(formData)
-		
-		$.ajax({
-			url: url,
-			type: 'POST',
-			data: formData,
-			contentType: false,
-			processData: false,
-			cache: false,
-			success: function () {
-				alert("이미지 저장 성공")
-				location.href='#';
-			},
-			error: function () {
-				alert("이미지 저장 실패")
-			}
-		})
+// 프로필 파일 업로드
+	$('#but').on('click',function () {
+	  $.ajax({
+	    url: "/ajax/fileup",
+	    type: "POST",
+	    data: new FormData($("#form")[0]),
+	    enctype: 'multipart/form-data',
+	    processData: false,
+	    contentType: false,
+	    cache: false,
+	    success: function () {
+	    	alert("이미지 저장 성공")
+	    	location.href = '/my_page?page=a';
+	    },
+	    error: function () {
+	    	alert("이미지 저장 실패")
+	    }
+	  })
 	})
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //호그인 화면의 아이디/비밀번호 텍스트 비우기

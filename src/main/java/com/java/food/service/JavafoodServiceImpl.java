@@ -177,6 +177,24 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return page;
 	}
 	
+	// id 찾기
+	public Map<String, Object> searchuser(Map<String, Object> user) {
+		
+		Map<String, Object> searchuser = new HashMap<String, Object>();
+		List<login_DTO> list = javaDAO.searchuser("nic");
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getNIC().equals(user.get("nic"))) {
+				System.out.println(user.get("nic"));
+			
+				user.put("nic", list.get(i).getNIC());
+				}
+			}
+		
+			return searchuser;
+		}
+		
+	
+	
 ////////////////////////////////////////////////////////////
 //범주
 	//범주 플레이 리스트 불러오기
@@ -634,7 +652,79 @@ public class JavafoodServiceImpl implements JavafoodService {
 			List searchArtist= javaDAO.searchArtist(artist);
 			return searchArtist;
 		}
+		//intoAlbum 관리페이지에서 앨범 이름 검색했을 때
+		@Override	
+		public List searchInto(String album) {
+			System.out.println("searchAlbum 앨범조회 접속!!");
+			List searchAlbum= javaDAO.searchInto(album);
+			return searchAlbum;
+		}
+		//앨범관리페이지에서 각각 이름 검색했을 때
+		@Override	
+		public List searchAlbum(AlbumDTO dto) {
+			System.out.println("searchAlbum 앨범검색메소드 접속!!");
+			System.out.println("opt >>>>>>"+dto.getOpt());
+			System.out.println("album_name >>>>>>"+dto.getAlbum_name());
+			List searchAlbum= javaDAO.searchAlbum(dto);
+			return searchAlbum;
+		}
 		
+		// 음악추가 페이지
+		
+				@Override
+				public int update_song(GenreDTO dto) {
+					
+					if(
+							dto.getArtistname() != null && dto.getArtistname() != "" && 
+							dto.getSongname() != null && dto.getSongname() != "" && 
+							dto.getLink() != null && dto.getLink() != "" &&
+							dto.getAlbum_name() != null && dto.getAlbum_name() != "" &&
+							dto.getBygenre() != null && dto.getBygenre() != "" &&
+							dto.getPlaytime() != null && dto.getPlaytime() != "" &&
+							dto.getImagelink() != null && dto.getImagelink() != "" &&
+							dto.getAlbum_add() != null && dto.getAlbum_add() != "" &&
+							dto.getArtist_add() != null && dto.getArtist_add() != "" &&
+							dto.getCountry() != null && dto.getCountry() != ""
+							
+						) {
+						System.out.println("server update 성공");
+						return javaDAO.update_song(dto);
+						
+					} else {
+						System.out.println("server update 모든 값을 입력하시오. ");
+					}
+					return 0;
+				}
+				
+				
+				
+	//앨범 수정
+		@Override
+		public int update_album(AlbumDTO dto) {
+			return javaDAO.update_album(dto);
+		}
+	//아티스트 수정
+		@Override
+		public int update_artist(AlbumDTO dto) {
+			return javaDAO.update_artist(dto);
+		}
+		
+		// 음악 삭제
+				
+				@Override
+				public int delete_song(GenreDTO dto) {
+					
+					System.out.println("server delete 성공");
+					return javaDAO.delete_song(dto);
+				}
+				
+		@Override
+		public int delAlbum(int album_num) {
+					
+			System.out.println("album delete 성공");
+			return javaDAO.delAlbum(album_num);
+		}
+				
 		
 }
 

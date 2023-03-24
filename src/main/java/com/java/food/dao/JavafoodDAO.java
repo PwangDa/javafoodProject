@@ -26,16 +26,22 @@ public interface JavafoodDAO {
 	List<CommentDTO> listComment();
 	
 	List searchArtist(String artist);
+	List searchInto(String album);
+	List searchAlbum(AlbumDTO dto);
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
 	
 	int delComment(int articleNO);
+	int delAlbum(int album_num);
 	
 	List randomGenre(String genre);
 	List randomArtist();
 	
 	int artistplus(AlbumDTO dto);
 	int albumplus(AlbumDTO dto);
+	
+	int update_album(AlbumDTO dto);
+	int update_artist(AlbumDTO dto);
 	
 ////////////////////////////////////////////////////////////
 //귀범
@@ -53,7 +59,9 @@ public interface JavafoodDAO {
 	
 	// 댄스 장르 출력
 	List<FamousChartDTO> selectDance(String genre);
-
+	
+	// id 찾기
+	List<login_DTO> searchuser(String nic);
 
 ////////////////////////////////////////////////////////////
 //범주
@@ -121,6 +129,12 @@ public interface JavafoodDAO {
 	
 	//Genre관리자 페이지에서 목록 전체조회 출력
 	List<GenreDTO> listGenre();
+	
+	// 음악 수정
+	int update_song(GenreDTO dto);
+
+	// 음악 삭제 
+	int delete_song(GenreDTO dto);
 ////////////////////////////////////////////////////////////
 
 

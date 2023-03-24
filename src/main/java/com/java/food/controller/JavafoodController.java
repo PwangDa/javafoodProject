@@ -3,7 +3,9 @@ package com.java.food.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.file.Paths;
@@ -20,14 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +35,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import com.java.food.dto.AlbumDTO;
 import com.java.food.dto.CommentDTO;
@@ -222,6 +218,15 @@ public class JavafoodController {
 		int article = javaService.delComment(no);
 		return "forward:/list/comment";
 	}
+	
+	//관리자 페이지에서 앨범테이블 정보 삭제할 때
+	@RequestMapping(value = "/delete/album", method = { RequestMethod.GET, RequestMethod.DELETE })
+	public String deletAlbum(Model model, 
+			@RequestParam("album_num") int num) {
+		System.out.println("앨범관리페이지에서 앨범정보 삭제합니다.");
+		int album_num = javaService.delAlbum(num);
+		return "forward:/list/album";
+	}
 
 	// 앨범수록곡 페이지 들어갈 때
 	@RequestMapping(value = "/albumpage", method = RequestMethod.GET)
@@ -241,20 +246,10 @@ public class JavafoodController {
 	// 앨범정보를 추가하는 메소드
 	@RequestMapping(value = "/albumplus", method = RequestMethod.GET)
 	public String albumplus(Model model, 
-			@ModelAttribute AlbumDTO dto,
-			@RequestParam("album_num") String al_num,
-			@RequestParam("album_cover") String cover, 
-			@RequestParam("album_name") String al_name, 
-			@RequestParam("album_into") String al_into,
-			@RequestParam("artistname") String artist_name ) {
+			@ModelAttribute AlbumDTO dto) {
 		System.out.println("새 앨범을 추가합니다");
-			dto.setAlbum_num(al_num);
-			dto.setAlbum_cover(cover);
-			dto.setAlbum_name(al_name);
-			dto.setAlbum_into(al_into);
-			dto.setArtistname(artist_name);
-			
-			int count = javaService.albumplus(dto);
+		
+		int count = javaService.albumplus(dto);
 		
 		return "redirect:/insert_album";
 	}
@@ -418,81 +413,23 @@ public class JavafoodController {
 	        return LocalDateTime.now();
 	    }
 		
-		// 아이디 찾기
-		@RequestMapping(value="/chart/search_id", method=RequestMethod.GET)
-		public String search_id(HttpServletRequest request, Model model, login_DTO logindto) {
+		// 계정 찾기
+		@RequestMapping(value="/searchuser", method=RequestMethod.GET)
+		public String searchuser(HttpServletRequest request, Model model, login_DTO logindto) {
+			model.addAttribute("nic", logindto.getNIC());
 			
-			return "/chart/search_id";
-			
-		}
-		
-		// 비밀번호 찾기
-		@RequestMapping(value="/chart/search_pwd", method=RequestMethod.GET)
-		public String search_pwd(HttpServletRequest request, Model model, login_DTO logindto) {
-			
-			return "/chart/search_pwd";
+			return "/chart/searchuser";
 			
 		}
 		
-		// id 찾기 결과
-//		@RequestMapping(value = "/chart/search_result_id")
-//		public String search_result_id(HttpServletRequest request, Model model,
-//		    @RequestParam(required = true, value = "nic") String nic, 
-//		    @RequestParam(required = true, value = "phone") String phone,
-//		    login_DTO logindto) {
-//		 
-//		 
-//		try {
-//		    
-//			logindto.setNIC(nic);
-//			logindto.setPHONE(phone);
-//			login_DTO userSerch = javaService.userIdSearch(logindto);
-//		    
-//		    model.addAttribute("searchUser", userSerch);
-//		 
-//		} catch (Exception e) {
-//		    System.out.println(e.toString());
-//		    model.addAttribute("msg", "오류가 발생되었습니다.");
-//		}
-//		 
-//		return "/search_result_id";
-//		}
-//		
-//		// pw 찾기 결과
-//		@RequestMapping(value = "/chart/search_result_pwd", method = RequestMethod.POST)
-//		public String search_result_pwd(HttpServletRequest request, Model model,
-//		    @RequestParam(required = true, value = "nic") String nic, 
-//		    @RequestParam(required = true, value = "phone") String phone, 
-//		    @RequestParam(required = true, value = "id") String id, 
-//		    login_DTO logindto) {
-//		 
-//		try {
-//		    logindto.setNIC(nic);
-//		    logindto.setPHONE(phone);
-//		    logindto.setID(id);
-//		    int userSerch = javaService.userPwdCheck(logindto);
-//		    
-//		    if(userSerch == 0) {
-//		        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
-//		        return "/chart/search_pwd";
-//		    }
-//		    
-//		    String newPwd = RandomStringUtils.randomAlphanumeric(10);
-//		    System.out.println(newPwd);
-//		    logindto.setPWD(newPwd);
-//		    
-//		    javaService.passwordUpdate(logindto);
-//		    
-//		    model.addAttribute("newPwd", newPwd);
-//		 
-//		} catch (Exception e) {
-//		    System.out.println(e.toString());
-//		    model.addAttribute("msg", "오류가 발생되었습니다.");
-//		}
-//		 
-//		 
-//		return "/chart/search_result_pwd";
-//		}
+		// 계정 찾기 결과
+		@RequestMapping(value="/searchuserresult", method=RequestMethod.GET)
+		public String searchuserresult(HttpServletRequest request, Model model, login_DTO logindto) {
+			
+			return "/chart/searchuserresult";
+			
+		}
+		
 
 
 ////////////////////////////////////////////////////////////
@@ -934,7 +871,6 @@ public class JavafoodController {
 			Model mo,
 			@RequestParam Map<String, Object> map,
 			HttpServletRequest re) {
-		
 		log.info("my_page 접속");
 		String id = (String)re.getSession().getAttribute("loginId");
 		System.out.println("loginId : "+id);
@@ -984,9 +920,24 @@ public class JavafoodController {
 		}
 	}
 	
-	//아자스를 이용한 파일 업로드
-	@PostMapping(value = "/login/ajax/file")
+	//프로필 사진 유무 확인
+	@PostMapping("ajax/file")
 	@ResponseBody
+	public int file(
+			HttpServletRequest re
+			) {
+		File file = new File("C:\\javafood\\"+re.getSession().getAttribute("loginId")+".JPG");
+		int i=0;
+		if(file.exists()) {
+			log.info("프로필 사진이 있내요");
+			i++;
+			System.out.println(file);
+		}else log.info("프로필 사진이 없내요");
+		return i;
+	}
+	
+	//아자스를 이용한 파일 업로드
+	@PostMapping("/ajax/fileup")
 	public void uploadFile(
 	    @RequestParam("uploadfile") MultipartFile uploadfile ,
 	    HttpServletRequest re
@@ -1017,7 +968,7 @@ public class JavafoodController {
 		  String filepath = Paths.get(directory, filename).toString();
 		    
 		  BufferedOutputStream stream =
-		      new BufferedOutputStream(new FileOutputStream(new File(filepath)));
+				  new BufferedOutputStream(new FileOutputStream(new File(filepath)));
 		    
 		  stream.write(uploadfile.getBytes());
 		  stream.close();
@@ -1025,16 +976,55 @@ public class JavafoodController {
 	  catch (Exception e) {
 	    log.info(e.getMessage());
 	  }
-	} 
-	//test
-	@RequestMapping("/test")
-	public String test(
-			HttpServletRequest re
-			) {
-		return "/test";
 	}
-	///////////////////////////
 	
+	//이미지 파일 불러오기
+	@RequestMapping("ajax/filedo")
+	@ResponseBody
+	public void dd(
+			HttpServletRequest request,
+			HttpServletResponse response
+			) {
+		log.info("이미지 불러오기");
+		if(request.getParameter("fileName")!=null && "".equals(request.getParameter("fileName"))) {
+			System.out.println("fileName : "+request.getParameter("fileName"));
+			String file_repo = "C:\\javafood";
+			String fileName = (String) request.getParameter("fileName");
+			String downFile = file_repo + System.getProperty("file.separator") + fileName;
+			System.out.println("폴더 구분자 1 : "+ System.getProperty("file.separator"));
+			System.out.println("폴더 구분자 2 : "+ File.separator);
+			//	지정한 파일 그 자체
+			File f = new File(downFile);
+			//	파일을 읽을 흐름을 열어서 준비
+			//	java가 해당 파일을 사용 중
+			try {
+				System.out.println("이미지를 불러옵니다.");
+				FileInputStream in = new FileInputStream( f );
+				//	브라우저가 cache를 사용하지 않도록
+				response.setHeader("Cache-Control", "no-cache");
+				//	전달 받은 내용을 파일로 인식하도록
+				response.addHeader("Content-disposition", "attachment; fileName="+fileName);
+				//	파일을 내보낼 수 있는 흐름을 열어서 준비
+				OutputStream out = response.getOutputStream();
+				byte[] buf = new byte[1024 * 8];		//byte 배열; 8kB
+				while(true) {
+					//배열의 크기만큼 읽기
+					int count = in.read(buf);
+					System.out.println("읽은 크기 : count : "+ count);
+					//읽은 내용이 더이상 없으면 -1을 반환
+					if(count == -1) {
+						break;
+					}
+					//응답의 흐름에 읽은 만큼 보내기
+					out.write(buf, 0, count);
+				}
+				in.close();
+				out.close();
+			} catch (Exception e) {
+				System.out.println("이미지 가 비어있습니다.");
+			}
+		}
+	}
 	
 	//아자스를 이용한 좋아요 증가
 	@RequestMapping("/my_page/good")
@@ -1376,7 +1366,7 @@ public class JavafoodController {
 			return "forward:/del_comment";
 		}
 		
-		// 관리자 페이지에서 아티스트 검색조회 했을 때
+		// 관리자 아티스트페이지에서 아티스트 검색조회 했을 때
 		@RequestMapping ("/search/artist")
 		public String searchArtist(Model model,	
 				@RequestParam("artistname") String name
@@ -1387,8 +1377,72 @@ public class JavafoodController {
 			model.addAttribute("list", searchArtist);
 			return "forward:/insert_artist";
 		}
+		// 관리자 intoAlbum페이지에서 앨범 검색조회 했을 때
+		@RequestMapping ("/search/intoalbum")
+		public String searchIntoAlbum(Model model,	
+				@RequestParam("album_name") String name
+				) {
+			System.out.println(name+"  : 앨범을 조회합니다.");
+			
+			List searchAlbum = javaService.searchInto(name);
+			model.addAttribute("list", searchAlbum);
+			return "forward:/insert_intoalbum";
+		}
 		
+		// 관리자 앨범페이지에서 아티스트 검색조회 했을 때
+		@RequestMapping ("/search/album")
+		public String searchAlbum(Model model,
+				@RequestParam("opt") String opt,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			dto.setOpt(opt);
+			List searchAlbum = javaService.searchAlbum(dto);
+			System.out.println(searchAlbum.get(0));
+			model.addAttribute("list", searchAlbum);
+			return "forward:/insert_album";
+		}
+		
+		// 노래 수정 페이지
+				@RequestMapping ("/update_song_up")
+				public String update_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 update_song : " + dto);
+					
+					
+					int update = javaService.update_song(dto);
+		
+					return "redirect:/list/genre?";
+				}
 
+		// 앨범 테이블 수정 페이지
+		@RequestMapping ("/update_album")
+		public String update_song(Model model,
+				@ModelAttribute	AlbumDTO dto
+				) {
+			System.out.println("앨범을 수정합니다. : " + dto);
+					
+					
+			int update = javaService.update_album(dto);
+					
+			return "redirect:/list/album";
+		}
 
+				
+		// 노래 수정 페이지
+				@RequestMapping ("/delete_song")
+				public String delete_song(Model model,	
+						HttpServletRequest request,
+						@ModelAttribute	GenreDTO dto
+						) {
+					System.out.println("controller의 delete_song : " + dto);
+					
+					
+					int delete = javaService.delete_song(dto);
+					
+					return "redirect:/list/genre?";
+				}
+				
 ////////////////////////////////////////////////////////////
 }
