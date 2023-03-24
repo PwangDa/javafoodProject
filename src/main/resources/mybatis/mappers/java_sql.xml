@@ -169,7 +169,7 @@
 		
 	</select>
 	
-	<!-- 인기차트 페이징 -->
+	<!-- 인기차트 페이징 귀범 -->
 	<select id="totalpage" resultType="int" parameterType="java.util.HashMap">
 		SELECT count(*) cnt FROM  Genre
 		<where>
@@ -179,13 +179,25 @@
 		</where>
 	</select>
 	
-	<!-- 댄스 장르 출력 -->
+	<!-- 댄스 장르 출력 귀범-->
 	<select id="selectDance" resultType="chartDTO" parameterType="list">
 		SELECT * FROM genre
 		WHERE BYGENRE = #{BYGENRE}
 		ORDER BY SONGNUMBER
 	
 	</select>
+	
+	<!-- id 찾기 귀범 -->
+		<select id="userfind_id" resultType="com.java.food.dto.login_DTO">
+			select id from login
+			where nic=#{nic} and phone=#{phone}
+		</select>
+		
+	<!-- pw 찾기 귀범 -->
+		<select id="userfind_pw" resultType="com.java.food.dto.login_DTO">
+			select pw from login
+			where id=#{id} and nic=#{nic} and phone=#{phone}
+		</select>
 	
 	<!-- 장르별-->
 	<select id="genre" resultType="genreDTO" parameterType="java.util.HashMap">
