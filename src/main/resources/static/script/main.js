@@ -145,10 +145,35 @@
 	
 		//팝업창 jQuery 작동
         jQuery(document).ready(function() {
-                $('#myModal').show();
+			cookiedata = document.cookie; 
+	        if(cookiedata.indexOf("close=Y")<0){ 
+	        	$('#myModal').show();
+	        }else{ 
+	        	$("#myModal").hide(); 
+	        }
         });
+        
         //팝업 Close 기능
         function close_pop(flag) {
-             $('#myModal').hide();
+			 
+			if($("input[name=layer_close]").is(":checked") == true){ 
+        		setCookie("close","Y",1); 
+        	} 
+            $('#myModal').hide();
+            console.log('cookie >> '+cookiedata);
         };
+       
+       //쿠키 시간 설정 
+    function setCookie(cname, cvalue, exdays) { 
+    	var d = new Date(); 
+        d.setTime(d.getTime() + (exdays*24*60*60*1000)); //시간설정 
+        var expires = "expires="+d.toUTCString(); 
+        var temp = cname + "=" + cvalue + "; " + expires; 
+        console.log('temp >> '+temp);
+        document.cookie = temp; 
+    } 
+        
+        
+        
+        
 
