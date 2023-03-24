@@ -413,19 +413,20 @@ public class JavafoodController {
 	        return LocalDateTime.now();
 	    }
 		
-		// 아이디 찾기
-		@RequestMapping(value="/chart/search_id", method=RequestMethod.GET)
-		public String search_id(HttpServletRequest request, Model model, login_DTO logindto) {
+		// 계정 찾기
+		@RequestMapping(value="/searchuser", method=RequestMethod.GET)
+		public String searchuser(HttpServletRequest request, Model model, login_DTO logindto) {
+			model.addAttribute("nic", logindto.getNIC());
 			
-			return "/chart/search_id";
+			return "/chart/searchuser";
 			
 		}
 		
-		// 비밀번호 찾기
-		@RequestMapping(value="/chart/search_pwd", method=RequestMethod.GET)
-		public String search_pwd(HttpServletRequest request, Model model, login_DTO logindto) {
+		// 계정 찾기 결과
+		@RequestMapping(value="/searchuserresult", method=RequestMethod.GET)
+		public String searchuserresult(HttpServletRequest request, Model model, login_DTO logindto) {
 			
-			return "/chart/search_pwd";
+			return "/chart/searchuserresult";
 			
 		}
 		
@@ -1351,6 +1352,17 @@ public class JavafoodController {
 			model.addAttribute("list", searchArtist);
 			return "forward:/insert_artist";
 		}
+		// 관리자 intoAlbum페이지에서 앨범 검색조회 했을 때
+		@RequestMapping ("/search/intoalbum")
+		public String searchIntoAlbum(Model model,	
+				@RequestParam("album_name") String name
+				) {
+			System.out.println(name+"  : 앨범을 조회합니다.");
+			
+			List searchAlbum = javaService.searchInto(name);
+			model.addAttribute("list", searchAlbum);
+			return "forward:/insert_intoalbum";
+		}
 		
 		// 관리자 앨범페이지에서 아티스트 검색조회 했을 때
 		@RequestMapping ("/search/album")
@@ -1359,9 +1371,6 @@ public class JavafoodController {
 				@ModelAttribute	AlbumDTO dto
 				) {
 			dto.setOpt(opt);
-			System.out.println(dto.getArtistname()+" >>>를 조회합니다.");
-			System.out.println(dto.getAlbum_name()+" >>>를 조회합니다.");
-			System.out.println(dto.getOpt().toString()+" >>>를 선택함!!.");
 			List searchAlbum = javaService.searchAlbum(dto);
 			System.out.println(searchAlbum.get(0));
 			model.addAttribute("list", searchAlbum);

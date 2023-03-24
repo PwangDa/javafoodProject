@@ -33,6 +33,7 @@ public interface JavafoodService {
 	List<AlbumDTO> listIntoAlbum();
 	List<CommentDTO> listComment();
 	List searchArtist(String artist); //아티스트 검색조회
+	List searchInto(String album);
 	List searchAlbum(AlbumDTO dto);
 	int update_album(AlbumDTO dto);
 ////////////////////////////////////////////////////////////

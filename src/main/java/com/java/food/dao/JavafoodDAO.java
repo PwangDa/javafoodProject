@@ -26,6 +26,7 @@ public interface JavafoodDAO {
 	List<CommentDTO> listComment();
 	
 	List searchArtist(String artist);
+	List searchInto(String album);
 	List searchAlbum(AlbumDTO dto);
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
@@ -59,7 +60,7 @@ public interface JavafoodDAO {
 	List<FamousChartDTO> selectDance(String genre);
 	
 	// id 찾기
-	// pwd 찾기
+	List<login_DTO> searchuser(String nic);
 
 ////////////////////////////////////////////////////////////
 //범주

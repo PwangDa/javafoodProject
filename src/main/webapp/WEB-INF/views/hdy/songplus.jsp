@@ -44,8 +44,8 @@
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
 <div class="conn_2">
-	<form action="/search/album">
-		<input class="text_a" type="text" name="artistname" placeholder="검색">
+	<form action="/search/intoalbum">
+		<input class="text_a" type="text" name="album_name" placeholder="검색">
 		<input class="butt" type="submit" value="검색">
 	</form>
 </div>

@@ -24,7 +24,7 @@
 
 <c:if test="${re!=null }"><script>alert('회원정보 수정이 완료되었습니다. 다시 로그인 해주세요.')</script></c:if>
 	
-	<h1>쿠키 : 과자</h1>
+	<h1>내가만든 쿠키~</h1>
 
 <c:if test="${membership!=null }">
 
@@ -177,11 +177,9 @@
 					            	<input type="checkbox" id="idcook">
 					            	Remember me
 				            	</span> 
-			            	 <form action="/Usersearch" method="post">
 				            	<span class ="chec" style= "margin-left :77px;">
-				            		<a href="/chart/searchUser">계정 찾기</a>
+				            		<a href="/chart/searchuser">계정 찾기</a>
 			            		</span>
-			            	</form>
 					            <p><a href="/login?membership=0" class="at"><c:out value="아직 JavaMusic을 사용하고 있지 않으신가요? 가입하기"/></a></p>
 					        </div>
 					    </form>

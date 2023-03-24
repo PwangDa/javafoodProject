@@ -220,8 +220,15 @@ public List<FamousChartDTO> selectDance(String genre){
 }
 
 // id 찾기
+public List<login_DTO> searchuser(String nic){
+	
+	List<login_DTO> page = null;
+	page = sqlSession.selectList("mapper.javafood.login", nic);
+	
+	return page;
+	
+}
 
-// pwd 찾기
 ////////////////////////////////////////////////////////////
 //범주
 @Override
@@ -654,6 +661,15 @@ public void addContent(Map info)
 			List list = new ArrayList();
 			list = sqlSession.selectList("mapper.javafood.searchArtist", artist);
 			System.out.println(artist+" : 조회!!!!!");
+			return list;
+		}
+		
+		//intoAlbum관리페이지에서 앨범검색조회
+		@Override
+		public List searchInto(String album) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchInto", album);
+			System.out.println(album+" : 앨범조회!!!!!");
 			return list;
 		}
 		//앨범관리페이지에서 검색조회
