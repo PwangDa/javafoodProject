@@ -145,6 +145,12 @@
 				WHERE rownum <![CDATA[<=]]> 5
 	</select>
 	
+	<!-- 아이디 찾기 할 때 -->
+	<select id="searchID" resultType="loginDTO" parameterType="loginDTO">
+			SELECT * FROM LOGIN
+			WHERE NIC = #{NIC} AND PHONE = #{PHONE}
+	</select>
+	
 	<!-- 인기차트 귀범-->
 	<select id="chart" resultType="chartDTO" parameterType="java.util.HashMap">
 		

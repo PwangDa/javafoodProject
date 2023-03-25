@@ -681,6 +681,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 			return searchAlbum;
 		}
 		
+		
 		// 음악추가 페이지
 		
 				@Override
@@ -729,7 +730,8 @@ public class JavafoodServiceImpl implements JavafoodService {
 					System.out.println("server delete 성공");
 					return javaDAO.delete_song(dto);
 				}
-				
+		
+		//관리자 앨범페이지 에서 앨범 삭제할 때
 		@Override
 		public int delAlbum(int album_num) {
 					
@@ -737,6 +739,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 			return javaDAO.delAlbum(album_num);
 		}
 				
+		//아이디 찾기
+		@Override	
+		public List searchID(login_DTO dto) {
+			System.out.println("닉네임을 검색합니다!!");
+			System.out.println("nic >>>>>>"+dto.getNIC());
+			System.out.println("phone >>>>>>"+dto.getPHONE());
+			List searchID= javaDAO.searchID(dto);
+			return searchID;
+		}
 		
 }
 

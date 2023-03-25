@@ -32,9 +32,12 @@ public interface JavafoodService {
 	List<AlbumDTO> listAlbum();
 	List<AlbumDTO> listIntoAlbum();
 	List<CommentDTO> listComment();
+	
 	List searchArtist(String artist); //아티스트 검색조회
 	List searchInto(String album);
 	List searchAlbum(AlbumDTO dto);
+	List searchID(login_DTO dto);
+	
 	int update_album(AlbumDTO dto);
 	int update_artist(AlbumDTO dto);
 ////////////////////////////////////////////////////////////

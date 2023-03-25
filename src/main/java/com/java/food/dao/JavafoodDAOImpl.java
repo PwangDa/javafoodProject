@@ -723,6 +723,7 @@ public void deleteCheckedSongs(Map info)
 			return list;
 		}
 		
+		
 		//intoAlbum관리페이지에서 앨범검색조회
 		@Override
 		public List searchInto(String album) {
@@ -775,6 +776,14 @@ public void deleteCheckedSongs(Map info)
 
 		}
 		
+		//아이디 찾기
+		@Override
+		public List searchID(login_DTO dto) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchID", dto);
+			System.out.println(dto.getNIC()+" : 조회!!!!!");
+			return list;
+		}
 
 
 ////////////////////////////////////////////////////////////

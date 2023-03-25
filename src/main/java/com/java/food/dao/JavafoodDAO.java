@@ -28,6 +28,8 @@ public interface JavafoodDAO {
 	List searchArtist(String artist);
 	List searchInto(String album);
 	List searchAlbum(AlbumDTO dto);
+	List searchID(login_DTO dto);
+	
 	int insertComment(CommentDTO dto);
 	int replyComment(CommentDTO dto);
 	

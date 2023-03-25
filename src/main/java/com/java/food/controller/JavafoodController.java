@@ -277,6 +277,35 @@ public class JavafoodController {
 
 		return "/hdy/songplus";
 	}
+	
+	//아이디 찾기 페이지로 이동
+	@RequestMapping(value = "/searchID")
+	public String searchID(Model model) {
+		
+		return "/main/searchID";
+	}
+	
+	//아이디찾기 검색결과 페이지로 이동
+	@RequestMapping(value = "/searchID/what")
+	public String searchID_what(Model model,
+			@ModelAttribute login_DTO dto
+			) {
+		
+		System.out.println(dto.getNIC());
+		System.out.println(dto.getPHONE());
+	
+		List searchID = javaService.searchID(dto);
+		if(searchID.size() == 0) {
+			System.out.println("!!!NO ID!!!");
+			model.addAttribute("login", null);
+
+		}else if(searchID.size() != 0) {
+			System.out.println("아이디는 >> "+searchID.get(0));
+			model.addAttribute("login", searchID);
+		}
+			
+		return "/main/searchID_what";
+	}
 ////////////////////////////////////////////////////////////
 	// 귀범
 //	@RequestMapping(value = "/chart", method = RequestMethod.GET)
