@@ -330,7 +330,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 	}
 ////////////////////////////////////////////////////////////
 //경용
-	//로그인
+	/**
+	 * 로그인
+	 * @paramMap map : 로그인 정보 받아오기
+	 * @return map : 세션에 저장할값, 로그인 성공 여부 리턴
+	 */
 	@Override
 	public Map<String, Object> login(Map<String, Object> map) {
 		log.info("로그인 시도");
@@ -359,7 +363,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return m;
 	}
 	
-	//회원가입
+	/**
+	 * 회원가입
+	 * @paramMap map : 회원가입 값 받아오기
+	 * @returnint : 회원가입 성공여부 리턴
+	 */
 	@Override
 	public int addid (Map<String, Object> map) {
 		log.info("회원가입");
@@ -390,7 +398,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return javaDAO.addId(dto);
 	}
 	
-	//아자스로 회원값 중복체크
+	/**
+	 * 아자스로 회원값 중복체크
+	 * @paramMap map : 중복채크 하는 값 받아오기
+	 * @returnint : 중복여부 리턴
+	 */
 	@Override
 	public int what(Map<String, Object> map) {
 		log.info("ajax 중복체크 실행");
@@ -436,7 +448,11 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return a;
 	}
 	
-	//회원 탈퇴
+	/**
+	 * 회원 탈퇴
+	 * @paramString id : 탈퇴하는 아이디값 받아오기
+	 * @returnint : 회원탈퇴 성공여부 리턴
+	 */
 	@Override
 	public int outId(String id) {
 		log.info("회원시작");
@@ -450,7 +466,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return a;
 	}
 	
-	// 로그인 회원 재생목록
+	/**
+	 * 로그인 회원 재생목록
+	 * @paramString id : 세션의 로그인된 아이디값 가져오기
+	 * @paramint i : 현제 페이지 숫자
+	 * @returnMap : 현제 페이지의 내용 리턴
+	 */
 	@Override
 	public Map<String, Object> loginplay(String id, int i){
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -486,7 +507,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 		
 		return map;
 	}
-	//회원정보 수정
+	/**
+	 * 회원정보 수정
+	 * @paramMap map : 회원정보 수정할 값
+	 * @paramString id : 수정할 아이디 값
+	 * @returnint : 회원정보 수정 성공여부
+	 */
 	public int idUpdate(Map<String, Object> map, String id) {
 		log.info("회원정보 수정");
 		login_DTO dto = null;
@@ -510,7 +536,12 @@ public class JavafoodServiceImpl implements JavafoodService {
 			
 	}
 	
-	//좋아요 증가
+	/**
+	 * 좋아요 증가
+	 * @paramString songnumb : 좋아요 증가할 노래 번호
+	 * @paramString id : 좋아요 누르는 아이디값
+	 * @returnint : 좋아요 성공 여부
+	 */
 	public int good(String songnumb, String id) {
 		log.info("good service 실행");
 		int i=0;
@@ -529,13 +560,22 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return i;
 	}
 	
-	//조회수 증가
+	/**
+	 * 조회수 증가
+	 * @paramString song : 조회수 증가할 노래 번호
+	 * @paramString id : 조회수 증가할 아이디값
+	 * @returnint : 조회수 증가 성공 여부
+	 */
 	public int songhit(String song,String id) {
 		log.info("조회수 증가 서비스");
 		return javaDAO.songhit(song, id);
 	}
 	
-	//매뉴 상단바 검색
+	/**
+	 * 매뉴 상단바 검색
+	 * @paramMap map : 검색할 옵션값, 검색내용
+	 * @returnList : 검색 결과값 리턴
+	 */
 	public List<GenreDTO> Search(Map<String, Object> map){
 		log.info("서비스 검색 시작");
 		List<GenreDTO> list = javaDAO.Search(map);
