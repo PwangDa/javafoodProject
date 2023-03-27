@@ -69,18 +69,7 @@ window.addEventListener("load", function() {
 		showServerTime();
 	}, 1000); //1초 단위
 	
-	document.getElementById('submit').onclick = function() {
-			
-			if ( document.pfrm.id.value.trim() == '' ) {
-				alert( 'ID를 입력해주세요' );
-				return false;
-			}
-			if ( document.pfrm.mail.value.trim() == '' ) {
-				alert( '메일을 입력해주세요' );
-				return false;
-			}
-			document.pfrm.submit();
-		}
+	
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 조회수 증가
