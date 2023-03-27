@@ -613,5 +613,10 @@
 			album_num = #{album_num}
 	</delete>
 	
+	<!-- 관리자 장르페이지에서 장르별로 검색할 때 -->
+ 	<select id="searchGenre" resultType="genreDTO" parameterType="String">
+		SELECT * FROM GENRE
+		WHERE LOWER(BYGENRE) LIKE #{bygenre} || '%'
+	</select>
 	
 </mapper>

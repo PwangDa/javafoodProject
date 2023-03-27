@@ -1491,5 +1491,17 @@ public class JavafoodController {
 					return "redirect:/list/genre?";
 				}
 				
+				
+		// 관리자 장르페이지에서 장르 검색조회 했을 때
+		@RequestMapping ("/search/genre")
+		public String searchGenre(Model model,	
+				@RequestParam("genre") String genre
+				) {
+			System.out.println(genre + " 장르를 조회합니다.");
+			
+			List searchGenre = javaService.searchGenre(genre);
+			model.addAttribute("list", searchGenre);
+			return "forward:/insert_song";
+		}
 ////////////////////////////////////////////////////////////
 }

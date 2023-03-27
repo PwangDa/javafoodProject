@@ -762,6 +762,15 @@ public void deleteCheckedSongs(Map info)
 			System.out.println(dto.getNIC()+" : 조회!!!!!");
 			return list;
 		}
+		
+		//아티스트관리페이지에서 검색조회
+		@Override
+		public List searchGenre(String genre) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchGenre", genre);
+			System.out.println(genre+" : 조회!!!!!");
+			return list;
+		}
 
 
 ////////////////////////////////////////////////////////////
