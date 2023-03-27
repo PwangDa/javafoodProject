@@ -34,8 +34,8 @@
 					            <input class="sub sub1" type="submit" value="아이디 찾기">
 					            <br>
 					            <br>
-					            <a href="/login" style="margin-right: 140px; font-size:10px;">로그인 하러가기</a>
-					            <a href="/login?membership=0" style="font-size:10px;">회원가입 하러가기</a>
+					            <a href="/login" style="margin-right: 140px; font-size:13px;">로그인 하러가기</a>
+					            <a href="/login?membership=0" style="font-size:13px;">회원가입 하러가기</a>
 					            </div>
 					    </form>
 					 </div>
