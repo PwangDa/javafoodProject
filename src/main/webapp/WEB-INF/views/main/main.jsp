@@ -716,8 +716,8 @@
 		if
 		(
 				konamiCommand == "rhksflwkvpdlwl"
-// 				&&
-<%-- 				"admin".equals("<%= id %>")  --%>
+				&&
+				"master" == "<%= id %>"
 		)
 		{
 			window.open('http://localhost:8080/insert_song');
