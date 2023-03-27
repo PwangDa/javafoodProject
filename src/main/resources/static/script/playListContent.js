@@ -107,8 +107,20 @@
 	
 
     
-    
-    
+    document.querySelector("input.chk_url").addEventListener("change", ()=>
+	{
+	//	console.log("change됨.");
+		document.querySelector(".editList_imageUrl").classList.remove("hidden");
+		document.querySelector(".addList_imageFile").classList.add("hidden");
+	});
+	
+	document.querySelector("input.chk_file").addEventListener("change", ()=>
+	{
+	//	console.log("change 또됨.");
+		document.querySelector(".editList_imageUrl").classList.add("hidden");
+		document.querySelector(".addList_imageFile").classList.remove("hidden");
+	});
+	    
     
     
     

@@ -29,12 +29,25 @@
     
     <!-- 플레이 리스트 추가하는 폼 -->
     <div class="search hidden">
-        <form name = "PL_addList">
-<!--         	<input type="hidden" name="javafood" value="3_2"> -->
+        <form name = "PL_addList" accept-charset="utf-8">
         	<input type="hidden" name="id" value="<%=id %>">
             <input type="text" name="addList_title" class="addList_textbar" placeholder="플레이리스트 제목을 입력해주세요."> <br>
             <input type="text" name="addList_explain" class="addList_ex_textbar" placeholder="(Option)플레이리스트 설명을 입력해주세요."> <br>
-            <input type="text" name="addList_listImage" class="addList_textbar" placeholder="(Option)플레이 리스트에 들어갈 이미지 주소를 입력해주세요."> <br>
+            <input style="margin-left:1%;" type="radio" class="chk_url" name="chk_imageAdd" value="url" checked="checked">url로 추가하기 <input type="radio" class="chk_file" name="chk_imageAdd" value="file">파일로 추가하기 <br> <br>
+            <input type="text" name="addList_listImage" class="addList_textbar addList_imageUrl" placeholder="(Option)플레이 리스트에 들어갈 이미지 주소를 입력해주세요."> <br>
+	            <div class="fileUpload" style="margin-left:1%;">
+	                <div class="addList_imageFile hidden" style="width: 200px; height: 250px">
+	                    <div class="div">
+							<input type="file" name="uploadfile" accept="*">
+	                        <p><strong>사진</strong></p>
+	                        <img src="/ajax/filedo?fileName=${loginId}.JPG"
+	                            style="width: 150px;height: 150px;">
+	                    </div>
+	                    <br>
+						<input class="butt" type="button" id="but" value="JPG사진업로드">
+	                </div>
+	            </div>
+	            <br> <br>
             <input type="button" name="addList_btn" class="addList_btn" value="추가">
         </form>
     </div>

@@ -35,6 +35,20 @@ inputAddListBtn.addEventListener('click', ()=>
 });
 
 
+document.querySelector("input.chk_url").addEventListener("change", ()=>
+{
+//	console.log("change됨.");
+	document.querySelector(".addList_imageUrl").classList.remove("hidden");
+	document.querySelector(".addList_imageFile").classList.add("hidden");
+});
+
+document.querySelector("input.chk_file").addEventListener("change", ()=>
+{
+//	console.log("change 또됨.");
+	document.querySelector(".addList_imageUrl").classList.add("hidden");
+	document.querySelector(".addList_imageFile").classList.remove("hidden");
+});
+
 
 (function (){  
     document.onmousemove=function (e){ var ob=document.getElementById("foo").style; ob.left=e.pageX+15+"px"; ob.top=e.pageY+15+"px";}
