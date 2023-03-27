@@ -27,7 +27,7 @@
 						 <br>
 						 <br>
 						 <a href="/login" style="margin-right: 190px;">로그인 하러가기</a>
-						 <a href="/searchPW">비밀번호 찾기</a>
+						 <a href="/searchID">아이디 찾기</a>
 					</c:if>
 					<c:if test="${empty login}">
 						<div class="table1">
