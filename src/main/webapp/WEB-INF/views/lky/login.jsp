@@ -31,7 +31,7 @@
 	</head>
 	<body>
 			<div><img src="https://c11.kr/1asbb" class="logo-img"><h1 style="margin-top:-11px;"><c:out value="Create Account"/></h1></div>
-	  		<div class="div_1" style="margin-top:30px;">
+<%-- 	  		<div class="div_1" style="margin-top:30px;">
 				<div class="upload">
 					<img class="upload_img" src="/ajax/filedo?fileName=${loginId}.JPG" style="width: 150px;height: 150px;">
 			        <form id="form" accept-charset="utf-8" >
@@ -40,7 +40,7 @@
 					</form>
 				</div>
 			</div>
-	        <form method="post" action="login">
+--%>	        <form method="post" action="login">
 	            <div class="head">
 	             	<table class="tdtd">
 				        <tr class="tr">

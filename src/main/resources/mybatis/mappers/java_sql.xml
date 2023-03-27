@@ -267,11 +267,11 @@
 			GENRE
 		<if test="opt=='song'">
 			WHERE 
-				SONGNAME LIKE  '%' || #{pot} || '%'
+				LOWER(SONGNAME) LIKE  '%' || #{pot} || '%'
 		</if>
 		<if test="opt=='man'">
 			WHERE 
-				artistname LIKE '%' || #{pot} || '%'
+				LOWER(artistname) LIKE '%' || #{pot} || '%'
 		</if>
 		
 	</select>
