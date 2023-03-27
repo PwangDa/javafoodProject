@@ -71,21 +71,23 @@
 					<br>
 					<br>
 					<form name="PL_editList">
-					<input style="margin-left:1%;" type="radio" class="edit hidden chk_url" name="chk_imageAdd" value="url" checked="checked">url로 추가하기 <input type="radio" class="edit hidden chk_file" name="chk_imageAdd" value="file">파일로 추가하기 <br> <br>
-					<input type="text" placeholder="표지 변경하기(이미지 URL 입력)" class="hidden edit editList_textbar editList_imageUrl" name="editList_listImage">
-					<div class="fileUpload" style="margin-left:1%;">
-			            <div class="addList_imageFile hidden" style="width: 200px; height: 250px">
-			                <div class="div">
-							<input type="file" name="uploadfile" accept="*">
-			                    <p><strong>사진</strong></p>
-			                    <img src="/ajax/filedo?fileName=${loginId}.JPG"
-			                        style="width: 150px;height: 150px;">
-			                </div>
-			                <br>
-						<input class="butt" type="button" id="but" value="JPG사진업로드">
-			            </div>
-		           		</div>
-						<br>
+					<span class="edit hidden">
+						<input style="margin-left:1%;" type="radio" class="edit hidden chk_url" name="chk_imageAdd" value="url" checked="checked">url로 추가하기 <input type="radio" class="edit hidden chk_file" name="chk_imageAdd" value="file">파일로 추가하기 <br> <br>
+						<input type="text" placeholder="표지 변경하기(이미지 URL 입력)" class="hidden edit editList_textbar editList_imageUrl" name="editList_listImage">
+						<div class="fileUpload" style="margin-left:1%;">
+				            <div class="addList_imageFile hidden" style="width: 200px; height: 250px">
+				                <div class="div">
+								<input type="file" name="uploadfile" accept="*">
+				                    <p><strong>사진</strong></p>
+				                    <img src="/ajax/filedo?fileName=${loginId}.JPG"
+				                        style="width: 150px;height: 150px;">
+				                </div>
+				                <br>
+								<input class="butt" type="button" id="but" value="JPG사진업로드">
+					            </div>
+			           		</div>
+							<br>
+					</span>
 						<h2 style="text-shadow:2px 2px 2px gray; color:whitesmoke;">${ playListContent[0].pl_title }</h2>
 						<input type="text" placeholder="제목 변경하기" class="hidden edit editList_textbar" name="editList_title">
 						<br>
