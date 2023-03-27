@@ -53,19 +53,8 @@ public interface JavafoodService {
 	// 댄스 장르 출력 메소드
 	List<FamousChartDTO> selectDance(String genre);
 	
-	// 회원 있는지
-	String pwFind_Lookup( login_DTO dto);
-	
-	// 회원 메일 있는지
-	String pwFind_ok( login_DTO dto );
-	
-	// 비밀번호 가져오기
-	login_DTO pwFind_select( login_DTO dto );
-	
-	// 암호 찾기
-	String decryptAES(String realPwd, String key);
-	
-	String pwFindDecry(login_DTO dto);
+	// 비밀번호 찾기
+	public List searchPW(login_DTO dto);
 	
 ////////////////////////////////////////////////////////////
 //범주

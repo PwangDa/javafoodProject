@@ -445,73 +445,34 @@ public class JavafoodController {
 			/* System.out.println(LocalDateTime.now()); */
 	        return LocalDateTime.now();
 	    }
-		// id 찾는 곳이 되어야함 
-		// 비밀번호 찾기
-		@RequestMapping(value="/pwFindForm_ok")
-		public String pwFindForm_ok(HttpServletRequest request, HttpServletResponse response, @ModelAttribute login_DTO dto) {
-			int flag = 2;
+		
+		//비밀번호 찾기 페이지로 이동
+		@RequestMapping(value = "/searchPW")
+		public String searchPW(Model model) {
 			
-			String id = request.getParameter("id");
-			System.out.println("/pwFindForm_ok > id : "+ id);
+			return "/chart/searchPW";
+		}
+		
+		//비밀번호찾기 검색결과 페이지로 이동
+		@RequestMapping(value = "/searchPW/Search")
+		public String searchPW_what(Model model,
+				@ModelAttribute login_DTO dto
+				) {
 			
-			String email = request.getParameter("email");
-			
-			dto.setID(id);
-			dto.setEMAIL(email);
-			
-			String result_lookup = javaDAO.pwFind_Lookup(dto);
-			if (result_lookup.equals("1")) {	//회원있음
-				
-				// 메일확인
-				String pwFind_ok = javaDAO.pwFind_ok(dto);
-				
-				if(pwFind_ok.equals("1")) {	//메일 일치
-					dto = javaDAO.pwFind_select(dto);
-					
-					// 암호회 된 비밀번호 풀어주는 작업
-					String key = "secret Key";
-					String realPwd = javaDAO.pwFind_select(dto).getPWD();
-					String decryPwd = javaDAO.decryptAES(realPwd, key);
-					
-					// 비밀번호 길이를 2로 나누어서
-					int pwdSize = decryPwd.length()/2;
-					
-					String resultPwd_1 = decryPwd.substring(0, pwdSize);
-					
-					// 뒤의 절반은 *로 표시
-					String tmp = "";
-					if (pwdSize%2 == 1) {	// 홀수인 경우 * 한개 더 추가
-						for( int i=0; i<pwdSize+1; i++ ) {
-							tmp += "*";
-						}
-						
-					}else {
-						for (int i=0; i<pwdSize; i++) {
-							tmp += "*";
-						}
-					}
-					String resultPwd = resultPwd_1 + tmp;
-					
-					flag = 0;
-					
-					// 표시될 비밀번호를 pwd에 담음
-					dto.setPWD(resultPwd);
-					
-					request.setAttribute("pwd", dto.getPWD());
-					request.setAttribute("id", id);
-				} else if(pwFind_ok.equals("0")) {		//메일 x
-					flag = 1;
-				} else {		//기타 오류
-					flag = 3;
-				}
-			} else if (result_lookup.equals("0")) {	// 회원없음
-				flag = 2;
-			} else {	// 기타오류
-				flag = 3;
+			System.out.println(dto.getID());
+			System.out.println(dto.getNIC());
+		
+			List searchPW = javaService.searchPW(dto);
+			if(searchPW.size() == 0) {
+				System.out.println("비밀번호가 없습니다.");
+				model.addAttribute("login", null);
+
+			}else if(searchPW.size() != 0) {
+				System.out.println("비밀번호는 >> "+searchPW.get(0));
+				model.addAttribute("login", searchPW);
 			}
-			request.setAttribute("flag", flag);
-			
-			return "chart/pwFindForm_ok";
+				
+			return "/chart/searchPW_Search";
 		}
 		 
 		  
@@ -1161,6 +1122,7 @@ public class JavafoodController {
 			log.info("회원탈퇴 성공");
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
+			e.getMessage();
 		}
 		return i;
 	}
@@ -1515,7 +1477,7 @@ public class JavafoodController {
 		}
 
 				
-		// 노래 수정 페이지
+		// 노래 삭제 페이지
 				@RequestMapping ("/delete_song")
 				public String delete_song(Model model,	
 						HttpServletRequest request,

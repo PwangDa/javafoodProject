@@ -21,21 +21,21 @@
 						<h1 style="margin-top:-11px;">MUSIC</h1>
 					</div>
 					<div class="table1">
-						<h1 class="h1_1"><c:out value="Find ID"/></h1>
-					    <form action="/searchID/what">
+						<h1 class="h1_1"><c:out value="Find PW"/></h1>
+					    <form action="/searchPW/Search">
 					        <div class="head1">
 					            <div class = "inputbtn">
-					            	<input class = "tt" type="text" name="NIC" id="id12" placeholder="닉네임">
+					            	<input class = "tt" type="text" name="ID" id="id12" placeholder="아이디">
 					            	<button class="btnClear" type="button" ></button>
 					            </div>
 					            <br>
-					            <input class = "tt" type="text" name="PHONE" placeholder="핸드폰 번호">
+					            <input class = "tt" type="text" name="NIC" placeholder="닉네임">
 					            <button class="btnClear" type="button" ></button>
-					            <input class="sub sub1" type="submit" value="아이디 찾기">
+					            <input class="sub sub1" type="submit" value="비밀번호 찾기">
 					            <br>
 					            <br>
-					            <a href="/login" style="margin-right: 140px; font-size:13px;">로그인 하러가기</a>
-					            <a href="/login?membership=0" style="font-size:13px;">회원가입 하러가기</a>
+					            <a href="/login" style="margin-right: 140px; font-size:10px;">로그인 하러가기</a>
+					            <a href="/login?membership=0" style="font-size:10px;">회원가입 하러가기</a>
 					            </div>
 					    </form>
 					 </div>
