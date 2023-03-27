@@ -174,7 +174,12 @@
 		                   		 	<summary style="color: rgb(150, 150, 150);">답글달기</summary>
 		                   		 	<form name="frmComment_2" method="post" action="/reply.do">
 			                    		<div class="comment" >
-						                        <img class="image3" src="${img }">
+			                    				<c:if test="${empty nic}">
+						                        	<img class="image3" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
+						                        </c:if>
+						                        <c:if test="${not empty nic}">
+						                        	<img class="image3" src="${img }">
+						                        </c:if>
 						                        <input class="input2" type="text" name="id_2" placeholder="ID" value="${nic}"  readonly>
 						                        <input class="input3" type="text" name="cont_2" placeholder="답글 추가..." >
 						                        <input class="btn1" type="submit" value="답글"> 
