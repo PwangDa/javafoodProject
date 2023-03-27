@@ -872,15 +872,16 @@ public class JavafoodController {
 				re.getSession().setAttribute("loginEmail", m.get("email"));
 				re.getSession().setAttribute("loginPn", m.get("pn"));
 				re.getSession().setAttribute("loginImg", m.get("img"));
-				re.getSession().setMaxInactiveInterval(300);
+				//세션 30분*60초 동안 저장
+				re.getSession().setMaxInactiveInterval(30*60);
 				
 				
 				//쿠키에 아이디값 저장
 				Cookie cok = new Cookie("id", (String) m.get("id"));
 				cok.setPath("/");			//모든경로
-				cok.setMaxAge(60*60*24);	//60초*60분*24시간
+				cok.setMaxAge(60*30*24);	//60초*60분*24시간
 				rp.addCookie(cok);
-				log.info("로그인 세션 유지시간 : 5분");
+				log.info("로그인 세션 유지시간 : 30분");
 
 			}
 			
@@ -1496,5 +1497,17 @@ public class JavafoodController {
 					return "redirect:/list/genre?";
 				}
 				
+				
+		// 관리자 장르페이지에서 장르 검색조회 했을 때
+		@RequestMapping ("/search/genre")
+		public String searchGenre(Model model,	
+				@RequestParam("genre") String genre
+				) {
+			System.out.println(genre + " 장르를 조회합니다.");
+			
+			List searchGenre = javaService.searchGenre(genre);
+			model.addAttribute("list", searchGenre);
+			return "forward:/insert_song";
+		}
 ////////////////////////////////////////////////////////////
 }

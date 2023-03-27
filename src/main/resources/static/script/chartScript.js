@@ -52,15 +52,6 @@ window.addEventListener("load", function() {
             }, 1000);
         });
         
-/*function showServerTime() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var timeString = hours + ':' + minutes + ':' + seconds;
-            //document.getElementById("server-time-input").value = timeString;
-        }*/
-        
 window.addEventListener("load", function() {
 	//HTML이 다 load가 완료 됐을 때 실행됨
 	showServerTime();
