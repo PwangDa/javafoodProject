@@ -62,20 +62,8 @@ public interface JavafoodDAO {
 	// 댄스 장르 출력
 	List<FamousChartDTO> selectDance(String genre);
 	
-	//회원 있는지 여부 확인
-	String pwFind_Lookup( login_DTO dto);
-	
-	//회원 메일 있는지 확인
-	String pwFind_ok( login_DTO dto );
-	
-	
-	//회원 비밀번호 가져오기
-	login_DTO pwFind_select( login_DTO dto );
-	
-	// 암호화 해독
-	String decryptAES(String realPwd, String key);
-
-	String pwFindDecry(login_DTO dto);
+	// 비밀번호 찾기
+	List searchPW(login_DTO dto);
 
 ////////////////////////////////////////////////////////////
 //범주

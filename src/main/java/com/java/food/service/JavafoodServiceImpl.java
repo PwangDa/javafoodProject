@@ -177,35 +177,15 @@ public class JavafoodServiceImpl implements JavafoodService {
 		return page;
 	}
 	
-	//회원 있는지 여부 확인
-	public String pwFind_Lookup( login_DTO dto) {
-		
-		return javaDAO.pwFind_Lookup(dto);
+	//비밀번호 찾기
+	@Override	
+	public List searchPW(login_DTO dto) {
+		System.out.println("아이디를 검색합니다");
+		System.out.println("ID >>>>>>"+dto.getID());
+		System.out.println("NIC >>>>>>"+dto.getNIC());
+		List searchPW= javaDAO.searchPW(dto);
+		return searchPW;
 	}
-	//회원 메일 있는지 확인
-		public String pwFind_ok( login_DTO dto ) {
-			
-			return javaDAO.pwFind_ok(dto);
-		}
-		
-		//회원 비밀번호 가져오기
-		public login_DTO pwFind_select( login_DTO dto ) {
-			
-			
-			return javaDAO.pwFind_select(dto);
-		}
-
-
-		@Override
-		public String decryptAES(String realPwd, String key) {
-			
-			return javaDAO.decryptAES(realPwd, key);
-		}
-		@Override
-		public String pwFindDecry(login_DTO dto) {
-			
-			return javaDAO.pwFindDecry(dto);
-		}
 	
 ////////////////////////////////////////////////////////////
 //범주

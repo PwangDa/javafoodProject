@@ -220,37 +220,14 @@ public List<FamousChartDTO> selectDance(String genre){
 }
 
 
-//회원 있는지 여부 확인
-public String pwFind_Lookup( login_DTO dto) {
-	System.out.println("JavafoodDAOImpl > pwFind_Lookup > dto.getID() : "+ dto.getID());
-	String result = sqlSession.selectOne("mapper.javafood.pwFind_lookup", dto);
-	return result;
-}
-//회원 메일 있는지 확인
-	public String pwFind_ok( login_DTO dto ) {
-		String result = sqlSession.selectOne( "mapper.javafood.pwFind_ok", dto );
-		System.out.println(result);
-		return result;
-	}
-	
-	//회원 비밀번호 가져오기
-	public login_DTO pwFind_select( login_DTO dto ) {
-		login_DTO to = sqlSession.selectOne("mapper.javafood.pwFind_select", dto);
-		System.out.println(to);
-		return to;
-	}
-
-
-	@Override
-	public String decryptAES(String realPwd, String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String pwFindDecry(login_DTO dto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//비밀번호 찾기
+		@Override
+		public List searchPW(login_DTO dto) {
+			List list = new ArrayList();
+			list = sqlSession.selectList("mapper.javafood.searchPW", dto);
+			System.out.println(dto.getID()+" : 조회");
+			return list;
+		}
 ////////////////////////////////////////////////////////////
 //범주
 @Override

@@ -86,20 +86,7 @@
     </definition> 
     
 
-	<definition name="/searchuser" extends="baseLayout"> 
-       <put-attribute name="title" value="searchuser" /> 
-       <put-attribute name="body" value="/WEB-INF/views/chart/searchuser.jsp" /> 
-    </definition> 
-    
-    <definition name="/pwFindForm" extends="baseLayout"> 
-       <put-attribute name="title" value="pwFindForm" /> 
-       <put-attribute name="body" value="/WEB-INF/views/chart/pwFindForm.jsp" /> 
-    </definition> 
-    
-    <definition name="/pwFindForm_ok" extends="baseLayout"> 
-       <put-attribute name="title" value="pwFindForm_ok" /> 
-       <put-attribute name="body" value="/WEB-INF/views/chart/pwFindForm_ok.jsp" /> 
-    </definition> 
+	
 	
     
 </tiles-definitions> 
