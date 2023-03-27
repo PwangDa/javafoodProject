@@ -159,9 +159,7 @@ public class JavafoodServiceImpl implements JavafoodService {
 	
 	//조회수 증가
 	public void addhit(String id, String songnumber) {
-		
 		javaDAO.addhit(id, songnumber);
-		
 	}
 	
 	// genre Dance 출력 메소드

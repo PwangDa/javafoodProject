@@ -1161,6 +1161,7 @@ public class JavafoodController {
 			log.info("회원탈퇴 성공");
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
+			e.getMessage();
 		}
 		return i;
 	}
