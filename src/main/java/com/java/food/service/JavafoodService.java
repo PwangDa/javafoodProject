@@ -126,6 +126,9 @@ public interface JavafoodService {
 	
 	// 음악삭제 
 	int delete_song(GenreDTO dto);
+	
+	// 장르 검색
+	List searchGenre(String genre);
 ////////////////////////////////////////////////////////////
 	
 	

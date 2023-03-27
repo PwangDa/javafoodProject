@@ -766,8 +766,17 @@ public class JavafoodServiceImpl implements JavafoodService {
 			List searchID= javaDAO.searchID(dto);
 			return searchID;
 		}
+
 		
+		//관리자페이지에서 장르로 검색했을 때
+		@Override	
+		public List searchGenre(String genre) {
+			System.out.println("searchArtist 메소드 접속!!");
+			List searchGenre= javaDAO.searchGenre(genre);
+			return searchGenre;
+		}
 }
+
 
 
 ////////////////////////////////////////////////////////////

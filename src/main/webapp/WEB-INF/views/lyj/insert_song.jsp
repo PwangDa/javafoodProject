@@ -66,6 +66,13 @@
 
 <hr>
 <!--여기서 부터 조회한 값이 테이블로 출력 -->
+<div class="conn_2">
+	<form action="/search/genre">
+		<input class="text_a" type="text" name="genre" placeholder="장르 검색">
+		<input class="butt" type="submit" value="검색">
+	</form>
+<hr>
+</div>
 
 <table class="table_1">
 				<c:if test="${not empty list }">
@@ -133,6 +140,7 @@
 							</td>
 						</tr>
 					</c:forEach>
+
 				</c:if>
 				<c:if test="${ empty list }">
 					<tr>
