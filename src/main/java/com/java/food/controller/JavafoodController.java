@@ -1122,6 +1122,7 @@ public class JavafoodController {
 			log.info("회원탈퇴 성공");
 		} catch (Exception e) {
 			log.info("회원탈퇴 오류");
+			e.getMessage();
 		}
 		return i;
 	}
@@ -1476,7 +1477,7 @@ public class JavafoodController {
 		}
 
 				
-		// 노래 수정 페이지
+		// 노래 삭제 페이지
 				@RequestMapping ("/delete_song")
 				public String delete_song(Model model,	
 						HttpServletRequest request,

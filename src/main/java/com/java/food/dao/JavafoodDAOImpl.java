@@ -588,6 +588,7 @@ public void deleteCheckedSongs(Map info)
 			}
 		} catch (Exception e) {
 			logger.info("로그인을 해야 조회수가 증가합니다.");
+			e.getMessage();
 		}
 		return sqlSession.insert("mapper.javafood.hits",dto.getSONGNUMBER());
 	}
