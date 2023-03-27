@@ -85,9 +85,12 @@
            					<div><!-- 하트 버튼 -->
 	                			<img class="img2 heart" src="https://c11.kr/1asbx" onclick="good(${ album.songnumber })">
 	                		</div>
-	                		<div><!-- 재생 버튼 -->
-	                			<a href="${album.link}" target='_blank'><img class="img img2" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'" onclick="hit(${ album.songnumber })"></a>
-	                		</div>
+	                		<form name="addPlayList" action="/my">
+		                		<div><!-- 재생 버튼 -->
+		                			<a href="${album.link}" target='_blank'><img class="img img2" src="https://c11.kr/1asd1" onmouseover="this.src='https://c11.kr/1asd5'" onmouseout="this.src='https://c11.kr/1asd1'" onclick="hit(${ album.songnumber })"></a>
+		                			<input type="hidden" class="put" name="song" value="${ album.songnumber }">
+		                		</div>
+	                		</form>
 	                		<form name="addPlayList" method="post" action="/playListAdd">
 								<div><!-- 담기 버튼 -->
 									<input type="hidden" class="put" name="songNumber" value="${ album.songnumber }">
