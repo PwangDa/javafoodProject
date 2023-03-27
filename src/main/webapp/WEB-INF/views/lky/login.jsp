@@ -34,7 +34,7 @@
 <%-- 	  		<div class="div_1" style="margin-top:30px;">
 				<div class="upload">
 					<img class="upload_img" src="/ajax/filedo?fileName=${loginId}.JPG" style="width: 150px;height: 150px;">
-			        <form id="form" accept-charset="utf-8" >
+파일 업로드			        <form id="form" accept-charset="utf-8" >
 						<input type="file" name="uploadfile" accept="*">
 						<input class="butt" type="button" id="but" value="JPG사진업로드">
 					</form>
