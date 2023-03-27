@@ -6,7 +6,7 @@
 		ob.left=e.pageX+15+"px"; 
 		ob.top=e.pageY+15+"px";
 		}
-	document.write("<img src='https://tistory1.daumcdn.net/tistory/4694508/skin/images/hai1.gif' id='foo' style='position:absolute; transition:all 0.3s ease-in; z-index: 1;'>");
+	document.write("<img src='https://cdn.discordapp.com/attachments/931150181540450368/1088433240819376148/ezgif-5-867d124f68.gif' id='foo' style='width : 80px; position:absolute; transition:all 0.3s ease-in; z-index: 1;'>");
 	}());
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //로그인 성공시 1초 후에 페이지 이동
