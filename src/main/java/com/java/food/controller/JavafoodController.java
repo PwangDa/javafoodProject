@@ -129,32 +129,35 @@ public class JavafoodController {
 	// 대댓글 등록할 때
 	@RequestMapping(value = "/reply.do", method = RequestMethod.POST)
 	public String reply(Model model, 
-			HttpServletRequest re,
-			@ModelAttribute CommentDTO dto, 
-			@RequestParam("id_2") String id,
-			@RequestParam("cont_2") String cont, 
-			@RequestParam("command_myimg") String ima,
-			@RequestParam("command_articleNO") int article, 
-			@RequestParam("arti") String arti
+			HttpServletRequest re, @ModelAttribute CommentDTO dto, @RequestParam("id_2") String id,
+			@RequestParam("cont_2") String cont, @RequestParam("command_myimg") String ima,
+			@RequestParam("command_articleNO") int article, @RequestParam("arti") String arti
 			) {
 		
+		//로그인 한 아이디와 닉네임, 이미지의 값을 저장
 		Object login_id = re.getSession().getAttribute("loginId");
 		Object nic = re.getSession().getAttribute("loginNic");
 		Object img = re.getSession().getAttribute("loginImg");
 		
+		//제대로 가져왔는지 출력 
 		System.out.println(">>>>>" + id);
 		System.out.println(">>>>>" + cont);
 		System.out.println(">>>>>" + ima);
 		System.out.println("article >>>>>" + article);
 		System.out.println(">>>>>" + arti);
-
+		
 		dto.setComment_id(id);
 		dto.setComment_cont(cont);
 		dto.setMyimg(ima);
 		dto.setArtistname(arti);
+		//댓글에 답변 달 때에는 article값은 ParentNO로 setting 되야하기에
+		//자동으로 dto세팅안하고 지정세팅을 함.
 		dto.setParentNO(article);
 		dto.setId((String)login_id);
-
+		
+		//해당 아티스트 페이지 이동할 때 한글로 된 전달값이 필요 한데
+		//주소창에서 한글을 유니코드로 바뀌는 바람에 인식을 못하는 일이 발생해서
+		//Encoder 기능으로 유니코드 변환 기능 추가함.
 		String encodeResult = null;
 		try {
 			encodeResult = URLEncoder.encode(arti, "UTF-8");
@@ -163,12 +166,14 @@ public class JavafoodController {
 			e.printStackTrace();
 		}
 		System.out.println("댓글등록 메소드 접속");
+		//로그인 한 아이디 맞게 답변등록되는지 확인 출력
 		System.out.println("아이디 >" + dto.getComment_id());
 		System.out.println("내용 >" + dto.getComment_cont());
 		System.out.println("ParentNO >" + dto.getParentNO());
 		int count = javaService.replyComment(dto);
 		System.out.println("count >>>" + count);
-
+		
+		//좀 전에 유니코드로 변환한 주소로 바로 이동되게.
 		return "redirect:/artistpage?artist=" + encodeResult;
 	}
 

@@ -126,6 +126,7 @@
             <h2 style="text-align: center; margin: 0px;">댓글</h2>
             <form name="frmComment" method="post" action="/insert.do">
                 <div class="comment">
+                <%-- 만약 로그인 한 데이터가 없을 시 출력--%>
                 <c:if test="${empty nic}">
                     <div class="text2">
                         <img class="image1" name="ima" src="http://blog.tofte-it.dk/wp-content/uploads/2018/12/profile-picture.png">
@@ -138,10 +139,12 @@
                         <input class="btn" type="submit" value="등록" disabled>
                     </div>
                 </c:if>
+                <%-- 만약 로그인을 했으면 로그인한 데이터 값이 출력됨--%>
                 <c:if test="${not empty nic}">
                     <div class="text2">
-                        <img class="image1" src="${img }">
+                        <img class="image1" src="${img }"><%--로그인 한 이미지 값이 출력--%>
                         <input class="input1" type="text" name="id" placeholder="${nic }" value="${nic }" readonly>
+                        <%--readonly로 되어있어도 어차피 실제 로그인 한 세션값을 불러오기 때문에 페이지소스보기에서 고쳐도 상관없다 --%>
                     </div>
                     <div class="text2">
                         <textarea class="text_area" name="cont" placeholder="*게시물의 저작권 등 분쟁, 개인정보 노출로 인한 책임은 작성자 또는 게시자에게 있음을 유의해 주세요."></textarea>
@@ -150,10 +153,10 @@
                         <input class="btn" type="submit" value="등록">
                     </div>
                 </c:if>
+                    <%-- 등록버튼을 눌렀을 때 등록한 페이지의 값을 가져갈 수 있게 추가--%>
                     <input type ="hidden" name="songnum" value="${album_list[0].songnumber }">
                     <input type ="hidden" name="myimg" value="${img }">
                     <input type ="hidden" name="arti" value="${album_list[0].artistname}">
-                    <%-- <input type ="hidden" name="myimg" value="${login_dto[0].myimg }"> --%>
                 </div>
             </form>
             </div>
