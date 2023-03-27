@@ -12,7 +12,9 @@
             background-color: rgb(39, 39, 39); /*스크롤바 트랙 색상*/ 
             border: none;
         }
-
+.tdr{
+	text-align: center;
+}
 body{
 	background-size: contain; 
 	color: white; 

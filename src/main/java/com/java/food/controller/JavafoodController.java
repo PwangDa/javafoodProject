@@ -946,14 +946,15 @@ public class JavafoodController {
 					String i; 
 					if(map.get("p")!=null) i = (String) map.get("p");
 					else i = "1";
-					
-					map = javaService.loginplay(id,Integer.parseInt(i));
-					
-					mo.addAttribute("playlist",map.get("list"));
-					mo.addAttribute("allpage",map.get("allpage"));
-					mo.addAttribute("p",map.get("i"));
-					
-					System.out.println("page가져");
+					try {
+						map = javaService.loginplay(id,Integer.parseInt(i));
+						mo.addAttribute("playlist",map.get("list"));
+						mo.addAttribute("allpage",map.get("allpage"));
+						mo.addAttribute("p",map.get("i"));
+					} catch (Exception e) {
+						log.info("재생기록이 없습니다.");
+						e.getMessage();
+					}
 				}
 				//로그아웃
 				if("c".equals(map.get("page"))) {

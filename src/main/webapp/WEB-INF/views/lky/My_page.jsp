@@ -134,30 +134,38 @@
 				<th>하트</th>
 				<th>보관</th>
 			</tr>
-			<c:forEach items="${playlist }" var="i" >
-				<tr class="tdr ddr ">
-					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER })" target="blank"><img src="${i.IMAGELINK }"></a></td>
-					<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER})" target="blank"><c:out value="${i.SONGNAME }"/></a></td>
-					<td class="td"><a class="at" href="/artistpage?artist=${i.ARTISTNAME}"><c:out value="${i.ARTISTNAME }"/></td>
-					<td class="td"><a class="at" href="/albumpage?album=${i.ALBUM_NAME }"><c:out value="${i.ALBUM_NAME}"/></a></td>
-					<td class="td"><c:out value="${i.PLAYTIME }"/></td>
-					<td class="td">
-						<img class="img" src="https://c11.kr/1asbx" 
-							onmouseover="this.src='https://c11.kr/1asby'" 
-							onmouseout="this.src='https://c11.kr/1asbx'"
-							class="sub" onclick="good(${i.SONGNUMBER})">
-					</td>
-					<td class="td">
-						<form name="addPlayList" method="post" action="/playListAdd?songNumber=${i.SONGNUMBER }" onclick="this.submit();">
-							<img class="img" src="https://c11.kr/1asd6" 
-								onmouseover="this.src='https://c11.kr/1asd9'" 
-								onmouseout="this.src='https://c11.kr/1asd6'">
-	               			<input type="hidden" name="songNumber" value="${i.SONGNUMBER }">
-	               			<input type="hidden" name="addWhere" value="My_page">
-	         	  		</form>
-					</td>
-				</tr>
-			</c:forEach>
+			
+			<c:if test="${playlist!=null }">
+				<c:forEach items="${playlist }" var="i" >
+					<tr class="tdr ddr">
+						<td class="td" ><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER })" target="blank"><img src="${i.IMAGELINK }"></a></td>
+						<td class="td"><a class="at" href="${i.LINK }" onclick="hit(${i.SONGNUMBER})" target="blank"><c:out value="${i.SONGNAME }"/></a></td>
+						<td class="td"><a class="at" href="/artistpage?artist=${i.ARTISTNAME}"><c:out value="${i.ARTISTNAME }"/></td>
+						<td class="td"><a class="at" href="/albumpage?album=${i.ALBUM_NAME }"><c:out value="${i.ALBUM_NAME}"/></a></td>
+						<td class="td"><c:out value="${i.PLAYTIME }"/></td>
+						<td class="td">
+							<img class="img" src="https://c11.kr/1asbx" 
+								onmouseover="this.src='https://c11.kr/1asby'" 
+								onmouseout="this.src='https://c11.kr/1asbx'"
+								class="sub" onclick="good(${i.SONGNUMBER})">
+						</td>
+						<td class="td">
+							<form name="addPlayList" method="post" action="/playListAdd?songNumber=${i.SONGNUMBER }" onclick="this.submit();">
+								<img class="img" src="https://c11.kr/1asd6" 
+									onmouseover="this.src='https://c11.kr/1asd9'" 
+									onmouseout="this.src='https://c11.kr/1asd6'">
+		               			<input type="hidden" name="songNumber" value="${i.SONGNUMBER }">
+		               			<input type="hidden" name="addWhere" value="My_page">
+		         	  		</form>
+						</td>
+					</tr>
+				</c:forEach>
+			</c:if>
+			
+			<c:if test="${playlist==null }">
+				<td colspan="7" class="td" ><h1>재생기록이 없습니다.</h1></td>
+			</c:if>
+			
 			</table>
 <!-- 			페이징 -->
 			<div class="page1">
