@@ -1515,7 +1515,7 @@ public class JavafoodController {
 		}
 
 				
-		// 노래 수정 페이지
+		// 노래 삭제 페이지
 				@RequestMapping ("/delete_song")
 				public String delete_song(Model model,	
 						HttpServletRequest request,
